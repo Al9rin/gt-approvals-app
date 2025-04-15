@@ -82,7 +82,7 @@ export default function GTApprovalsApp() {
   <img
     src="/image.png"
     alt="GoodTherapy Approvals"
-    className="mx-auto w-41 mb-2"
+    className="mx-auto w-44 mb-2"
   />
 </motion.div>
 
