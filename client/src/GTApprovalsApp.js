@@ -81,7 +81,7 @@ export default function GTApprovalsApp() {
   <img
     src="/image.png"
     alt="GoodTherapy Approvals"
-    className="h-12 md:h-16"
+    className="h-48 md:h-64"
   />
 </motion.div>
 
