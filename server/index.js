@@ -1,31 +1,32 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const OpenAI = require("openai");
+// server/index.js
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import fetch from "node-fetch";
 
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5001;
+
 app.use(cors());
 app.use(express.json());
 
-// Initialize OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
-
-// Clean narrative endpoint
-app.post('/api/clean-narrative', async (req, res) => {
+app.post("/api/clean-narrative", async (req, res) => {
   const { narrative } = req.body;
+  if (!narrative) return res.status(400).json({ error: "Narrative required" });
 
   try {
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4',
-      messages: [
-        {
-          role: 'system',
-          content: `
-You are a narrative compliance assistant for GoodTherapy. Your task is to enforce stylistic and terminology corrections **only where necessary**, according to GoodTherapy's style guide. Follow these instructions strictly:
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content:"You are a narrative compliance assistant for GoodTherapy. Your task is to enforce stylistic and terminology corrections **only where necessary**, according to GoodTherapy's style guide. Follow these instructions strictly:
 
 1. **Correct grammar, punctuation, and spelling.**
 2. **Do NOT rewrite the tone, structure, or meaning** of the original narrative.
@@ -40,26 +41,22 @@ You are a narrative compliance assistant for GoodTherapy. Your task is to enforc
 4. **Do NOT introduce new content**, reword excessively, or summarize.
 5. **Maintain the original sentence and structure whenever possible**.
 
-Return only the cleaned narrative, nothing else.
-`
-        },
-        {
-          role: 'user',
-          content: narrative
-        }
-      ],
-      temperature: 0.1
+Return only the cleaned narrative, nothing else." },
+          { role: "user", content: narrative },
+        ],
+        temperature: 0.3,
+      }),
     });
 
-    const cleaned = completion.choices?.[0]?.message?.content?.trim();
-    if (!cleaned) throw new Error("No response from OpenAI");
-
+    const data = await response.json();
+    const cleaned = data.choices?.[0]?.message?.content || "";
     res.json({ cleaned });
   } catch (err) {
-    console.error("OpenAI error:", err.response?.data || err.message);
-    res.status(500).json({ error: 'Failed to clean narrative' });
+    console.error("Error calling OpenAI API:", err);
+    res.status(500).json({ error: "Failed to clean narrative" });
   }
 });
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
