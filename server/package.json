@@ -5,6 +5,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "formdata-node": "^6.0.3",
     "openai": "^4.16.1",
     "web-streams-polyfill": "^4.1.0"
   }
