@@ -46,7 +46,7 @@ export default function GTApprovalsApp() {
 
   const cleanWithAI = async (text) => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/clean-narrative`, {
+      const res = await fetch("https://gt-approvals-app.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ narrative: text }),
