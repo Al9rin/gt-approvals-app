@@ -71,7 +71,8 @@ export default function GTApprovalsApp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-green-50 to-white text-gray-800 py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-tr from-green-50 to-white text-gray-800 py-6 px-4">
+  <div className="max-w-4xl mx-auto space-y-8">
       <div className="max-w-4xl mx-auto space-y-10">
         <motion.div
   initial={{ opacity: 0, y: -10 }}
@@ -81,7 +82,7 @@ export default function GTApprovalsApp() {
   <img
     src="/image.png"
     alt="GoodTherapy Approvals"
-    className="mx-auto w-40 mb-2"
+    className="mx-auto w-41 mb-2"
   />
 </motion.div>
 
