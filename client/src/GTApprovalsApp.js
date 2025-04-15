@@ -73,13 +73,17 @@ export default function GTApprovalsApp() {
   return (
     <div className="min-h-screen bg-gradient-to-tr from-green-50 to-white text-gray-800 py-10 px-4">
       <div className="max-w-4xl mx-auto space-y-10">
-        <motion.h1
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl font-bold text-center text-green-800"
-        >
-          GT Approvals
-        </motion.h1>
+        <motion.div
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="flex justify-center"
+>
+  <img
+    src="/image.png"
+    alt="GoodTherapy Approvals"
+    className="h-12 md:h-16"
+  />
+</motion.div>
 
         {/* Dropdown Section */}
         <div className="bg-white rounded-2xl shadow p-6 space-y-5 border border-green-100">
