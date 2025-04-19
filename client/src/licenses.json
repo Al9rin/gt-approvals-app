@@ -495,64 +495,64 @@
     "requirements": "N/A",
     "verificationUrl": "https://nvbn.boardsofnursing.org/licenselookup"
   },
-  "NewHampshire_LPC": {
+  "New Hampshire_LPC": {
     "requirements": "Does not issue associate licenses at this time.",
     "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
   },
-  "NewHampshire_LMFT": {
+  "New Hampshire_LMFT": {
     "requirements": "Does not issue associate licenses at this time.",
     "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
   },
-  "NewHampshire_LCSW": {
+  "New Hampshire_LCSW": {
     "requirements": "Does not issue associate licenses at this time.",
     "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
   },
-  "NewHampshire_Psychologist": {
+  "New Hampshire_Psychologist": {
     "requirements": "Does not issue associate licenses at this time.",
     "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
   },
-  "NewJersey_LPC": {
+  "New Jersey_LPC": {
     "requirements": "N/A",
     "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
   },
-  "NewJersey_LMFT": {
+  "New Jersey_LMFT": {
     "requirements": "N/A",
     "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
   },
-  "NewJersey_LCSW": {
+  "New Jersey_LCSW": {
     "requirements": "LCSWs can practice independently. MSW from CSWE-accredited school, 3,000 hours of supervised experience, and ASWB clinical exam.",
     "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
   },
-  "NewJersey_LSW": {
+  "New Jersey_LSW": {
     "requirements": "LSWs must practice under supervision to conduct psychotherapy.",
     "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
   },
-  "NewJersey_Psychologist": {
+  "New Jersey_Psychologist": {
     "requirements": "A student of psychology may be exempt from licensure if under supervision (N.J.A.C. 13:42-4.2). Other professionals may qualify for exemption under N.J.A.C. 13:42-1.5. See regulations: http://www.njconsumeraffairs.gov/regulations/Chapter-42-Board-of-Psychological-Examiners.pdf",
     "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
   },
-  "NewJersey_Psychoanalyst": {
+  "New Jersey_Psychoanalyst": {
     "requirements": "Psychoanalysts can currently practice without a license; licensing board has not yet been established. This is subject to change.",
     "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
   },
 
-  "NewMexico_LPC": {
+  "New Mexico_LPC": {
     "requirements": "N/A",
     "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
   },
-  "NewMexico_LMFT": {
+  "New Mexico_LMFT": {
     "requirements": "N/A",
     "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
   },
-  "NewMexico_LCSW": {
+  "New Mexico_LCSW": {
     "requirements": "N/A",
     "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
   },
-  "NewMexico_LMSW": {
+  "New Mexico_LMSW": {
     "requirements": "LMSWs must be under supervision.",
     "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
   },
-  "NewMexico_Psychologist": {
+  "New Mexico_Psychologist": {
     "requirements": "N/A",
     "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
   },
