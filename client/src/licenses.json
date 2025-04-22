@@ -1296,5 +1296,17 @@
   "EuroPsy_All": {
     "requirements": "To be recognized under EuroPsy regulations as a psychologist, a Master's degree is required. For social workers, practice is possible with a Bachelor's degree; however, verification of a graduate-level (Master’s) diploma is required for approval.",
     "verificationUrl": "https://www.europsy.eu/national-requirements-poland"
+  },
+  "Dubai_International": {
+  "requirements": "Licensure is managed via the CDA. Note: laws differ between general areas and free zones like JLT, which is a free zone. It may be unclear where individuals are licensed to practice; verification of credentials is needed.",
+  "verificationUrl": "https://www.cda.gov.ae/en/SocialRegulatoryAndLicensing/LicensingProfessionals/Pages/default.aspx"
+  },
+  "DubaiJLT_International": {
+  "requirements": "Dubai JLT is a free zone and may not follow the same licensing structure as the rest of Dubai. It is unclear how licensing is handled; therefore, credentials must be verified directly with the applicant.",
+  "verificationUrl": "N/A"
+  },
+  "Luxembourg_International": {
+  "requirements": "Licenses in Luxembourg are issued by the Ministry of Health and Social Security (Ministère de la Santé et de la Sécurité sociale).",
+  "verificationUrl": "https://www.slp.lu/en/find-a-psy/"
   }
 }
