@@ -1,0 +1,390 @@
+import { useState, useEffect, useRef } from "react";
+import Select from "react-select";
+import licenses from "./licenses.json";
+import { motion, AnimatePresence } from "framer-motion";
+import { toast } from "sonner";
+import { Search, Wand2, Sun, Moon } from "lucide-react";
+
+// motion variants
+const containerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.12, ease: "easeOut" },
+  },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0 },
+};
+
+const stateOptions = Array.from(
+  new Set(Object.keys(licenses).map((key) => key.split("_")[0]))
+).map((s) => ({ value: s, label: s }));
+
+export default function GTApprovalsApp() {
+  const [state, setState] = useState(null);
+  const [license, setLicense] = useState(null);
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [narrative, setNarrative] = useState("");
+  const [editedNarrative, setEditedNarrative] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [cardTilt1, setCardTilt1] = useState({ x: 0, y: 0 });
+  const [cardTilt2, setCardTilt2] = useState({ x: 0, y: 0 });
+  const [progress, setProgress] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+  const progressRef = useRef(null);
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+  // debounce util
+  const debounce = (fn, ms = 16) => {
+    let frame;
+    return (...args) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => fn(...args));
+    };
+  };
+
+  const makeTiltHandler = (setter) =>
+    debounce((e) => {
+      if (isMobile || !e.currentTarget) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
+      setter({ x, y });
+    });
+
+  const resetCardTilt = (setter) => () => setter({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
+  // enable smooth scrolling for the whole document
+  useEffect(() => {
+    document.documentElement.classList.add("scroll-smooth");
+  }, []);
+
+  const useAI = true;
+
+  const handleTilt = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20; // max 10° tilt
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -20;
+    setTilt({ x, y });
+  };
+  
+  const resetTilt = () => setTilt({ x: 0, y: 0 });
+
+  const getFilteredLicenseOptions = () => {
+    if (!state) return [];
+    const filteredKeys = Object.keys(licenses).filter((key) =>
+      key.startsWith(`${state.value}_`)
+    );
+    const licenseSet = new Set(filteredKeys.map((key) => key.split("_")[1]));
+    return Array.from(licenseSet).map((l) => ({ value: l, label: l }));
+  };
+
+  const search = () => {
+    if (!state || !license) {
+      toast.error("Please select both a state and license type.");
+      return;
+    }
+
+    setLoading(true);
+    const key = `${state.value}_${license.value}`;
+    const data = licenses[key];
+    setTimeout(() => {
+      setResult(data || null);
+      setLoading(false);
+      if (!data) toast.error("No data found for that combination.");
+    }, 500);
+  };
+
+  const cleanWithAI = async (text) => {
+    try {
+      const res = await fetch("https://gt-approvals-app.onrender.com/api/clean-narrative", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ narrative: text }),
+      });
+
+      const data = await res.json();
+      const cleaned = data.cleaned || "";
+      setEditedNarrative(cleaned.trim());
+      toast.success("Narrative cleaned using AI");
+    } catch (err) {
+      console.error("AI Error:", err);
+      toast.error("Failed to clean with AI");
+    } finally {
+      if (progressRef.current) {
+        clearInterval(progressRef.current);
+        progressRef.current = null;
+      }
+      setProgress(100);
+      setTimeout(() => setShowProgress(false), 400);
+      setLoading(false);
+    }
+  };
+
+  const handleNarrative = () => {
+    setEditedNarrative("");
+    setLoading(true);
+    setProgress(0);
+    setShowProgress(true);
+
+    // simulate progress
+    progressRef.current = setInterval(() => {
+      setProgress((p) => (p < 90 ? p + 10 : p));
+    }, 200);
+
+    cleanWithAI(narrative);
+  };
+
+  return (
+    <div className={`min-h-screen ${
+      darkMode
+        ? "bg-gray-900 text-gray-100"
+        : "bg-gradient-to-tr from-green-50 to-white text-gray-800"
+    } pt-24 py-6 px-4`}>
+      {showProgress && (
+        <div className="fixed top-0 left-0 w-full z-[60]">
+          <div
+            className="h-1 bg-green-500 transition-all duration-200"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+      )}
+      <header
+    className={`fixed top-0 left-0 w-full z-50 ${
+      darkMode
+        ? "bg-gray-900"
+        : "bg-gradient-to-tr from-green-50 to-white"
+    }`}
+      >
+        <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
+          {/* Logo with 3‑D tilt */}
+          <div
+            onMouseMove={handleTilt}
+            onMouseLeave={resetTilt}
+            style={{ transform: `perspective(600px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
+            className="transition-transform duration-200 ease-out"
+          >
+            <img
+              src="/image.png"
+              alt="GoodTherapy Approvals"
+              className="w-40 select-none pointer-events-none"
+            />
+          </div>
+
+          {/* Dark‑mode toggle */}
+          <label className="flex items-center space-x-2 cursor-pointer select-none">
+            <Sun className="w-4 h-4 text-yellow-400 dark:text-gray-400" />
+            <div className="relative inline-block w-12 h-6">
+              <input
+                type="checkbox"
+                checked={darkMode}
+                onChange={() => setDarkMode(!darkMode)}
+                className="sr-only peer"
+              />
+              <span className="absolute inset-0 rounded-full bg-gray-300 dark:bg-gray-600 transition-colors duration-300 peer-checked:bg-green-500" />
+              <span className="absolute left-1 top-1 h-4 w-4 bg-white rounded-full shadow-md transition-transform duration-300 peer-checked:translate-x-6 pointer-events-none" />
+            </div>
+            <Moon className="w-4 h-4 text-gray-500 dark:text-yellow-300" />
+          </label>
+        </div>
+      </header>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="max-w-4xl mx-auto space-y-10"
+      >
+        <div className="max-w-4xl mx-auto space-y-10">
+          {/* Dropdown Section */}
+          <motion.div
+            variants={itemVariants}
+            onMouseMove={makeTiltHandler(setCardTilt1)}
+            onMouseLeave={resetCardTilt(setCardTilt1)}
+            style={{ transform: `perspective(800px) rotateX(${cardTilt1.y}deg) rotateY(${cardTilt1.x}deg)` }}
+            className="bg-white rounded-2xl shadow-[0px_4px_16px_rgba(34,197,94,0.25)] dark:shadow-[0px_4px_16px_rgba(5,150,105,0.35)] p-6 space-y-5 border border-green-100"
+          >
+            <div>
+              <label className="block mb-1 text-sm font-semibold text-gray-700">
+                Select State
+              </label>
+              <Select
+                options={stateOptions}
+                value={state}
+                onChange={(selected) => {
+                  setState(selected);
+                  setLicense(null);
+                }}
+                placeholder="Start typing a state or country..."
+                className="text-black"
+              />
+            </div>
+            <div>
+              <label className="block mb-1 text-sm font-semibold text-gray-700">
+                Select License
+              </label>
+              <Select
+                options={getFilteredLicenseOptions()}
+                value={license}
+                onChange={setLicense}
+                placeholder="Start typing a license..."
+                className="text-black"
+                isDisabled={!state}
+              />
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={search}
+              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"
+            >
+              <Search className="w-5 h-5" />
+              Search
+            </motion.button>
+
+            <AnimatePresence>
+              {loading && (
+                <motion.div
+                  key="search-loader-alt"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-4 space-y-2"
+                >
+                  <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                  <div className="h-4 w-1/2 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {result && (
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 border p-4 rounded-xl border-green-400 bg-white/90 backdrop-blur-md text-green-900"
+              >
+                <p>
+                  <strong>Requirements:</strong> {result.requirements}
+                </p>
+                <a
+                  href={result.verificationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-700 underline mt-2 block"
+                >
+                  View Verification Site
+                </a>
+              </motion.div>
+            )}
+          </motion.div>
+          {/* Gradient shimmer divider */}
+          <motion.div
+            className="w-full h-8 bg-gradient-to-r from-transparent via-green-400/30 to-transparent dark:via-teal-500/40"
+            initial={{ backgroundPositionX: "0%" }}
+            animate={{ backgroundPositionX: "200%" }}
+            transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+            style={{ backgroundSize: "200% 100%" }}
+          />
+          {/* Narrative Editor */}
+          <motion.div
+            variants={itemVariants}
+            onMouseMove={makeTiltHandler(setCardTilt2)}
+            onMouseLeave={resetCardTilt(setCardTilt2)}
+            style={{ transform: `perspective(800px) rotateX(${cardTilt2.y}deg) rotateY(${cardTilt2.x}deg)` }}
+            className="bg-white rounded-2xl shadow-[0px_4px_16px_rgba(34,197,94,0.25)] dark:shadow-[0px_4px_16px rgba(5,150,105,0.35)] p-6 space-y-5 border border-green-100"
+          >
+            <h2 className="text-2xl font-semibold text-green-800">Narrative Editor</h2>
+            <textarea
+              rows={5}
+              className="w-full p-3 bg-white text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              placeholder="Paste your narrative here..."
+              value={narrative}
+              onChange={(e) => setNarrative(e.target.value)}
+            />
+            <div className="flex items-center gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleNarrative}
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl font-medium transition flex items-center gap-2"
+              >
+                <Wand2 className="w-5 h-5" />
+                Clean Narrative
+              </motion.button>
+            </div>
+
+            <AnimatePresence>
+              {loading && (
+                <motion.div
+                  key="narrative-loader"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="mt-4 space-y-2"
+                >
+                  <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                  <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                  <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+              {editedNarrative && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 1 }}
+                className="border border-green-300 rounded-xl p-4 pr-28 bg-white text-black whitespace-pre-wrap relative"
+              >
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  onClick={() => {
+                    navigator.clipboard.writeText(editedNarrative).then(() => {
+                      setCopied(true);
+                      toast.success("Copied to clipboard");
+                      setTimeout(() => setCopied(false), 2000);
+                    });
+                  }}
+                  className="absolute top-3 right-3 bg-green-600 hover:bg-green-700 text-white p-2 rounded-lg text-sm flex items-center gap-1 shadow-md"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2M16 8h2a2 2 0 012 2v8a2 2 0 01-2 2h-8a2 2 0 01-2-2v-2"
+                    />
+                  </svg>
+                  {copied ? "Copied" : "Copy"}
+                </motion.button>
+                {editedNarrative}
+              </motion.div>
+            )}
+          </motion.div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}

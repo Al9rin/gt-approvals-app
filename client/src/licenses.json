@@ -1,0 +1,1300 @@
+{
+  "Delaware_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://delpros.delaware.gov/"
+  },
+  "Delaware_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://delpros.delaware.gov/"
+  },
+  "Delaware_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://delpros.delaware.gov/"
+  },
+  "Delaware_LMSW": {
+    "requirements": "Licensed Masters Social Worker (LMSW) – May practice clinical social work only under supervision of a licensed professional such as an LCSW.",
+    "verificationUrl": "https://delpros.delaware.gov/"
+  },
+  "Delaware_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://delpros.delaware.gov/"
+  },
+  "Delaware_NP": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.nursys.com/LQC/LQCSearch.aspx"
+  },
+  "Delaware_CADC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.dsap.delaware.gov/"
+  },
+  "Delaware_Physician": {
+    "requirements": "N/A",
+    "verificationUrl": "https://delpros.delaware.gov/"
+  },
+  "Delaware_Psychiatrist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://delpros.delaware.gov/"
+  },
+  "Florida_LPC": {
+    "requirements": "Registered Mental Health Interns can practice under supervision.",
+    "verificationUrl": "https://appsmqa.doh.state.fl.us/MQASearchServices/Home"
+  },
+  "Florida_LMFT": {
+    "requirements": "Registered Mental Health Interns can practice under supervision.",
+    "verificationUrl": "https://appsmqa.doh.state.fl.us/MQASearchServices/Home"
+  },
+  "Florida_LCSW": {
+    "requirements": "Registered Mental Health Interns can practice under supervision.",
+    "verificationUrl": "https://appsmqa.doh.state.fl.us/MQASearchServices/Home"
+  },
+  "Florida_Psychologist": {
+    "requirements": "Registered Mental Health Interns can practice under supervision.",
+    "verificationUrl": "https://appsmqa.doh.state.fl.us/MQASearchServices/Home"
+  },
+  "Florida_CADC": {
+    "requirements": "Registered Mental Health Interns can practice under supervision.",
+    "verificationUrl": "https://online-flcb.elicense.tylerapp.com/Lookup/LicenseLookup.aspx"
+  },
+  "Florida_NP": {
+    "requirements": "Registered Mental Health Interns can practice under supervision.",
+    "verificationUrl": "https://www.nursys.com/LQC/LQCSearch.aspx"
+  },
+  "Georgia_LPC": {
+    "requirements": "An individual may gain their supervision and directed work experience without licensure as an associate level counselor or marriage and family therapist, but they CANNOT practice alone.\n\nIf a member is applying but practicing under supervision and does not provide a license number, we must email for a copy of their degree.",
+    "verificationUrl": "http://verify.sos.ga.gov/verification/"
+  },
+  "Georgia_LMFT": {
+    "requirements": "An individual may gain their supervision and directed work experience without licensure as an associate level counselor or marriage and family therapist, but they CANNOT practice alone.\n\nIf a member is applying but practicing under supervision and does not provide a license number, we must email for a copy of their degree.",
+    "verificationUrl": "http://verify.sos.ga.gov/verification/"
+  },
+  "Georgia_LCSW": {
+    "requirements": "An individual may gain their supervision and directed work experience without licensure as an associate level counselor or marriage and family therapist, but they CANNOT practice alone.\n\nIf a member is applying but practicing under supervision and does not provide a license number, we must email for a copy of their degree.",
+    "verificationUrl": "http://verify.sos.ga.gov/verification/"
+  },
+  "Georgia_Psychologist": {
+    "requirements": "An individual may gain their supervision and directed work experience without licensure as an associate level counselor or marriage and family therapist, but they CANNOT practice alone.\n\nIf a member is applying but practicing under supervision and does not provide a license number, we must email for a copy of their degree.",
+    "verificationUrl": "http://verify.sos.ga.gov/verification/"
+  },
+  "Georgia_Physician": {
+    "requirements": "An individual may gain their supervision and directed work experience without licensure as an associate level counselor or marriage and family therapist, but they CANNOT practice alone.\n\nIf a member is applying but practicing under supervision and does not provide a license number, we must email for a copy of their degree.",
+    "verificationUrl": "https://gcmb.mylicense.com/verification/"
+  },
+  "Georgia_Psychiatrist": {
+    "requirements": "An individual may gain their supervision and directed work experience without licensure as an associate level counselor or marriage and family therapist, but they CANNOT practice alone.\n\nIf a member is applying but practicing under supervision and does not provide a license number, we must email for a copy of their degree.",
+    "verificationUrl": "https://gcmb.mylicense.com/verification/"
+  },
+  "Georgia_LMSW": {
+    "requirements": "Supervision is required for LMSWs.",
+    "verificationUrl": "http://verify.sos.ga.gov/verification/"
+  },
+  "Hawaii_LPC": {
+    "requirements": "No license needed for practicing under supervision.",
+    "verificationUrl": "https://pvl.ehawaii.gov/pvlsearch/"
+  },
+  "Hawaii_LMFT": {
+    "requirements": "No license needed for practicing under supervision.",
+    "verificationUrl": "https://pvl.ehawaii.gov/pvlsearch/"
+  },
+  "Hawaii_LCSW": {
+    "requirements": "No license needed for practicing under supervision.",
+    "verificationUrl": "https://pvl.ehawaii.gov/pvlsearch/"
+  },
+  "Hawaii_Psychologist": {
+    "requirements": "No license needed for practicing under supervision.",
+    "verificationUrl": "https://pvl.ehawaii.gov/pvlsearch/"
+  },
+  "Idaho_LPC": {
+    "requirements": "Requires counselor intern status to practice under supervision. 'Service extender' means a person who has earned a doctoral degree in psychology or a master's degree in a mental health field and is permitted to provide psychological services under the supervision of a licensed psychologist.",
+    "verificationUrl": "https://ibol.idaho.gov/IBOL/BoardPage.aspx?Bureau=COU"
+  },
+  "Idaho_LMFT": {
+    "requirements": "Requires counselor intern status to practice under supervision. 'Service extender' means a person who has earned a doctoral degree in psychology or a master's degree in a mental health field and is permitted to provide psychological services under the supervision of a licensed psychologist.",
+    "verificationUrl": "https://ibol.idaho.gov/IBOL/BoardPage.aspx?Bureau=MFT"
+  },
+  "Idaho_LCSW": {
+    "requirements": "Requires counselor intern status to practice under supervision. 'Service extender' means a person who has earned a doctoral degree in psychology or a master's degree in a mental health field and is permitted to provide psychological services under the supervision of a licensed psychologist.",
+    "verificationUrl": "https://ibol.idaho.gov/IBOL/BoardPage.aspx?Bureau=SWO"
+  },
+  "Idaho_Psychologist": {
+    "requirements": "Requires counselor intern status to practice under supervision. 'Service extender' means a person who has earned a doctoral degree in psychology or a master's degree in a mental health field and is permitted to provide psychological services under the supervision of a licensed psychologist.",
+    "verificationUrl": "https://ibol.idaho.gov/IBOL/BoardPage.aspx?Bureau=PSY"
+  },
+  "Illinois_LPC": {
+    "requirements": "No psychology license for interns or people who are awaiting the exam. If practicing under supervision, we need diploma. No associate Licenses. LPC under supervision.",
+    "verificationUrl": "https://www.idfpr.com/LicenseLookUp/default.asp"
+  },
+  "Illinois_LMFT": {
+    "requirements": "No psychology license for interns or people who are awaiting the exam. If practicing under supervision, we need diploma. Has an associate license.",
+    "verificationUrl": "https://www.idfpr.com/LicenseLookUp/default.asp"
+  },
+  "Illinois_LCSW": {
+    "requirements": "No psychology license for interns or people who are awaiting the exam. If practicing under supervision, we need diploma. Not under supervision.",
+    "verificationUrl": "https://www.idfpr.com/LicenseLookUp/default.asp"
+  },
+  "Illinois_Psychologist": {
+    "requirements": "No psychology license for interns or people who are awaiting the exam. If practicing under supervision, we need diploma.",
+    "verificationUrl": "https://www.idfpr.com/LicenseLookUp/default.asp"
+  },
+  "Illinois_LCPC": {
+    "requirements": "No psychology license for interns or people who are awaiting the exam. If practicing under supervision, we need diploma. Not under supervision.",
+    "verificationUrl": "https://www.idfpr.com/LicenseLookUp/default.asp"
+  },
+  "Illinois_LSW": {
+    "requirements": "No psychology license for interns or people who are awaiting the exam. If practicing under supervision, we need diploma. No associate Licenses. LSW under supervision.",
+    "verificationUrl": "https://www.idfpr.com/LicenseLookUp/default.asp"
+  },
+  "Illinois_QMPH": {
+    "requirements": "No psychology license for interns or people who are awaiting the exam. If practicing under supervision, we need diploma. QMPH is under supervision and we need diploma.",
+    "verificationUrl": "https://www.idfpr.com/LicenseLookUp/default.asp"
+  },
+  "Indiana_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://mylicense.in.gov/EVerification/Search.aspx"
+  },
+  "Indiana_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://mylicense.in.gov/EVerification/Search.aspx"
+  },
+  "Indiana_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://mylicense.in.gov/EVerification/Search.aspx"
+  },
+  "Indiana_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://mylicense.in.gov/EVerification/Search.aspx"
+  },
+  "Indiana_MHC": {
+    "requirements": "MHC associates can practice under supervision without license: verify Diploma Found.",
+    "verificationUrl": "http://www.in.gov/pla/files/2014_Behavioral_Health_and_Human_Services_Licensing_Board(1).pdf page 16"
+  },
+  "Iowa_LPC": {
+    "requirements": "Issues temporary licenses — need supervisor information.",
+    "verificationUrl": "https://amanda-portal.idph.state.ia.us/ibpl/portal/#/license/license-query"
+  },
+  "Iowa_LMFT": {
+    "requirements": "Issues temporary licenses — need supervisor information.",
+    "verificationUrl": "https://amanda-portal.idph.state.ia.us/ibpl/portal/#/license/license-query"
+  },
+  "Iowa_LCSW": {
+    "requirements": "Issues temporary licenses — need supervisor information.",
+    "verificationUrl": "https://amanda-portal.idph.state.ia.us/ibpl/portal/#/license/license-query"
+  },
+  "Iowa_Psychologist": {
+    "requirements": "Issues temporary licenses — need supervisor information.",
+    "verificationUrl": "https://amanda-portal.idph.state.ia.us/ibpl/portal/#/license/license-query"
+  },
+  "Kansas_LPC": {
+    "requirements": "Temporary licenses are issued for MFTs, professional counselors, social workers and psychologists. All social work licenses need supervision except for LSCSW.",
+    "verificationUrl": "https://licensing.ks.gov/Verification_BSRB/Search.aspx"
+  },
+  "Kansas_LMFT": {
+    "requirements": "Temporary licenses are issued for MFTs, professional counselors, social workers and psychologists. All social work licenses need supervision except for LSCSW.",
+    "verificationUrl": "https://licensing.ks.gov/Verification_BSRB/Search.aspx"
+  },
+  "Kansas_LCSW": {
+    "requirements": "Temporary licenses are issued for MFTs, professional counselors, social workers and psychologists. All social work licenses need supervision except for LSCSW.",
+    "verificationUrl": "https://licensing.ks.gov/Verification_BSRB/Search.aspx"
+  },
+  "Kansas_Psychologist": {
+    "requirements": "Temporary licenses are issued for MFTs, professional counselors, social workers and psychologists. All social work licenses need supervision except for LSCSW.",
+    "verificationUrl": "https://licensing.ks.gov/Verification_BSRB/Search.aspx"
+  },
+  "Kansas_LMSW": {
+    "requirements": "Temporary licenses are issued for MFTs, professional counselors, social workers and psychologists. All social work licenses need supervision except for LSCSW. Need supervisor information.",
+    "verificationUrl": "https://licensing.ks.gov/Verification_BSRB/Search.aspx"
+  },
+  "Kansas_LSCSW": {
+    "requirements": "Temporary licenses are issued for MFTs, professional counselors, social workers and psychologists. All social work licenses need supervision except for LSCSW. Do not need supervision.",
+    "verificationUrl": "https://licensing.ks.gov/Verification_BSRB/Search.aspx"
+  },
+  "Kentucky_LPC": {
+    "requirements": "Requires associate license for practice. Art therapists are legally allowed to practice psychotherapy in the state, so we can approve them.",
+    "verificationUrl": "http://oop.ky.gov/lic_search.aspx"
+  },
+  "Kentucky_LMFT": {
+    "requirements": "Requires associate license for practice. Art therapists are legally allowed to practice psychotherapy in the state, so we can approve them.",
+    "verificationUrl": "http://oop.ky.gov/lic_search.aspx"
+  },
+  "Kentucky_LCSW": {
+    "requirements": "Requires associate license for practice. Art therapists are legally allowed to practice psychotherapy in the state, so we can approve them.",
+    "verificationUrl": "https://secure.kentucky.gov/formservices/BSW/LicenseVerification/search"
+  },
+  "Kentucky_Psychologist": {
+    "requirements": "Requires associate license for practice. Art therapists are legally allowed to practice psychotherapy in the state, so we can approve them.",
+    "verificationUrl": "http://oop.ky.gov/lic_search.aspx"
+  },
+  "Kentucky_CADC": {
+    "requirements": "Requires associate license for practice. Art therapists are legally allowed to practice psychotherapy in the state, so we can approve them.",
+    "verificationUrl": "http://oop.ky.gov/lic_search.aspx"
+  },
+  "Louisiana_LPC": {
+    "requirements": "LPC board charges $5.00 per verification, however, they also have a search which only includes active licenses. There is no information, but if their name shows up, it's good enough for us.",
+    "verificationUrl": "https://www.lpcboard.org/licensee-search"
+  },
+  "Louisiana_LMFT": {
+    "requirements": "LPC board charges $5.00 per verification, however, they also have a search which only includes active licenses. There is no information, but if their name shows up, it's good enough for us.",
+    "verificationUrl": "https://www.lpcboard.org/licensee-search"
+  },
+  "Louisiana_LCSW": {
+    "requirements": "LPC board charges $5.00 per verification, however, they also have a search which only includes active licenses. There is no information, but if their name shows up, it's good enough for us.",
+    "verificationUrl": "https://labswe.certemy.com/public-registry/17d42be8-6299-4d9b-897c-5cb58ed8dca0"
+  },
+  "Louisiana_Psychologist": {
+    "requirements": "LPC board charges $5.00 per verification, however, they also have a search which only includes active licenses. There is no information, but if their name shows up, it's good enough for us.",
+    "verificationUrl": "https://www.lsbepportal.com/licensee-search"
+  },
+  "Maine_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.pfr.maine.gov/almsonline/almsquery/SearchIndividual.aspx"
+  },
+  "Maine_LMFT": {
+    "requirements": "Conditionally licensed marriage and family therapist must work under supervision for at least two years. The conditionally licensed MFT will need to accrue at least 3,000 total hours of work experience; at least 1,000 must be spent providing direct services to couples or families.",
+    "verificationUrl": "https://www.pfr.maine.gov/almsonline/almsquery/SearchIndividual.aspx"
+  },
+  "Maine_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.pfr.maine.gov/almsonline/almsquery/SearchIndividual.aspx"
+  },
+  "Maine_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.pfr.maine.gov/almsonline/almsquery/SearchIndividual.aspx"
+  },
+  "Maryland_LPC": {
+    "requirements": "Maryland does not require associate licenses. LMSWs need a supervisor.",
+    "verificationUrl": "https://mdbnc.health.maryland.gov/pctVerification/Default.aspx"
+  },
+  "Maryland_LMFT": {
+    "requirements": "Maryland does not require associate licenses. LMSWs need a supervisor.",
+    "verificationUrl": "https://mdbnc.health.maryland.gov/pctVerification/Default.aspx"
+  },
+  "Maryland_LCSW": {
+    "requirements": "Maryland does not require associate licenses. LMSWs need a supervisor.",
+    "verificationUrl": "https://mdbnc.health.maryland.gov/bsweverification/default.aspx"
+  },
+  "Maryland_LMSW": {
+    "requirements": "Requires a supervisor.",
+    "verificationUrl": "https://mdbnc.health.maryland.gov/bsweverification/default.aspx"
+  },
+  "Maryland_Psychologist": {
+    "requirements": "Maryland does not require associate licenses. LMSWs need a supervisor.",
+    "verificationUrl": "https://mdbnc.health.maryland.gov/psychverification/default.aspx"
+  },
+  "Maryland_NP": {
+    "requirements": "Maryland does not require associate licenses. LMSWs need a supervisor.",
+    "verificationUrl": "http://lookup.mbon.org/verification/Search.aspx"
+  },
+  "Maryland_Physician": {
+    "requirements": "Maryland does not require associate licenses. LMSWs need a supervisor.",
+    "verificationUrl": "https://www.mbp.state.md.us/bpqapp/"
+  },
+  "Massachusetts_LPC": {
+    "requirements": "Psychotherapists can practice without a license.",
+    "verificationUrl": "https://checkahealthlicense.mass.gov/"
+  },
+  "Massachusetts_LMFT": {
+    "requirements": "Psychotherapists can practice without a license.",
+    "verificationUrl": "https://checkahealthlicense.mass.gov/"
+  },
+  "Massachusetts_LCSW": {
+    "requirements": "Psychotherapists can practice without a license. LCSW license should be under the supervision of a LICSW.",
+    "verificationUrl": "https://checkahealthlicense.mass.gov/"
+  },
+  "Massachusetts_LICSW": {
+    "requirements": "Psychotherapists can practice without a license.",
+    "verificationUrl": "https://checkahealthlicense.mass.gov/"
+  },
+  "Massachusetts_LSW": {
+    "requirements": "Psychotherapists can practice without a license. Must have master’s degree to be licensed and can be verified with the SW board. LSW may be supervised.",
+    "verificationUrl": "https://checkahealthlicense.mass.gov/"
+  },
+  "Massachusetts_Psychologist": {
+    "requirements": "Psychologists are required to be licensed.",
+    "verificationUrl": "https://checkahealthlicense.mass.gov/"
+  },
+  "Massachusetts_CADC": {
+    "requirements": "Psychotherapists can practice without a license.",
+    "verificationUrl": "https://hhsvgapps01.hhs.state.ma.us/elicensing-pubweb/couns/lookup.htm"
+  },
+  "Massachusetts_NP": {
+    "requirements": "Psychotherapists can practice without a license.",
+    "verificationUrl": "https://www.mass.gov/how-to/check-a-nursing-license"
+  },
+  "Massachusetts_Physician": {
+    "requirements": "Psychotherapists can practice without a license.",
+    "verificationUrl": "https://www.mass.gov/check-a-physician-profile-findmydoctormassgov"
+  },
+  "Michigan_LPC": {
+    "requirements": "Limited license issued to Professional Counselors practicing under supervision.",
+    "verificationUrl": "https://aca-prod.accela.com/MILARA/GeneralProperty/PropertyLookUp.aspx?isLicensee=Y&TabName=APO"
+  },
+  "Michigan_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://aca-prod.accela.com/MILARA/GeneralProperty/PropertyLookUp.aspx?isLicensee=Y&TabName=APO"
+  },
+  "Michigan_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://aca-prod.accela.com/MILARA/GeneralProperty/PropertyLookUp.aspx?isLicensee=Y&TabName=APO"
+  },
+  "Michigan_LMSW": {
+    "requirements": "Only LMSWs with the Clinical designation can perform psychotherapy and diagnosis of DSM-IV conditions. Others must be emailed for proof.",
+    "verificationUrl": "https://aca-prod.accela.com/MILARA/GeneralProperty/PropertyLookUp.aspx?isLicensee=Y&TabName=APO"
+  },
+  "Michigan_LLMSW": {
+    "requirements": "An LLMSW can only practice under supervision of an LMSW with Clinical designation.",
+    "verificationUrl": "https://aca-prod.accela.com/MILARA/GeneralProperty/PropertyLookUp.aspx?isLicensee=Y&TabName=APO"
+  },
+  "Michigan_LBSW": {
+    "requirements": "An LBSW is not trained or authorized to perform psychotherapy or diagnosis of DSM conditions.",
+    "verificationUrl": "https://aca-prod.accela.com/MILARA/GeneralProperty/PropertyLookUp.aspx?isLicensee=Y&TabName=APO"
+  },
+  "Michigan_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://aca-prod.accela.com/MILARA/GeneralProperty/PropertyLookUp.aspx?isLicensee=Y&TabName=APO"
+  },
+  "Michigan_PastoralCounselor": {
+    "requirements": "Must be an ordained minister or clergy. Can only provide religious support and cannot charge fees, offer marriage counseling, or general support.",
+    "verificationUrl": "http://www.legislature.mi.gov/(S(goyb2mbahdgbsivkzs4qkqbh))/mileg.aspx?page=getObject&objectName=mcl-333-18115"
+  },
+  "Minnesota_LPC": {
+    "requirements": "Can practice mental health counseling if not misrepresenting licensure. LPCs can be verified online.",
+    "verificationUrl": "https://bht.hlb.state.mn.us/#/onlineEntitySearch"
+  },
+  "Minnesota_LPCC": {
+    "requirements": "Can practice mental health counseling if not misrepresenting licensure. LPCCs can be verified online.",
+    "verificationUrl": "https://bht.hlb.state.mn.us/#/onlineEntitySearch"
+  },
+  "Minnesota_LMFT": {
+    "requirements": "If working toward LMFT, can practice under supervision without LAMFT. If holding LAMFT, verify online; otherwise, verify degree.",
+    "verificationUrl": "https://mft.hlb.state.mn.us/#/services/onlineLicenseSearch"
+  },
+  "Minnesota_LAMFT": {
+    "requirements": "LAMFTs are working toward LMFT licensure under supervision. Licenses can be verified online.",
+    "verificationUrl": "https://mft.hlb.state.mn.us/#/services/onlineLicenseSearch"
+  },
+  "Minnesota_LCSW": {
+    "requirements": "MSW from a CSWE-accredited program, 4,000 hours of supervised clinical experience, and ASWB clinical exam.",
+    "verificationUrl": "https://soc.hlb.state.mn.us/#/services/onlineLicenseSearch"
+  },
+  "Minnesota_LMSW": {
+    "requirements": "LMSWs are typically under supervision. Can be verified online.",
+    "verificationUrl": "https://soc.hlb.state.mn.us/#/services/onlineLicenseSearch"
+  },
+  "Minnesota_Psychologist": {
+    "requirements": "Psychologist license can now be verified online. Must not misrepresent licensure.",
+    "verificationUrl": "https://mnit.force.com/license"
+  },
+  "Minnesota_NP": {
+    "requirements": "Requires RN license, graduate education in NP role, and national certification. Must be verified via Board of Nursing.",
+    "verificationUrl": "https://mbn.hlb.state.mn.us/#/services/onlineEntitySearch"
+  },
+  "Mississippi_LPC": {
+    "requirements": "Does not appear to require associate licenses. Master’s in counseling, 3,000 hours of post-grad supervision, and passing NCE or NCMHCE.",
+    "verificationUrl": "https://www.lpc.ms.gov/secure/licensesearch.asp"
+  },
+  "Mississippi_LMFT": {
+    "requirements": "Does not appear to require associate licenses. Master’s in MFT or related field, 1,000 hours direct client contact, 200 hours of supervision, and passing the MFT exam.",
+    "verificationUrl": "https://www.swmft.webapps.ms.gov/publicview/publicindsearch.aspx"
+  },
+  "Mississippi_LCSW": {
+    "requirements": "Does not appear to require associate licenses. MSW and 1,000–3,000 hours of supervised clinical experience depending on credentialing path. ASWB exam required.",
+    "verificationUrl": "https://www.swmft.webapps.ms.gov/publicview/publicindsearch.aspx"
+  },
+  "Mississippi_Psychologist": {
+    "requirements": "Does not appear to require associate licenses. Doctoral degree in psychology, 2 years supervised experience, and passing the EPPP and state oral exam.",
+    "verificationUrl": "https://www.msbop.ms.gov/secure/licensesearch.asp"
+  },
+  "Missouri_LPC": {
+    "requirements": "Master’s in counseling, 3,000 hours of post-degree supervised experience, and passing the NCE or NCMHCE. Associate licenses such as 'Provisionally Licensed Professional Counselor' (PLPC) or 'Counselor in Training' (CIT) are not searchable online. The board verifies these only by phone or email. CITs must have a graduate degree and be practicing under supervision. They do not receive a license number and their registration does not expire. Approval can be granted if the member provides the supervisor’s license number and confirms they are not practicing independently while PLPC is pending. To verify, contact the board at profcounselor@pr.mo.gov or call (573) 751-0018.",
+    "verificationUrl": "https://pr.mo.gov/licensee-search-division.asp"
+  },
+  "Missouri_CIT": {
+    "requirements": "Counselor in Training (CIT) does not receive a license number or expiration date. They are legally allowed to practice under supervision if they hold a graduate degree. Must provide documentation showing supervisor’s license and confirm they are not practicing independently. CITs cannot be verified online; to confirm status, contact profcounselor@pr.mo.gov or call (573) 751-0018.",
+    "verificationUrl": "https://pr.mo.gov/licensee-search-division.asp"
+  },
+  "Missouri_LMFT": {
+    "requirements": "Master’s degree in marriage and family therapy, 3,000 hours of supervised post-degree clinical experience, and passing the national MFT exam.",
+    "verificationUrl": "https://pr.mo.gov/licensee-search-division.asp"
+  },
+  "Missouri_LCSW": {
+    "requirements": "Master’s in social work (MSW) from a CSWE-accredited program, 3,000 hours of supervised clinical experience, and passing the ASWB clinical exam. Associate social work licenses are not verifiable online. For verification, contact the Social Work Board at (573) 751-0885.",
+    "verificationUrl": "https://pr.mo.gov/licensee-search-division.asp"
+  },
+  "Missouri_Psychologist": {
+    "requirements": "Doctoral degree in psychology, completion of internship, and passing the EPPP and Missouri jurisprudence exam.",
+    "verificationUrl": "https://pr.mo.gov/licensee-search-division.asp"
+  },
+  "Montana_LPC": {
+    "requirements": "Master’s in counseling or related field, 3,000 hours of post-master’s supervised experience, and passing NCE or NCMHCE.",
+    "verificationUrl": "https://ebizws.mt.gov/PUBLICPORTAL/searchform?mylist=licenses"
+  },
+  "Montana_LPC": {
+    "requirements": "The board in Montana will issue a new number to licensees that are renewing their license. Please search by first and last name in Montana if you cannot find the information with the license number or find the number is expired.",
+    "verificationUrl": "https://ebizws.mt.gov/PUBLICPORTAL/searchform?mylist=licenses"
+  },
+  "Montana_LMFT": {
+    "requirements": "The board in Montana will issue a new number to licensees that are renewing their license. Please search by first and last name in Montana if you cannot find the information with the license number or find the number is expired.",
+    "verificationUrl": "https://ebizws.mt.gov/PUBLICPORTAL/searchform?mylist=licenses"
+  },
+  "Montana_LCSW": {
+    "requirements": "The board in Montana will issue a new number to licensees that are renewing their license. Please search by first and last name in Montana if you cannot find the information with the license number or find the number is expired.",
+    "verificationUrl": "https://ebizws.mt.gov/PUBLICPORTAL/searchform?mylist=licenses"
+  },
+  "Montana_Psychologist": {
+    "requirements": "The board in Montana will issue a new number to licensees that are renewing their license. Please search by first and last name in Montana if you cannot find the information with the license number or find the number is expired.",
+    "verificationUrl": "https://ebizws.mt.gov/PUBLICPORTAL/searchform?mylist=licenses"
+  },
+  "Montana_NP": {
+    "requirements": "The board in Montana will issue a new number to licensees that are renewing their license. Please search by first and last name in Montana if you cannot find the information with the license number or find the number is expired.",
+    "verificationUrl": "https://ebizws.mt.gov/PUBLICPORTAL/searchform?mylist=licenses"
+  },
+  "Nebraska_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.nebraska.gov/LISSearch/search.cgi"
+  },
+  "Nebraska_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.nebraska.gov/LISSearch/search.cgi"
+  },
+  "Nebraska_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.nebraska.gov/LISSearch/search.cgi"
+  },
+  "Nebraska_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.nebraska.gov/LISSearch/search.cgi"
+  },
+  "Nebraska_NP": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.nebraska.gov/LISSearch/search.cgi"
+  },
+  "Nebraska_PLMHP": {
+    "requirements": "Provisional Licensed Mental Health Practitioner (PLMHP) license can practice under supervision.",
+    "verificationUrl": "https://www.nebraska.gov/LISSearch/search.cgi"
+  },
+  "Nevada_LPC": {
+    "requirements": "N/A. Intern licenses valid for 3 years. Contact MFT/LPC board for verification: licenseverification@mftbd.nv.gov",
+    "verificationUrl": "https://nvboe.certemy.com/public-registry/00b35480-36a9-4898-a052-c13871cce91e"
+  },
+  "Nevada_LMFT": {
+    "requirements": "N/A. Intern licenses valid for 3 years. Contact MFT/LPC board for verification: licenseverification@mftbd.nv.gov",
+    "verificationUrl": "https://nvboe.certemy.com/public-registry/00b35480-36a9-4898-a052-c13871cce91e"
+  },
+  "Nevada_LCSW": {
+    "requirements": "N/A. Social work licenses can now be verified online.",
+    "verificationUrl": "http://socwork.nv.gov/"
+  },
+  "Nevada_Psychologist": {
+    "requirements": "N/A. Psychologist licenses can now be verified online.",
+    "verificationUrl": "http://psyexam.nv.gov/License-Lookup/"
+  },
+  "Nevada_CADC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://nvadgc.us.thentiacloud.net/webs/nvadgc/register/#/"
+  },
+  "Nevada_NP": {
+    "requirements": "N/A",
+    "verificationUrl": "https://nvbn.boardsofnursing.org/licenselookup"
+  },
+  "New Hampshire_LPC": {
+    "requirements": "Does not issue associate licenses at this time.",
+    "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
+  },
+  "New Hampshire_LMFT": {
+    "requirements": "Does not issue associate licenses at this time.",
+    "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
+  },
+  "New Hampshire_LCSW": {
+    "requirements": "Does not issue associate licenses at this time.",
+    "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
+  },
+  "New Hampshire_Psychologist": {
+    "requirements": "Does not issue associate licenses at this time.",
+    "verificationUrl": "https://forms.nh.gov/licenseverificationtest/"
+  },
+  "New Jersey_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
+  },
+  "New Jersey_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
+  },
+  "New Jersey_LCSW": {
+    "requirements": "LCSWs can practice independently. MSW from CSWE-accredited school, 3,000 hours of supervised experience, and ASWB clinical exam.",
+    "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
+  },
+  "New Jersey_LSW": {
+    "requirements": "LSWs must practice under supervision to conduct psychotherapy.",
+    "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
+  },
+  "New Jersey_Psychologist": {
+    "requirements": "A student of psychology may be exempt from licensure if under supervision (N.J.A.C. 13:42-4.2). Other professionals may qualify for exemption under N.J.A.C. 13:42-1.5. See regulations: http://www.njconsumeraffairs.gov/regulations/Chapter-42-Board-of-Psychological-Examiners.pdf",
+    "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
+  },
+  "New Jersey_Psychoanalyst": {
+    "requirements": "Psychoanalysts can currently practice without a license; licensing board has not yet been established. This is subject to change.",
+    "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
+  },
+
+  "New Mexico_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+  },
+  "New Mexico_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+  },
+  "New Mexico_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+  },
+  "New Mexico_LMSW": {
+    "requirements": "LMSWs must be under supervision.",
+    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+  },
+  "New Mexico_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+  },
+  "New York_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_LMSW": {
+    "requirements": "Licensed Master Social Workers must be under supervision.",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_LimitedPermit_Psychologist": {
+    "requirements": "Limited Permit holders may use the title 'Psychologist' and are practicing under supervision.",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_CreativeArtsTherapist": {
+    "requirements": "Creative Arts Therapists are approved to practice psychotherapy and hold a sufficient license.",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_PastoralCounselor": {
+    "requirements": "Pastoral counseling services do not include psychotherapy. Ordained ministers may provide religious support only.",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "New York_NP": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.op.nysed.gov/verification-search"
+  },
+  "North Carolina_LPC": {
+    "requirements": "Must be licensed to practice psychotherapy in North Carolina.",
+    "verificationUrl": "https://portal.ncblcmhc.org/verification/search.aspx"
+  },
+  "North Carolina_LMFT": {
+    "requirements": "Must be licensed to practice psychotherapy in North Carolina.",
+    "verificationUrl": "https://www.ncbmft.org/verify/"
+  },
+  "North Carolina_LCSW": {
+    "requirements": "Must be licensed to practice psychotherapy in North Carolina.",
+    "verificationUrl": "http://www.ncswboard.org/page/license-lookup.html"
+  },
+  "North Carolina_Psychologist": {
+    "requirements": "Must be licensed to practice psychotherapy in North Carolina.",
+    "verificationUrl": "http://www.ncpsychologyboard.org/license-verification/"
+  },
+  "North Carolina_PastoralCounselor": {
+    "requirements": "Must be licensed to practice psychotherapy. Religious counseling is not sufficient unless the individual holds one of the required licenses (Psychologist, Social Worker, LPC, LMFT).",
+    "verificationUrl": "http://www.ncpsychologyboard.org/license-verification/"
+  },
+  "North Dakota_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "http://www.ndbce.org/"
+  },
+  "North Dakota_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://ndmftlb.org/nd-licensed-therapists-2/"
+  },
+  "North Dakota_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.ndbswe.com/verify/search.asp"
+  },
+  "North Dakota_Psychologist": {
+    "requirements": "Psychologists cannot be verified online. Must email BoardOffice@ndsbpe.org or use the contact form to request license verification. Also contact the member to request a copy of their license.",
+    "verificationUrl": "http://www.ndsbpe.org/consumer-information.html"
+  },
+  "Ohio_LPC": {
+    "requirements": "LPC licensure in Ohio does not require supervision.",
+    "verificationUrl": "https://elicense.ohio.gov/OH_HomePage"
+  },
+  "Ohio_LPCC": {
+    "requirements": "LPCCs in Ohio require supervision. Must include supervisor's license information in records.",
+    "verificationUrl": "https://elicense.ohio.gov/OH_HomePage"
+  },
+  "Ohio_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://elicense.ohio.gov/OH_HomePage"
+  },
+  "Ohio_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://elicense.ohio.gov/OH_HomePage"
+  },
+  "Ohio_Psychologist": {
+    "requirements": "Psychologists under supervision must be registered with the board under their supervisor’s license per ORC 4732.22.",
+    "verificationUrl": "https://elicense.ohio.gov/OH_HomePage"
+  },
+  "Ohio_SchoolPsychologist": {
+    "requirements": "Licensed School Psychologists are approved. No supervision required for independent practice.",
+    "verificationUrl": "https://elicense.ohio.gov/OH_HomePage"
+  },
+  "Oklahoma_LPC": {
+    "requirements": "N/A",
+    "verificationUrl": "https://obbhl.us.thentiacloud.net/webs/obbhl/register/#"
+  },
+  "Oklahoma_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://obbhl.us.thentiacloud.net/webs/obbhl/register/#"
+  },
+  "Oklahoma_LMFT_Candidate": {
+    "requirements": "Practicing under supervision toward LMFT license. No license issued—verify graduate degree.",
+    "verificationUrl": "https://obbhl.us.thentiacloud.net/webs/obbhl/register/#"
+  },
+  "Oklahoma_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://osblsw.portalus.thentiacloud.net/webs/portal/#/"
+  },
+  "Oklahoma_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.ok.gov/psychology/Public/License_Verification/index.html"
+  },
+  "Oklahoma_NP": {
+    "requirements": "N/A",
+    "verificationUrl": "https://okbn.boardsofnursing.org/licenselookup"
+  },
+  "Oklahoma_PastoralCounselor": {
+    "requirements": "Exempt from licensure. Must provide graduate degree documentation.",
+    "verificationUrl": "N/A"
+  },
+  "Oregon_LPC": {
+    "requirements": "Registered LPC Interns can be verified online. Oregon issues associate licenses for those under supervision. If not found online, call 503-378-5499 (press 5 for Lonnie Knotts) or email lonnie.p.knotts@state.or.us to confirm interim approval to practice.",
+    "verificationUrl": "https://oblpct.us.thentiacloud.net/webs/oblpct/register/#"
+  },
+  "Oregon_LMFT": {
+    "requirements": "Oregon now issues associate licenses for LMFTs practicing under supervision. Verify online or call 503-378-5499 (press 5 for Lonnie Knotts) or email lonnie.p.knotts@state.or.us to confirm permission to practice.",
+    "verificationUrl": "https://oblpct.us.thentiacloud.net/webs/oblpct/register/#"
+  },
+  "Oregon_CSWA": {
+    "requirements": "Clinical Social Work Associates (CSWA) are under supervision. Oregon issues associate licenses. Verify online.",
+    "verificationUrl": "https://blsw.us.thentiacloud.net/webs/blsw/register/#"
+  },
+  "Oregon_LCSW": {
+    "requirements": "Licensed Clinical Social Workers must be licensed. Associates practice under supervision.",
+    "verificationUrl": "https://blsw.us.thentiacloud.net/webs/blsw/register/#"
+  },
+  "Oregon_Psychologist": {
+    "requirements": "Oregon issues Psychologist Associate licenses for those under supervision. If not found online, call or email board for verification.",
+    "verificationUrl": "https://obop.us.thentiacloud.net/webs/obop/register/#"
+  },
+  "Oregon_NP": {
+    "requirements": "Nurse Practitioners must be licensed. Verified through Oregon State Board of Nursing.",
+    "verificationUrl": "https://osbn.boardsofnursing.org/licenselookup"
+  },
+  "Pennsylvania_LPC": {
+    "requirements": "Unlicensed counselors can practice if they do not represent themselves as licensed or as psychotherapists. If unlicensed, graduate degree must be verified. Licensed Professional Counselors must be verified.",
+    "verificationUrl": "https://www.pals.pa.gov/#/page/search"
+  },
+  "Pennsylvania_LMFT": {
+    "requirements": "Unlicensed MFTs can practice as long as they do not call themselves licensed or psychotherapists. If unlicensed, graduate degree must be verified. Licensed MFTs must be verified.",
+    "verificationUrl": "https://www.pals.pa.gov/#/page/search"
+  },
+  "Pennsylvania_LCSW": {
+    "requirements": "Licensed Clinical Social Workers must be licensed. LSWs in Pennsylvania must practice under supervision.",
+    "verificationUrl": "https://www.pals.pa.gov/#/page/search"
+  },
+  "Pennsylvania_LSW": {
+    "requirements": "Licensed Social Workers (LSW) must practice under the supervision of a LCSW in order to provide clinical services.",
+    "verificationUrl": "https://www.pals.pa.gov/#/page/search"
+  },
+  "Pennsylvania_Psychologist": {
+    "requirements": "Psychologists must be licensed. License is required to provide psychological services.",
+    "verificationUrl": "https://www.pals.pa.gov/#/page/search"
+  },
+  "Pennsylvania_NP": {
+    "requirements": "Nurse Practitioners must be licensed in Pennsylvania.",
+    "verificationUrl": "https://www.pals.pa.gov/#/page/search"
+  },
+  "Pennsylvania_CADC": {
+    "requirements": "Certified Alcohol and Drug Counselors (CADC) must be certified. Verify through the Pennsylvania Certification Board.",
+    "verificationUrl": "https://www.pacertboard.org/credential-search"
+  },
+  "Rhode Island_LPC": {
+    "requirements": "Rhode Island does not issue temporary or associate licenses for Mental Health Counselors. If license status is pending, member cannot practice. Verified with RI Mental Health Counselors and Marriage and Family Therapists Board. Contact: Lauren Lasso, (401) 222-7883, lauren.dixonlasso@health.ri.gov",
+    "verificationUrl": "https://healthri.mylicense.com/verification/"
+  },
+  "Rhode Island_LMFT": {
+    "requirements": "Rhode Island does not issue temporary or associate licenses for LMFTs. If license status is pending, member cannot practice. Verified with RI Mental Health Counselors and Marriage and Family Therapists Board. Contact: Lauren Lasso, (401) 222-7883, lauren.dixonlasso@health.ri.gov",
+    "verificationUrl": "https://healthri.mylicense.com/verification/"
+  },
+  "Rhode Island_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://healthri.mylicense.com/verification/"
+  },
+  "Rhode Island_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://healthri.mylicense.com/verification/"
+  },
+  "South Carolina_LPC": {
+    "requirements": "Licenses LPC Interns for supervision.",
+    "verificationUrl": "https://verify.llronline.com/LicLookup/Counselors/Counselors.aspx?div=18"
+  },
+  "South Carolina_LMFT": {
+    "requirements": "Licenses LMFT Interns for supervision.",
+    "verificationUrl": "https://verify.llronline.com/LicLookup/Counselors/Counselors.aspx?div=18"
+  },
+  "South Carolina_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://verify.llronline.com/LicLookup/SW/SW.aspx?div=41"
+  },
+  "South Carolina_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://verify.llronline.com/LicLookup/Psyc/Psyc.aspx?div=37"
+  },
+  "South Carolina_Telehealth": {
+    "requirements": "Telehealth registration required for out-of-state professionals.",
+    "verificationUrl": "https://llr.sc.gov/professions.aspx"
+  },
+  "South Carolina_Telehealth_LPC": {
+    "requirements": "Telehealth registration required for counselors.",
+    "verificationUrl": "https://llr.sc.gov/TeleHealth/Counselor.html"
+  },
+  "South Carolina_Telehealth_LCSW": {
+    "requirements": "Telehealth registration required for social workers.",
+    "verificationUrl": "https://llr.sc.gov/TeleHealth/SocialWork.html"
+  },
+  "South Dakota_LPC": {
+    "requirements": "Does not do online verification. Must email or call to verify licenses with the board. LPCs can be verified under 'List of Current Licensees' at http://dss.sd.gov/licensingboards/examiners.aspx.",
+    "verificationUrl": "https://www.sdboardofcounselors.org/verify/"
+  },
+  "South Dakota_LMFT": {
+    "requirements": "Does not do online verification. Must email or call to verify licenses with the board. Also email the member for a license copy.",
+    "verificationUrl": "https://www.sdboardofcounselors.org/verify/"
+  },
+  "South Dakota_LCSW": {
+    "requirements": "Does not do online verification. Must email or call to verify licenses with the board. Also email the member for a license copy.",
+    "verificationUrl": "https://www.sdboards.org/sw/verify/"
+  },
+  "South Dakota_Psychologist": {
+    "requirements": "Does not do online verification. Must email or call to verify licenses with the board. Also email the member for a license copy.",
+    "verificationUrl": "https://dss.sd.gov/licensingboards/psych.aspx"
+  },
+  "Tennessee_LPC": {
+    "requirements": "Counselors practicing under supervision are exempt from licensure requirements, including credentialing. Temporary licensure is only required for those seeking the Professional Counselor with Mental Health Service Provider designation. Supervisors must have the MHSP designation if supervising such candidates.",
+    "verificationUrl": "https://internet.health.tn.gov/Licensure/"
+  },
+  "Tennessee_LMFT": {
+    "requirements": "Tennessee issues temporary licenses for marital and family therapy interns or trainees. No associate licenses issued; verify graduate degree for supervised practice.",
+    "verificationUrl": "https://internet.health.tn.gov/Licensure/"
+  },
+  "Tennessee_LCSW": {
+    "requirements": "Work permits function like internship/temp licenses. No associate licenses issued; verify graduate degree. Social Workers must be licensed unless exempt by supervision.",
+    "verificationUrl": "https://internet.health.tn.gov/Licensure/"
+  },
+  "Tennessee_Psychologist": {
+    "requirements": "Psychologists must be licensed. If practicing under supervision, the candidate is exempt from licensure requirements. Verify graduate degree if unlicensed.",
+    "verificationUrl": "https://internet.health.tn.gov/Licensure/"
+  },
+  "Texas_LPC": {
+    "requirements": "Texas requires a license to practice mental health. LPC Interns must list their supervisor's name and credentials on all advertisements. Individuals practicing under supervision may be exempt per state law. Verify supervisor and graduate degree (Master’s or above).",
+    "verificationUrl": "https://vo.licensing.hpc.texas.gov/datamart/selSearchType.do"
+  },
+  "Texas_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed to practice. Interns practicing under supervision may be exempt from licensure. Graduate degree and supervisor verification required.",
+    "verificationUrl": "https://vo.licensing.hpc.texas.gov/datamart/selSearchType.do"
+  },
+  "Texas_LCSW": {
+    "requirements": "Social Workers must be licensed. LMSWs may require supervision to practice psychotherapy. Confirm supervision and verify credentials.",
+    "verificationUrl": "https://vo.licensing.hpc.texas.gov/datamart/selSearchType.do"
+  },
+  "Texas_LMSW": {
+    "requirements": "LMSWs may need supervision to practice psychotherapy. Verification of supervisor may be required.",
+    "verificationUrl": "https://vo.licensing.hpc.texas.gov/datamart/selSearchType.do"
+  },
+  "Texas_Psychologist": {
+    "requirements": "Licensed Psychologists must have previously held a Provisionally Licensed Psychologist license. Individuals in post-doc or supervised study may be exempt under §501.004(a)(2) or §501.252(b)(2). Request copy of graduate degree if unlicensed.",
+    "verificationUrl": "https://vo.licensing.hpc.texas.gov/datamart/selSearchType.do"
+  },
+  "Texas_CADC": {
+    "requirements": "Addiction Counselors must be certified. Certification must include verified education and supervised experience.",
+    "verificationUrl": "https://vo.ras.dshs.state.tx.us/datamart/mainMenu.do"
+  },
+  "Texas_NP": {
+    "requirements": "Nurse Practitioners must hold an active license and be nationally certified in their role. Verified via Texas Board of Nursing.",
+    "verificationUrl": "https://txbn.boardsofnursing.org/licenselookup"
+  },
+  "Texas_Physician": {
+    "requirements": "Physicians must be licensed and verified by the Texas Medical Board. Must complete accredited medical training and licensure exams.",
+    "verificationUrl": "https://profile.tmb.state.tx.us/"
+  },
+  "Utah_LPC": {
+    "requirements": "Counselors must be licensed in Utah.",
+    "verificationUrl": "https://secure.utah.gov/llv/search/index.html#"
+  },
+  "Utah_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed.",
+    "verificationUrl": "https://secure.utah.gov/llv/search/index.html#"
+  },
+  "Utah_LCSW": {
+    "requirements": "Social Workers must be licensed.",
+    "verificationUrl": "https://secure.utah.gov/llv/search/index.html#"
+  },
+  "Utah_Psychologist": {
+    "requirements": "Psychologists must be licensed.",
+    "verificationUrl": "https://secure.utah.gov/llv/search/index.html#"
+  },
+  "Vermont_LPC": {
+    "requirements": "Counselors must be licensed in Vermont. Verification required for professional practice.",
+    "verificationUrl": "https://secure.professionals.vermont.gov/prweb/PRServletCustom/app/NGLPGuestUser_/V9csDxL3sXkkjMC_FR2HrA*/!STANDARD?UserIdentifier=LicenseLookupGuestUser"
+  },
+  "Vermont_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed. Verification through state board is required.",
+    "verificationUrl": "https://secure.professionals.vermont.gov/prweb/PRServletCustom/app/NGLPGuestUser_/V9csDxL3sXkkjMC_FR2HrA*/!STANDARD?UserIdentifier=LicenseLookupGuestUser"
+  },
+  "Vermont_LCSW": {
+    "requirements": "Social Workers must be licensed. License must be verified before clinical practice.",
+    "verificationUrl": "https://secure.professionals.vermont.gov/prweb/PRServletCustom/app/NGLPGuestUser_/V9csDxL3sXkkjMC_FR2HrA*/!STANDARD?UserIdentifier=LicenseLookupGuestUser"
+  },
+  "Vermont_Psychologist": {
+    "requirements": "Psychologists must be licensed. License validation and credential review is required.",
+    "verificationUrl": "https://secure.professionals.vermont.gov/prweb/PRServletCustom/app/NGLPGuestUser_/V9csDxL3sXkkjMC_FR2HrA*/!STANDARD?UserIdentifier=LicenseLookupGuestUser"
+  },
+  "Vermont_NonLicensedPsychotherapist": {
+    "requirements": "Non-Licensed and Non-Certified Psychotherapists must be registered with the state. Graduate degree verification required. Only individuals listed in the Vermont Registry may legally provide psychotherapy.",
+    "verificationUrl": "https://www.sec.state.vt.us/professional-regulation/list-of-professions/allied-mental-health.aspx"
+  },
+  "Virginia_LPC": {
+    "requirements": "Residencies must be registered with the Virginia board. Residents are under supervision. Virginia does not issue associate licenses. Graduate degree must be verified. Only licensed professionals may use the title 'counselor' and practice counseling as a protected activity.",
+    "verificationUrl": "https://dhp.virginiainteractive.org/Lookup/Index"
+  },
+  "Virginia_LMFT": {
+    "requirements": "Residency must be registered with the Virginia board. Residents are under supervision. No associate license issued—must verify graduate degree. Licensure required to practice independently.",
+    "verificationUrl": "https://dhp.virginiainteractive.org/Lookup/Index"
+  },
+  "Virginia_LCSW": {
+    "requirements": "Only Licensed Clinical Social Workers (LCSW) may practice autonomously. LMSWs may practice under supervision in exempt settings. Residency and supervision must comply with Virginia board requirements.",
+    "verificationUrl": "https://dhp.virginiainteractive.org/Lookup/Index"
+  },
+  "Virginia_Psychologist": {
+    "requirements": "Psychologists must be fully licensed in Virginia. Postdoctoral supervision must be documented and verified as part of the licensure pathway.",
+    "verificationUrl": "https://dhp.virginiainteractive.org/Lookup/Index"
+  },
+  "Washington_LPC": {
+    "requirements": "Washington issues associate licenses for LMHCs. Individuals practicing in Washington, including via telehealth, must hold a valid license. Full licensure is required for independent practice per RCW 18.225.140.",
+    "verificationUrl": "https://fortress.wa.gov/doh/providercredentialsearch/"
+  },
+  "Washington_LMFT": {
+    "requirements": "Washington issues associate licenses for LMFTs. To practice in Washington, including telehealth, individuals must hold a valid LMFT or associate LMFT license as required by RCW 18.225.140.",
+    "verificationUrl": "https://fortress.wa.gov/doh/providercredentialsearch/"
+  },
+  "Washington_LCSW": {
+    "requirements": "Washington issues associate licenses for social workers. All individuals providing services in Washington, including telehealth, must be licensed or hold an associate license.",
+    "verificationUrl": "https://fortress.wa.gov/doh/providercredentialsearch/"
+  },
+  "Washington_Psychologist": {
+    "requirements": "Psychologists must be fully licensed. Washington does not issue associate licenses for psychologists. Individuals must be licensed to practice, including via telehealth, if listing a Washington address.",
+    "verificationUrl": "https://fortress.wa.gov/doh/providercredentialsearch/"
+  },
+  "District Columbia_LPC": {
+    "requirements": "Counselors must be licensed in Washington, D.C.",
+    "verificationUrl": "https://doh.force.com/ver/s/"
+  },
+  "District Columbia_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed.",
+    "verificationUrl": "https://doh.force.com/ver/s/"
+  },
+  "District Columbia_LCSW": {
+    "requirements": "Social Workers must be licensed.",
+    "verificationUrl": "https://doh.force.com/ver/s/"
+  },
+  "District Columbia_Psychologist": {
+    "requirements": "Psychologists must be licensed.",
+    "verificationUrl": "https://doh.force.com/ver/s/"
+  },
+  "West Virginia_LPC": {
+    "requirements": "Counselors must be licensed in West Virginia.",
+    "verificationUrl": "http://www.wvbec.org/verificationoflicensure/namesofwvlpc.html"
+  },
+  "West Virginia_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed.",
+    "verificationUrl": "http://www.wvbec.org/verificationoflicensure/namesofwvlpc.html"
+  },
+  "West Virginia_LCSW": {
+    "requirements": "Social Workers must be licensed.",
+    "verificationUrl": "http://www.wvsocialworkboard.org/Licensure/LicenseVerification.aspx"
+  },
+  "West Virginia_Psychologist": {
+    "requirements": "Psychologists must be licensed.",
+    "verificationUrl": "http://psychbd.wv.gov/license-info/license-search/Pages/default.aspx"
+  },
+  "Wisconsin_LPC": {
+    "requirements": "Counselors must be licensed in Wisconsin.",
+    "verificationUrl": "https://app.wi.gov/licensesearch"
+  },
+  "Wisconsin_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed.",
+    "verificationUrl": "https://app.wi.gov/licensesearch"
+  },
+  "Wisconsin_LCSW": {
+    "requirements": "Social Workers must be licensed.",
+    "verificationUrl": "https://app.wi.gov/licensesearch"
+  },
+  "Wisconsin_Psychologist": {
+    "requirements": "Psychologists must be licensed.",
+    "verificationUrl": "https://app.wi.gov/licensesearch"
+  },
+  "Wyoming_LPC": {
+    "requirements": "Counselors must be licensed in Wyoming.",
+    "verificationUrl": "https://mentalhealth.wyo.gov/public/license-verification"
+  },
+  "Wyoming_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed.",
+    "verificationUrl": "https://mentalhealth.wyo.gov/public/license-verification"
+  },
+  "Wyoming_LCSW": {
+    "requirements": "Social Workers must be licensed.",
+    "verificationUrl": "https://mentalhealth.wyo.gov/public/license-verification"
+  },
+  "Wyoming_Psychologist": {
+    "requirements": "Psychologists must be licensed.",
+    "verificationUrl": "https://psychology.wyo.gov/public/lookup"
+  },
+  "Psypact_All": {
+    "requirements": "This allows Psychologists to practice teletherapy in participating states. For PassPort verification visit: https://www.verifypsypact.org/PsypactDirectory",
+    "verificationUrl": "https://psypact.site-ym.com/page/psypactmap"
+  },
+  "Alabama_LPC": {
+    "requirements": "Can be verified online or by phone. Info may not be up to date; call before emailing member. For official licensure verification, contact the Alabama Board of Examiners in Counseling at (205) 458-8716.",
+    "verificationUrl": "https://abec-search.kalmservices.net/"
+  },
+  "Alabama_LCSW": {
+    "requirements": "Social Workers must be licensed.",
+    "verificationUrl": "https://apps.socialwork.alabama.gov/shared/search.aspx"
+  },
+  "Alabama_LMFT": {
+    "requirements": "Must submit supervision agreement and transcript. Online verification available.",
+    "verificationUrl": "https://mft.alabama.gov/Search.aspx"
+  },
+  "Alabama_LMFT_alt": {
+    "requirements": "Alternate verification portal for MFTs.",
+    "verificationUrl": "http://216.226.177.99/search.aspx?sm=c_b"
+  },
+  "Alabama_Psychologist": {
+    "requirements": "Psychologists must be licensed.",
+    "verificationUrl": "https://www.psychology.alabama.gov/licensee.aspx"
+  },
+  "Alabama_Psychiatrist": {
+    "requirements": "Psychiatrists must be licensed. Verify through the Alabama Board of Medical Examiners.",
+    "verificationUrl": "https://abme.igovsolution.net/online/Lookups/Individual_Lookup.aspx"
+  },
+  "Alaska_LPC": {
+    "requirements": "No associate licenses for LMHC when practicing under supervision (verify graduate degree).",
+    "verificationUrl": "https://www.commerce.alaska.gov/cbp/Main/Search/Professional"
+  },
+  "Alaska_LCSW": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.commerce.alaska.gov/cbp/Main/Search/Professional"
+  },
+  "Alaska_LMFT": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.commerce.alaska.gov/cbp/Main/Search/Professional"
+  },
+  "Alaska_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.commerce.alaska.gov/cbp/Main/Search/Professional"
+  },
+  "Arizona_LPC": {
+    "requirements": "Issues Associate licenses in counseling. Full licensure requires supervision completion.",
+    "verificationUrl": "http://azbbhe.us/node/3"
+  },
+  "Arizona_LMFT": {
+    "requirements": "Issues Associate licenses in marriage and family therapy. Full licensure requires supervision completion.",
+    "verificationUrl": "http://azbbhe.us/node/3"
+  },
+  "Arizona_LCSW": {
+    "requirements": "Clinical Social Workers have at least a Master's degree and have completed supervision.",
+    "verificationUrl": "http://azbbhe.us/node/3"
+  },
+  "Arizona_MSW": {
+    "requirements": "Master Social Workers have at least a Master's degree.",
+    "verificationUrl": "http://azbbhe.us/node/3"
+  },
+  "Arizona_BSW": {
+    "requirements": "Baccalaureate Social Workers have a Bachelor's degree.",
+    "verificationUrl": "http://azbbhe.us/node/3"
+  },
+  "Arizona_CADC": {
+    "requirements": "N/A",
+    "verificationUrl": "http://azbbhe.us/node/3"
+  },
+  "Arizona_Psychologist": {
+    "requirements": "N/A",
+    "verificationUrl": "https://abpe.portalus.thentiacloud.net/webs/portal/register/#/"
+  },
+  "Arizona_NP": {
+    "requirements": "N/A",
+    "verificationUrl": "https://www.nursys.com/LQC/LQCSearch.aspx"
+  },
+  "Arkansas_LPC": {
+    "requirements": "Associate licenses are issued for counselors.",
+    "verificationUrl": "http://search.statesolutions.us/?A=ABEC&AID=RS"
+  },
+  "Arkansas_LMFT": {
+    "requirements": "Associate licenses are issued for marriage and family therapists.",
+    "verificationUrl": "http://search.statesolutions.us/?A=ABEC&AID=RS"
+  },
+  "Arkansas_LCSW": {
+    "requirements": "Associate licenses are issued for social workers.",
+    "verificationUrl": "http://www.accessarkansas.org/swlb/search/index.html"
+  },
+  "Arkansas_Psychologist": {
+    "requirements": "Associate licenses are issued. A fee is charged for official psychologist license verifications.",
+    "verificationUrl": "https://www.ark.org/psych_lic_ver/index.php/search"
+  },
+  "California_LPC": {
+    "requirements": "Counselors must be licensed.",
+    "verificationUrl": "https://search.dca.ca.gov/"
+  },
+  "California_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed.",
+    "verificationUrl": "https://search.dca.ca.gov/"
+  },
+  "California_LCSW": {
+    "requirements": "Social Workers must be licensed.",
+    "verificationUrl": "https://search.dca.ca.gov/"
+  },
+  "California_Psychologist": {
+    "requirements": "Psychologists must be licensed. Therapists practicing under supervision toward licensure must hold a Registered Psychological Assistant license. See California Psychology Licensing Law.",
+    "verificationUrl": "https://search.dca.ca.gov/"
+  },
+  "Colorado_LPC": {
+    "requirements": "Counselors must be licensed. Licensed Professional Counselor Candidates can practice under supervision. Colorado gives a 30-day grace period for license renewal; call 303-894-7800 to verify if renewal is pending.",
+    "verificationUrl": "https://apps.colorado.gov/dora/licensing/Lookup/LicenseLookup.aspx"
+  },
+  "Colorado_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed. Marriage and Family Therapist Candidates can practice under supervision. Colorado gives a 30-day grace period for license renewal; call 303-894-7800 to verify if renewal is pending.",
+    "verificationUrl": "https://apps.colorado.gov/dora/licensing/Lookup/LicenseLookup.aspx"
+  },
+  "Colorado_LCSW": {
+    "requirements": "Social Workers must be licensed. Licensed Social Workers (LSW) can practice under supervision. Colorado gives a 30-day grace period for license renewal; call 303-894-7800 to verify if renewal is pending.",
+    "verificationUrl": "https://apps.colorado.gov/dora/licensing/Lookup/LicenseLookup.aspx"
+  },
+  "Colorado_Psychologist": {
+    "requirements": "Psychologists must be licensed. Colorado gives a 30-day grace period for license renewal; call 303-894-7800 to verify if renewal is pending.",
+    "verificationUrl": "https://apps.colorado.gov/dora/licensing/Lookup/LicenseLookup.aspx"
+  },
+  "Colorado_RegisteredPsychotherapist": {
+    "requirements": "Registered Psychotherapists can practice with few credentials if they can prove education. Unlicensed registrations are no longer issued but may still be valid if grandfathered in.",
+    "verificationUrl": "https://apps.colorado.gov/dora/licensing/Lookup/LicenseLookup.aspx"
+  },
+  "Connecticut_LPC": {
+    "requirements": "LPC license required to practice psychotherapy. Associate licenses do not exist in Connecticut—verify graduate degree.",
+    "verificationUrl": "https://www.elicense.ct.gov/Lookup/LicenseLookup.aspx"
+  },
+  "Connecticut_LMFT": {
+    "requirements": "Marriage and Family Therapists must be licensed. Associate licenses do not exist in Connecticut—verify graduate degree.",
+    "verificationUrl": "https://www.elicense.ct.gov/Lookup/LicenseLookup.aspx"
+  },
+  "Connecticut_LCSW": {
+    "requirements": "Social Workers must be licensed. LMSW must practice under supervision—need supervisor verification. Associate licenses do not exist in Connecticut—verify graduate degree.",
+    "verificationUrl": "https://www.elicense.ct.gov/Lookup/LicenseLookup.aspx"
+  },
+  "Connecticut_Psychologist": {
+    "requirements": "Psychologists must be licensed. Associate licenses do not exist in Connecticut—verify graduate degree.",
+    "verificationUrl": "https://www.elicense.ct.gov/Lookup/LicenseLookup.aspx"
+  },
+  "Alberta_Psychologist": {
+    "requirements": "Verify Alberta psychologists using CAP directory.",
+    "verificationUrl": "https://cap.alinityapp.com/Client/PublicDirectory"
+  },
+  "Alberta_Counsellor": {
+    "requirements": "Canadian Certified Counsellors in Alberta can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "Alberta_Social Worker": {
+    "requirements": "Social Workers in Alberta can be verified via ACSW search tool.",
+    "verificationUrl": "https://www.acsw.ab.ca/site/New_Find_A_social_Worker"
+  },
+  "British Columbia_Psychologist": {
+    "requirements": "Psychologists in British Columbia can be verified via College of Psychologists of BC.",
+    "verificationUrl": "http://collegeofpsychologists.bc.ca/verify/"
+  },
+  "British Columbia_Counsellor": {
+    "requirements": "Certified Counsellors in BC can be found through BCACC or CCPA directories.",
+    "verificationUrl": "http://bc-counsellors.org/"
+  },
+  "British Columbia_Social Worker": {
+    "requirements": "Social Workers in BC can be verified via BCCSW.",
+    "verificationUrl": "https://onlinememberservice.bccsw.ca/webs/bccsw/register/#/"
+  },
+  "Manitoba_Psychologist": {
+    "requirements": "Psychologists in Manitoba can be verified via College of Psychologists.",
+    "verificationUrl": "http://www.cpmb.ca/directory.php"
+  },
+  "Manitoba_SocialWorker": {
+    "requirements": "Social Workers in Manitoba can be verified via MCSW register.",
+    "verificationUrl": "https://mcsw.ca.thentiacloud.net/webs/mcsw/register/"
+ },
+  "Manitoba_Counsellor": {
+    "requirements": "Canadian Certified Counsellors in Manitoba can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "New Brunswick_Counsellor": {
+    "requirements": "Canadian Certified Counsellors in New Brunswick can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "New Foundland_Counsellor": {
+    "requirements": "Canadian Certified Counsellors in Newfoundland and Labrador can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+
+  },
+  "New Brunswick_Psychologist": {
+    "requirements": "Psychologists in New Brunswick can be verified via CPNB.",
+    "verificationUrl": "http://cpnb.ca/definitions/finding-a-psychologist/"
+  },
+  "New Foundland_Psychologist": {
+    "requirements": "Psychologists in Newfoundland can be verified via the provincial board.",
+    "verificationUrl": "http://secure.nlpsychboard.ca/registered_psychologists.php"
+  },
+  "Nova Scotia_Psychologist": {
+    "requirements": "Psychologists in Nova Scotia can be verified via NSBEP.",
+    "verificationUrl": "http://www.nsbep.org/directory/"
+  },
+  "Nova Scotia_Counsellor": {
+    "requirements": "Counsellors in Nova Scotia can be verified via NSCCT.",
+    "verificationUrl": "https://nscct.ca/license-status-search/"
+  },
+  "Nova Scotia_Social Worker": {
+    "requirements": "Social Workers in Nova Scotia can be verified via NSCSW.",
+    "verificationUrl": "https://nscsw.org/about/find-a-social-worker/"
+  },
+  "Ontario_Psychotherapist": {
+    "requirements": "Registered psychotherapists can be verified via CRPO.",
+    "verificationUrl": "https://www.crpo.ca/find-a-registered-psychotherapist/"
+  },
+  "Ontario_Counsellor": {
+    "requirements": "Certified Counsellors in Ontario can be found via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "Ontario_Psychologist": {
+    "requirements": "Psychologists in Ontario can be verified via CPO.",
+    "verificationUrl": "http://www.cpo.on.ca/"
+  },
+  "Ontario_Social Worker": {
+    "requirements": "Social Workers in Ontario can be verified via OCSWSSW.",
+    "verificationUrl": "https://onlineservices.ocswssw.org/en-US/Online-Register-Search/"
+  },
+  "Prince Edward Island_Psychologist": {
+    "requirements": "Psychologists in PEI can be verified using PEIPRB register PDF.",
+    "verificationUrl": "http://www.peipsychology.org/peiprb/wp-content/uploads/2012/04/PEIPRB.PsychologistsRegister.26Oct.2017-2.pdf"
+  },
+  "Prince Edward Island_Counsellor": {
+    "requirements": "Canadian Certified Counsellors in Prince Edward Island can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "Quebec_Psychologist": {
+    "requirements": "Psychologists in Quebec can be verified via Ordre des psychologues.",
+    "verificationUrl": "https://www.ordrepsy.qc.ca/verifier-le-droit-d-exercice"
+  },
+  "Saskatchewan_Psychologist": {
+    "requirements": "Psychologists in Saskatchewan can be verified via SKCP.",
+    "verificationUrl": "http://www.skcp.ca/?page_id=39"
+ },
+  "Quebec_Counsellor": {
+    "requirements": "Canadian Certified Counsellors in Quebec can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "Saskatchewan_Counsellor": {
+    "requirements": "Canadian Certified Counsellors in Saskatchewan can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "Yukon_Counsellor": {
+    "requirements": "Certified Counsellors in Yukon can be verified via CCPA.",
+    "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
+  },
+  "Argentina_All": {
+    "requirements": "Argentina does not require practitioners to have a license. The only thing required is an education. There is no information found on the minimum requirements for education in Argentina, so per Dan and Greg, as long as the member meets GT educational requirements listed on the site, they can be approved. This may require an email to verify graduate degree. When verifying if a school is 'accredited,' they may be 'recognized' by an official regulating organization.",
+    "verificationUrl": "N/A"
+  },
+  "Germany_All": {
+    "requirements": "Social workers in Germany can practice with just a Bachelor's degree, so a graduate-level diploma must be requested before approval.",
+    "verificationUrl": "N/A"
+  },
+  "Japan_All": {
+    "requirements": "There is no legally protected title for psychologists or counselors in Japan. Certification is voluntary. Practitioners may be licensed clinical psychologists or certified by organizations like the IMHPJ. If not certified, request a graduate-level degree.",
+    "verificationUrl": "https://www.imhpj.org/all-members/?_categories=therapists-counselors"
+  },
+  "Malaysia_All": {
+    "requirements": "No governing body regulating licensure in Malaysia. Malaysian Society of Clinical Psychology requires what we require, so if they are a full (i.e., not student) member, that will suffice. Otherwise, must request copy of graduate level diploma in order to approve member. No verification site available.",
+    "verificationUrl": "https://www.lkm.gov.my/"
+  },
+  "Netherlands_All": {
+    "requirements": "Search for NIP approved psychologists. However, it is not required for them to be NIP approved to practice.",
+    "verificationUrl": "https://www.psynip.nl/vind-een-psycholoog/"
+  },
+  "Australia_Counsellor": {
+    "requirements": "Must be listed on the ACA directory.",
+    "verificationUrl": "https://theaca.net.au/find-a-counsellor/"
+  },
+  "Australia_Social Worker": {
+    "requirements": "Social workers must meet PACFA standards and be searchable on their site.",
+    "verificationUrl": "https://www.pacfa.org.au/portal/portal/Find-a-Therapist/Find-A-Therapist.aspx?hkey=8840626d-7a85-4e3f-951b-51d2f8b7bf94"
+  },
+  "Australia_Registered Arts Therapist": {
+    "requirements": "Must abide by the ANZATA code of ethics.",
+    "verificationUrl": "https://anzacata.org/find-a-therapist"
+  },
+  "Australia_Psychologist": {
+    "requirements": "Must be registered with AHPRA.",
+    "verificationUrl": "https://www.ahpra.gov.au/"
+  },
+  "Australia_Psychotherapist": {
+    "requirements": "Psychotherapists are not regulated. Must verify graduate degree to approve.",
+    "verificationUrl": "N/A"
+  },
+  "New Zealand_Registered Arts Therapist": {
+    "requirements": "Must abide by the ANZATA code of ethics.",
+    "verificationUrl": "https://anzacata.org/find-a-therapist"
+  },
+  "New Zealand_Counsellor": {
+    "requirements": "Must be listed on the ACA directory.",
+    "verificationUrl": "https://theaca.net.au/find-a-counsellor/"
+  },
+  "Puerto Rico_All": {
+    "requirements": "Puerto Rico Board of Psychologist Examiners can be contacted for verification. Must verify education. No online verification link. Phone: (787) 723-2885, Email: juntapsicologia@gmail.com.",
+    "verificationUrl": "N/A"
+  },
+  "Singapore_All": {
+    "requirements": "Singapore has no legal requirement for psychologists or counsellors to be registered. Anyone can legally call themselves a psychologist or counselor. Verify education. If registered with the Singapore Association for Counseling (SAC), the practitioner must complete a Masters or Post-Graduate course and experience per SAC requirements.",
+    "verificationUrl": "N/A"
+  },
+  "South Africa_All": {
+    "requirements": "SACAP requires only a Bachelor degree and completion of an exam. Request their graduate degree before approving.",
+    "verificationUrl": "https://www.sacap.edu.za/counselling/becoming-registered-counsellor/"
+  },
+  "Ukraine_All": {
+    "requirements": "No governing body regulating licensure in Ukraine. Must request copy of graduate level diploma in order to approve member.",
+    "verificationUrl": "N/A"
+  },
+  "United Kingdom_All": {
+    "requirements": "In the United Kingdom, counselling and psychotherapy is not under statutory regulation, and is overseen and supported by several organizations, none of which are officially recognised by the government. We need to request a copy of a graduate level diploma in order to approve membership for counselors or psychotherapists.",
+    "verificationUrl": "http://www.hpc-uk.org/"
+  },
+  "EuroPsy_All": {
+    "requirements": "To be recognized under EuroPsy regulations as a psychologist, a Master's degree is required. For social workers, practice is possible with a Bachelor's degree; however, verification of a graduate-level (Master’s) diploma is required for approval.",
+    "verificationUrl": "https://www.europsy.eu/national-requirements-poland"
+  }
+}
