@@ -19,9 +19,19 @@ const itemVariants = {
   show: { opacity: 1, y: 0 },
 };
 
-const stateOptions = Array.from(
-  new Set(Object.keys(licenses).map((key) => key.split("_")[0]))
-).map((s) => ({ value: s, label: s }));
+const US_STATES = [
+  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia",
+  "Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland",
+  "Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire",
+  "New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon",
+  "Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont",
+  "Virginia","Washington","West Virginia","Wisconsin","Wyoming","District Columbia",
+];
+
+const CANADA_PROVINCES = [
+  "Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories",
+  "Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon"
+];
 
 export default function GTApprovalsApp() {
   const [state, setState] = useState(null);
@@ -38,6 +48,67 @@ export default function GTApprovalsApp() {
   const [progress, setProgress] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
   const progressRef = useRef(null);
+
+  const [regionFilter, setRegionFilter] = useState({
+    us: true,        // United States is selected by default
+    ca: false,       // Canada
+    intl: false      // International
+  });
+
+  const allRegions = useRef(
+    Array.from(new Set(Object.keys(licenses).map(key => key.split("_")[0])))
+  ).current;
+
+  const stateOptions = allRegions
+    .filter(region => {
+      const isUS  = US_STATES.includes(region);
+      const isCA  = CANADA_PROVINCES.includes(region);
+      const isIntl = !isUS && !isCA;
+
+      return (
+        (regionFilter.us   && isUS)  ||
+        (regionFilter.ca   && isCA)  ||
+        (regionFilter.intl && isIntl)
+      );
+    })
+    .map(r => ({ value: r, label: r }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  // Determine dynamic label/placeholder based on active region filters
+  const activeRegions = Object.entries(regionFilter)
+    .filter(([_, v]) => v)
+    .map(([k]) => k);
+
+  const activeSet = new Set(activeRegions);
+  let selectLabel = "Select";
+
+  switch (activeRegions.length) {
+    case 0:
+      selectLabel = "Select";
+      break;
+    case 1:
+      if (activeSet.has("us"))   selectLabel = "Select State";
+      if (activeSet.has("ca"))   selectLabel = "Select Province";
+      if (activeSet.has("intl")) selectLabel = "Select Country";
+      break;
+    case 2:
+      if (activeSet.has("us") && activeSet.has("ca"))
+        selectLabel = "Select State/Province";
+      else if (activeSet.has("us") && activeSet.has("intl"))
+        selectLabel = "Select State/Country";
+      else if (activeSet.has("ca") && activeSet.has("intl"))
+        selectLabel = "Select Province/Country";
+      break;
+    default:
+      // All three selected
+      selectLabel = "Select State/Province/Country";
+  }
+
+  useEffect(() => {
+    if (state && !stateOptions.find(opt => opt.value === state.value)) {
+      setState(null);
+    }
+  }, [regionFilter]);
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
@@ -188,20 +259,30 @@ export default function GTApprovalsApp() {
           </div>
 
           {/* Dark‑mode toggle */}
-          <label className="flex items-center space-x-2 cursor-pointer select-none">
+          <div className="flex items-center space-x-2 select-none">
             <Sun className="w-4 h-4 text-yellow-400 dark:text-gray-400" />
-            <div className="relative inline-block w-12 h-6">
-              <input
-                type="checkbox"
-                checked={darkMode}
-                onChange={() => setDarkMode(!darkMode)}
-                className="sr-only peer"
+
+            {/* animated toggle */}
+            <motion.button
+              type="button"
+              onClick={() => setDarkMode(!darkMode)}
+              className="relative inline-block w-12 h-6 rounded-full focus:outline-none"
+              initial={false}
+              animate={{
+                backgroundColor: darkMode ? "#16a34a" : "#d1d5db",
+              }}
+              transition={{ duration: 0.25 }}
+            >
+              <motion.span
+                className="absolute top-1 left-1 h-4 w-4 bg-white rounded-full shadow-md"
+                layout
+                style={{ x: darkMode ? 24 : 0 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
-              <span className="absolute inset-0 rounded-full bg-gray-300 dark:bg-gray-600 transition-colors duration-300 peer-checked:bg-green-500" />
-              <span className="absolute left-1 top-1 h-4 w-4 bg-white rounded-full shadow-md transition-transform duration-300 peer-checked:translate-x-6 pointer-events-none" />
-            </div>
+            </motion.button>
+
             <Moon className="w-4 h-4 text-gray-500 dark:text-yellow-300" />
-          </label>
+          </div>
         </div>
       </header>
       <motion.div
@@ -219,9 +300,44 @@ export default function GTApprovalsApp() {
             style={{ transform: `perspective(800px) rotateX(${cardTilt1.y}deg) rotateY(${cardTilt1.x}deg)` }}
             className="bg-white rounded-2xl shadow-[0px_4px_16px_rgba(34,197,94,0.25)] dark:shadow-[0px_4px_16px_rgba(5,150,105,0.35)] p-6 space-y-5 border border-green-100"
           >
+            {/* Region filter buttons */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {[
+                { key: "us",  label: "United States" },
+                { key: "ca",  label: "Canada" },
+                { key: "intl",label: "International" }
+              ].map(btn => (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  key={btn.key}
+                  type="button"
+                  onClick={() =>
+                    setRegionFilter(prev => ({ ...prev, [btn.key]: !prev[btn.key] }))
+                  }
+                  className={`px-3 py-1 rounded-full font-semibold border-2
+                    ${regionFilter[btn.key]
+                      ? "bg-green-600 text-white border-green-600"
+                      : "bg-white text-green-700 border-green-600 hover:bg-green-50"}
+                  `}
+                >
+                  {btn.label}
+                </motion.button>
+              ))}
+            </div>
             <div>
               <label className="block mb-1 text-sm font-semibold text-gray-700">
-                Select State
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={selectLabel}
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {selectLabel}
+                  </motion.span>
+                </AnimatePresence>
               </label>
               <Select
                 options={stateOptions}
@@ -230,7 +346,7 @@ export default function GTApprovalsApp() {
                   setState(selected);
                   setLicense(null);
                 }}
-                placeholder="Start typing a state or country..."
+                placeholder={selectLabel}
                 className="text-black"
               />
             </div>
@@ -324,7 +440,7 @@ export default function GTApprovalsApp() {
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl font-medium transition flex items-center gap-2"
               >
                 <Wand2 className="w-5 h-5" />
-                Clean Narrative
+                Clean with AI
               </motion.button>
             </div>
 
