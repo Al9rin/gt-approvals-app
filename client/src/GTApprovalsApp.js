@@ -3,7 +3,7 @@ import Select from "react-select";
 import licenses from "./licenses.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
-import { Search, Wand2, Sun, Moon } from "lucide-react";
+import { Search, Wand2, Sun, Moon, X, Loader2 } from "lucide-react";
 
 // motion variants
 const containerVariants = {
@@ -32,6 +32,28 @@ const CANADA_PROVINCES = [
   "Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories",
   "Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon"
 ];
+
+// US states and Canada provinces abbreviation lookup
+const STATE_ABBR = {
+  Alabama: 'AL', Alaska: 'AK', Arizona: 'AZ', Arkansas: 'AR', California: 'CA',
+  Colorado: 'CO', Connecticut: 'CT', Delaware: 'DE', Florida: 'FL', Georgia: 'GA',
+  Hawaii: 'HI', Idaho: 'ID', Illinois: 'IL', Indiana: 'IN', Iowa: 'IA',
+  Kansas: 'KS', Kentucky: 'KY', Louisiana: 'LA', Maine: 'ME', Maryland: 'MD',
+  Massachusetts: 'MA', Michigan: 'MI', Minnesota: 'MN', Mississippi: 'MS',
+  Missouri: 'MO', Montana: 'MT', Nebraska: 'NE', Nevada: 'NV', 'New Hampshire': 'NH',
+  'New Jersey': 'NJ', 'New Mexico': 'NM', 'New York': 'NY', 'North Carolina': 'NC',
+  'North Dakota': 'ND', Ohio: 'OH', Oklahoma: 'OK', Oregon: 'OR', Pennsylvania: 'PA',
+  'Rhode Island': 'RI', 'South Carolina': 'SC', 'South Dakota': 'SD', Tennessee: 'TN',
+  Texas: 'TX', Utah: 'UT', Vermont: 'VT', Virginia: 'VA', Washington: 'WA',
+  'West Virginia': 'WV', Wisconsin: 'WI', Wyoming: 'WY', 'District Columbia': 'DC',
+};
+
+const PROVINCE_ABBR = {
+  Alberta: 'AB', 'British Columbia': 'BC', Manitoba: 'MB', 'New Brunswick': 'NB',
+  'Newfoundland and Labrador': 'NL', 'Northwest Territories': 'NT',
+  'Nova Scotia': 'NS', Nunavut: 'NU', Ontario: 'ON', 'Prince Edward Island': 'PE',
+  Quebec: 'QC', Saskatchewan: 'SK', Yukon: 'YT'
+};
 
 export default function GTApprovalsApp() {
   const [state, setState] = useState(null);
@@ -71,7 +93,11 @@ export default function GTApprovalsApp() {
         (regionFilter.intl && isIntl)
       );
     })
-    .map(r => ({ value: r, label: r }))
+    .map(r => {
+      const abbr = STATE_ABBR[r] || PROVINCE_ABBR[r];
+      const label = abbr ? `${r} (${abbr})` : r;
+      return { value: r, label };
+    })
     .sort((a, b) => a.label.localeCompare(b.label));
 
   // Determine dynamic label/placeholder based on active region filters
@@ -248,13 +274,14 @@ export default function GTApprovalsApp() {
           <div
             onMouseMove={handleTilt}
             onMouseLeave={resetTilt}
+            onClick={() => window.open('https://www.goodtherapy.org/', '_blank', 'noopener,noreferrer')}
             style={{ transform: `perspective(600px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)` }}
-            className="transition-transform duration-200 ease-out"
+            className="transition-transform duration-200 ease-out cursor-pointer"
           >
             <img
               src="/image.png"
               alt="GoodTherapy Approvals"
-              className="w-40 select-none pointer-events-none"
+              className="w-40 select-none"
             />
           </div>
 
@@ -266,7 +293,7 @@ export default function GTApprovalsApp() {
             <motion.button
               type="button"
               onClick={() => setDarkMode(!darkMode)}
-              className="relative inline-block w-12 h-6 rounded-full focus:outline-none"
+              className="cursor-pointer relative inline-block w-12 h-6 rounded-full focus:outline-none"
               initial={false}
               animate={{
                 backgroundColor: darkMode ? "#16a34a" : "#d1d5db",
@@ -298,7 +325,7 @@ export default function GTApprovalsApp() {
             onMouseMove={makeTiltHandler(setCardTilt1)}
             onMouseLeave={resetCardTilt(setCardTilt1)}
             style={{ transform: `perspective(800px) rotateX(${cardTilt1.y}deg) rotateY(${cardTilt1.x}deg)` }}
-            className="bg-white rounded-2xl shadow-[0px_4px_16px_rgba(34,197,94,0.25)] dark:shadow-[0px_4px_16px_rgba(5,150,105,0.35)] p-6 space-y-5 border border-green-100"
+            className="bg-white rounded-2xl shadow-lg dark:shadow-lg p-6 space-y-5 border border-green-100"
           >
             {/* Region filter buttons */}
             <div className="flex flex-wrap gap-2 mb-4">
@@ -315,7 +342,7 @@ export default function GTApprovalsApp() {
                   onClick={() =>
                     setRegionFilter(prev => ({ ...prev, [btn.key]: !prev[btn.key] }))
                   }
-                  className={`px-3 py-1 rounded-full font-semibold border-2
+                  className={`cursor-pointer px-3 py-1 rounded-full font-semibold border-2
                     ${regionFilter[btn.key]
                       ? "bg-green-600 text-white border-green-600"
                       : "bg-white text-green-700 border-green-600 hover:bg-green-50"}
@@ -347,7 +374,11 @@ export default function GTApprovalsApp() {
                   setLicense(null);
                 }}
                 placeholder={selectLabel}
-                className="text-black"
+                className="text-black cursor-pointer"
+                styles={{
+                  control: (base) => ({ ...base, cursor: 'pointer' }),
+                  option:  (base) => ({ ...base, cursor: 'pointer' }),
+                }}
               />
             </div>
             <div>
@@ -359,7 +390,11 @@ export default function GTApprovalsApp() {
                 value={license}
                 onChange={setLicense}
                 placeholder="Start typing a license..."
-                className="text-black"
+                className="text-black cursor-pointer"
+                styles={{
+                  control: (base) => ({ ...base, cursor: 'pointer' }),
+                  option:  (base) => ({ ...base, cursor: 'pointer' }),
+                }}
                 isDisabled={!state}
               />
             </div>
@@ -367,7 +402,7 @@ export default function GTApprovalsApp() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={search}
-              className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"
+              className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"
             >
               <Search className="w-5 h-5" />
               Search
@@ -422,8 +457,14 @@ export default function GTApprovalsApp() {
             onMouseMove={makeTiltHandler(setCardTilt2)}
             onMouseLeave={resetCardTilt(setCardTilt2)}
             style={{ transform: `perspective(800px) rotateX(${cardTilt2.y}deg) rotateY(${cardTilt2.x}deg)` }}
-            className="bg-white rounded-2xl shadow-[0px_4px_16px_rgba(34,197,94,0.25)] dark:shadow-[0px_4px_16px rgba(5,150,105,0.35)] p-6 space-y-5 border border-green-100"
+            className="relative bg-white rounded-2xl shadow-lg dark:shadow-lg p-6 space-y-5 border border-green-100"
           >
+            {showProgress && (
+              <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-gray-900 dark:bg-opacity-60 flex items-center justify-center rounded-2xl z-20">
+                <Loader2 className="w-6 h-6 animate-spin text-green-600" />
+                <span className="ml-2 text-green-600 font-medium">Cleaning…</span>
+              </div>
+            )}
             <h2 className="text-2xl font-semibold text-green-800">Narrative Editor</h2>
             <textarea
               rows={5}
@@ -431,18 +472,43 @@ export default function GTApprovalsApp() {
               placeholder="Paste your narrative here..."
               value={narrative}
               onChange={(e) => setNarrative(e.target.value)}
+              onKeyDown={(e) => {
+                // ⌘/Ctrl + Enter to clean with AI
+                if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+                  e.preventDefault();
+                  handleNarrative();
+                }
+                // Esc to clear narrative
+                else if (e.key === "Escape") {
+                  setNarrative("");
+                }
+              }}
             />
             <div className="flex items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleNarrative}
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl font-medium transition flex items-center gap-2"
+                className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl font-medium transition flex items-center gap-2"
               >
                 <Wand2 className="w-5 h-5" />
                 Clean with AI
               </motion.button>
+              {narrative && (
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setNarrative("")}
+                  className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl font-medium transition flex items-center gap-2"
+                >
+                  <X className="w-5 h-5" />
+                  Clear
+                </motion.button>
+              )}
             </div>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 italic">
+              ⌘/Ctrl + Enter to Clean · Esc to Clear
+            </p>
 
             <AnimatePresence>
               {loading && (
@@ -477,7 +543,7 @@ export default function GTApprovalsApp() {
                       setTimeout(() => setCopied(false), 2000);
                     });
                   }}
-                  className="absolute top-3 right-3 bg-green-600 hover:bg-green-700 text-white p-2 rounded-lg text-sm flex items-center gap-1 shadow-md"
+                  className="cursor-pointer absolute top-3 right-3 bg-green-600 hover:bg-green-700 text-white p-2 rounded-lg text-sm flex items-center gap-1 shadow-md"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

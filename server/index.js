@@ -24,7 +24,7 @@ app.post("/api/clean-narrative", async (req, res) => {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4.1",
         messages: [
           {
             role: "system",
