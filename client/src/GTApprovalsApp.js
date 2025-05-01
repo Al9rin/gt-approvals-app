@@ -4,6 +4,7 @@ import licenses from "./licenses.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import { Search, Wand2, Sun, Moon, X, Loader2 } from "lucide-react";
+import { Analytics } from '@vercel/analytics/react';
 
 // motion variants
 const containerVariants = {
