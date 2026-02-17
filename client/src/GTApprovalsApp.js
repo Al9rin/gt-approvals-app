@@ -3,7 +3,7 @@ import Select from "react-select";
 import licenses from "./licenses.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
-import { Search, Wand2, Sun, Moon, X, Loader2 } from "lucide-react";
+import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check } from "lucide-react";
 import { Analytics } from '@vercel/analytics/react';
 
 // motion variants
@@ -21,17 +21,17 @@ const itemVariants = {
 };
 
 const US_STATES = [
-  "Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia",
-  "Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland",
-  "Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire",
-  "New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon",
-  "Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont",
-  "Virginia","Washington","West Virginia","Wisconsin","Wyoming","District Columbia","Psypact",
+  "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
+  "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+  "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
+  "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon",
+  "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+  "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "District Columbia", "Psypact",
 ];
 
 const CANADA_PROVINCES = [
-  "Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland and Labrador","Northwest Territories",
-  "Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon"
+  "Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland and Labrador", "Northwest Territories",
+  "Nova Scotia", "Nunavut", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan", "Yukon"
 ];
 
 // US states and Canada provinces abbreviation lookup
@@ -55,6 +55,56 @@ const PROVINCE_ABBR = {
   'Nova Scotia': 'NS', Nunavut: 'NU', Ontario: 'ON', 'Prince Edward Island': 'PE',
   Quebec: 'QC', Saskatchewan: 'SK', Yukon: 'YT'
 };
+
+/* ── react‑select brand styles ────────────────────────────────────────── */
+const selectStyles = (dark) => ({
+  control: (base, s) => ({
+    ...base,
+    cursor: 'pointer',
+    borderRadius: '0.75rem',
+    borderColor: s.isFocused ? '#A2AD1A' : dark ? '#444' : '#ddd',
+    backgroundColor: dark ? '#1e1e1e' : '#fff',
+    boxShadow: s.isFocused ? '0 0 0 2px rgba(162,173,26,0.3)' : 'none',
+    '&:hover': { borderColor: '#A2AD1A' },
+    padding: '2px 4px',
+    transition: 'all 0.2s',
+  }),
+  option: (base, s) => ({
+    ...base,
+    cursor: 'pointer',
+    backgroundColor: s.isSelected
+      ? '#A2AD1A'
+      : s.isFocused
+        ? dark ? '#2a2a2a' : '#F7F8EC'
+        : dark ? '#1e1e1e' : '#fff',
+    color: s.isSelected ? '#fff' : dark ? '#e5e5e5' : '#333',
+    '&:active': { backgroundColor: '#C5CE5C' },
+  }),
+  menu: (base) => ({
+    ...base,
+    borderRadius: '0.75rem',
+    overflow: 'hidden',
+    border: '1px solid rgba(162,173,26,0.2)',
+    boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
+    backgroundColor: dark ? '#1e1e1e' : '#fff',
+  }),
+  menuList: (base) => ({
+    ...base,
+    padding: 0,
+  }),
+  singleValue: (base) => ({
+    ...base,
+    color: dark ? '#e5e5e5' : '#333',
+  }),
+  placeholder: (base) => ({
+    ...base,
+    color: dark ? '#888' : '#999',
+  }),
+  input: (base) => ({
+    ...base,
+    color: dark ? '#e5e5e5' : '#333',
+  }),
+});
 
 export default function GTApprovalsApp() {
   const [state, setState] = useState(null);
@@ -84,13 +134,13 @@ export default function GTApprovalsApp() {
 
   const stateOptions = allRegions
     .filter(region => {
-      const isUS  = US_STATES.includes(region);
-      const isCA  = CANADA_PROVINCES.includes(region);
+      const isUS = US_STATES.includes(region);
+      const isCA = CANADA_PROVINCES.includes(region);
       const isIntl = !isUS && !isCA;
 
       return (
-        (regionFilter.us   && isUS)  ||
-        (regionFilter.ca   && isCA)  ||
+        (regionFilter.us && isUS) ||
+        (regionFilter.ca && isCA) ||
         (regionFilter.intl && isIntl)
       );
     })
@@ -114,8 +164,8 @@ export default function GTApprovalsApp() {
       selectLabel = "Select";
       break;
     case 1:
-      if (activeSet.has("us"))   selectLabel = "Select State";
-      if (activeSet.has("ca"))   selectLabel = "Select Province";
+      if (activeSet.has("us")) selectLabel = "Select State";
+      if (activeSet.has("ca")) selectLabel = "Select Province";
       if (activeSet.has("intl")) selectLabel = "Select Country";
       break;
     case 2:
@@ -153,8 +203,8 @@ export default function GTApprovalsApp() {
       if (isMobile || !e.currentTarget) return;
       const rect = e.currentTarget.getBoundingClientRect();
       if (!rect.width || !rect.height) return;
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-      const y = ((e.clientY - rect.top) / rect.height - 0.5) * -10;
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 8;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * -8;
       setter({ x, y });
     });
 
@@ -177,11 +227,11 @@ export default function GTApprovalsApp() {
 
   const handleTilt = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20; // max 10° tilt
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -20;
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 16;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * -16;
     setTilt({ x, y });
   };
-  
+
   const resetTilt = () => setTilt({ x: 0, y: 0 });
 
   const getFilteredLicenseOptions = () => {
@@ -250,26 +300,22 @@ export default function GTApprovalsApp() {
   };
 
   return (
-    <div className={`min-h-screen ${
-      darkMode
-        ? "bg-gray-900 text-gray-100"
-        : "bg-gradient-to-tr from-green-50 to-white text-gray-800"
-    } pt-24 py-6 px-4`}>
+    <div className={`min-h-screen font-sans transition-colors duration-300 ${darkMode
+        ? "bg-[#111111] text-gray-100"
+        : "bg-gradient-to-br from-gt-green-50 via-white to-gt-green-50 text-gt-gray"
+      } pt-24 py-6 px-4`}>
+      {/* ── Progress bar ────────────────────────────────────────── */}
       {showProgress && (
         <div className="fixed top-0 left-0 w-full z-[60]">
           <div
-            className="h-1 bg-green-500 transition-all duration-200"
+            className="h-1 bg-gt-green transition-all duration-200 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
       )}
-      <header
-    className={`fixed top-0 left-0 w-full z-50 ${
-      darkMode
-        ? "bg-gray-900"
-        : "bg-gradient-to-tr from-green-50 to-white"
-    }`}
-      >
+
+      {/* ── Header ──────────────────────────────────────────────── */}
+      <header className="glass-header fixed top-0 left-0 w-full z-50">
         <div className="max-w-5xl mx-auto flex items-center justify-between px-4 py-3">
           {/* Logo with 3‑D tilt */}
           <div
@@ -280,15 +326,15 @@ export default function GTApprovalsApp() {
             className="transition-transform duration-200 ease-out cursor-pointer"
           >
             <img
-              src="/image.png"
-              alt="GoodTherapy Approvals"
-              className="w-40 select-none"
+              src="/gt-logo.png"
+              alt="GoodTherapy"
+              className="h-8 select-none"
             />
           </div>
 
           {/* Dark‑mode toggle */}
           <div className="flex items-center space-x-2 select-none">
-            <Sun className="w-4 h-4 text-yellow-400 dark:text-gray-400" />
+            <Sun className="w-4 h-4 text-yellow-500" />
 
             {/* animated toggle */}
             <motion.button
@@ -297,7 +343,7 @@ export default function GTApprovalsApp() {
               className="cursor-pointer relative inline-block w-12 h-6 rounded-full focus:outline-none"
               initial={false}
               animate={{
-                backgroundColor: darkMode ? "#16a34a" : "#d1d5db",
+                backgroundColor: darkMode ? "#A2AD1A" : "#d1d5db",
               }}
               transition={{ duration: 0.25 }}
             >
@@ -309,31 +355,43 @@ export default function GTApprovalsApp() {
               />
             </motion.button>
 
-            <Moon className="w-4 h-4 text-gray-500 dark:text-yellow-300" />
+            <Moon className="w-4 h-4 text-gray-400 dark:text-yellow-300" />
           </div>
         </div>
       </header>
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="max-w-4xl mx-auto space-y-10"
+        className="max-w-4xl mx-auto space-y-8"
       >
-        <div className="max-w-4xl mx-auto space-y-10">
-          {/* Dropdown Section */}
+        {/* ── Page Title ───────────────────────────────────────── */}
+        <motion.div variants={itemVariants} className="text-center space-y-2">
+          <h1 className={`text-3xl md:text-4xl font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gt-gray'}`}>
+            License Verification
+          </h1>
+          <p className={`text-sm md:text-base ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+            Search and verify therapist credentials across all 50 states
+          </p>
+        </motion.div>
+
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* ── Dropdown Section (License Search) ─────────────── */}
           <motion.div
             variants={itemVariants}
             onMouseMove={makeTiltHandler(setCardTilt1)}
             onMouseLeave={resetCardTilt(setCardTilt1)}
             style={{ transform: `perspective(800px) rotateX(${cardTilt1.y}deg) rotateY(${cardTilt1.x}deg)` }}
-            className="bg-white rounded-2xl shadow-lg dark:shadow-lg p-6 space-y-5 border border-green-100"
+            className={`glass-card rounded-2xl shadow-xl p-6 space-y-5 transition-transform duration-200 ${darkMode ? 'shadow-gt-green/5' : ''
+              }`}
           >
             {/* Region filter buttons */}
             <div className="flex flex-wrap gap-2 mb-4">
               {[
-                { key: "us",  label: "United States" },
-                { key: "ca",  label: "Canada" },
-                { key: "intl",label: "International" }
+                { key: "us", label: "🇺🇸 United States" },
+                { key: "ca", label: "🇨🇦 Canada" },
+                { key: "intl", label: "🌐 International" }
               ].map(btn => (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -343,18 +401,22 @@ export default function GTApprovalsApp() {
                   onClick={() =>
                     setRegionFilter(prev => ({ ...prev, [btn.key]: !prev[btn.key] }))
                   }
-                  className={`cursor-pointer px-3 py-1 rounded-full font-semibold border-2
+                  className={`cursor-pointer px-4 py-1.5 rounded-full text-sm font-semibold border-2 transition-all duration-200
                     ${regionFilter[btn.key]
-                      ? "bg-green-600 text-white border-green-600"
-                      : "bg-white text-green-700 border-green-600 hover:bg-green-50"}
+                      ? "bg-gt-green text-white border-gt-green shadow-sm"
+                      : darkMode
+                        ? "bg-transparent text-gt-green-light border-gt-green/40 hover:bg-gt-green/10"
+                        : "bg-white text-gt-green-darker border-gt-green/30 hover:bg-gt-green-50"
+                    }
                   `}
                 >
                   {btn.label}
                 </motion.button>
               ))}
             </div>
+
             <div>
-              <label className="block mb-1 text-sm font-semibold text-gray-700">
+              <label className={`block mb-1.5 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={selectLabel}
@@ -375,15 +437,12 @@ export default function GTApprovalsApp() {
                   setLicense(null);
                 }}
                 placeholder={selectLabel}
-                className="text-black cursor-pointer"
-                styles={{
-                  control: (base) => ({ ...base, cursor: 'pointer' }),
-                  option:  (base) => ({ ...base, cursor: 'pointer' }),
-                }}
+                styles={selectStyles(darkMode)}
               />
             </div>
+
             <div>
-              <label className="block mb-1 text-sm font-semibold text-gray-700">
+              <label className={`block mb-1.5 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
                 Select License
               </label>
               <Select
@@ -391,19 +450,16 @@ export default function GTApprovalsApp() {
                 value={license}
                 onChange={setLicense}
                 placeholder="Start typing a license..."
-                className="text-black cursor-pointer"
-                styles={{
-                  control: (base) => ({ ...base, cursor: 'pointer' }),
-                  option:  (base) => ({ ...base, cursor: 'pointer' }),
-                }}
+                styles={selectStyles(darkMode)}
                 isDisabled={!state}
               />
             </div>
+
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={search}
-              className="cursor-pointer w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl font-semibold transition flex items-center justify-center gap-2"
+              className="cursor-pointer w-full bg-gt-green hover:bg-gt-green-dark text-white py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-md shadow-gt-green/20"
             >
               <Search className="w-5 h-5" />
               Search
@@ -418,58 +474,84 @@ export default function GTApprovalsApp() {
                   exit={{ opacity: 0 }}
                   className="mt-4 space-y-2"
                 >
-                  <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
-                  <div className="h-4 w-1/2 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                  <div className="h-4 w-3/4 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+                  <div className="h-4 w-1/2 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
                 </motion.div>
               )}
             </AnimatePresence>
 
             {result && (
               <motion.div
-                initial={{ opacity: 0, y: 5 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 border p-4 rounded-xl border-green-400 bg-white/90 backdrop-blur-md text-green-900"
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className={`mt-4 rounded-xl overflow-hidden ${darkMode
+                    ? 'bg-gt-green/10 border border-gt-green/20'
+                    : 'bg-gt-green-50 border border-gt-green/20'
+                  }`}
               >
-                <p>
-                  <strong>Requirements:</strong> {result.requirements}
-                </p>
-                <a
-                  href={result.verificationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-700 underline mt-2 block"
-                >
-                  View Verification Site
-                </a>
+                <div className="p-4 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 w-1 h-full min-h-[20px] bg-gt-green rounded-full flex-shrink-0" />
+                    <div className="space-y-2">
+                      <p className={`text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gt-gray'}`}>
+                        <span className="font-bold">Requirements: </span>
+                        {result.requirements}
+                      </p>
+                      <a
+                        href={result.verificationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-gt-green hover:text-gt-green-dark transition-colors"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        View Verification Site
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             )}
           </motion.div>
-          {/* Gradient shimmer divider */}
-          <motion.div
-            className="w-full h-8 bg-gradient-to-r from-transparent via-green-400/30 to-transparent dark:via-teal-500/40"
-            initial={{ backgroundPositionX: "0%" }}
-            animate={{ backgroundPositionX: "200%" }}
-            transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-            style={{ backgroundSize: "200% 100%" }}
-          />
-          {/* Narrative Editor */}
+
+          {/* ── Divider ────────────────────────────────────────── */}
+          <div className="flex items-center gap-4 px-4">
+            <div className={`flex-1 h-px ${darkMode ? 'bg-gray-700' : 'bg-gt-green/15'}`} />
+            <span className={`text-xs font-medium uppercase tracking-widest ${darkMode ? 'text-gray-500' : 'text-gt-green/60'}`}>
+              Tools
+            </span>
+            <div className={`flex-1 h-px ${darkMode ? 'bg-gray-700' : 'bg-gt-green/15'}`} />
+          </div>
+
+          {/* ── Narrative Editor ───────────────────────────────── */}
           <motion.div
             variants={itemVariants}
             onMouseMove={makeTiltHandler(setCardTilt2)}
             onMouseLeave={resetCardTilt(setCardTilt2)}
             style={{ transform: `perspective(800px) rotateX(${cardTilt2.y}deg) rotateY(${cardTilt2.x}deg)` }}
-            className="relative bg-white rounded-2xl shadow-lg dark:shadow-lg p-6 space-y-5 border border-green-100"
+            className={`relative glass-card rounded-2xl shadow-xl p-6 space-y-5 transition-transform duration-200 ${darkMode ? 'shadow-gt-green/5' : ''
+              }`}
           >
             {showProgress && (
-              <div className="absolute inset-0 bg-white bg-opacity-60 dark:bg-gray-900 dark:bg-opacity-60 flex items-center justify-center rounded-2xl z-20">
-                <Loader2 className="w-6 h-6 animate-spin text-green-600" />
-                <span className="ml-2 text-green-600 font-medium">Cleaning…</span>
+              <div className="absolute inset-0 bg-white/60 dark:bg-[#111]/60 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20">
+                <Loader2 className="w-6 h-6 animate-spin text-gt-green" />
+                <span className="ml-2 text-gt-green font-medium">Cleaning…</span>
               </div>
             )}
-            <h2 className="text-2xl font-semibold text-green-800">Narrative Editor</h2>
+
+            <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gt-gray'}`}>
+              ✨ Narrative Editor
+            </h2>
+            <p className={`text-sm -mt-3 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+              Paste your narrative and let AI clean it up for you
+            </p>
+
             <textarea
               rows={5}
-              className="w-full p-3 bg-white text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+              className={`w-full p-4 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-gt-green/40 focus:border-gt-green transition-all duration-200 resize-none text-sm leading-relaxed ${darkMode
+                  ? 'bg-[#1e1e1e] text-gray-100 border-gray-700 placeholder:text-gray-500'
+                  : 'bg-white text-gt-gray border-gray-200 placeholder:text-gray-400'
+                }`}
               placeholder="Paste your narrative here..."
               value={narrative}
               onChange={(e) => setNarrative(e.target.value)}
@@ -485,29 +567,36 @@ export default function GTApprovalsApp() {
                 }
               }}
             />
-            <div className="flex items-center gap-4">
+
+            <div className="flex items-center gap-3">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={handleNarrative}
-                className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl font-medium transition flex items-center gap-2"
+                className="cursor-pointer bg-gt-green hover:bg-gt-green-dark text-white px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 shadow-md shadow-gt-green/20"
               >
                 <Wand2 className="w-5 h-5" />
                 Clean with AI
               </motion.button>
               {narrative && (
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setNarrative("")}
-                  className="cursor-pointer bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl font-medium transition flex items-center gap-2"
+                  className={`cursor-pointer px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 border-2 ${darkMode
+                      ? 'border-gray-600 text-gray-300 hover:bg-gray-800'
+                      : 'border-gray-300 text-gt-gray hover:bg-gray-50'
+                    }`}
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4" />
                   Clear
                 </motion.button>
               )}
             </div>
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 italic">
+
+            <p className={`mt-1 text-xs italic ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
               ⌘/Ctrl + Enter to Clean · Esc to Clear
             </p>
 
@@ -520,18 +609,22 @@ export default function GTApprovalsApp() {
                   exit={{ opacity: 0 }}
                   className="mt-4 space-y-2"
                 >
-                  <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
-                  <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
-                  <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+                  <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+                  <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+                  <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
                 </motion.div>
               )}
             </AnimatePresence>
 
-              {editedNarrative && (
+            {editedNarrative && (
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 1 }}
-                className="border border-green-300 rounded-xl p-4 pr-28 bg-white text-black whitespace-pre-wrap relative"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className={`relative rounded-xl p-4 pr-24 whitespace-pre-wrap text-sm leading-relaxed ${darkMode
+                    ? 'bg-gt-green/10 border border-gt-green/20 text-gray-100'
+                    : 'bg-gt-green-50 border border-gt-green/20 text-gt-gray'
+                  }`}
               >
                 <motion.button
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -544,23 +637,19 @@ export default function GTApprovalsApp() {
                       setTimeout(() => setCopied(false), 2000);
                     });
                   }}
-                  className="cursor-pointer absolute top-3 right-3 bg-green-600 hover:bg-green-700 text-white p-2 rounded-lg text-sm flex items-center gap-1 shadow-md"
+                  className="cursor-pointer absolute top-3 right-3 bg-gt-green hover:bg-gt-green-dark text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 shadow-md transition-all duration-200"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2M16 8h2a2 2 0 012 2v8a2 2 0 01-2 2h-8a2 2 0 01-2-2v-2"
-                    />
-                  </svg>
-                  {copied ? "Copied" : "Copy"}
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Copied
+                    </>
+                  ) : (
+                    <>
+                      <ClipboardCopy className="w-4 h-4" />
+                      Copy
+                    </>
+                  )}
                 </motion.button>
                 {editedNarrative}
               </motion.div>
@@ -568,6 +657,11 @@ export default function GTApprovalsApp() {
           </motion.div>
         </div>
       </motion.div>
+
+      {/* ── Footer ──────────────────────────────────────────────── */}
+      <footer className={`mt-16 pb-6 text-center text-xs ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}>
+        © {new Date().getFullYear()} GoodTherapy · Approvals Tool
+      </footer>
     </div>
   );
 }

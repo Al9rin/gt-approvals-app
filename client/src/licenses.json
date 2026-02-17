@@ -535,26 +535,25 @@
     "requirements": "Psychoanalysts can currently practice without a license; licensing board has not yet been established. This is subject to change.",
     "verificationUrl": "https://newjersey.mylicense.com/verification/Search.aspx"
   },
-
   "New Mexico_LPC": {
-    "requirements": "N/A",
-    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+    "requirements": "Select Board of Counselling and Therapy Practice under Profession to verify this license.",
+    "verificationUrl": "https://nmrldlpi.my.site.com/bcd/s/rld-public-search"
   },
   "New Mexico_LMFT": {
-    "requirements": "N/A",
-    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+    "requirements": "Select Board of Counselling and Therapy Practice under Profession to verify this license.",
+    "verificationUrl": "https://nmrldlpi.my.site.com/bcd/s/rld-public-search"
   },
   "New Mexico_LCSW": {
-    "requirements": "N/A",
-    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+    "requirements": "Select the Board of Social Work Examiners under Profession to verify this license.",
+    "verificationUrl": "https://nmrldlpi.my.site.com/bcd/s/rld-public-search"
   },
   "New Mexico_LMSW": {
-    "requirements": "LMSWs must be under supervision.",
-    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+    "requirements": "LMSWs must be under supervision. Select the Board of Social Work Examiners under Profession to verify this license.",
+    "verificationUrl": "https://nmrldlpi.my.site.com/bcd/s/rld-public-search"
   },
   "New Mexico_Psychologist": {
-    "requirements": "N/A",
-    "verificationUrl": "https://nmrldlpi.force.com/bcd/s/public-search-license?division=BCD&language=en_US"
+    "requirements": "Select New Mexico Board of Psychologist Examiners under Profession to verify this license.",
+    "verificationUrl": "https://nmrldlpi.my.site.com/bcd/s/rld-public-search"
   },
   "New York_LPC": {
     "requirements": "N/A",
@@ -1147,7 +1146,7 @@
   "Manitoba_SocialWorker": {
     "requirements": "Social Workers in Manitoba can be verified via MCSW register.",
     "verificationUrl": "https://mcsw.ca.thentiacloud.net/webs/mcsw/register/"
- },
+  },
   "Manitoba_Counsellor": {
     "requirements": "Canadian Certified Counsellors in Manitoba can be verified via CCPA.",
     "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
@@ -1159,7 +1158,6 @@
   "New Foundland_Counsellor": {
     "requirements": "Canadian Certified Counsellors in Newfoundland and Labrador can be verified via CCPA.",
     "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
-
   },
   "New Brunswick_Psychologist": {
     "requirements": "Psychologists in New Brunswick can be verified via CPNB.",
@@ -1212,7 +1210,7 @@
   "Saskatchewan_Psychologist": {
     "requirements": "Psychologists in Saskatchewan can be verified via SKCP.",
     "verificationUrl": "http://www.skcp.ca/?page_id=39"
- },
+  },
   "Quebec_Counsellor": {
     "requirements": "Canadian Certified Counsellors in Quebec can be verified via CCPA.",
     "verificationUrl": "https://www.ccpa-accp.ca/find-a-canadian-certified-counsellor/"
@@ -1298,15 +1296,15 @@
     "verificationUrl": "https://www.europsy.eu/national-requirements-poland"
   },
   "Dubai_International": {
-  "requirements": "Licensure is managed via the CDA. Note: laws differ between general areas and free zones like JLT, which is a free zone. It may be unclear where individuals are licensed to practice; verification of credentials is needed.",
-  "verificationUrl": "https://www.cda.gov.ae/en/SocialRegulatoryAndLicensing/LicensingProfessionals/Pages/default.aspx"
+    "requirements": "Licensure is managed via the CDA. Note: laws differ between general areas and free zones like JLT, which is a free zone. It may be unclear where individuals are licensed to practice; verification of credentials is needed.",
+    "verificationUrl": "https://www.cda.gov.ae/en/SocialRegulatoryAndLicensing/LicensingProfessionals/Pages/default.aspx"
   },
   "DubaiJLT_International": {
-  "requirements": "Dubai JLT is a free zone and may not follow the same licensing structure as the rest of Dubai. It is unclear how licensing is handled; therefore, credentials must be verified directly with the applicant.",
-  "verificationUrl": "N/A"
+    "requirements": "Dubai JLT is a free zone and may not follow the same licensing structure as the rest of Dubai. It is unclear how licensing is handled; therefore, credentials must be verified directly with the applicant.",
+    "verificationUrl": "N/A"
   },
   "Luxembourg_International": {
-  "requirements": "Licenses in Luxembourg are issued by the Ministry of Health and Social Security (Ministère de la Santé et de la Sécurité sociale).",
-  "verificationUrl": "https://www.slp.lu/en/find-a-psy/"
+    "requirements": "Licenses in Luxembourg are issued by the Ministry of Health and Social Security (Ministère de la Santé et de la Sécurité sociale).",
+    "verificationUrl": "https://www.slp.lu/en/find-a-psy/"
   }
 }
