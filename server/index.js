@@ -180,29 +180,51 @@ const acronymExpansionRules = [
 const unsupportedModalityRules = [
   {
     supportPattern: /\b(exposure and response prevention|ERP)\b/i,
+    clausePatterns: [
+      /\s*,?\s*whether you['’]re looking for[^.?!;]*?(?:exposure and response prevention\s*\(ERP\)|ERP)[^.?!;]*/gi,
+      /\s*,?\s*if you['’]re looking for[^.?!;]*?(?:exposure and response prevention\s*\(ERP\)|ERP)[^.?!;]*/gi,
+    ],
     removalPatterns: [
       /\s*,?\s*including exposure and response prevention\s*\(ERP\)\s+therapy/gi,
       /\s*,?\s*including ERP therapy/gi,
       /\s*,?\s*as well as exposure and response prevention\s*\(ERP\)\s+therapy/gi,
       /\s*,?\s*as well as ERP therapy/gi,
+      /\bexposure and response prevention\s*\(ERP\)\s+therapy\b/gi,
+      /\bERP therapy\b/gi,
+      /\bexposure and response prevention\s*\(ERP\)\b/gi,
+      /\bERP\b/gi,
     ],
   },
   {
     supportPattern: /\b(eye movement desensitization and reprocessing|EMDR)\b/i,
+    clausePatterns: [
+      /\s*,?\s*whether you['’]re looking for[^.?!;]*?(?:eye movement desensitization and reprocessing\s*\(EMDR\)|EMDR)[^.?!;]*/gi,
+      /\s*,?\s*if you['’]re looking for[^.?!;]*?(?:eye movement desensitization and reprocessing\s*\(EMDR\)|EMDR)[^.?!;]*/gi,
+    ],
     removalPatterns: [
       /\s*,?\s*including eye movement desensitization and reprocessing\s*\(EMDR\)\s+therapy/gi,
       /\s*,?\s*including EMDR therapy/gi,
       /\s*,?\s*as well as eye movement desensitization and reprocessing\s*\(EMDR\)\s+therapy/gi,
       /\s*,?\s*as well as EMDR therapy/gi,
+      /\beye movement desensitization and reprocessing\s*\(EMDR\)\s+therapy\b/gi,
+      /\bEMDR therapy\b/gi,
+      /\beye movement desensitization and reprocessing\s*\(EMDR\)\b/gi,
+      /\bEMDR\b/gi,
     ],
   },
   {
     supportPattern: /\b(cognitive behavioral therapy|CBT)\b/i,
+    clausePatterns: [
+      /\s*,?\s*whether you['’]re looking for[^.?!;]*?(?:cognitive behavioral therapy\s*\(CBT\)|CBT)[^.?!;]*/gi,
+      /\s*,?\s*if you['’]re looking for[^.?!;]*?(?:cognitive behavioral therapy\s*\(CBT\)|CBT)[^.?!;]*/gi,
+    ],
     removalPatterns: [
       /\s*,?\s*including cognitive behavioral therapy\s*\(CBT\)/gi,
       /\s*,?\s*including CBT/gi,
       /\s*,?\s*as well as cognitive behavioral therapy\s*\(CBT\)/gi,
       /\s*,?\s*as well as CBT/gi,
+      /\bcognitive behavioral therapy\s*\(CBT\)\b/gi,
+      /\bCBT\b/gi,
     ],
   },
 ];
@@ -408,6 +430,10 @@ function stripUnsupportedModalities(text, narrative) {
       continue;
     }
 
+    for (const pattern of rule.clausePatterns || []) {
+      sanitized = sanitized.replace(pattern, "");
+    }
+
     for (const pattern of rule.removalPatterns) {
       sanitized = sanitized.replace(pattern, "");
     }
@@ -422,6 +448,10 @@ function cleanupNarrativeText(text) {
     .replace(/,\s*,/g, ", ")
     .replace(/\s{2,}/g, " ")
     .replace(/\s+\./g, ".")
+    .replace(/\s+([?!;:])/g, "$1")
+    .replace(/,\s*(?=\.|$)/g, "")
+    .replace(/\b(?:or|and)\s*(?=\.|,|$)/gi, "")
+    .replace(/,\s*(and|or)\s*,/gi, ", ")
     .replace(/, and\b/g, " and")
     .trim();
 }
