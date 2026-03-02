@@ -229,6 +229,70 @@ const unsupportedModalityRules = [
   },
 ];
 
+const supportedServicePhraseRules = [
+  {
+    phrases: [
+      /\banxiety therapy\b/gi,
+      /\banxiety counseling\b/gi,
+    ],
+    supportPattern: /\b(anxiety|anxious|panic)\b/i,
+  },
+  {
+    phrases: [
+      /\bobsessive-compulsive challenges\s*\(OCD\)\s+therapy\b/gi,
+      /\bobsessive-compulsive therapy\b/gi,
+      /\bOCD therapy\b/gi,
+    ],
+    supportPattern: /\b(ocd|obsessive compulsive)\b/i,
+  },
+  {
+    phrases: [
+      /\bcouple therapy\b/gi,
+      /\bcouples therapy\b/gi,
+      /\bcouples counseling\b/gi,
+      /\brelationship counseling\b/gi,
+    ],
+    supportPattern: /\b(couples?|relationship|marriage)\b/i,
+  },
+  {
+    phrases: [
+      /\bfamily therapy\b/gi,
+      /\bfamily counseling\b/gi,
+      /\bfamily counselling\b/gi,
+      /\bfamily therapist\b/gi,
+      /\bfamily counseling services\b/gi,
+    ],
+    supportPattern: /\b(family|parenting)\b/i,
+  },
+  {
+    phrases: [
+      /\bonline therapy\b/gi,
+      /\bvirtual therapy\b/gi,
+    ],
+    supportPattern: /\b(online|virtual|telehealth)\b/i,
+  },
+  {
+    phrases: [
+      /\btrauma therapy\b/gi,
+    ],
+    supportPattern: /\b(trauma|posttraumatic stress|ptsd)\b/i,
+  },
+  {
+    phrases: [
+      /\bgrief counseling\b/gi,
+      /\bgrief therapy\b/gi,
+    ],
+    supportPattern: /\b(grief|loss|bereave(?:d|ment)?)\b/i,
+  },
+  {
+    phrases: [
+      /\bstress counseling\b/gi,
+      /\bburnout therapy\b/gi,
+    ],
+    supportPattern: /\b(stress|burnout)\b/i,
+  },
+];
+
 function loadSemrushSnapshot() {
   if (!existsSync(SEMRUSH_SNAPSHOT_PATH)) {
     return {
@@ -304,11 +368,12 @@ Follow these instructions exactly:
    - Use the Oxford comma.
    - If degrees and licenses are listed together, put degrees first.
 8. Apply light SEO enhancement only when it can be done naturally and truthfully:
-   - Work in no more than 2 to 4 relevant keyword phrases.
-   - Only use keywords that are supported by the original narrative or the provided context.
+   - Work in 1 to 2 relevant keyword phrases when there is a clearly safe fit.
+   - Only use keyword phrases that appear in the provided allowed list and are supported by the original narrative or the provided context.
    - If there is no clearly safe keyword fit, do not force SEO at all.
-   - Favor clear service-intent phrasing such as therapy, therapist, counseling, online therapy, anxiety therapy, trauma therapy, EMDR therapy, couples therapy, couples counseling, relationship counseling, and family therapy when relevant.
+   - Prefer simple service-intent phrasing such as anxiety therapy, OCD therapy, trauma therapy, online therapy, family therapy, or family counseling when those phrases are allowed.
    - If location or license context is provided, you may reinforce it once in a natural way, but do not force awkward local SEO phrases like "near me".
+   - Never add a new sentence or list of services just to fit SEO.
    - Never keyword stuff, repeat phrases unnaturally, or flatten the therapist's personality.
 9. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
 
@@ -442,6 +507,22 @@ function stripUnsupportedModalities(text, narrative) {
   return sanitized;
 }
 
+function stripUnsupportedServicePhrases(text, narrative) {
+  let sanitized = text;
+
+  for (const rule of supportedServicePhraseRules) {
+    if (rule.supportPattern.test(narrative)) {
+      continue;
+    }
+
+    for (const pattern of rule.phrases) {
+      sanitized = sanitized.replace(pattern, "");
+    }
+  }
+
+  return sanitized;
+}
+
 function cleanupNarrativeText(text) {
   return text
     .replace(/\s+,/g, ",")
@@ -458,6 +539,7 @@ function cleanupNarrativeText(text) {
 
 function enforceEditorialTerms(text, narrative) {
   let sanitized = stripUnsupportedModalities(text, narrative);
+  sanitized = stripUnsupportedServicePhrases(sanitized, narrative);
 
   for (const rule of acronymExpansionRules) {
     if (rule.supportPattern.test(narrative) || rule.supportPattern.test(sanitized)) {
@@ -788,7 +870,7 @@ async function buildUserPrompt({ narrative, state, license }) {
   const contextLines = [
     state ? `Selected location context: ${state}` : null,
     license ? `Selected license context: ${license}` : null,
-    seoHints.length > 0 ? `SEO keyword themes: ${seoHints.join(", ")}` : null,
+    seoHints.length > 0 ? `Allowed SEO phrases: ${seoHints.join(", ")}` : null,
   ].filter(Boolean);
 
   return [
