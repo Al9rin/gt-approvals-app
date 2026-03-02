@@ -129,6 +129,84 @@ const blockedKeywordFragments = [
   "dsm",
 ];
 
+const acronymExpansionRules = [
+  {
+    acronym: "OCD",
+    supportPattern: /\b(obsessive-compulsive|OCD)\b/i,
+    expansion: "obsessive-compulsive challenges (OCD)",
+    expandedPattern: /\bobsessive[- ]compulsive(?:\s+(?:disorder|condition|issue|diagnosis|challenge|challenges))?\s*\(OCD\)/i,
+    disorderPattern: /\bobsessive[- ]compulsive disorder\s*\(OCD\)/gi,
+  },
+  {
+    acronym: "PTSD",
+    supportPattern: /\b(posttraumatic stress|post-traumatic stress|PTSD)\b/i,
+    expansion: "posttraumatic stress (PTSD)",
+    expandedPattern: /\bpost[- ]?traumatic stress(?:\s+(?:disorder|condition|issue|diagnosis|challenge|challenges))?\s*\(PTSD\)/i,
+    disorderPattern: /\bpost[- ]?traumatic stress disorder\s*\(PTSD\)/gi,
+  },
+  {
+    acronym: "ADHD",
+    supportPattern: /\b(attention[- ]deficit hyperactivity|ADHD)\b/i,
+    expansion: "attention-deficit hyperactivity (ADHD)",
+    expandedPattern: /\battention[- ]deficit hyperactivity(?:\s+(?:disorder|condition|issue|diagnosis|challenge|challenges))?\s*\(ADHD\)/i,
+    disorderPattern: /\battention[- ]deficit hyperactivity disorder\s*\(ADHD\)/gi,
+  },
+  {
+    acronym: "CBT",
+    supportPattern: /\b(cognitive behavioral therapy|CBT)\b/i,
+    expansion: "cognitive behavioral therapy (CBT)",
+    expandedPattern: /\bcognitive behavioral therapy\s*\(CBT\)/i,
+  },
+  {
+    acronym: "DBT",
+    supportPattern: /\b(dialectical behavior therapy|DBT)\b/i,
+    expansion: "dialectical behavior therapy (DBT)",
+    expandedPattern: /\bdialectical behavior therapy\s*\(DBT\)/i,
+  },
+  {
+    acronym: "EMDR",
+    supportPattern: /\b(eye movement desensitization and reprocessing|EMDR)\b/i,
+    expansion: "eye movement desensitization and reprocessing (EMDR)",
+    expandedPattern: /\beye movement desensitization and reprocessing\s*\(EMDR\)/i,
+  },
+  {
+    acronym: "ERP",
+    supportPattern: /\b(exposure and response prevention|ERP)\b/i,
+    expansion: "exposure and response prevention (ERP)",
+    expandedPattern: /\bexposure and response prevention\s*\(ERP\)/i,
+  },
+];
+
+const unsupportedModalityRules = [
+  {
+    supportPattern: /\b(exposure and response prevention|ERP)\b/i,
+    removalPatterns: [
+      /\s*,?\s*including exposure and response prevention\s*\(ERP\)\s+therapy/gi,
+      /\s*,?\s*including ERP therapy/gi,
+      /\s*,?\s*as well as exposure and response prevention\s*\(ERP\)\s+therapy/gi,
+      /\s*,?\s*as well as ERP therapy/gi,
+    ],
+  },
+  {
+    supportPattern: /\b(eye movement desensitization and reprocessing|EMDR)\b/i,
+    removalPatterns: [
+      /\s*,?\s*including eye movement desensitization and reprocessing\s*\(EMDR\)\s+therapy/gi,
+      /\s*,?\s*including EMDR therapy/gi,
+      /\s*,?\s*as well as eye movement desensitization and reprocessing\s*\(EMDR\)\s+therapy/gi,
+      /\s*,?\s*as well as EMDR therapy/gi,
+    ],
+  },
+  {
+    supportPattern: /\b(cognitive behavioral therapy|CBT)\b/i,
+    removalPatterns: [
+      /\s*,?\s*including cognitive behavioral therapy\s*\(CBT\)/gi,
+      /\s*,?\s*including CBT/gi,
+      /\s*,?\s*as well as cognitive behavioral therapy\s*\(CBT\)/gi,
+      /\s*,?\s*as well as CBT/gi,
+    ],
+  },
+];
+
 function loadSemrushSnapshot() {
   if (!existsSync(SEMRUSH_SNAPSHOT_PATH)) {
     return {
@@ -195,6 +273,7 @@ Follow these instructions exactly:
 6. Never add an explanatory sentence just to fit SEO. If a keyword would require new claims or a new concept, skip it.
 7. Apply GoodTherapy editorial rules, including:
    - Expand all acronyms on first use with correct capitalization and terminology.
+   - For example: obsessive-compulsive challenges (OCD), posttraumatic stress (PTSD), attention-deficit hyperactivity (ADHD), cognitive behavioral therapy (CBT), exposure and response prevention (ERP), and eye movement desensitization and reprocessing (EMDR).
    - Do not include the word "disorder" as part of expanded mental health terms.
    - Replace unnecessary uses of "disorder" with better alternatives such as issue, condition, diagnosis, or challenge.
    - Use people-first language unless identity-first language is preferred by that community.
@@ -302,6 +381,66 @@ function isNarrativeSupportedKeyword(keyword, { narrative, state, license }) {
   }
 
   return supportPattern.test(narrative);
+}
+
+function ensureFirstAcronymExpansion(text, rule) {
+  if (!rule.supportPattern.test(text)) {
+    return text;
+  }
+
+  if (rule.disorderPattern) {
+    text = text.replace(rule.disorderPattern, rule.expansion);
+  }
+
+  if (rule.expandedPattern.test(text)) {
+    return text.replace(rule.expandedPattern, rule.expansion);
+  }
+
+  const acronymPattern = new RegExp(`\\b${rule.acronym}\\b`);
+  return text.replace(acronymPattern, rule.expansion);
+}
+
+function stripUnsupportedModalities(text, narrative) {
+  let sanitized = text;
+
+  for (const rule of unsupportedModalityRules) {
+    if (rule.supportPattern.test(narrative)) {
+      continue;
+    }
+
+    for (const pattern of rule.removalPatterns) {
+      sanitized = sanitized.replace(pattern, "");
+    }
+  }
+
+  return sanitized;
+}
+
+function cleanupNarrativeText(text) {
+  return text
+    .replace(/\s+,/g, ",")
+    .replace(/,\s*,/g, ", ")
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+\./g, ".")
+    .replace(/, and\b/g, " and")
+    .trim();
+}
+
+function enforceEditorialTerms(text, narrative) {
+  let sanitized = stripUnsupportedModalities(text, narrative);
+
+  for (const rule of acronymExpansionRules) {
+    if (rule.supportPattern.test(narrative) || rule.supportPattern.test(sanitized)) {
+      sanitized = ensureFirstAcronymExpansion(sanitized, rule);
+    }
+  }
+
+  sanitized = sanitized
+    .replace(/\bobsessive[- ]compulsive disorder\b/gi, "obsessive-compulsive challenges")
+    .replace(/\bpost[- ]?traumatic stress disorder\b/gi, "posttraumatic stress")
+    .replace(/\battention[- ]deficit hyperactivity disorder\b/gi, "attention-deficit hyperactivity");
+
+  return cleanupNarrativeText(sanitized);
 }
 
 function getAllowedOrigins() {
@@ -760,7 +899,7 @@ app.post("/api/clean-narrative", requireAccessToken, async (req, res) => {
       return res.status(502).json({ error: "The AI service returned an empty response." });
     }
 
-    return res.json({ cleaned });
+    return res.json({ cleaned: enforceEditorialTerms(cleaned, trimmedNarrative) });
   } catch (err) {
     const errorMessage = err.name === "AbortError"
       ? "OpenAI request timed out."
