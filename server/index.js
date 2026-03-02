@@ -40,7 +40,6 @@ const semrushInformedKeywordGroups = [
   "online therapy",
   "anxiety therapy",
   "trauma therapy",
-  "EMDR therapy",
   "couples therapy",
   "couples counseling",
   "relationship counseling",
@@ -54,7 +53,7 @@ const keywordRules = [
   },
   {
     pattern: /\b(trauma|posttraumatic stress|ptsd|emdr)\b/i,
-    suggestions: ["trauma therapy", "EMDR therapy"],
+    suggestions: ["trauma therapy"],
   },
   {
     pattern: /\bcouples?|relationship|marriage\b/i,
@@ -91,6 +90,10 @@ const keywordRules = [
   {
     pattern: /\b(adhd|attention deficit)\b/i,
     suggestions: ["adhd therapy"],
+  },
+  {
+    pattern: /\bemdr\b/i,
+    suggestions: ["EMDR therapy"],
   },
   {
     pattern: /\b(self-esteem|confidence)\b/i,
@@ -188,7 +191,9 @@ Follow these instructions exactly:
 2. Preserve the therapist's original voice, warmth, rhythm, and point of view.
 3. Keep the writing casual, natural, and human. Do not make it sound corporate, generic, stiff, or overly polished.
 4. Do NOT change the meaning, add unsupported claims, invent specialties, or rewrite the structure unless clarity requires it.
-5. Apply GoodTherapy editorial rules, including:
+5. Never introduce a new modality, specialty, diagnosis, acronym, or treatment approach unless it is explicitly supported by the original narrative or selected context.
+6. Never add an explanatory sentence just to fit SEO. If a keyword would require new claims or a new concept, skip it.
+7. Apply GoodTherapy editorial rules, including:
    - Expand all acronyms on first use with correct capitalization and terminology.
    - Do not include the word "disorder" as part of expanded mental health terms.
    - Replace unnecessary uses of "disorder" with better alternatives such as issue, condition, diagnosis, or challenge.
@@ -197,13 +202,14 @@ Follow these instructions exactly:
    - Avoid stigmatizing, cold, or clinical-sounding labels.
    - Use the Oxford comma.
    - If degrees and licenses are listed together, put degrees first.
-6. Apply light SEO enhancement only when it can be done naturally and truthfully:
+8. Apply light SEO enhancement only when it can be done naturally and truthfully:
    - Work in no more than 2 to 4 relevant keyword phrases.
    - Only use keywords that are supported by the original narrative or the provided context.
+   - If there is no clearly safe keyword fit, do not force SEO at all.
    - Favor clear service-intent phrasing such as therapy, therapist, counseling, online therapy, anxiety therapy, trauma therapy, EMDR therapy, couples therapy, couples counseling, relationship counseling, and family therapy when relevant.
    - If location or license context is provided, you may reinforce it once in a natural way, but do not force awkward local SEO phrases like "near me".
    - Never keyword stuff, repeat phrases unnaturally, or flatten the therapist's personality.
-7. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
+9. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
 
 Return ONLY the final revised narrative. No explanation, notes, labels, or bullets.
 `;
@@ -213,6 +219,89 @@ function parseCsv(value) {
     .split(",")
     .map((entry) => entry.trim())
     .filter(Boolean);
+}
+
+function getKeywordSupportPattern(keyword) {
+  const normalizedKeyword = normalizeKeyword(keyword);
+
+  if (/\bonline therapy\b/.test(normalizedKeyword)) {
+    return /\b(online|virtual|telehealth)\b/i;
+  }
+
+  if (/\banxiety\b/.test(normalizedKeyword)) {
+    return /\b(anxiety|anxious|panic)\b/i;
+  }
+
+  if (/\btrauma\b/.test(normalizedKeyword)) {
+    return /\b(trauma|posttraumatic stress|ptsd)\b/i;
+  }
+
+  if (/\bemdr\b/.test(normalizedKeyword)) {
+    return /\bemdr\b/i;
+  }
+
+  if (/\b(couples|relationship|marriage)\b/.test(normalizedKeyword)) {
+    return /\b(couples?|relationship|marriage)\b/i;
+  }
+
+  if (/\bfamily\b/.test(normalizedKeyword)) {
+    return /\b(family|parenting)\b/i;
+  }
+
+  if (/\bdepression\b/.test(normalizedKeyword)) {
+    return /\b(depression|depressed)\b/i;
+  }
+
+  if (/\b(teen|child|adolescent)\b/.test(normalizedKeyword)) {
+    return /\b(teen|adolescent|child|children)\b/i;
+  }
+
+  if (/\b(grief|loss|bereave)\b/.test(normalizedKeyword)) {
+    return /\b(grief|loss|bereave(?:d|ment)?)\b/i;
+  }
+
+  if (/\b(stress|burnout)\b/.test(normalizedKeyword)) {
+    return /\b(stress|burnout)\b/i;
+  }
+
+  if (/\bocd\b/.test(normalizedKeyword)) {
+    return /\b(ocd|obsessive compulsive)\b/i;
+  }
+
+  if (/\badhd\b/.test(normalizedKeyword)) {
+    return /\b(adhd|attention deficit)\b/i;
+  }
+
+  if (/\b(self-esteem|confidence)\b/.test(normalizedKeyword)) {
+    return /\b(self-esteem|confidence)\b/i;
+  }
+
+  if (/\blife transitions?\b/.test(normalizedKeyword)) {
+    return /\b(life transition|life transitions|major change|career change)\b/i;
+  }
+
+  return null;
+}
+
+function isNarrativeSupportedKeyword(keyword, { narrative, state, license }) {
+  const supportPattern = getKeywordSupportPattern(keyword);
+
+  if (!supportPattern) {
+    if (
+      state
+      && (normalizeKeyword(keyword).includes(state.toLowerCase()) || normalizeKeyword(keyword) === `therapy in ${state.toLowerCase()}`)
+    ) {
+      return true;
+    }
+
+    if (license && normalizeKeyword(keyword).includes(license.toLowerCase())) {
+      return true;
+    }
+
+    return /\b(therapy|therapist|counseling|counselling)\b/i.test(keyword);
+  }
+
+  return supportPattern.test(narrative);
 }
 
 function getAllowedOrigins() {
@@ -274,7 +363,9 @@ function buildFallbackSeoHints({ narrative, state, license }) {
   const keywordSet = new Set(semrushInformedKeywordGroups);
   const customKeywords = parseCsv(process.env.SEO_KEYWORDS);
 
-  customKeywords.forEach((keyword) => keywordSet.add(keyword));
+  customKeywords
+    .filter((keyword) => isNarrativeSupportedKeyword(keyword, { narrative, state, license }))
+    .forEach((keyword) => keywordSet.add(keyword));
 
   for (const rule of keywordRules) {
     if (rule.pattern.test(narrative)) {
@@ -291,7 +382,9 @@ function buildFallbackSeoHints({ narrative, state, license }) {
     keywordSet.add(license);
   }
 
-  return Array.from(keywordSet).slice(0, 16);
+  return Array.from(keywordSet)
+    .filter((keyword) => isNarrativeSupportedKeyword(keyword, { narrative, state, license }))
+    .slice(0, 16);
 }
 
 function normalizeKeyword(value) {
@@ -306,8 +399,6 @@ function buildSeedPhrases({ narrative }) {
       rule.suggestions.forEach((keyword) => seedSet.add(keyword));
     }
   }
-
-  parseCsv(process.env.SEO_KEYWORDS).forEach((keyword) => seedSet.add(keyword));
 
   if (seedSet.size === 0) {
     ["therapy", "therapist", "counseling"].forEach((keyword) => seedSet.add(keyword));
@@ -508,6 +599,7 @@ async function buildSeoHints({ narrative, state, license }) {
       seedPhrase: seedPhrases[index],
     })))
     .filter((entry) => isRelevantSeoKeyword(entry.keyword))
+    .filter((entry) => isNarrativeSupportedKeyword(entry.keyword, { narrative, state, license }))
     .map((entry) => ({
       keyword: entry.keyword,
       score: scoreSeoKeyword(entry, {
