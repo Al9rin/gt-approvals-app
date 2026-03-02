@@ -14,7 +14,6 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-5.2";
-const APP_ACCESS_TOKEN = process.env.APP_ACCESS_TOKEN || "";
 const RATE_LIMIT_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS || 60_000);
 const RATE_LIMIT_MAX = Number(process.env.RATE_LIMIT_MAX || 20);
 const MAX_NARRATIVE_CHARS = Number(process.env.MAX_NARRATIVE_CHARS || 6000);
@@ -623,19 +622,6 @@ function rateLimit(req, res, next) {
   return next();
 }
 
-function requireAccessToken(req, res, next) {
-  if (!APP_ACCESS_TOKEN) {
-    return next();
-  }
-
-  const providedToken = req.header("x-app-access-token");
-  if (!providedToken || providedToken !== APP_ACCESS_TOKEN) {
-    return res.status(401).json({ error: "A valid app access code is required." });
-  }
-
-  return next();
-}
-
 function buildFallbackSeoHints({ narrative, state, license }) {
   const keywordSet = new Set(semrushInformedKeywordGroups);
   const customKeywords = parseCsv(process.env.SEO_KEYWORDS);
@@ -968,13 +954,13 @@ app.use(
       return callback(new Error("Origin not allowed"));
     },
     methods: ["POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "X-App-Access-Token"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 app.use(express.json({ limit: "24kb" }));
 app.use(rateLimit);
 
-app.post("/api/clean-narrative", requireAccessToken, async (req, res) => {
+app.post("/api/clean-narrative", async (req, res) => {
   const { narrative, state, license, mode } = req.body ?? {};
 
   if (!OPENAI_API_KEY) {

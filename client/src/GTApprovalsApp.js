@@ -115,7 +115,6 @@ export default function GTApprovalsApp() {
   const [loading, setLoading] = useState(false);
   const [narrative, setNarrative] = useState("");
   const [editedNarrative, setEditedNarrative] = useState("");
-  const [accessCode, setAccessCode] = useState("");
   const [copied, setCopied] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -269,7 +268,6 @@ export default function GTApprovalsApp() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(accessCode ? { "X-App-Access-Token": accessCode } : {}),
         },
         body: JSON.stringify({
           narrative: text,
@@ -576,25 +574,6 @@ export default function GTApprovalsApp() {
             <p className={`text-sm -mt-3 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
               Use one button for grammar and editorial cleanup, or a separate button to add Semrush-informed SEO
             </p>
-
-            <div className="space-y-2">
-              <label className={`block text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
-                Team Access Code
-              </label>
-              <input
-                type="password"
-                value={accessCode}
-                onChange={(e) => setAccessCode(e.target.value)}
-                placeholder="Required in protected environments"
-                className={`w-full p-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-gt-green/40 focus:border-gt-green transition-all duration-200 text-sm ${darkMode
-                    ? 'bg-[#1e1e1e] text-gray-100 border-gray-700 placeholder:text-gray-500'
-                    : 'bg-white text-gt-gray border-gray-200 placeholder:text-gray-400'
-                  }`}
-              />
-              <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-                Stored only in memory for this tab. It is not saved in the browser.
-              </p>
-            </div>
 
             <textarea
               rows={5}
