@@ -6,7 +6,11 @@ import { toast } from "sonner";
 import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check } from "lucide-react";
 import { Analytics } from '@vercel/analytics/react';
 
-const API_BASE_URL = (process.env.REACT_APP_API_BASE_URL || "").replace(/\/$/, "");
+const DEFAULT_PRODUCTION_API_BASE_URL = "https://gt-approvals-app.onrender.com";
+const API_BASE_URL = (
+  process.env.REACT_APP_API_BASE_URL
+  || (process.env.NODE_ENV === "production" ? DEFAULT_PRODUCTION_API_BASE_URL : "")
+).replace(/\/$/, "");
 
 // motion variants
 const containerVariants = {
@@ -277,7 +281,15 @@ export default function GTApprovalsApp() {
         }),
       });
 
-      const data = await res.json();
+      const raw = await res.text();
+      let data = {};
+      if (raw) {
+        try {
+          data = JSON.parse(raw);
+        } catch {
+          data = {};
+        }
+      }
       if (!res.ok) {
         throw new Error(
           data.error
