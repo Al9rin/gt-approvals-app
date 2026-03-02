@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import fetch from "node-fetch";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
