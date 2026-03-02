@@ -346,7 +346,33 @@ function loadSemrushSnapshot() {
 
 const semrushSnapshot = loadSemrushSnapshot();
 
-const systemPrompt = `
+const editorialPrompt = `
+You are a narrative compliance assistant for GoodTherapy. Your task is to lightly refine therapist marketing narratives so they read cleanly, stay true to the therapist's voice, and follow GoodTherapy editorial guidance.
+
+Follow these instructions exactly:
+
+1. Correct grammar, punctuation, spelling, and obvious clarity issues.
+2. Preserve the therapist's original voice, warmth, rhythm, and point of view.
+3. Keep the writing casual, natural, and human. Do not make it sound corporate, generic, stiff, or overly polished.
+4. Do NOT change the meaning, add unsupported claims, invent specialties, or rewrite the structure unless clarity requires it.
+5. Never introduce a new modality, specialty, diagnosis, acronym, treatment approach, or service line unless it is explicitly supported by the original narrative or selected context.
+6. Apply GoodTherapy editorial rules, including:
+   - Expand all acronyms on first use with correct capitalization and terminology.
+   - For example: obsessive-compulsive challenges (OCD), posttraumatic stress (PTSD), attention-deficit hyperactivity (ADHD), cognitive behavioral therapy (CBT), exposure and response prevention (ERP), and eye movement desensitization and reprocessing (EMDR).
+   - Do not include the word "disorder" as part of expanded mental health terms.
+   - Replace unnecessary uses of "disorder" with better alternatives such as issue, condition, diagnosis, or challenge.
+   - Use people-first language unless identity-first language is preferred by that community.
+   - Use lowercase for therapy types and mental health issues unless standard capitalization is required.
+   - Avoid stigmatizing, cold, or clinical-sounding labels.
+   - Use the Oxford comma.
+   - If degrees and licenses are listed together, put degrees first.
+7. Do not add SEO phrasing, keyword themes, service lists, or local SEO language.
+8. Keep the output roughly the same length as the original unless a small increase improves clarity naturally.
+
+Return ONLY the final revised narrative. No explanation, notes, labels, or bullets.
+`;
+
+const seoPrompt = `
 You are a narrative compliance assistant for GoodTherapy. Your task is to lightly refine therapist marketing narratives so they read cleanly, stay true to the therapist's voice, follow GoodTherapy editorial guidance, and improve search discoverability without sounding SEO-written.
 
 Follow these instructions exactly:
@@ -865,8 +891,10 @@ async function buildSeoHints({ narrative, state, license }) {
   return Array.from(new Set([...rankedKeywords, ...fallbackHints])).slice(0, 16);
 }
 
-async function buildUserPrompt({ narrative, state, license }) {
-  const seoHints = await buildSeoHints({ narrative, state, license });
+async function buildUserPrompt({ narrative, state, license, mode }) {
+  const seoHints = mode === "seo"
+    ? await buildSeoHints({ narrative, state, license })
+    : [];
   const contextLines = [
     state ? `Selected location context: ${state}` : null,
     license ? `Selected license context: ${license}` : null,
@@ -947,7 +975,7 @@ app.use(express.json({ limit: "24kb" }));
 app.use(rateLimit);
 
 app.post("/api/clean-narrative", requireAccessToken, async (req, res) => {
-  const { narrative, state, license } = req.body ?? {};
+  const { narrative, state, license, mode } = req.body ?? {};
 
   if (!OPENAI_API_KEY) {
     return res.status(500).json({ error: "OpenAI is not configured on the server." });
@@ -958,6 +986,7 @@ app.post("/api/clean-narrative", requireAccessToken, async (req, res) => {
   }
 
   const trimmedNarrative = narrative.trim();
+  const transformMode = mode === "seo" ? "seo" : "editorial";
   if (!trimmedNarrative) {
     return res.status(400).json({ error: "Narrative required" });
   }
@@ -981,11 +1010,12 @@ app.post("/api/clean-narrative", requireAccessToken, async (req, res) => {
       body: JSON.stringify({
         model: OPENAI_MODEL,
         store: false,
-        instructions: systemPrompt,
+        instructions: transformMode === "seo" ? seoPrompt : editorialPrompt,
         input: await buildUserPrompt({
           narrative: trimmedNarrative,
           state: typeof state === "string" ? state : "",
           license: typeof license === "string" ? license : "",
+          mode: transformMode,
         }),
         text: {
           format: {

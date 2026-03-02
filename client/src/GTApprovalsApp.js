@@ -6,6 +6,8 @@ import { toast } from "sonner";
 import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check } from "lucide-react";
 import { Analytics } from '@vercel/analytics/react';
 
+const API_BASE_URL = (process.env.REACT_APP_API_BASE_URL || "").replace(/\/$/, "");
+
 // motion variants
 const containerVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -113,6 +115,7 @@ export default function GTApprovalsApp() {
   const [loading, setLoading] = useState(false);
   const [narrative, setNarrative] = useState("");
   const [editedNarrative, setEditedNarrative] = useState("");
+  const [accessCode, setAccessCode] = useState("");
   const [copied, setCopied] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -120,6 +123,7 @@ export default function GTApprovalsApp() {
   const [cardTilt2, setCardTilt2] = useState({ x: 0, y: 0 });
   const [progress, setProgress] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
+  const [aiMode, setAiMode] = useState("editorial");
   const progressRef = useRef(null);
 
   const [regionFilter, setRegionFilter] = useState({
@@ -259,21 +263,36 @@ export default function GTApprovalsApp() {
     }, 500);
   };
 
-  const cleanWithAI = async (text) => {
+  const cleanWithAI = async (text, mode) => {
     try {
-      const res = await fetch("https://gt-approvals-app.onrender.com/api/clean-narrative", {
+      const res = await fetch(`${API_BASE_URL}/api/clean-narrative`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ narrative: text }),
+        headers: {
+          "Content-Type": "application/json",
+          ...(accessCode ? { "X-App-Access-Token": accessCode } : {}),
+        },
+        body: JSON.stringify({
+          narrative: text,
+          state: state?.value || "",
+          license: license?.value || "",
+          mode,
+        }),
       });
 
       const data = await res.json();
+      if (!res.ok) {
+        throw new Error(
+          data.error
+          || (mode === "seo" ? "Failed to generate SEO version" : "Failed to clean narrative")
+        );
+      }
+
       const cleaned = data.cleaned || "";
       setEditedNarrative(cleaned.trim());
-      toast.success("Narrative cleaned using AI");
+      toast.success(mode === "seo" ? "SEO version created" : "Narrative cleaned with AI");
     } catch (err) {
       console.error("AI Error:", err);
-      toast.error("Failed to clean with AI");
+      toast.error(err.message || (mode === "seo" ? "Failed to generate SEO version" : "Failed to clean with AI"));
     } finally {
       if (progressRef.current) {
         clearInterval(progressRef.current);
@@ -285,7 +304,17 @@ export default function GTApprovalsApp() {
     }
   };
 
-  const handleNarrative = () => {
+  const handleNarrative = (mode = "editorial") => {
+    const sourceText = mode === "seo" && editedNarrative.trim()
+      ? editedNarrative
+      : narrative;
+
+    if (!sourceText.trim()) {
+      toast.error("Paste a narrative first.");
+      return;
+    }
+
+    setAiMode(mode);
     setEditedNarrative("");
     setLoading(true);
     setProgress(0);
@@ -296,7 +325,7 @@ export default function GTApprovalsApp() {
       setProgress((p) => (p < 90 ? p + 10 : p));
     }, 200);
 
-    cleanWithAI(narrative);
+    cleanWithAI(sourceText, mode);
   };
 
   return (
@@ -535,7 +564,9 @@ export default function GTApprovalsApp() {
             {showProgress && (
               <div className="absolute inset-0 bg-white/60 dark:bg-[#111]/60 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20">
                 <Loader2 className="w-6 h-6 animate-spin text-gt-green" />
-                <span className="ml-2 text-gt-green font-medium">Cleaning…</span>
+                <span className="ml-2 text-gt-green font-medium">
+                  {aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
+                </span>
               </div>
             )}
 
@@ -543,8 +574,27 @@ export default function GTApprovalsApp() {
               ✨ Narrative Editor
             </h2>
             <p className={`text-sm -mt-3 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-              Paste your narrative and let AI clean it up for you
+              Use one button for grammar and editorial cleanup, or a separate button to add Semrush-informed SEO
             </p>
+
+            <div className="space-y-2">
+              <label className={`block text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
+                Team Access Code
+              </label>
+              <input
+                type="password"
+                value={accessCode}
+                onChange={(e) => setAccessCode(e.target.value)}
+                placeholder="Required in protected environments"
+                className={`w-full p-3 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-gt-green/40 focus:border-gt-green transition-all duration-200 text-sm ${darkMode
+                    ? 'bg-[#1e1e1e] text-gray-100 border-gray-700 placeholder:text-gray-500'
+                    : 'bg-white text-gt-gray border-gray-200 placeholder:text-gray-400'
+                  }`}
+              />
+              <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                Stored only in memory for this tab. It is not saved in the browser.
+              </p>
+            </div>
 
             <textarea
               rows={5}
@@ -559,7 +609,7 @@ export default function GTApprovalsApp() {
                 // ⌘/Ctrl + Enter to clean with AI
                 if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
                   e.preventDefault();
-                  handleNarrative();
+                  handleNarrative("editorial");
                 }
                 // Esc to clear narrative
                 else if (e.key === "Escape") {
@@ -572,11 +622,23 @@ export default function GTApprovalsApp() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={handleNarrative}
+                onClick={() => handleNarrative("editorial")}
                 className="cursor-pointer bg-gt-green hover:bg-gt-green-dark text-white px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 shadow-md shadow-gt-green/20"
               >
                 <Wand2 className="w-5 h-5" />
                 Clean with AI
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleNarrative("seo")}
+                className={`cursor-pointer px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 border shadow-md ${darkMode
+                    ? 'bg-[#1e1e1e] hover:bg-[#252525] text-gray-100 border-gt-green/30 shadow-gt-green/5'
+                    : 'bg-white hover:bg-gt-green-50 text-gt-gray border-gt-green/30 shadow-gt-green/10'
+                  }`}
+              >
+                <Search className="w-5 h-5" />
+                Add SEO
               </motion.button>
               {narrative && (
                 <motion.button
@@ -597,7 +659,11 @@ export default function GTApprovalsApp() {
             </div>
 
             <p className={`mt-1 text-xs italic ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-              ⌘/Ctrl + Enter to Clean · Esc to Clear
+              `Clean with AI` applies grammar and GoodTherapy editorial rules only. `Add SEO` creates a separate keyword-aware version.
+            </p>
+
+            <p className={`mt-1 text-xs italic ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+              Avoid pasting client names, PHI, or sensitive case details. ⌘/Ctrl + Enter to clean · Esc to clear
             </p>
 
             <AnimatePresence>
