@@ -1,0 +1,6153 @@
+{
+  "generatedAt": "2026-03-02T14:08:41.326Z",
+  "database": "us",
+  "exportLimitPerSeed": 25,
+  "seeds": [
+    {
+      "seed": "therapy",
+      "keywords": [
+        {
+          "keyword": "behavioral therapy techniques",
+          "searchVolume": 1220000,
+          "intent": "1",
+          "difficulty": 73
+        },
+        {
+          "keyword": "grow therapy",
+          "searchVolume": 165000,
+          "intent": "2",
+          "difficulty": 49
+        },
+        {
+          "keyword": "online therapy",
+          "searchVolume": 165000,
+          "intent": "1",
+          "difficulty": 85
+        },
+        {
+          "keyword": "therapist near me",
+          "searchVolume": 165000,
+          "intent": "3",
+          "difficulty": 68
+        },
+        {
+          "keyword": "physical therapy",
+          "searchVolume": 110000,
+          "intent": "0",
+          "difficulty": 98
+        },
+        {
+          "keyword": "physical therapy near me",
+          "searchVolume": 110000,
+          "intent": "3",
+          "difficulty": 71
+        },
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "cognitive behavioral therapy",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 97
+        },
+        {
+          "keyword": "therapist",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "cbt",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "physical therapist",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "therapists near me",
+          "searchVolume": 60500,
+          "intent": "2,3",
+          "difficulty": 92
+        },
+        {
+          "keyword": "cbt therapy",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 93
+        },
+        {
+          "keyword": "cognitive behavioral therapy cognitive behavioral therapy",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "behavioral",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "grow",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "cog beh therapy",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 100
+        },
+        {
+          "keyword": "mental health therapist",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "physical therapist near me",
+          "searchVolume": 33100,
+          "intent": "3",
+          "difficulty": 68
+        },
+        {
+          "keyword": "physical therapy therapists",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 65
+        },
+        {
+          "keyword": "physiotherapy",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "psychotherapy",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "physical therapy clinic",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 78
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        }
+      ]
+    },
+    {
+      "seed": "therapist",
+      "keywords": [
+        {
+          "keyword": "therapist near me",
+          "searchVolume": 165000,
+          "intent": "3",
+          "difficulty": 68
+        },
+        {
+          "keyword": "therapy",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "betterhelp",
+          "searchVolume": 110000,
+          "intent": "2",
+          "difficulty": 83
+        },
+        {
+          "keyword": "headway",
+          "searchVolume": 110000,
+          "intent": "2",
+          "difficulty": 77
+        },
+        {
+          "keyword": "psychologist",
+          "searchVolume": 110000,
+          "intent": "1",
+          "difficulty": 90
+        },
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "counselor",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "therapist aid",
+          "searchVolume": 74000,
+          "intent": "2",
+          "difficulty": 45
+        },
+        {
+          "keyword": "talk",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 69
+        },
+        {
+          "keyword": "therapists near me",
+          "searchVolume": 60500,
+          "intent": "2,3",
+          "difficulty": 92
+        },
+        {
+          "keyword": "better",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "talkspace",
+          "searchVolume": 49500,
+          "intent": "2,0",
+          "difficulty": 69
+        },
+        {
+          "keyword": "better help",
+          "searchVolume": 40500,
+          "intent": "2",
+          "difficulty": 83
+        },
+        {
+          "keyword": "counseling",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "marriage counseling near me",
+          "searchVolume": 33100,
+          "intent": "3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "mental health therapist",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "psychotherapy",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "counselors near me",
+          "searchVolume": 27100,
+          "intent": "1,3",
+          "difficulty": 90
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "c o u n s e l i n g",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "headway provider login",
+          "searchVolume": 22200,
+          "intent": "2,3",
+          "difficulty": 41
+        },
+        {
+          "keyword": "headway provider portal",
+          "searchVolume": 22200,
+          "intent": "2,3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "therapy aid",
+          "searchVolume": 22200,
+          "intent": "2",
+          "difficulty": 40
+        },
+        {
+          "keyword": "anxiety therapy",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 67
+        }
+      ]
+    },
+    {
+      "seed": "counseling",
+      "keywords": [
+        {
+          "keyword": "therapist near me",
+          "searchVolume": 165000,
+          "intent": "3",
+          "difficulty": 68
+        },
+        {
+          "keyword": "betterhelp",
+          "searchVolume": 110000,
+          "intent": "2",
+          "difficulty": 83
+        },
+        {
+          "keyword": "psychologist",
+          "searchVolume": 110000,
+          "intent": "1",
+          "difficulty": 90
+        },
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "counselor",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "therapist",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "aca",
+          "searchVolume": 74000,
+          "intent": "1,0",
+          "difficulty": 100
+        },
+        {
+          "keyword": "therapists near me",
+          "searchVolume": 60500,
+          "intent": "2,3",
+          "difficulty": 92
+        },
+        {
+          "keyword": "better",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "better help",
+          "searchVolume": 40500,
+          "intent": "2",
+          "difficulty": 83
+        },
+        {
+          "keyword": "mental health therapist",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "counselors near me",
+          "searchVolume": 27100,
+          "intent": "1,3",
+          "difficulty": 90
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "c o u n s e l i n g",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "thriveworks",
+          "searchVolume": 22200,
+          "intent": "2",
+          "difficulty": 57
+        },
+        {
+          "keyword": "better health",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 70
+        },
+        {
+          "keyword": "counseling near me",
+          "searchVolume": 18100,
+          "intent": "1,3",
+          "difficulty": 65
+        },
+        {
+          "keyword": "mental health therapist near me",
+          "searchVolume": 18100,
+          "intent": "3",
+          "difficulty": 99
+        },
+        {
+          "keyword": "psychiatrists close to me",
+          "searchVolume": 18100,
+          "intent": "0",
+          "difficulty": 48
+        },
+        {
+          "keyword": "psychology today login",
+          "searchVolume": 18100,
+          "intent": "2,3",
+          "difficulty": 69
+        },
+        {
+          "keyword": "find a therapist",
+          "searchVolume": 14800,
+          "intent": "0",
+          "difficulty": 81
+        },
+        {
+          "keyword": "psychologist near me",
+          "searchVolume": 14800,
+          "intent": "3",
+          "difficulty": 93
+        },
+        {
+          "keyword": "therapy appointment",
+          "searchVolume": 14800,
+          "intent": "2",
+          "difficulty": 79
+        },
+        {
+          "keyword": "cognitive behavioral therapy near me",
+          "searchVolume": 12100,
+          "intent": "1,3",
+          "difficulty": 41
+        },
+        {
+          "keyword": "couples counseling near me",
+          "searchVolume": 12100,
+          "intent": "3",
+          "difficulty": 49
+        }
+      ]
+    },
+    {
+      "seed": "online therapy",
+      "keywords": [
+        {
+          "keyword": "grow therapy",
+          "searchVolume": 165000,
+          "intent": "2",
+          "difficulty": 49
+        },
+        {
+          "keyword": "lifestance",
+          "searchVolume": 165000,
+          "intent": "2",
+          "difficulty": 61
+        },
+        {
+          "keyword": "therapist near me",
+          "searchVolume": 165000,
+          "intent": "3",
+          "difficulty": 68
+        },
+        {
+          "keyword": "therapy",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "headway",
+          "searchVolume": 110000,
+          "intent": "2",
+          "difficulty": 77
+        },
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "lifestance health",
+          "searchVolume": 90500,
+          "intent": "2",
+          "difficulty": 59
+        },
+        {
+          "keyword": "cerebral",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "therapists near me",
+          "searchVolume": 60500,
+          "intent": "2,3",
+          "difficulty": 92
+        },
+        {
+          "keyword": "lifestance patient portal",
+          "searchVolume": 49500,
+          "intent": "2,3",
+          "difficulty": 38
+        },
+        {
+          "keyword": "grow",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "mental health therapist",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "counselors near me",
+          "searchVolume": 27100,
+          "intent": "1,3",
+          "difficulty": 90
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "mindful",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 84
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "grow healthy",
+          "searchVolume": 22200,
+          "intent": "2",
+          "difficulty": 32
+        },
+        {
+          "keyword": "headway provider login",
+          "searchVolume": 22200,
+          "intent": "2,3",
+          "difficulty": 41
+        },
+        {
+          "keyword": "headway provider portal",
+          "searchVolume": 22200,
+          "intent": "2,3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "counseling near me",
+          "searchVolume": 18100,
+          "intent": "1,3",
+          "difficulty": 65
+        },
+        {
+          "keyword": "grow therapy login",
+          "searchVolume": 18100,
+          "intent": "2,3",
+          "difficulty": 28
+        },
+        {
+          "keyword": "growtherapy",
+          "searchVolume": 18100,
+          "intent": "2",
+          "difficulty": 51
+        },
+        {
+          "keyword": "mental health therapist near me",
+          "searchVolume": 18100,
+          "intent": "3",
+          "difficulty": 99
+        },
+        {
+          "keyword": "psychiatry near me",
+          "searchVolume": 18100,
+          "intent": "3",
+          "difficulty": 70
+        },
+        {
+          "keyword": "find a therapist",
+          "searchVolume": 14800,
+          "intent": "0",
+          "difficulty": 81
+        }
+      ]
+    },
+    {
+      "seed": "virtual therapy",
+      "keywords": [
+        {
+          "keyword": "grow therapy",
+          "searchVolume": 165000,
+          "intent": "2",
+          "difficulty": 49
+        },
+        {
+          "keyword": "lifestance",
+          "searchVolume": 165000,
+          "intent": "2",
+          "difficulty": 61
+        },
+        {
+          "keyword": "online therapy",
+          "searchVolume": 165000,
+          "intent": "1",
+          "difficulty": 85
+        },
+        {
+          "keyword": "therapist near me",
+          "searchVolume": 165000,
+          "intent": "3",
+          "difficulty": 68
+        },
+        {
+          "keyword": "therapy",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "betterhelp",
+          "searchVolume": 110000,
+          "intent": "2",
+          "difficulty": 83
+        },
+        {
+          "keyword": "headway",
+          "searchVolume": 110000,
+          "intent": "2",
+          "difficulty": 77
+        },
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "lifestance health",
+          "searchVolume": 90500,
+          "intent": "2",
+          "difficulty": 59
+        },
+        {
+          "keyword": "therapist",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "cerebral",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "talk",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 69
+        },
+        {
+          "keyword": "therapists near me",
+          "searchVolume": 60500,
+          "intent": "2,3",
+          "difficulty": 92
+        },
+        {
+          "keyword": "better",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "lifestance patient portal",
+          "searchVolume": 49500,
+          "intent": "2,3",
+          "difficulty": 38
+        },
+        {
+          "keyword": "talkspace",
+          "searchVolume": 49500,
+          "intent": "2,0",
+          "difficulty": 69
+        },
+        {
+          "keyword": "better help",
+          "searchVolume": 40500,
+          "intent": "2",
+          "difficulty": 83
+        },
+        {
+          "keyword": "counseling",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "grow",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "mental health therapist",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "counselors near me",
+          "searchVolume": 27100,
+          "intent": "1,3",
+          "difficulty": 90
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "mindful",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 84
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "c o u n s e l i n g",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 81
+        }
+      ]
+    },
+    {
+      "seed": "anxiety therapy",
+      "keywords": [
+        {
+          "keyword": "anxiety management",
+          "searchVolume": 1830000,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "anxiety",
+          "searchVolume": 301000,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "how to deal with anxiety",
+          "searchVolume": 301000,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "how to deal with depression",
+          "searchVolume": 301000,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "depression",
+          "searchVolume": 165000,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "anxiety medication",
+          "searchVolume": 110000,
+          "intent": "1",
+          "difficulty": 55
+        },
+        {
+          "keyword": "anxiety symptoms",
+          "searchVolume": 110000,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "depression symptoms",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 97
+        },
+        {
+          "keyword": "therapist",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "anxiety attack",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 67
+        },
+        {
+          "keyword": "anxious",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 80
+        },
+        {
+          "keyword": "talk",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 69
+        },
+        {
+          "keyword": "anxiety disorder",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "signs of depression",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "talkspace",
+          "searchVolume": 49500,
+          "intent": "2,0",
+          "difficulty": 69
+        },
+        {
+          "keyword": "anxiety attack symptoms",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "what is anxiety",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "anti anxiety meds",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 55
+        },
+        {
+          "keyword": "anxiety attacks and symptoms",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 83
+        },
+        {
+          "keyword": "depressed",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "mental health therapist",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "symptoms of depression",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "anxiety disorder symptoms",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "symptoms of anxiety",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 76
+        }
+      ]
+    },
+    {
+      "seed": "anxiety counseling",
+      "keywords": [
+        {
+          "keyword": "anxiety management",
+          "searchVolume": 1830000,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "anxiety",
+          "searchVolume": 301000,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "how to deal with anxiety",
+          "searchVolume": 301000,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "anxiety medication",
+          "searchVolume": 110000,
+          "intent": "1",
+          "difficulty": 55
+        },
+        {
+          "keyword": "anxiety symptoms",
+          "searchVolume": 110000,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "therapist",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "anxiety attack",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 67
+        },
+        {
+          "keyword": "anxious",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 80
+        },
+        {
+          "keyword": "talk",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 69
+        },
+        {
+          "keyword": "anxiety disorder",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "talkspace",
+          "searchVolume": 49500,
+          "intent": "2,0",
+          "difficulty": 69
+        },
+        {
+          "keyword": "anxiety attack symptoms",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "what is anxiety",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "anti anxiety meds",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 55
+        },
+        {
+          "keyword": "anxiety attacks and symptoms",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 83
+        },
+        {
+          "keyword": "mental health therapist",
+          "searchVolume": 33100,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "anxiety disorder symptoms",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "symptoms of anxiety",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "anxiety treatment",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 74
+        },
+        {
+          "keyword": "anxiety treatment cognitive behavioral therapy",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 82
+        },
+        {
+          "keyword": "brightside",
+          "searchVolume": 22200,
+          "intent": "2",
+          "difficulty": 84
+        },
+        {
+          "keyword": "symptoms of anxiety attack",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "anxiety definition",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "anxiety meds",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 50
+        }
+      ]
+    },
+    {
+      "seed": "depression therapy",
+      "keywords": [
+        {
+          "keyword": "how to deal with depression",
+          "searchVolume": 301000,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "depression",
+          "searchVolume": 165000,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "depression test",
+          "searchVolume": 135000,
+          "intent": "0",
+          "difficulty": 73
+        },
+        {
+          "keyword": "anxiety symptoms",
+          "searchVolume": 110000,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "depression symptoms",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 97
+        },
+        {
+          "keyword": "postpartum depression",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "anxiety attack",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 67
+        },
+        {
+          "keyword": "major depressive disorder",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "signs of depression",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "clinical depression",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 94
+        },
+        {
+          "keyword": "what is anxiety",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "depressed",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "seasonal affective disorder",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "symptoms of depression",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "anxiety disorder symptoms",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "samhsa",
+          "searchVolume": 27100,
+          "intent": "2,3",
+          "difficulty": 74
+        },
+        {
+          "keyword": "seasonal depression",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 95
+        },
+        {
+          "keyword": "symptoms of anxiety",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "symptoms with depression",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 88
+        },
+        {
+          "keyword": "anxiety treatment",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 74
+        },
+        {
+          "keyword": "depression treatment",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "high functioning depression",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 30
+        },
+        {
+          "keyword": "persistent depressive disorder",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 77
+        },
+        {
+          "keyword": "what is depression",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "anxiety therapy",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 67
+        }
+      ]
+    },
+    {
+      "seed": "trauma therapy",
+      "keywords": [
+        {
+          "keyword": "emdr therapy",
+          "searchVolume": 246000,
+          "intent": "1",
+          "difficulty": 85
+        },
+        {
+          "keyword": "emdr",
+          "searchVolume": 165000,
+          "intent": "1",
+          "difficulty": 95
+        },
+        {
+          "keyword": "what is emdr therapy",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "edmr",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "post traumatic stress treatment emdr",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 50
+        },
+        {
+          "keyword": "ptsd therapies emdr",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "ptsd treatment",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 77
+        },
+        {
+          "keyword": "what is emdr",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 48
+        },
+        {
+          "keyword": "emdr therapy near me",
+          "searchVolume": 12100,
+          "intent": "1,3",
+          "difficulty": 58
+        },
+        {
+          "keyword": "eye movement desensitization and reprocessing",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "ptsd treatments therapy",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "therapy for posttraumatic stress disorder",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 73
+        },
+        {
+          "keyword": "bilateral stimulation",
+          "searchVolume": 8100,
+          "intent": "1,3",
+          "difficulty": 33
+        },
+        {
+          "keyword": "emdr meaning",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 72
+        },
+        {
+          "keyword": "treatment for ptsd therapy",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 71
+        },
+        {
+          "keyword": "edmr therapy",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "ptsd medication",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 57
+        },
+        {
+          "keyword": "talk therapy",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 57
+        },
+        {
+          "keyword": "emdr therapist",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 57
+        },
+        {
+          "keyword": "grief therapy",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 52
+        },
+        {
+          "keyword": "ptsd treatments",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "post traumatic stress disorder treatment",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 83
+        },
+        {
+          "keyword": "ptsd definition",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "ptsd therapy",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 65
+        },
+        {
+          "keyword": "what does ptsd mean",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 99
+        }
+      ]
+    },
+    {
+      "seed": "EMDR therapy",
+      "keywords": [
+        {
+          "keyword": "emdr",
+          "searchVolume": 165000,
+          "intent": "1",
+          "difficulty": 95
+        },
+        {
+          "keyword": "therapist aid",
+          "searchVolume": 74000,
+          "intent": "2",
+          "difficulty": 45
+        },
+        {
+          "keyword": "what is emdr therapy",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "edmr",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "post traumatic stress treatment emdr",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 50
+        },
+        {
+          "keyword": "ptsd therapies emdr",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "trauma therapy",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 63
+        },
+        {
+          "keyword": "what is emdr",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 48
+        },
+        {
+          "keyword": "emdr therapy near me",
+          "searchVolume": 12100,
+          "intent": "1,3",
+          "difficulty": 58
+        },
+        {
+          "keyword": "eye movement desensitization and reprocessing",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "bilateral stimulation",
+          "searchVolume": 8100,
+          "intent": "1,3",
+          "difficulty": 33
+        },
+        {
+          "keyword": "emdr meaning",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 72
+        },
+        {
+          "keyword": "edmr therapy",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "emdr therapist",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 57
+        },
+        {
+          "keyword": "emdr training",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "dangers of emdr therapy",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 34
+        },
+        {
+          "keyword": "rapid eye movement therapy",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "trauma counseling",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 42
+        },
+        {
+          "keyword": "emdr treatment",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "eye movement therapy",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 88
+        },
+        {
+          "keyword": "how does emdr work",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 50
+        },
+        {
+          "keyword": "mean therapy",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "what does emdr stand for",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 39
+        },
+        {
+          "keyword": "emdr therapy meaning",
+          "searchVolume": 2400,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "mr eye dr",
+          "searchVolume": 2400,
+          "intent": "2",
+          "difficulty": 42
+        }
+      ]
+    },
+    {
+      "seed": "couples therapy",
+      "keywords": [
+        {
+          "keyword": "marriage counseling",
+          "searchVolume": 60500,
+          "intent": "0",
+          "difficulty": 56
+        },
+        {
+          "keyword": "couples therapy show",
+          "searchVolume": 33100,
+          "intent": "1,3",
+          "difficulty": 59
+        },
+        {
+          "keyword": "marriage counseling near me",
+          "searchVolume": 33100,
+          "intent": "3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "counseling marriage counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 41
+        },
+        {
+          "keyword": "couples counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 68
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "couples",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "family therapy",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "lmft",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 37
+        },
+        {
+          "keyword": "couple th",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "couple therapy",
+          "searchVolume": 14800,
+          "intent": "0",
+          "difficulty": 86
+        },
+        {
+          "keyword": "gottman method",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 71
+        },
+        {
+          "keyword": "mft",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 39
+        },
+        {
+          "keyword": "relationship therapy",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 73
+        },
+        {
+          "keyword": "couples counseling near me",
+          "searchVolume": 12100,
+          "intent": "3",
+          "difficulty": 49
+        },
+        {
+          "keyword": "marriagecounseling",
+          "searchVolume": 12100,
+          "intent": "0",
+          "difficulty": 57
+        },
+        {
+          "keyword": "orna guralnik",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 51
+        },
+        {
+          "keyword": "relationship counseling",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "gottman method couples therapy",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "therapists for relationship anxiety",
+          "searchVolume": 9900,
+          "intent": "0",
+          "difficulty": 25
+        },
+        {
+          "keyword": "family counseling",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "lmft meaning",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 25
+        },
+        {
+          "keyword": "marriage counselor",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 49
+        },
+        {
+          "keyword": "regain",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 61
+        }
+      ]
+    },
+    {
+      "seed": "couples counseling",
+      "keywords": [
+        {
+          "keyword": "couples therapy",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 82
+        },
+        {
+          "keyword": "marriage counseling",
+          "searchVolume": 60500,
+          "intent": "0",
+          "difficulty": 56
+        },
+        {
+          "keyword": "marriage counseling near me",
+          "searchVolume": 33100,
+          "intent": "3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "counseling marriage counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 41
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "couples",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "family therapy",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "lmft",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 37
+        },
+        {
+          "keyword": "relationships",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 85
+        },
+        {
+          "keyword": "couple th",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "couple therapy",
+          "searchVolume": 14800,
+          "intent": "0",
+          "difficulty": 86
+        },
+        {
+          "keyword": "gottman method",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 71
+        },
+        {
+          "keyword": "mft",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 39
+        },
+        {
+          "keyword": "relationship therapy",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 73
+        },
+        {
+          "keyword": "couples counseling near me",
+          "searchVolume": 12100,
+          "intent": "3",
+          "difficulty": 49
+        },
+        {
+          "keyword": "marriagecounseling",
+          "searchVolume": 12100,
+          "intent": "0",
+          "difficulty": 57
+        },
+        {
+          "keyword": "relationship counseling",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "gottman institute",
+          "searchVolume": 9900,
+          "intent": "2",
+          "difficulty": 95
+        },
+        {
+          "keyword": "gottman method couples therapy",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "therapists for relationship anxiety",
+          "searchVolume": 9900,
+          "intent": "0",
+          "difficulty": 25
+        },
+        {
+          "keyword": "family counseling",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "gotan",
+          "searchVolume": 8100,
+          "intent": "2",
+          "difficulty": 48
+        },
+        {
+          "keyword": "lmft meaning",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 25
+        },
+        {
+          "keyword": "marriage counselor",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 49
+        }
+      ]
+    },
+    {
+      "seed": "relationship counseling",
+      "keywords": [
+        {
+          "keyword": "couples therapy",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 82
+        },
+        {
+          "keyword": "marriage counseling",
+          "searchVolume": 60500,
+          "intent": "0",
+          "difficulty": 56
+        },
+        {
+          "keyword": "marriage counseling near me",
+          "searchVolume": 33100,
+          "intent": "3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "counseling marriage counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 41
+        },
+        {
+          "keyword": "couples counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 68
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "couples",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 86
+        },
+        {
+          "keyword": "relationships",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 85
+        },
+        {
+          "keyword": "couple th",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "couple therapy",
+          "searchVolume": 14800,
+          "intent": "0",
+          "difficulty": 86
+        },
+        {
+          "keyword": "gottman method",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 71
+        },
+        {
+          "keyword": "relationship therapy",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 73
+        },
+        {
+          "keyword": "couples counseling near me",
+          "searchVolume": 12100,
+          "intent": "3",
+          "difficulty": 49
+        },
+        {
+          "keyword": "marriagecounseling",
+          "searchVolume": 12100,
+          "intent": "0",
+          "difficulty": 57
+        },
+        {
+          "keyword": "gottman institute",
+          "searchVolume": 9900,
+          "intent": "2",
+          "difficulty": 95
+        },
+        {
+          "keyword": "gottman method couples therapy",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "therapists for relationship anxiety",
+          "searchVolume": 9900,
+          "intent": "0",
+          "difficulty": 25
+        },
+        {
+          "keyword": "gotan",
+          "searchVolume": 8100,
+          "intent": "2",
+          "difficulty": 48
+        },
+        {
+          "keyword": "marriage counselor",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 49
+        },
+        {
+          "keyword": "regain",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "wa drs",
+          "searchVolume": 8100,
+          "intent": "2,3",
+          "difficulty": 75
+        },
+        {
+          "keyword": "counselling for husband and wife",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 52
+        },
+        {
+          "keyword": "gottman",
+          "searchVolume": 6600,
+          "intent": "2",
+          "difficulty": 67
+        },
+        {
+          "keyword": "john gottman",
+          "searchVolume": 6600,
+          "intent": "2",
+          "difficulty": 69
+        }
+      ]
+    },
+    {
+      "seed": "marriage counseling",
+      "keywords": [
+        {
+          "keyword": "couples therapy",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 82
+        },
+        {
+          "keyword": "marriage counseling near me",
+          "searchVolume": 33100,
+          "intent": "3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "counseling marriage counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 41
+        },
+        {
+          "keyword": "couples counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 68
+        },
+        {
+          "keyword": "couples therapy near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "relationship counseling near me",
+          "searchVolume": 27100,
+          "intent": "3",
+          "difficulty": 22
+        },
+        {
+          "keyword": "family therapy",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "lmft",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 37
+        },
+        {
+          "keyword": "relationships",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 85
+        },
+        {
+          "keyword": "couple th",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "couple therapy",
+          "searchVolume": 14800,
+          "intent": "0",
+          "difficulty": 86
+        },
+        {
+          "keyword": "mft",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 39
+        },
+        {
+          "keyword": "relationship therapy",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 73
+        },
+        {
+          "keyword": "couples counseling near me",
+          "searchVolume": 12100,
+          "intent": "3",
+          "difficulty": 49
+        },
+        {
+          "keyword": "marriage counselors near me",
+          "searchVolume": 12100,
+          "intent": "3",
+          "difficulty": 44
+        },
+        {
+          "keyword": "marriagecounseling",
+          "searchVolume": 12100,
+          "intent": "0",
+          "difficulty": 57
+        },
+        {
+          "keyword": "relationship counseling",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "gottman institute",
+          "searchVolume": 9900,
+          "intent": "2",
+          "difficulty": 95
+        },
+        {
+          "keyword": "gottman method couples therapy",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "therapists for relationship anxiety",
+          "searchVolume": 9900,
+          "intent": "0",
+          "difficulty": 25
+        },
+        {
+          "keyword": "family counseling",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "gotan",
+          "searchVolume": 8100,
+          "intent": "2",
+          "difficulty": 48
+        },
+        {
+          "keyword": "lmft meaning",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 25
+        },
+        {
+          "keyword": "marriage counselor",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 49
+        },
+        {
+          "keyword": "wa drs",
+          "searchVolume": 8100,
+          "intent": "2,3",
+          "difficulty": 75
+        }
+      ]
+    },
+    {
+      "seed": "family therapy",
+      "keywords": [
+        {
+          "keyword": "marriage counseling",
+          "searchVolume": 60500,
+          "intent": "0",
+          "difficulty": 56
+        },
+        {
+          "keyword": "counseling marriage counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 41
+        },
+        {
+          "keyword": "couples counseling",
+          "searchVolume": 27100,
+          "intent": "0",
+          "difficulty": 68
+        },
+        {
+          "keyword": "lmft",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 37
+        },
+        {
+          "keyword": "couple therapy",
+          "searchVolume": 14800,
+          "intent": "0",
+          "difficulty": 86
+        },
+        {
+          "keyword": "mft",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 39
+        },
+        {
+          "keyword": "marriagecounseling",
+          "searchVolume": 12100,
+          "intent": "0",
+          "difficulty": 57
+        },
+        {
+          "keyword": "family counseling",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "lmft meaning",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 25
+        },
+        {
+          "keyword": "marriage counselor",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 49
+        },
+        {
+          "keyword": "counselling for husband and wife",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 52
+        },
+        {
+          "keyword": "familytherapy",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 83
+        },
+        {
+          "keyword": "marriage therapy",
+          "searchVolume": 6600,
+          "intent": "0",
+          "difficulty": 78
+        },
+        {
+          "keyword": "relate company",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 25
+        },
+        {
+          "keyword": "relationship issues therapist",
+          "searchVolume": 5400,
+          "intent": "0",
+          "difficulty": 41
+        },
+        {
+          "keyword": "marriage and family therapist",
+          "searchVolume": 4400,
+          "intent": "0",
+          "difficulty": 54
+        },
+        {
+          "keyword": "relationship therapist",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 60
+        },
+        {
+          "keyword": "afta",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 39
+        },
+        {
+          "keyword": "family therapist",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "family therapyxxx",
+          "searchVolume": 3600,
+          "intent": "0",
+          "difficulty": 78
+        },
+        {
+          "keyword": "lmft therapist",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 40
+        },
+        {
+          "keyword": "marriage therapist",
+          "searchVolume": 3600,
+          "intent": "0",
+          "difficulty": 55
+        },
+        {
+          "keyword": "mft meaning",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 12
+        },
+        {
+          "keyword": "couplescounseling",
+          "searchVolume": 2900,
+          "intent": "0",
+          "difficulty": 56
+        },
+        {
+          "keyword": "family counseling services",
+          "searchVolume": 2900,
+          "intent": "0",
+          "difficulty": 53
+        }
+      ]
+    },
+    {
+      "seed": "teen therapy",
+      "keywords": [
+        {
+          "keyword": "talkspace",
+          "searchVolume": 49500,
+          "intent": "2,0",
+          "difficulty": 69
+        },
+        {
+          "keyword": "betterhelp therapy",
+          "searchVolume": 9900,
+          "intent": "2",
+          "difficulty": 75
+        },
+        {
+          "keyword": "teen therapist near me",
+          "searchVolume": 9900,
+          "intent": "3",
+          "difficulty": 9
+        },
+        {
+          "keyword": "teen counseling",
+          "searchVolume": 6600,
+          "intent": "2,0",
+          "difficulty": 45
+        },
+        {
+          "keyword": "online therapy free",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 60
+        },
+        {
+          "keyword": "what is therapy",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 57
+        },
+        {
+          "keyword": "free online therapy chat",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 63
+        },
+        {
+          "keyword": "teen counseling near me",
+          "searchVolume": 2900,
+          "intent": "3",
+          "difficulty": 20
+        },
+        {
+          "keyword": "therapy online free",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "what does a therapist do",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 36
+        },
+        {
+          "keyword": "counceling",
+          "searchVolume": 2400,
+          "intent": "0",
+          "difficulty": 81
+        },
+        {
+          "keyword": "counselors for teenagers near me",
+          "searchVolume": 2400,
+          "intent": "3",
+          "difficulty": 17
+        },
+        {
+          "keyword": "what do therapists do",
+          "searchVolume": 2400,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "free therapist online",
+          "searchVolume": 1900,
+          "intent": "1,0",
+          "difficulty": 83
+        },
+        {
+          "keyword": "los gatos therapy center",
+          "searchVolume": 1900,
+          "intent": "2",
+          "difficulty": 26
+        },
+        {
+          "keyword": "online therapist free",
+          "searchVolume": 1900,
+          "intent": "1",
+          "difficulty": 69
+        },
+        {
+          "keyword": "therapistaid com",
+          "searchVolume": 1900,
+          "intent": "2",
+          "difficulty": 29
+        },
+        {
+          "keyword": "therapists for teens near me",
+          "searchVolume": 1900,
+          "intent": "3",
+          "difficulty": 19
+        },
+        {
+          "keyword": "therapy for teens",
+          "searchVolume": 1900,
+          "intent": "0",
+          "difficulty": 45
+        },
+        {
+          "keyword": "child counselor",
+          "searchVolume": 1600,
+          "intent": "0",
+          "difficulty": 45
+        },
+        {
+          "keyword": "therapists for teenager near me",
+          "searchVolume": 1600,
+          "intent": "3",
+          "difficulty": 13
+        },
+        {
+          "keyword": "therapy for teens near me",
+          "searchVolume": 1600,
+          "intent": "3",
+          "difficulty": 30
+        },
+        {
+          "keyword": "counselors for teens near me",
+          "searchVolume": 1300,
+          "intent": "3",
+          "difficulty": 16
+        },
+        {
+          "keyword": "free online therapist",
+          "searchVolume": 1300,
+          "intent": "1",
+          "difficulty": 66
+        },
+        {
+          "keyword": "online free therapy",
+          "searchVolume": 1300,
+          "intent": "1",
+          "difficulty": 69
+        }
+      ]
+    },
+    {
+      "seed": "child therapy",
+      "keywords": [
+        {
+          "keyword": "child",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "psychotherapy",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 92
+        },
+        {
+          "keyword": "child mind institute",
+          "searchVolume": 14800,
+          "intent": "1,2",
+          "difficulty": 47
+        },
+        {
+          "keyword": "child therapist near me",
+          "searchVolume": 14800,
+          "intent": "3",
+          "difficulty": 27
+        },
+        {
+          "keyword": "types of therapy",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 39
+        },
+        {
+          "keyword": "kids in mind",
+          "searchVolume": 12100,
+          "intent": "2",
+          "difficulty": 24
+        },
+        {
+          "keyword": "child psychologist",
+          "searchVolume": 6600,
+          "intent": "0",
+          "difficulty": 39
+        },
+        {
+          "keyword": "behavioral therapy for kids",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 44
+        },
+        {
+          "keyword": "child psychiatrist",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 47
+        },
+        {
+          "keyword": "child therapist",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 40
+        },
+        {
+          "keyword": "children's psychologists",
+          "searchVolume": 4400,
+          "intent": "0",
+          "difficulty": 43
+        },
+        {
+          "keyword": "kinds of therapy",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "pcit therapy",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 45
+        },
+        {
+          "keyword": "kids-in-mind",
+          "searchVolume": 3600,
+          "intent": "2",
+          "difficulty": 32
+        },
+        {
+          "keyword": "kidsinmind",
+          "searchVolume": 3600,
+          "intent": "2",
+          "difficulty": 33
+        },
+        {
+          "keyword": "mental health organizations",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "brain health usa",
+          "searchVolume": 2900,
+          "intent": "2",
+          "difficulty": 84
+        },
+        {
+          "keyword": "small steps",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 34
+        },
+        {
+          "keyword": "child counseling",
+          "searchVolume": 2400,
+          "intent": "0",
+          "difficulty": 62
+        },
+        {
+          "keyword": "children's counselors near me",
+          "searchVolume": 2400,
+          "intent": "3",
+          "difficulty": 33
+        },
+        {
+          "keyword": "therapies",
+          "searchVolume": 2400,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "children's institute",
+          "searchVolume": 1900,
+          "intent": "2",
+          "difficulty": 41
+        },
+        {
+          "keyword": "different kinds of therapy",
+          "searchVolume": 1900,
+          "intent": "1",
+          "difficulty": 63
+        },
+        {
+          "keyword": "therepy",
+          "searchVolume": 1900,
+          "intent": "1,0",
+          "difficulty": 93
+        },
+        {
+          "keyword": "behavior therapy for kids",
+          "searchVolume": 1600,
+          "intent": "0",
+          "difficulty": 48
+        }
+      ]
+    },
+    {
+      "seed": "grief counseling",
+      "keywords": [
+        {
+          "keyword": "therapy near me",
+          "searchVolume": 110000,
+          "intent": "1,3",
+          "difficulty": 78
+        },
+        {
+          "keyword": "grief",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "grief counseling near me",
+          "searchVolume": 12100,
+          "intent": "3",
+          "difficulty": 50
+        },
+        {
+          "keyword": "griefshare",
+          "searchVolume": 12100,
+          "intent": "2,3",
+          "difficulty": 26
+        },
+        {
+          "keyword": "counselling the bereaved",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 48
+        },
+        {
+          "keyword": "counseling the bereaved",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 22
+        },
+        {
+          "keyword": "grief share",
+          "searchVolume": 5400,
+          "intent": "2,3",
+          "difficulty": 43
+        },
+        {
+          "keyword": "grief support groups",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 46
+        },
+        {
+          "keyword": "grief support groups near me",
+          "searchVolume": 5400,
+          "intent": "3",
+          "difficulty": 42
+        },
+        {
+          "keyword": "grief therapy",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 52
+        },
+        {
+          "keyword": "support groups near me",
+          "searchVolume": 5400,
+          "intent": "1,3",
+          "difficulty": 41
+        },
+        {
+          "keyword": "grief counselor",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 48
+        },
+        {
+          "keyword": "meetups near me",
+          "searchVolume": 4400,
+          "intent": "1,2",
+          "difficulty": 91
+        },
+        {
+          "keyword": "bereavement support groups",
+          "searchVolume": 3600,
+          "intent": "0",
+          "difficulty": 40
+        },
+        {
+          "keyword": "grief counselors near me",
+          "searchVolume": 3600,
+          "intent": "3",
+          "difficulty": 47
+        },
+        {
+          "keyword": "grief groups near me",
+          "searchVolume": 3600,
+          "intent": "3",
+          "difficulty": 43
+        },
+        {
+          "keyword": "support groups",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 66
+        },
+        {
+          "keyword": "what w",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 72
+        },
+        {
+          "keyword": "a & w near me",
+          "searchVolume": 2900,
+          "intent": "3",
+          "difficulty": 65
+        },
+        {
+          "keyword": "grief support group",
+          "searchVolume": 2900,
+          "intent": "0",
+          "difficulty": 50
+        },
+        {
+          "keyword": "start-395",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 9
+        },
+        {
+          "keyword": "support group",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "griefshare near me",
+          "searchVolume": 2400,
+          "intent": "2,3",
+          "difficulty": 38
+        },
+        {
+          "keyword": "group therapy near me",
+          "searchVolume": 2400,
+          "intent": "2,3",
+          "difficulty": 83
+        },
+        {
+          "keyword": "grief and loss",
+          "searchVolume": 1900,
+          "intent": "1",
+          "difficulty": 75
+        }
+      ]
+    },
+    {
+      "seed": "stress counseling",
+      "keywords": [
+        {
+          "keyword": "stress management",
+          "searchVolume": 1830000,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "how to relieve stress",
+          "searchVolume": 74000,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "stress",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "overwhelmed",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "coping",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "stress management techniques",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "techniques of dealing with stress",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 93
+        },
+        {
+          "keyword": "stress reduction management",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 87
+        },
+        {
+          "keyword": "what is stress",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "coping mechanisms",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "coping skills",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 60
+        },
+        {
+          "keyword": "overwhelmed overwhelmed",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 48
+        },
+        {
+          "keyword": "stress definition",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 95
+        },
+        {
+          "keyword": "how to manage stress",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "how to reduce stress",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 84
+        },
+        {
+          "keyword": "stress relief",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "stress stress management",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "stressed out",
+          "searchVolume": 12100,
+          "intent": "1,3",
+          "difficulty": 55
+        },
+        {
+          "keyword": "destress",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 60
+        },
+        {
+          "keyword": "method of managing stress",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 93
+        },
+        {
+          "keyword": "stress reduction techniques",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 98
+        },
+        {
+          "keyword": "stress symptoms",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "stressed",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "stress relief stress relief",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "stressors",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 62
+        }
+      ]
+    },
+    {
+      "seed": "burnout therapy",
+      "keywords": [
+        {
+          "keyword": "burnout",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "exhausted",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 63
+        },
+        {
+          "keyword": "exhaustion",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 82
+        },
+        {
+          "keyword": "signs of burnout",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 61
+        },
+        {
+          "keyword": "burnout and",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 80
+        },
+        {
+          "keyword": "burnout symptoms",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 62
+        },
+        {
+          "keyword": "burn out",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 82
+        },
+        {
+          "keyword": "burnt out",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 45
+        },
+        {
+          "keyword": "symptoms of exhaustion",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 69
+        },
+        {
+          "keyword": "burned out",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 80
+        },
+        {
+          "keyword": "burnout meaning",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "symptoms of burnout",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 52
+        },
+        {
+          "keyword": "what is burnout",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "burn out symptoms",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "how to recover from burnout",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 36
+        },
+        {
+          "keyword": "burn out meaning",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 98
+        },
+        {
+          "keyword": "burnout syndrome",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 75
+        },
+        {
+          "keyword": "exhaustion symptoms",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 85
+        },
+        {
+          "keyword": "what does burnout feel like",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 80
+        },
+        {
+          "keyword": "what is the burnout",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 77
+        },
+        {
+          "keyword": "burnout definition",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 71
+        },
+        {
+          "keyword": "burnt out meaning",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 42
+        },
+        {
+          "keyword": "emotional exhaustion",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 47
+        },
+        {
+          "keyword": "define burnout",
+          "searchVolume": 2400,
+          "intent": "1",
+          "difficulty": 88
+        },
+        {
+          "keyword": "emotional burnout",
+          "searchVolume": 2400,
+          "intent": "1",
+          "difficulty": 51
+        }
+      ]
+    },
+    {
+      "seed": "OCD therapy",
+      "keywords": [
+        {
+          "keyword": "ocd",
+          "searchVolume": 165000,
+          "intent": "1",
+          "difficulty": 99
+        },
+        {
+          "keyword": "ocd symptoms",
+          "searchVolume": 90500,
+          "intent": "1",
+          "difficulty": 83
+        },
+        {
+          "keyword": "intrusive thoughts",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 67
+        },
+        {
+          "keyword": "obsessive compulsive disorder",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 97
+        },
+        {
+          "keyword": "what is ocd",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 90
+        },
+        {
+          "keyword": "ocd meaning",
+          "searchVolume": 40500,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "nocd",
+          "searchVolume": 33100,
+          "intent": "2",
+          "difficulty": 61
+        },
+        {
+          "keyword": "compulsive disease",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 89
+        },
+        {
+          "keyword": "ocd test",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 36
+        },
+        {
+          "keyword": "ocd treatment",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 65
+        },
+        {
+          "keyword": "compulsive",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "erp therapy",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "obsession medication",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 57
+        },
+        {
+          "keyword": "obsessive compulsive disorder tests",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 31
+        },
+        {
+          "keyword": "obsessive compulsive therapist",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 52
+        },
+        {
+          "keyword": "ocd medication",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 53
+        },
+        {
+          "keyword": "what is oc disorder",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 91
+        },
+        {
+          "keyword": "compulsive disorders symptoms",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 82
+        },
+        {
+          "keyword": "meaning of ocd disease",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 96
+        },
+        {
+          "keyword": "therapy obsession",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 54
+        },
+        {
+          "keyword": "obsessive compulsive disorder symptoms",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 73
+        },
+        {
+          "keyword": "ocd definition",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 94
+        },
+        {
+          "keyword": "symptoms of ocd",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 78
+        },
+        {
+          "keyword": "treatment for ocd",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 55
+        },
+        {
+          "keyword": "exposure and response prevention",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 53
+        }
+      ]
+    },
+    {
+      "seed": "ADHD therapy",
+      "keywords": [
+        {
+          "keyword": "adhd",
+          "searchVolume": 368000,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "adhd symptoms",
+          "searchVolume": 246000,
+          "intent": "1",
+          "difficulty": 74
+        },
+        {
+          "keyword": "adhd medication",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 60
+        },
+        {
+          "keyword": "adhd test",
+          "searchVolume": 135000,
+          "intent": "1",
+          "difficulty": 59
+        },
+        {
+          "keyword": "what is adhd",
+          "searchVolume": 74000,
+          "intent": "1",
+          "difficulty": 94
+        },
+        {
+          "keyword": "adhd meaning",
+          "searchVolume": 60500,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "adhd deficit disorder",
+          "searchVolume": 33100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "adhd treatment",
+          "searchVolume": 27100,
+          "intent": "1",
+          "difficulty": 71
+        },
+        {
+          "keyword": "adhd meds",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 60
+        },
+        {
+          "keyword": "inattentive adhd",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "is adhd a disability",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 42
+        },
+        {
+          "keyword": "signs of adhd",
+          "searchVolume": 22200,
+          "intent": "1",
+          "difficulty": 71
+        },
+        {
+          "keyword": "adhd treatments",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 72
+        },
+        {
+          "keyword": "do i have adhd",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 65
+        },
+        {
+          "keyword": "what does adhd stand for",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 97
+        },
+        {
+          "keyword": "adhd disease symptoms",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 95
+        },
+        {
+          "keyword": "adhd types",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 74
+        },
+        {
+          "keyword": "diagnosticare adhd",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 72
+        },
+        {
+          "keyword": "typer adhd",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 65
+        },
+        {
+          "keyword": "additude",
+          "searchVolume": 12100,
+          "intent": "2",
+          "difficulty": 58
+        },
+        {
+          "keyword": "adhd signs",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 80
+        },
+        {
+          "keyword": "adhd test for adults",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 65
+        },
+        {
+          "keyword": "attention deficit disorders symptoms",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 88
+        },
+        {
+          "keyword": "hyperactivity disorder",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 95
+        },
+        {
+          "keyword": "treatment for add/adhd",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 85
+        }
+      ]
+    },
+    {
+      "seed": "self-esteem counseling",
+      "keywords": [
+        {
+          "keyword": "self esteem",
+          "searchVolume": 49500,
+          "intent": "1",
+          "difficulty": 95
+        },
+        {
+          "keyword": "esteemed self",
+          "searchVolume": 18100,
+          "intent": "1",
+          "difficulty": 75
+        },
+        {
+          "keyword": "esteem",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 77
+        },
+        {
+          "keyword": "low self esteem remedy",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 50
+        },
+        {
+          "keyword": "self esteem self",
+          "searchVolume": 14800,
+          "intent": "1",
+          "difficulty": 79
+        },
+        {
+          "keyword": "low self esteem",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 81
+        },
+        {
+          "keyword": "self esteem and self",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 44
+        },
+        {
+          "keyword": "self-esteem",
+          "searchVolume": 12100,
+          "intent": "1",
+          "difficulty": 100
+        },
+        {
+          "keyword": "what is self esteem",
+          "searchVolume": 9900,
+          "intent": "1",
+          "difficulty": 68
+        },
+        {
+          "keyword": "self confidence",
+          "searchVolume": 8100,
+          "intent": "1",
+          "difficulty": 77
+        },
+        {
+          "keyword": "helping self",
+          "searchVolume": 6600,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "how to build confidence",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 49
+        },
+        {
+          "keyword": "self confidence self confidence",
+          "searchVolume": 5400,
+          "intent": "1",
+          "difficulty": 58
+        },
+        {
+          "keyword": "how to be more confident",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "how to gain confidence",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 34
+        },
+        {
+          "keyword": "low self esteem meaning",
+          "searchVolume": 4400,
+          "intent": "1",
+          "difficulty": 48
+        },
+        {
+          "keyword": "confidence self",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 45
+        },
+        {
+          "keyword": "how do you boost confidence",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 43
+        },
+        {
+          "keyword": "how to improve self esteem",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 48
+        },
+        {
+          "keyword": "how to improve self-esteem",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 42
+        },
+        {
+          "keyword": "low self-esteem",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 76
+        },
+        {
+          "keyword": "self-confidence",
+          "searchVolume": 3600,
+          "intent": "1",
+          "difficulty": 67
+        },
+        {
+          "keyword": "autoestima",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 56
+        },
+        {
+          "keyword": "best ways to build self-confidence",
+          "searchVolume": 2900,
+          "intent": "1,0",
+          "difficulty": 79
+        },
+        {
+          "keyword": "cognitive therapy for low self esteem",
+          "searchVolume": 2900,
+          "intent": "1",
+          "difficulty": 52
+        }
+      ]
+    },
+    {
+      "seed": "life transitions counseling",
+      "keywords": [
+        {
+          "keyword": "life transitions",
+          "searchVolume": 1600,
+          "intent": "0",
+          "difficulty": 31
+        },
+        {
+          "keyword": "life transition",
+          "searchVolume": 590,
+          "intent": "1",
+          "difficulty": 31
+        },
+        {
+          "keyword": "life transitions therapy",
+          "searchVolume": 590,
+          "intent": "1",
+          "difficulty": 19
+        },
+        {
+          "keyword": "therapy for life transitions",
+          "searchVolume": 480,
+          "intent": "1",
+          "difficulty": 18
+        },
+        {
+          "keyword": "life transition therapy",
+          "searchVolume": 390,
+          "intent": "1",
+          "difficulty": 16
+        },
+        {
+          "keyword": "life transformation counseling",
+          "searchVolume": 320,
+          "intent": "2",
+          "difficulty": 32
+        },
+        {
+          "keyword": "transition therapy",
+          "searchVolume": 210,
+          "intent": "0",
+          "difficulty": 72
+        },
+        {
+          "keyword": "therapy tacoma",
+          "searchVolume": 170,
+          "intent": "0",
+          "difficulty": 27
+        },
+        {
+          "keyword": "transitions therapy",
+          "searchVolume": 170,
+          "intent": "0",
+          "difficulty": 37
+        },
+        {
+          "keyword": "counseling for life transitions",
+          "searchVolume": 140,
+          "intent": "0",
+          "difficulty": 26
+        },
+        {
+          "keyword": "transition counseling",
+          "searchVolume": 140,
+          "intent": "2,0",
+          "difficulty": 45
+        },
+        {
+          "keyword": "transition counselor",
+          "searchVolume": 140,
+          "intent": "0",
+          "difficulty": 19
+        },
+        {
+          "keyword": "divorce counseling chicago",
+          "searchVolume": 110,
+          "intent": "0",
+          "difficulty": 3
+        },
+        {
+          "keyword": "life transformations",
+          "searchVolume": 110,
+          "intent": "0",
+          "difficulty": 16
+        },
+        {
+          "keyword": "life transition counseling",
+          "searchVolume": 110,
+          "intent": "1",
+          "difficulty": 20
+        },
+        {
+          "keyword": "life transitions therapist",
+          "searchVolume": 110,
+          "intent": "1",
+          "difficulty": 16
+        },
+        {
+          "keyword": "life transitions therapy for anxiety",
+          "searchVolume": 110,
+          "intent": "1",
+          "difficulty": 13
+        },
+        {
+          "keyword": "life transitions therapy for career changes",
+          "searchVolume": 110,
+          "intent": "1,0",
+          "difficulty": 4
+        },
+        {
+          "keyword": "life transitions therapy for relocation",
+          "searchVolume": 110,
+          "intent": "1",
+          "difficulty": 3
+        },
+        {
+          "keyword": "transitions in life",
+          "searchVolume": 110,
+          "intent": "1",
+          "difficulty": 22
+        },
+        {
+          "keyword": "life transition therapist near me",
+          "searchVolume": 90,
+          "intent": "3",
+          "difficulty": 30
+        },
+        {
+          "keyword": "life transitions counseling near me",
+          "searchVolume": 90,
+          "intent": "1,3",
+          "difficulty": 8
+        },
+        {
+          "keyword": "life transitions meaning",
+          "searchVolume": 90,
+          "intent": "1",
+          "difficulty": 25
+        },
+        {
+          "keyword": "life transitions therapy for couples",
+          "searchVolume": 90,
+          "intent": "1",
+          "difficulty": 3
+        },
+        {
+          "keyword": "therapist for life transitions",
+          "searchVolume": 90,
+          "intent": "1",
+          "difficulty": 20
+        }
+      ]
+    }
+  ],
+  "allKeywords": [
+    {
+      "keyword": "behavioral therapy techniques",
+      "searchVolume": 1220000,
+      "intent": "1",
+      "difficulty": 73
+    },
+    {
+      "keyword": "grow therapy",
+      "searchVolume": 165000,
+      "intent": "2",
+      "difficulty": 49
+    },
+    {
+      "keyword": "online therapy",
+      "searchVolume": 165000,
+      "intent": "1",
+      "difficulty": 85
+    },
+    {
+      "keyword": "therapist near me",
+      "searchVolume": 165000,
+      "intent": "3",
+      "difficulty": 68
+    },
+    {
+      "keyword": "physical therapy",
+      "searchVolume": 110000,
+      "intent": "0",
+      "difficulty": 98
+    },
+    {
+      "keyword": "physical therapy near me",
+      "searchVolume": 110000,
+      "intent": "3",
+      "difficulty": 71
+    },
+    {
+      "keyword": "therapy near me",
+      "searchVolume": 110000,
+      "intent": "1,3",
+      "difficulty": 78
+    },
+    {
+      "keyword": "cognitive behavioral therapy",
+      "searchVolume": 90500,
+      "intent": "1",
+      "difficulty": 97
+    },
+    {
+      "keyword": "therapist",
+      "searchVolume": 90500,
+      "intent": "1",
+      "difficulty": 92
+    },
+    {
+      "keyword": "cbt",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 96
+    },
+    {
+      "keyword": "physical therapist",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 86
+    },
+    {
+      "keyword": "therapists near me",
+      "searchVolume": 60500,
+      "intent": "2,3",
+      "difficulty": 92
+    },
+    {
+      "keyword": "cbt therapy",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 93
+    },
+    {
+      "keyword": "cognitive behavioral therapy cognitive behavioral therapy",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "behavioral",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "grow",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "cog beh therapy",
+      "searchVolume": 33100,
+      "intent": "0",
+      "difficulty": 100
+    },
+    {
+      "keyword": "mental health therapist",
+      "searchVolume": 33100,
+      "intent": "0",
+      "difficulty": 72
+    },
+    {
+      "keyword": "physical therapist near me",
+      "searchVolume": 33100,
+      "intent": "3",
+      "difficulty": 68
+    },
+    {
+      "keyword": "physical therapy therapists",
+      "searchVolume": 33100,
+      "intent": "0",
+      "difficulty": 65
+    },
+    {
+      "keyword": "physiotherapy",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 87
+    },
+    {
+      "keyword": "psychotherapy",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 92
+    },
+    {
+      "keyword": "couples therapy near me",
+      "searchVolume": 27100,
+      "intent": "3",
+      "difficulty": 42
+    },
+    {
+      "keyword": "physical therapy clinic",
+      "searchVolume": 27100,
+      "intent": "0",
+      "difficulty": 78
+    },
+    {
+      "keyword": "relationship counseling near me",
+      "searchVolume": 27100,
+      "intent": "3",
+      "difficulty": 22
+    },
+    {
+      "keyword": "therapy",
+      "searchVolume": 135000,
+      "intent": "1",
+      "difficulty": 96
+    },
+    {
+      "keyword": "betterhelp",
+      "searchVolume": 110000,
+      "intent": "2",
+      "difficulty": 83
+    },
+    {
+      "keyword": "headway",
+      "searchVolume": 110000,
+      "intent": "2",
+      "difficulty": 77
+    },
+    {
+      "keyword": "psychologist",
+      "searchVolume": 110000,
+      "intent": "1",
+      "difficulty": 90
+    },
+    {
+      "keyword": "counselor",
+      "searchVolume": 90500,
+      "intent": "1",
+      "difficulty": 79
+    },
+    {
+      "keyword": "therapist aid",
+      "searchVolume": 74000,
+      "intent": "2",
+      "difficulty": 45
+    },
+    {
+      "keyword": "talk",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 69
+    },
+    {
+      "keyword": "better",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 89
+    },
+    {
+      "keyword": "talkspace",
+      "searchVolume": 49500,
+      "intent": "2,0",
+      "difficulty": 69
+    },
+    {
+      "keyword": "better help",
+      "searchVolume": 40500,
+      "intent": "2",
+      "difficulty": 83
+    },
+    {
+      "keyword": "counseling",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 87
+    },
+    {
+      "keyword": "marriage counseling near me",
+      "searchVolume": 33100,
+      "intent": "3",
+      "difficulty": 44
+    },
+    {
+      "keyword": "counselors near me",
+      "searchVolume": 27100,
+      "intent": "1,3",
+      "difficulty": 90
+    },
+    {
+      "keyword": "c o u n s e l i n g",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "headway provider login",
+      "searchVolume": 22200,
+      "intent": "2,3",
+      "difficulty": 41
+    },
+    {
+      "keyword": "headway provider portal",
+      "searchVolume": 22200,
+      "intent": "2,3",
+      "difficulty": 44
+    },
+    {
+      "keyword": "therapy aid",
+      "searchVolume": 22200,
+      "intent": "2",
+      "difficulty": 40
+    },
+    {
+      "keyword": "anxiety therapy",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 67
+    },
+    {
+      "keyword": "aca",
+      "searchVolume": 74000,
+      "intent": "1,0",
+      "difficulty": 100
+    },
+    {
+      "keyword": "thriveworks",
+      "searchVolume": 22200,
+      "intent": "2",
+      "difficulty": 57
+    },
+    {
+      "keyword": "better health",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 70
+    },
+    {
+      "keyword": "counseling near me",
+      "searchVolume": 18100,
+      "intent": "1,3",
+      "difficulty": 65
+    },
+    {
+      "keyword": "mental health therapist near me",
+      "searchVolume": 18100,
+      "intent": "3",
+      "difficulty": 99
+    },
+    {
+      "keyword": "psychiatrists close to me",
+      "searchVolume": 18100,
+      "intent": "0",
+      "difficulty": 48
+    },
+    {
+      "keyword": "psychology today login",
+      "searchVolume": 18100,
+      "intent": "2,3",
+      "difficulty": 69
+    },
+    {
+      "keyword": "find a therapist",
+      "searchVolume": 14800,
+      "intent": "0",
+      "difficulty": 81
+    },
+    {
+      "keyword": "psychologist near me",
+      "searchVolume": 14800,
+      "intent": "3",
+      "difficulty": 93
+    },
+    {
+      "keyword": "therapy appointment",
+      "searchVolume": 14800,
+      "intent": "2",
+      "difficulty": 79
+    },
+    {
+      "keyword": "cognitive behavioral therapy near me",
+      "searchVolume": 12100,
+      "intent": "1,3",
+      "difficulty": 41
+    },
+    {
+      "keyword": "couples counseling near me",
+      "searchVolume": 12100,
+      "intent": "3",
+      "difficulty": 49
+    },
+    {
+      "keyword": "lifestance",
+      "searchVolume": 165000,
+      "intent": "2",
+      "difficulty": 61
+    },
+    {
+      "keyword": "lifestance health",
+      "searchVolume": 90500,
+      "intent": "2",
+      "difficulty": 59
+    },
+    {
+      "keyword": "cerebral",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 86
+    },
+    {
+      "keyword": "lifestance patient portal",
+      "searchVolume": 49500,
+      "intent": "2,3",
+      "difficulty": 38
+    },
+    {
+      "keyword": "mindful",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 84
+    },
+    {
+      "keyword": "grow healthy",
+      "searchVolume": 22200,
+      "intent": "2",
+      "difficulty": 32
+    },
+    {
+      "keyword": "grow therapy login",
+      "searchVolume": 18100,
+      "intent": "2,3",
+      "difficulty": 28
+    },
+    {
+      "keyword": "growtherapy",
+      "searchVolume": 18100,
+      "intent": "2",
+      "difficulty": 51
+    },
+    {
+      "keyword": "psychiatry near me",
+      "searchVolume": 18100,
+      "intent": "3",
+      "difficulty": 70
+    },
+    {
+      "keyword": "anxiety management",
+      "searchVolume": 1830000,
+      "intent": "1",
+      "difficulty": 89
+    },
+    {
+      "keyword": "anxiety",
+      "searchVolume": 301000,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "how to deal with anxiety",
+      "searchVolume": 301000,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "how to deal with depression",
+      "searchVolume": 301000,
+      "intent": "1",
+      "difficulty": 87
+    },
+    {
+      "keyword": "depression",
+      "searchVolume": 165000,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "anxiety medication",
+      "searchVolume": 110000,
+      "intent": "1",
+      "difficulty": 55
+    },
+    {
+      "keyword": "anxiety symptoms",
+      "searchVolume": 110000,
+      "intent": "1",
+      "difficulty": 78
+    },
+    {
+      "keyword": "depression symptoms",
+      "searchVolume": 90500,
+      "intent": "1",
+      "difficulty": 97
+    },
+    {
+      "keyword": "anxiety attack",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 67
+    },
+    {
+      "keyword": "anxious",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 80
+    },
+    {
+      "keyword": "anxiety disorder",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "signs of depression",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "anxiety attack symptoms",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 78
+    },
+    {
+      "keyword": "what is anxiety",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 86
+    },
+    {
+      "keyword": "anti anxiety meds",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 55
+    },
+    {
+      "keyword": "anxiety attacks and symptoms",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 83
+    },
+    {
+      "keyword": "depressed",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "symptoms of depression",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "anxiety disorder symptoms",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "symptoms of anxiety",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "anxiety treatment",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 74
+    },
+    {
+      "keyword": "anxiety treatment cognitive behavioral therapy",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 82
+    },
+    {
+      "keyword": "brightside",
+      "searchVolume": 22200,
+      "intent": "2",
+      "difficulty": 84
+    },
+    {
+      "keyword": "symptoms of anxiety attack",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "anxiety definition",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "anxiety meds",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 50
+    },
+    {
+      "keyword": "depression test",
+      "searchVolume": 135000,
+      "intent": "0",
+      "difficulty": 73
+    },
+    {
+      "keyword": "postpartum depression",
+      "searchVolume": 90500,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "major depressive disorder",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 96
+    },
+    {
+      "keyword": "clinical depression",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 94
+    },
+    {
+      "keyword": "seasonal affective disorder",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "samhsa",
+      "searchVolume": 27100,
+      "intent": "2,3",
+      "difficulty": 74
+    },
+    {
+      "keyword": "seasonal depression",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 95
+    },
+    {
+      "keyword": "symptoms with depression",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 88
+    },
+    {
+      "keyword": "depression treatment",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "high functioning depression",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 30
+    },
+    {
+      "keyword": "persistent depressive disorder",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 77
+    },
+    {
+      "keyword": "what is depression",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "emdr therapy",
+      "searchVolume": 246000,
+      "intent": "1",
+      "difficulty": 85
+    },
+    {
+      "keyword": "emdr",
+      "searchVolume": 165000,
+      "intent": "1",
+      "difficulty": 95
+    },
+    {
+      "keyword": "what is emdr therapy",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "edmr",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 43
+    },
+    {
+      "keyword": "post traumatic stress treatment emdr",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 50
+    },
+    {
+      "keyword": "ptsd therapies emdr",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 79
+    },
+    {
+      "keyword": "ptsd treatment",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 77
+    },
+    {
+      "keyword": "what is emdr",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 48
+    },
+    {
+      "keyword": "emdr therapy near me",
+      "searchVolume": 12100,
+      "intent": "1,3",
+      "difficulty": 58
+    },
+    {
+      "keyword": "eye movement desensitization and reprocessing",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 89
+    },
+    {
+      "keyword": "ptsd treatments therapy",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "therapy for posttraumatic stress disorder",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 73
+    },
+    {
+      "keyword": "bilateral stimulation",
+      "searchVolume": 8100,
+      "intent": "1,3",
+      "difficulty": 33
+    },
+    {
+      "keyword": "emdr meaning",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 72
+    },
+    {
+      "keyword": "treatment for ptsd therapy",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 71
+    },
+    {
+      "keyword": "edmr therapy",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 87
+    },
+    {
+      "keyword": "ptsd medication",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 57
+    },
+    {
+      "keyword": "talk therapy",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 57
+    },
+    {
+      "keyword": "emdr therapist",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 57
+    },
+    {
+      "keyword": "grief therapy",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 52
+    },
+    {
+      "keyword": "ptsd treatments",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 79
+    },
+    {
+      "keyword": "post traumatic stress disorder treatment",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 83
+    },
+    {
+      "keyword": "ptsd definition",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "ptsd therapy",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 65
+    },
+    {
+      "keyword": "what does ptsd mean",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "trauma therapy",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 63
+    },
+    {
+      "keyword": "emdr training",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 61
+    },
+    {
+      "keyword": "dangers of emdr therapy",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 34
+    },
+    {
+      "keyword": "rapid eye movement therapy",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "trauma counseling",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 42
+    },
+    {
+      "keyword": "emdr treatment",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 79
+    },
+    {
+      "keyword": "eye movement therapy",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 88
+    },
+    {
+      "keyword": "how does emdr work",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 50
+    },
+    {
+      "keyword": "mean therapy",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 43
+    },
+    {
+      "keyword": "what does emdr stand for",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 39
+    },
+    {
+      "keyword": "emdr therapy meaning",
+      "searchVolume": 2400,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "mr eye dr",
+      "searchVolume": 2400,
+      "intent": "2",
+      "difficulty": 42
+    },
+    {
+      "keyword": "marriage counseling",
+      "searchVolume": 60500,
+      "intent": "0",
+      "difficulty": 56
+    },
+    {
+      "keyword": "couples therapy show",
+      "searchVolume": 33100,
+      "intent": "1,3",
+      "difficulty": 59
+    },
+    {
+      "keyword": "counseling marriage counseling",
+      "searchVolume": 27100,
+      "intent": "0",
+      "difficulty": 41
+    },
+    {
+      "keyword": "couples counseling",
+      "searchVolume": 27100,
+      "intent": "0",
+      "difficulty": 68
+    },
+    {
+      "keyword": "couples",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 86
+    },
+    {
+      "keyword": "family therapy",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "lmft",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 37
+    },
+    {
+      "keyword": "couple th",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 61
+    },
+    {
+      "keyword": "couple therapy",
+      "searchVolume": 14800,
+      "intent": "0",
+      "difficulty": 86
+    },
+    {
+      "keyword": "gottman method",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 71
+    },
+    {
+      "keyword": "mft",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 39
+    },
+    {
+      "keyword": "relationship therapy",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 73
+    },
+    {
+      "keyword": "marriagecounseling",
+      "searchVolume": 12100,
+      "intent": "0",
+      "difficulty": 57
+    },
+    {
+      "keyword": "orna guralnik",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 51
+    },
+    {
+      "keyword": "relationship counseling",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 68
+    },
+    {
+      "keyword": "gottman method couples therapy",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 68
+    },
+    {
+      "keyword": "therapists for relationship anxiety",
+      "searchVolume": 9900,
+      "intent": "0",
+      "difficulty": 25
+    },
+    {
+      "keyword": "family counseling",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "lmft meaning",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 25
+    },
+    {
+      "keyword": "marriage counselor",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 49
+    },
+    {
+      "keyword": "regain",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 61
+    },
+    {
+      "keyword": "couples therapy",
+      "searchVolume": 135000,
+      "intent": "1",
+      "difficulty": 82
+    },
+    {
+      "keyword": "relationships",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 85
+    },
+    {
+      "keyword": "gottman institute",
+      "searchVolume": 9900,
+      "intent": "2",
+      "difficulty": 95
+    },
+    {
+      "keyword": "gotan",
+      "searchVolume": 8100,
+      "intent": "2",
+      "difficulty": 48
+    },
+    {
+      "keyword": "wa drs",
+      "searchVolume": 8100,
+      "intent": "2,3",
+      "difficulty": 75
+    },
+    {
+      "keyword": "counselling for husband and wife",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 52
+    },
+    {
+      "keyword": "gottman",
+      "searchVolume": 6600,
+      "intent": "2",
+      "difficulty": 67
+    },
+    {
+      "keyword": "john gottman",
+      "searchVolume": 6600,
+      "intent": "2",
+      "difficulty": 69
+    },
+    {
+      "keyword": "marriage counselors near me",
+      "searchVolume": 12100,
+      "intent": "3",
+      "difficulty": 44
+    },
+    {
+      "keyword": "familytherapy",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 83
+    },
+    {
+      "keyword": "marriage therapy",
+      "searchVolume": 6600,
+      "intent": "0",
+      "difficulty": 78
+    },
+    {
+      "keyword": "relate company",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 25
+    },
+    {
+      "keyword": "relationship issues therapist",
+      "searchVolume": 5400,
+      "intent": "0",
+      "difficulty": 41
+    },
+    {
+      "keyword": "marriage and family therapist",
+      "searchVolume": 4400,
+      "intent": "0",
+      "difficulty": 54
+    },
+    {
+      "keyword": "relationship therapist",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 60
+    },
+    {
+      "keyword": "afta",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 39
+    },
+    {
+      "keyword": "family therapist",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 68
+    },
+    {
+      "keyword": "family therapyxxx",
+      "searchVolume": 3600,
+      "intent": "0",
+      "difficulty": 78
+    },
+    {
+      "keyword": "lmft therapist",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 40
+    },
+    {
+      "keyword": "marriage therapist",
+      "searchVolume": 3600,
+      "intent": "0",
+      "difficulty": 55
+    },
+    {
+      "keyword": "mft meaning",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 12
+    },
+    {
+      "keyword": "couplescounseling",
+      "searchVolume": 2900,
+      "intent": "0",
+      "difficulty": 56
+    },
+    {
+      "keyword": "family counseling services",
+      "searchVolume": 2900,
+      "intent": "0",
+      "difficulty": 53
+    },
+    {
+      "keyword": "betterhelp therapy",
+      "searchVolume": 9900,
+      "intent": "2",
+      "difficulty": 75
+    },
+    {
+      "keyword": "teen therapist near me",
+      "searchVolume": 9900,
+      "intent": "3",
+      "difficulty": 9
+    },
+    {
+      "keyword": "teen counseling",
+      "searchVolume": 6600,
+      "intent": "2,0",
+      "difficulty": 45
+    },
+    {
+      "keyword": "online therapy free",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 60
+    },
+    {
+      "keyword": "what is therapy",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 57
+    },
+    {
+      "keyword": "free online therapy chat",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 63
+    },
+    {
+      "keyword": "teen counseling near me",
+      "searchVolume": 2900,
+      "intent": "3",
+      "difficulty": 20
+    },
+    {
+      "keyword": "therapy online free",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "what does a therapist do",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 36
+    },
+    {
+      "keyword": "counceling",
+      "searchVolume": 2400,
+      "intent": "0",
+      "difficulty": 81
+    },
+    {
+      "keyword": "counselors for teenagers near me",
+      "searchVolume": 2400,
+      "intent": "3",
+      "difficulty": 17
+    },
+    {
+      "keyword": "what do therapists do",
+      "searchVolume": 2400,
+      "intent": "1",
+      "difficulty": 43
+    },
+    {
+      "keyword": "free therapist online",
+      "searchVolume": 1900,
+      "intent": "1,0",
+      "difficulty": 83
+    },
+    {
+      "keyword": "los gatos therapy center",
+      "searchVolume": 1900,
+      "intent": "2",
+      "difficulty": 26
+    },
+    {
+      "keyword": "online therapist free",
+      "searchVolume": 1900,
+      "intent": "1",
+      "difficulty": 69
+    },
+    {
+      "keyword": "therapistaid com",
+      "searchVolume": 1900,
+      "intent": "2",
+      "difficulty": 29
+    },
+    {
+      "keyword": "therapists for teens near me",
+      "searchVolume": 1900,
+      "intent": "3",
+      "difficulty": 19
+    },
+    {
+      "keyword": "therapy for teens",
+      "searchVolume": 1900,
+      "intent": "0",
+      "difficulty": 45
+    },
+    {
+      "keyword": "child counselor",
+      "searchVolume": 1600,
+      "intent": "0",
+      "difficulty": 45
+    },
+    {
+      "keyword": "therapists for teenager near me",
+      "searchVolume": 1600,
+      "intent": "3",
+      "difficulty": 13
+    },
+    {
+      "keyword": "therapy for teens near me",
+      "searchVolume": 1600,
+      "intent": "3",
+      "difficulty": 30
+    },
+    {
+      "keyword": "counselors for teens near me",
+      "searchVolume": 1300,
+      "intent": "3",
+      "difficulty": 16
+    },
+    {
+      "keyword": "free online therapist",
+      "searchVolume": 1300,
+      "intent": "1",
+      "difficulty": 66
+    },
+    {
+      "keyword": "online free therapy",
+      "searchVolume": 1300,
+      "intent": "1",
+      "difficulty": 69
+    },
+    {
+      "keyword": "child",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "child mind institute",
+      "searchVolume": 14800,
+      "intent": "1,2",
+      "difficulty": 47
+    },
+    {
+      "keyword": "child therapist near me",
+      "searchVolume": 14800,
+      "intent": "3",
+      "difficulty": 27
+    },
+    {
+      "keyword": "types of therapy",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 39
+    },
+    {
+      "keyword": "kids in mind",
+      "searchVolume": 12100,
+      "intent": "2",
+      "difficulty": 24
+    },
+    {
+      "keyword": "child psychologist",
+      "searchVolume": 6600,
+      "intent": "0",
+      "difficulty": 39
+    },
+    {
+      "keyword": "behavioral therapy for kids",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 44
+    },
+    {
+      "keyword": "child psychiatrist",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 47
+    },
+    {
+      "keyword": "child therapist",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 40
+    },
+    {
+      "keyword": "children's psychologists",
+      "searchVolume": 4400,
+      "intent": "0",
+      "difficulty": 43
+    },
+    {
+      "keyword": "kinds of therapy",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 68
+    },
+    {
+      "keyword": "pcit therapy",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 45
+    },
+    {
+      "keyword": "kids-in-mind",
+      "searchVolume": 3600,
+      "intent": "2",
+      "difficulty": 32
+    },
+    {
+      "keyword": "kidsinmind",
+      "searchVolume": 3600,
+      "intent": "2",
+      "difficulty": 33
+    },
+    {
+      "keyword": "mental health organizations",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "brain health usa",
+      "searchVolume": 2900,
+      "intent": "2",
+      "difficulty": 84
+    },
+    {
+      "keyword": "small steps",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 34
+    },
+    {
+      "keyword": "child counseling",
+      "searchVolume": 2400,
+      "intent": "0",
+      "difficulty": 62
+    },
+    {
+      "keyword": "children's counselors near me",
+      "searchVolume": 2400,
+      "intent": "3",
+      "difficulty": 33
+    },
+    {
+      "keyword": "therapies",
+      "searchVolume": 2400,
+      "intent": "1",
+      "difficulty": 79
+    },
+    {
+      "keyword": "children's institute",
+      "searchVolume": 1900,
+      "intent": "2",
+      "difficulty": 41
+    },
+    {
+      "keyword": "different kinds of therapy",
+      "searchVolume": 1900,
+      "intent": "1",
+      "difficulty": 63
+    },
+    {
+      "keyword": "therepy",
+      "searchVolume": 1900,
+      "intent": "1,0",
+      "difficulty": 93
+    },
+    {
+      "keyword": "behavior therapy for kids",
+      "searchVolume": 1600,
+      "intent": "0",
+      "difficulty": 48
+    },
+    {
+      "keyword": "grief",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "grief counseling near me",
+      "searchVolume": 12100,
+      "intent": "3",
+      "difficulty": 50
+    },
+    {
+      "keyword": "griefshare",
+      "searchVolume": 12100,
+      "intent": "2,3",
+      "difficulty": 26
+    },
+    {
+      "keyword": "counselling the bereaved",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 48
+    },
+    {
+      "keyword": "counseling the bereaved",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 22
+    },
+    {
+      "keyword": "grief share",
+      "searchVolume": 5400,
+      "intent": "2,3",
+      "difficulty": 43
+    },
+    {
+      "keyword": "grief support groups",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 46
+    },
+    {
+      "keyword": "grief support groups near me",
+      "searchVolume": 5400,
+      "intent": "3",
+      "difficulty": 42
+    },
+    {
+      "keyword": "support groups near me",
+      "searchVolume": 5400,
+      "intent": "1,3",
+      "difficulty": 41
+    },
+    {
+      "keyword": "grief counselor",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 48
+    },
+    {
+      "keyword": "meetups near me",
+      "searchVolume": 4400,
+      "intent": "1,2",
+      "difficulty": 91
+    },
+    {
+      "keyword": "bereavement support groups",
+      "searchVolume": 3600,
+      "intent": "0",
+      "difficulty": 40
+    },
+    {
+      "keyword": "grief counselors near me",
+      "searchVolume": 3600,
+      "intent": "3",
+      "difficulty": 47
+    },
+    {
+      "keyword": "grief groups near me",
+      "searchVolume": 3600,
+      "intent": "3",
+      "difficulty": 43
+    },
+    {
+      "keyword": "support groups",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 66
+    },
+    {
+      "keyword": "what w",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 72
+    },
+    {
+      "keyword": "a & w near me",
+      "searchVolume": 2900,
+      "intent": "3",
+      "difficulty": 65
+    },
+    {
+      "keyword": "grief support group",
+      "searchVolume": 2900,
+      "intent": "0",
+      "difficulty": 50
+    },
+    {
+      "keyword": "start-395",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 9
+    },
+    {
+      "keyword": "support group",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 78
+    },
+    {
+      "keyword": "griefshare near me",
+      "searchVolume": 2400,
+      "intent": "2,3",
+      "difficulty": 38
+    },
+    {
+      "keyword": "group therapy near me",
+      "searchVolume": 2400,
+      "intent": "2,3",
+      "difficulty": 83
+    },
+    {
+      "keyword": "grief and loss",
+      "searchVolume": 1900,
+      "intent": "1",
+      "difficulty": 75
+    },
+    {
+      "keyword": "stress management",
+      "searchVolume": 1830000,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "how to relieve stress",
+      "searchVolume": 74000,
+      "intent": "1",
+      "difficulty": 96
+    },
+    {
+      "keyword": "stress",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "overwhelmed",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 61
+    },
+    {
+      "keyword": "coping",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "stress management techniques",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 96
+    },
+    {
+      "keyword": "techniques of dealing with stress",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 93
+    },
+    {
+      "keyword": "stress reduction management",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 87
+    },
+    {
+      "keyword": "what is stress",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 89
+    },
+    {
+      "keyword": "coping mechanisms",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "coping skills",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 60
+    },
+    {
+      "keyword": "overwhelmed overwhelmed",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 48
+    },
+    {
+      "keyword": "stress definition",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 95
+    },
+    {
+      "keyword": "how to manage stress",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 96
+    },
+    {
+      "keyword": "how to reduce stress",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 84
+    },
+    {
+      "keyword": "stress relief",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "stress stress management",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "stressed out",
+      "searchVolume": 12100,
+      "intent": "1,3",
+      "difficulty": 55
+    },
+    {
+      "keyword": "destress",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 60
+    },
+    {
+      "keyword": "method of managing stress",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 93
+    },
+    {
+      "keyword": "stress reduction techniques",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 98
+    },
+    {
+      "keyword": "stress symptoms",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "stressed",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "stress relief stress relief",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 78
+    },
+    {
+      "keyword": "stressors",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 62
+    },
+    {
+      "keyword": "burnout",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "exhausted",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 63
+    },
+    {
+      "keyword": "exhaustion",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 82
+    },
+    {
+      "keyword": "signs of burnout",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 61
+    },
+    {
+      "keyword": "burnout and",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 80
+    },
+    {
+      "keyword": "burnout symptoms",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 62
+    },
+    {
+      "keyword": "burn out",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 82
+    },
+    {
+      "keyword": "burnt out",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 45
+    },
+    {
+      "keyword": "symptoms of exhaustion",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 69
+    },
+    {
+      "keyword": "burned out",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 80
+    },
+    {
+      "keyword": "burnout meaning",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 89
+    },
+    {
+      "keyword": "symptoms of burnout",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 52
+    },
+    {
+      "keyword": "what is burnout",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "burn out symptoms",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 43
+    },
+    {
+      "keyword": "how to recover from burnout",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 36
+    },
+    {
+      "keyword": "burn out meaning",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 98
+    },
+    {
+      "keyword": "burnout syndrome",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 75
+    },
+    {
+      "keyword": "exhaustion symptoms",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 85
+    },
+    {
+      "keyword": "what does burnout feel like",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 80
+    },
+    {
+      "keyword": "what is the burnout",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 77
+    },
+    {
+      "keyword": "burnout definition",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 71
+    },
+    {
+      "keyword": "burnt out meaning",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 42
+    },
+    {
+      "keyword": "emotional exhaustion",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 47
+    },
+    {
+      "keyword": "define burnout",
+      "searchVolume": 2400,
+      "intent": "1",
+      "difficulty": 88
+    },
+    {
+      "keyword": "emotional burnout",
+      "searchVolume": 2400,
+      "intent": "1",
+      "difficulty": 51
+    },
+    {
+      "keyword": "ocd",
+      "searchVolume": 165000,
+      "intent": "1",
+      "difficulty": 99
+    },
+    {
+      "keyword": "ocd symptoms",
+      "searchVolume": 90500,
+      "intent": "1",
+      "difficulty": 83
+    },
+    {
+      "keyword": "intrusive thoughts",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 67
+    },
+    {
+      "keyword": "obsessive compulsive disorder",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 97
+    },
+    {
+      "keyword": "what is ocd",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 90
+    },
+    {
+      "keyword": "ocd meaning",
+      "searchVolume": 40500,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "nocd",
+      "searchVolume": 33100,
+      "intent": "2",
+      "difficulty": 61
+    },
+    {
+      "keyword": "compulsive disease",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 89
+    },
+    {
+      "keyword": "ocd test",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 36
+    },
+    {
+      "keyword": "ocd treatment",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 65
+    },
+    {
+      "keyword": "compulsive",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "erp therapy",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 43
+    },
+    {
+      "keyword": "obsession medication",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 57
+    },
+    {
+      "keyword": "obsessive compulsive disorder tests",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 31
+    },
+    {
+      "keyword": "obsessive compulsive therapist",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 52
+    },
+    {
+      "keyword": "ocd medication",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 53
+    },
+    {
+      "keyword": "what is oc disorder",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 91
+    },
+    {
+      "keyword": "compulsive disorders symptoms",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 82
+    },
+    {
+      "keyword": "meaning of ocd disease",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 96
+    },
+    {
+      "keyword": "therapy obsession",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 54
+    },
+    {
+      "keyword": "obsessive compulsive disorder symptoms",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 73
+    },
+    {
+      "keyword": "ocd definition",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 94
+    },
+    {
+      "keyword": "symptoms of ocd",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 78
+    },
+    {
+      "keyword": "treatment for ocd",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 55
+    },
+    {
+      "keyword": "exposure and response prevention",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 53
+    },
+    {
+      "keyword": "adhd",
+      "searchVolume": 368000,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "adhd symptoms",
+      "searchVolume": 246000,
+      "intent": "1",
+      "difficulty": 74
+    },
+    {
+      "keyword": "adhd medication",
+      "searchVolume": 135000,
+      "intent": "1",
+      "difficulty": 60
+    },
+    {
+      "keyword": "adhd test",
+      "searchVolume": 135000,
+      "intent": "1",
+      "difficulty": 59
+    },
+    {
+      "keyword": "what is adhd",
+      "searchVolume": 74000,
+      "intent": "1",
+      "difficulty": 94
+    },
+    {
+      "keyword": "adhd meaning",
+      "searchVolume": 60500,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "adhd deficit disorder",
+      "searchVolume": 33100,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "adhd treatment",
+      "searchVolume": 27100,
+      "intent": "1",
+      "difficulty": 71
+    },
+    {
+      "keyword": "adhd meds",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 60
+    },
+    {
+      "keyword": "inattentive adhd",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "is adhd a disability",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 42
+    },
+    {
+      "keyword": "signs of adhd",
+      "searchVolume": 22200,
+      "intent": "1",
+      "difficulty": 71
+    },
+    {
+      "keyword": "adhd treatments",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 72
+    },
+    {
+      "keyword": "do i have adhd",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 65
+    },
+    {
+      "keyword": "what does adhd stand for",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 97
+    },
+    {
+      "keyword": "adhd disease symptoms",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 95
+    },
+    {
+      "keyword": "adhd types",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 74
+    },
+    {
+      "keyword": "diagnosticare adhd",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 72
+    },
+    {
+      "keyword": "typer adhd",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 65
+    },
+    {
+      "keyword": "additude",
+      "searchVolume": 12100,
+      "intent": "2",
+      "difficulty": 58
+    },
+    {
+      "keyword": "adhd signs",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 80
+    },
+    {
+      "keyword": "adhd test for adults",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 65
+    },
+    {
+      "keyword": "attention deficit disorders symptoms",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 88
+    },
+    {
+      "keyword": "hyperactivity disorder",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 95
+    },
+    {
+      "keyword": "treatment for add/adhd",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 85
+    },
+    {
+      "keyword": "self esteem",
+      "searchVolume": 49500,
+      "intent": "1",
+      "difficulty": 95
+    },
+    {
+      "keyword": "esteemed self",
+      "searchVolume": 18100,
+      "intent": "1",
+      "difficulty": 75
+    },
+    {
+      "keyword": "esteem",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 77
+    },
+    {
+      "keyword": "low self esteem remedy",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 50
+    },
+    {
+      "keyword": "self esteem self",
+      "searchVolume": 14800,
+      "intent": "1",
+      "difficulty": 79
+    },
+    {
+      "keyword": "low self esteem",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 81
+    },
+    {
+      "keyword": "self esteem and self",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 44
+    },
+    {
+      "keyword": "self-esteem",
+      "searchVolume": 12100,
+      "intent": "1",
+      "difficulty": 100
+    },
+    {
+      "keyword": "what is self esteem",
+      "searchVolume": 9900,
+      "intent": "1",
+      "difficulty": 68
+    },
+    {
+      "keyword": "self confidence",
+      "searchVolume": 8100,
+      "intent": "1",
+      "difficulty": 77
+    },
+    {
+      "keyword": "helping self",
+      "searchVolume": 6600,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "how to build confidence",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 49
+    },
+    {
+      "keyword": "self confidence self confidence",
+      "searchVolume": 5400,
+      "intent": "1",
+      "difficulty": 58
+    },
+    {
+      "keyword": "how to be more confident",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 43
+    },
+    {
+      "keyword": "how to gain confidence",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 34
+    },
+    {
+      "keyword": "low self esteem meaning",
+      "searchVolume": 4400,
+      "intent": "1",
+      "difficulty": 48
+    },
+    {
+      "keyword": "confidence self",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 45
+    },
+    {
+      "keyword": "how do you boost confidence",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 43
+    },
+    {
+      "keyword": "how to improve self esteem",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 48
+    },
+    {
+      "keyword": "how to improve self-esteem",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 42
+    },
+    {
+      "keyword": "low self-esteem",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 76
+    },
+    {
+      "keyword": "self-confidence",
+      "searchVolume": 3600,
+      "intent": "1",
+      "difficulty": 67
+    },
+    {
+      "keyword": "autoestima",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 56
+    },
+    {
+      "keyword": "best ways to build self-confidence",
+      "searchVolume": 2900,
+      "intent": "1,0",
+      "difficulty": 79
+    },
+    {
+      "keyword": "cognitive therapy for low self esteem",
+      "searchVolume": 2900,
+      "intent": "1",
+      "difficulty": 52
+    },
+    {
+      "keyword": "life transitions",
+      "searchVolume": 1600,
+      "intent": "0",
+      "difficulty": 31
+    },
+    {
+      "keyword": "life transition",
+      "searchVolume": 590,
+      "intent": "1",
+      "difficulty": 31
+    },
+    {
+      "keyword": "life transitions therapy",
+      "searchVolume": 590,
+      "intent": "1",
+      "difficulty": 19
+    },
+    {
+      "keyword": "therapy for life transitions",
+      "searchVolume": 480,
+      "intent": "1",
+      "difficulty": 18
+    },
+    {
+      "keyword": "life transition therapy",
+      "searchVolume": 390,
+      "intent": "1",
+      "difficulty": 16
+    },
+    {
+      "keyword": "life transformation counseling",
+      "searchVolume": 320,
+      "intent": "2",
+      "difficulty": 32
+    },
+    {
+      "keyword": "transition therapy",
+      "searchVolume": 210,
+      "intent": "0",
+      "difficulty": 72
+    },
+    {
+      "keyword": "therapy tacoma",
+      "searchVolume": 170,
+      "intent": "0",
+      "difficulty": 27
+    },
+    {
+      "keyword": "transitions therapy",
+      "searchVolume": 170,
+      "intent": "0",
+      "difficulty": 37
+    },
+    {
+      "keyword": "counseling for life transitions",
+      "searchVolume": 140,
+      "intent": "0",
+      "difficulty": 26
+    },
+    {
+      "keyword": "transition counseling",
+      "searchVolume": 140,
+      "intent": "2,0",
+      "difficulty": 45
+    },
+    {
+      "keyword": "transition counselor",
+      "searchVolume": 140,
+      "intent": "0",
+      "difficulty": 19
+    },
+    {
+      "keyword": "divorce counseling chicago",
+      "searchVolume": 110,
+      "intent": "0",
+      "difficulty": 3
+    },
+    {
+      "keyword": "life transformations",
+      "searchVolume": 110,
+      "intent": "0",
+      "difficulty": 16
+    },
+    {
+      "keyword": "life transition counseling",
+      "searchVolume": 110,
+      "intent": "1",
+      "difficulty": 20
+    },
+    {
+      "keyword": "life transitions therapist",
+      "searchVolume": 110,
+      "intent": "1",
+      "difficulty": 16
+    },
+    {
+      "keyword": "life transitions therapy for anxiety",
+      "searchVolume": 110,
+      "intent": "1",
+      "difficulty": 13
+    },
+    {
+      "keyword": "life transitions therapy for career changes",
+      "searchVolume": 110,
+      "intent": "1,0",
+      "difficulty": 4
+    },
+    {
+      "keyword": "life transitions therapy for relocation",
+      "searchVolume": 110,
+      "intent": "1",
+      "difficulty": 3
+    },
+    {
+      "keyword": "transitions in life",
+      "searchVolume": 110,
+      "intent": "1",
+      "difficulty": 22
+    },
+    {
+      "keyword": "life transition therapist near me",
+      "searchVolume": 90,
+      "intent": "3",
+      "difficulty": 30
+    },
+    {
+      "keyword": "life transitions counseling near me",
+      "searchVolume": 90,
+      "intent": "1,3",
+      "difficulty": 8
+    },
+    {
+      "keyword": "life transitions meaning",
+      "searchVolume": 90,
+      "intent": "1",
+      "difficulty": 25
+    },
+    {
+      "keyword": "life transitions therapy for couples",
+      "searchVolume": 90,
+      "intent": "1",
+      "difficulty": 3
+    },
+    {
+      "keyword": "therapist for life transitions",
+      "searchVolume": 90,
+      "intent": "1",
+      "difficulty": 20
+    }
+  ]
+}

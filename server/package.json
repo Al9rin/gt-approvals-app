@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "export:semrush-snapshot": "node ./scripts/export-semrush-keywords.js"
+  },
   "engines": {
     "node": "18.x"
   },
