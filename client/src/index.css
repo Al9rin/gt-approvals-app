@@ -28,7 +28,7 @@
     background: #A2AD1A;
   }
   .dark ::-webkit-scrollbar-track {
-    background: #0d0d0d;
+    background: #000000;
   }
   .dark ::-webkit-scrollbar-thumb {
     background: #3f3f3f;
@@ -87,7 +87,7 @@
     }
   }
 
-  /* Cards: light = soft white with green tint; dark = elevated surface on full dark */
+  /* Cards: light = soft white; dark = gray surface on black */
   .glass-card {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
@@ -96,12 +96,12 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
   .dark .glass-card {
-    background: #18181b;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    background: #26262a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   }
 
-  /* Header */
+  /* Header: dark = black to match page */
   .glass-header {
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(20px);
@@ -109,7 +109,7 @@
     border-bottom: 1px solid rgba(162, 173, 26, 0.12);
   }
   .dark .glass-header {
-    background: #0d0d0d;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: #000000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 }

@@ -3,7 +3,7 @@ import Select from "react-select";
 import licenses from "./licenses.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
-import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check, MapPin, Mountain, Globe, FileText } from "lucide-react";
+import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check, MapPin, Leaf, Globe, FileText } from "lucide-react";
 import { Analytics } from '@vercel/analytics/react';
 
 const DEFAULT_PRODUCTION_API_BASE_URL = "https://gt-approvals-app.onrender.com";
@@ -68,11 +68,11 @@ const selectStyles = (dark) => ({
     ...base,
     cursor: 'pointer',
     borderRadius: '0.75rem',
-    borderColor: s.isFocused ? '#A2AD1A' : dark ? 'rgba(255,255,255,0.1)' : '#e5e5e5',
-    backgroundColor: dark ? 'rgba(255,255,255,0.04)' : '#fff',
-    boxShadow: s.isFocused ? '0 0 0 2px rgba(162,173,26,0.25)' : 'none',
+    borderColor: s.isFocused ? (dark ? '#E06D00' : '#A2AD1A') : dark ? 'rgba(255,255,255,0.1)' : '#e5e5e5',
+    backgroundColor: dark ? '#26262a' : '#fff',
+    boxShadow: s.isFocused ? (dark ? '0 0 0 2px rgba(224,109,0,0.3)' : '0 0 0 2px rgba(162,173,26,0.25)') : 'none',
     minHeight: 42,
-    '&:hover': { borderColor: dark ? 'rgba(162,173,26,0.4)' : '#A2AD1A' },
+    '&:hover': { borderColor: dark ? 'rgba(224,109,0,0.5)' : '#A2AD1A' },
     padding: '2px 8px',
     transition: 'border-color 0.2s, box-shadow 0.2s',
   }),
@@ -80,12 +80,12 @@ const selectStyles = (dark) => ({
     ...base,
     cursor: 'pointer',
     backgroundColor: s.isSelected
-      ? '#A2AD1A'
+      ? (dark ? '#E06D00' : '#A2AD1A')
       : s.isFocused
         ? dark ? 'rgba(255,255,255,0.08)' : '#F7F8EC'
-        : dark ? '#18181b' : '#fff',
+        : dark ? '#26262a' : '#fff',
     color: s.isSelected ? '#fff' : dark ? '#e4e4e7' : '#333',
-    '&:active': { backgroundColor: '#C5CE5C' },
+    '&:active': { backgroundColor: s.isSelected ? (dark ? '#C05D00' : '#C5CE5C') : undefined },
   }),
   menu: (base) => ({
     ...base,
@@ -93,7 +93,7 @@ const selectStyles = (dark) => ({
     overflow: 'hidden',
     border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(162,173,26,0.15)',
     boxShadow: dark ? '0 8px 32px rgba(0,0,0,0.5)' : '0 8px 24px rgba(0,0,0,0.08)',
-    backgroundColor: dark ? '#18181b' : '#fff',
+    backgroundColor: dark ? '#26262a' : '#fff',
   }),
   menuList: (base) => ({
     ...base,
@@ -348,14 +348,14 @@ export default function GTApprovalsApp() {
 
   return (
     <div className={`min-h-screen font-sans transition-colors duration-350 ${darkMode
-        ? "bg-[#0d0d0d] text-gray-100"
+        ? "bg-black text-gray-100"
         : "bg-gradient-to-br from-gt-green-50 via-white to-gt-green-50 text-gt-gray"
       } pt-24 py-6 px-4`}>
       {/* ── Progress bar ────────────────────────────────────────── */}
       {showProgress && (
         <div className="fixed top-0 left-0 w-full z-[60]">
           <div
-            className="h-1 bg-gt-green transition-all duration-200 ease-out"
+            className={`h-1 transition-all duration-200 ease-out ${darkMode ? "bg-gt-orange" : "bg-gt-green"}`}
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -408,11 +408,18 @@ export default function GTApprovalsApp() {
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="max-w-4xl mx-auto space-y-8"
+        className={`max-w-4xl mx-auto space-y-8 ${darkMode ? "text-gray-100" : ""}`}
       >
         {/* ── Page Title ───────────────────────────────────────── */}
-        <motion.div variants={itemVariants} className="text-center space-y-2">
-          <h1 className={`font-display text-3xl md:text-4xl font-semibold tracking-tight ${darkMode ? "text-white" : "text-gt-gray"}`}>
+        <motion.div
+          variants={itemVariants}
+          className="text-center space-y-2"
+          style={darkMode ? { color: "#ffffff" } : undefined}
+        >
+          <h1
+            className="font-display text-3xl md:text-4xl font-semibold tracking-tight"
+            style={darkMode ? { color: "#ffffff" } : undefined}
+          >
             License Verification
           </h1>
           <p className={`text-sm md:text-base ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
@@ -433,7 +440,7 @@ export default function GTApprovalsApp() {
             <div className="flex flex-wrap gap-2 mb-4">
               {[
                 { key: "us", label: "United States", Icon: MapPin },
-                { key: "ca", label: "Canada", Icon: Mountain },
+                { key: "ca", label: "Canada", Icon: Leaf },
                 { key: "intl", label: "International", Icon: Globe }
               ].map(({ key, label, Icon }) => (
                 <motion.button
@@ -444,12 +451,14 @@ export default function GTApprovalsApp() {
                   onClick={() =>
                     setRegionFilter(prev => ({ ...prev, [key]: !prev[key] }))
                   }
-                  className={`inline-flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent
+                  className={`inline-flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent
                     ${regionFilter[key]
-                      ? "bg-gt-green text-white border-gt-green shadow-sm"
+                      ? darkMode
+                        ? "bg-gt-orange text-white border-gt-orange shadow-sm focus-visible:ring-gt-orange/50"
+                        : "bg-gt-green text-white border-gt-green shadow-sm focus-visible:ring-gt-green/40"
                       : darkMode
-                        ? "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:border-gt-green/30"
-                        : "bg-white text-gt-gray border-gray-200/80 hover:border-gt-green/40 hover:bg-gt-green-50/50"
+                        ? "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:border-gt-orange/40 focus-visible:ring-gt-orange/40"
+                        : "bg-white text-gt-gray border-gray-200/80 hover:border-gt-green/40 hover:bg-gt-green-50/50 focus-visible:ring-gt-green/40"
                     }
                   `}
                 >
@@ -503,7 +512,10 @@ export default function GTApprovalsApp() {
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               onClick={search}
-              className="cursor-pointer w-full bg-gt-green hover:bg-gt-green-dark text-white py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/50 focus-visible:ring-offset-2"
+              className={`cursor-pointer w-full text-white py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+                ? "bg-gt-orange hover:bg-gt-orange-dark focus-visible:ring-gt-orange/50"
+                : "bg-gt-green hover:bg-gt-green-dark focus-visible:ring-gt-green/50"
+              }`}
             >
               <Search className="w-5 h-5 shrink-0" />
               Search
@@ -536,7 +548,7 @@ export default function GTApprovalsApp() {
               >
                 <div className="p-4 space-y-3">
                   <div className="flex items-start gap-3">
-                    <div className="mt-0.5 w-1 h-full min-h-[20px] bg-gt-green rounded-full flex-shrink-0" />
+                    <div className={`mt-0.5 w-1 h-full min-h-[20px] rounded-full flex-shrink-0 ${darkMode ? "bg-gt-orange" : "bg-gt-green"}`} />
                     <div className="space-y-2">
                       <p className={`text-sm font-medium ${darkMode ? 'text-gray-200' : 'text-gt-gray'}`}>
                         <span className="font-bold">Requirements: </span>
@@ -546,7 +558,10 @@ export default function GTApprovalsApp() {
                         href={result.verificationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-gt-green hover:text-gt-green-dark transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 rounded"
+                        className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded ${darkMode
+                          ? "text-gt-orange hover:text-gt-orange-dark focus-visible:ring-gt-orange/40"
+                          : "text-gt-green hover:text-gt-green-dark focus-visible:ring-gt-green/40"
+                        }`}
                       >
                         <ExternalLink className="w-4 h-4 shrink-0" />
                         View Verification Site
@@ -576,7 +591,7 @@ export default function GTApprovalsApp() {
             className="relative glass-card rounded-2xl p-6 space-y-5 transition-transform duration-250"
           >
             {showProgress && (
-              <div className={`absolute inset-0 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20 ${darkMode ? "bg-[#0d0d0d]/80" : "bg-white/80"}`}>
+              <div className={`absolute inset-0 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20 ${darkMode ? "bg-black/80" : "bg-white/80"}`}>
                 <Loader2 className="w-6 h-6 animate-spin text-gt-green shrink-0" />
                 <span className="ml-2 text-gt-green font-medium">
                   {aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
@@ -624,7 +639,10 @@ export default function GTApprovalsApp() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleNarrative("editorial")}
-                className="cursor-pointer bg-gt-green hover:bg-gt-green-dark text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/50 focus-visible:ring-offset-2"
+                className={`cursor-pointer text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+                  ? "bg-gt-orange hover:bg-gt-orange-dark focus-visible:ring-gt-orange/50"
+                  : "bg-gt-green hover:bg-gt-green-dark focus-visible:ring-gt-green/50"
+                }`}
               >
                 <Wand2 className="w-5 h-5 shrink-0" />
                 Clean with AI
@@ -633,9 +651,9 @@ export default function GTApprovalsApp() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleNarrative("seo")}
-                className={`cursor-pointer px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 ${darkMode
-                    ? "bg-white/[0.06] hover:bg-white/[0.1] text-gray-100 border-white/10"
-                    : "bg-white hover:bg-gt-green-50/80 text-gt-gray border-gray-200/90 hover:border-gt-green/30"
+                className={`cursor-pointer px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+                    ? "bg-white/[0.06] hover:bg-gt-orange/10 text-gray-100 border-gt-orange/30 hover:border-gt-orange/50 focus-visible:ring-gt-orange/40"
+                    : "bg-white hover:bg-gt-green-50/80 text-gt-gray border-gray-200/90 hover:border-gt-green/30 focus-visible:ring-gt-green/40"
                   }`}
               >
                 <Search className="w-5 h-5 shrink-0" />
@@ -689,8 +707,8 @@ export default function GTApprovalsApp() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 className={`relative rounded-xl p-4 pr-24 whitespace-pre-wrap text-sm leading-relaxed border ${darkMode
-                    ? "bg-white/[0.04] border-white/10 text-gray-100"
-                    : "bg-gt-green-50/90 border-gt-green/20 text-gt-gray"
+                    ? "bg-[#26262a] border-white/10 text-gray-100"
+                    : "bg-[#f2f3ec] border-gt-green/25 text-gt-gray"
                   }`}
               >
                 <motion.button
@@ -704,7 +722,10 @@ export default function GTApprovalsApp() {
                       setTimeout(() => setCopied(false), 2000);
                     });
                   }}
-                  className="cursor-pointer absolute top-3 right-3 bg-gt-green hover:bg-gt-green-dark text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 shadow-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+                  className={`cursor-pointer absolute top-3 right-3 text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 shadow-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${darkMode
+                    ? "bg-gt-orange hover:bg-gt-orange-dark"
+                    : "bg-gt-green hover:bg-gt-green-dark"
+                  }`}
                 >
                   {copied ? (
                     <>
