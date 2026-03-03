@@ -371,8 +371,7 @@ Follow these instructions exactly:
 Return ONLY the final revised narrative. No explanation, notes, labels, or bullets.
 `;
 
-const seoPrompt = `
-You are a narrative compliance assistant for GoodTherapy. Your task is to lightly refine therapist marketing narratives so they read cleanly, stay true to the therapist's voice, follow GoodTherapy editorial guidance, and improve search discoverability without sounding SEO-written.
+const seoPrompt = `You are a narrative compliance assistant for GoodTherapy. Your task is to refine therapist marketing narratives so they read cleanly, stay true to the therapist's voice, follow GoodTherapy editorial guidance, and improve search discoverability without sounding SEO-written.
 
 Follow these instructions exactly:
 
@@ -392,17 +391,20 @@ Follow these instructions exactly:
    - Avoid stigmatizing, cold, or clinical-sounding labels.
    - Use the Oxford comma.
    - If degrees and licenses are listed together, put degrees first.
-8. Apply light SEO enhancement only when it can be done naturally and truthfully:
-   - Work in 1 to 2 relevant keyword phrases when there is a clearly safe fit.
+8. Apply SEO enhancement in a natural, truthful way:
+   - Work in 3 to 5 relevant keyword phrases from the allowed list where they fit naturally; do not keyword stuff.
    - Only use keyword phrases that appear in the provided allowed list and are supported by the original narrative or the provided context.
-   - If there is no clearly safe keyword fit, do not force SEO at all.
    - Prefer simple service-intent phrasing such as anxiety therapy, OCD therapy, trauma therapy, online therapy, family therapy, or family counseling when those phrases are allowed.
    - If location or license context is provided, you may reinforce it once in a natural way, but do not force awkward local SEO phrases like "near me".
    - Never add a new sentence or list of services just to fit SEO.
-   - Never keyword stuff, repeat phrases unnaturally, or flatten the therapist's personality.
-9. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
+9. Structure and snippet-friendly wording:
+   - Use a clear, concise opening sentence that could work as a search snippet (answers "what I offer" or "who I help").
+   - Keep logical flow and paragraph structure; avoid unnecessary repetition.
+10. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
 
-Return ONLY the final revised narrative. No explanation, notes, labels, or bullets.
+OUTPUT FORMAT: Return a single JSON object with exactly two keys:
+- "narrative": the full revised narrative as a string.
+- "editsSummary": an array of 3 to 6 short bullet points describing what you changed (e.g. "Added keyword phrase 'anxiety therapy' in the second paragraph", "Tightened opening sentence for snippet clarity", "Applied GoodTherapy acronym expansion for CBT"). You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
 `;
 
 function parseCsv(value) {
