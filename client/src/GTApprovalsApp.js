@@ -721,6 +721,27 @@ export default function GTApprovalsApp() {
                 {editedNarrative}
               </motion.div>
             )}
+
+            {editedNarrative && aiMode === "seo" && editsSummary.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+                className={`mt-4 rounded-xl p-4 border ${darkMode
+                  ? "bg-gt-green/5 border-gt-green/20 text-gray-300"
+                  : "bg-gt-green-50/80 border-gt-green/20 text-gt-gray"
+                }`}
+              >
+                <p className={`text-xs font-semibold uppercase tracking-wide mb-2 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+                  Edits applied
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  {editsSummary.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </motion.div>
