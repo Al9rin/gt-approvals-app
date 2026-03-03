@@ -3,7 +3,7 @@ import Select from "react-select";
 import licenses from "./licenses.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
-import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check } from "lucide-react";
+import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check, MapPin, Mountain, Globe, FileText } from "lucide-react";
 import { Analytics } from '@vercel/analytics/react';
 
 const DEFAULT_PRODUCTION_API_BASE_URL = "https://gt-approvals-app.onrender.com";
@@ -62,18 +62,19 @@ const PROVINCE_ABBR = {
   Quebec: 'QC', Saskatchewan: 'SK', Yukon: 'YT'
 };
 
-/* ── react‑select brand styles ────────────────────────────────────────── */
+/* ── react-select styles (match card surface in dark) ──────────────────── */
 const selectStyles = (dark) => ({
   control: (base, s) => ({
     ...base,
     cursor: 'pointer',
     borderRadius: '0.75rem',
-    borderColor: s.isFocused ? '#A2AD1A' : dark ? '#444' : '#ddd',
-    backgroundColor: dark ? '#1e1e1e' : '#fff',
-    boxShadow: s.isFocused ? '0 0 0 2px rgba(162,173,26,0.3)' : 'none',
-    '&:hover': { borderColor: '#A2AD1A' },
-    padding: '2px 4px',
-    transition: 'all 0.2s',
+    borderColor: s.isFocused ? '#A2AD1A' : dark ? 'rgba(255,255,255,0.1)' : '#e5e5e5',
+    backgroundColor: dark ? 'rgba(255,255,255,0.04)' : '#fff',
+    boxShadow: s.isFocused ? '0 0 0 2px rgba(162,173,26,0.25)' : 'none',
+    minHeight: 42,
+    '&:hover': { borderColor: dark ? 'rgba(162,173,26,0.4)' : '#A2AD1A' },
+    padding: '2px 8px',
+    transition: 'border-color 0.2s, box-shadow 0.2s',
   }),
   option: (base, s) => ({
     ...base,
@@ -81,34 +82,34 @@ const selectStyles = (dark) => ({
     backgroundColor: s.isSelected
       ? '#A2AD1A'
       : s.isFocused
-        ? dark ? '#2a2a2a' : '#F7F8EC'
-        : dark ? '#1e1e1e' : '#fff',
-    color: s.isSelected ? '#fff' : dark ? '#e5e5e5' : '#333',
+        ? dark ? 'rgba(255,255,255,0.08)' : '#F7F8EC'
+        : dark ? '#18181b' : '#fff',
+    color: s.isSelected ? '#fff' : dark ? '#e4e4e7' : '#333',
     '&:active': { backgroundColor: '#C5CE5C' },
   }),
   menu: (base) => ({
     ...base,
     borderRadius: '0.75rem',
     overflow: 'hidden',
-    border: '1px solid rgba(162,173,26,0.2)',
-    boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
-    backgroundColor: dark ? '#1e1e1e' : '#fff',
+    border: dark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(162,173,26,0.15)',
+    boxShadow: dark ? '0 8px 32px rgba(0,0,0,0.5)' : '0 8px 24px rgba(0,0,0,0.08)',
+    backgroundColor: dark ? '#18181b' : '#fff',
   }),
   menuList: (base) => ({
     ...base,
-    padding: 0,
+    padding: 4,
   }),
   singleValue: (base) => ({
     ...base,
-    color: dark ? '#e5e5e5' : '#333',
+    color: dark ? '#e4e4e7' : '#333',
   }),
   placeholder: (base) => ({
     ...base,
-    color: dark ? '#888' : '#999',
+    color: dark ? '#71717a' : '#999',
   }),
   input: (base) => ({
     ...base,
-    color: dark ? '#e5e5e5' : '#333',
+    color: dark ? '#e4e4e7' : '#333',
   }),
 });
 
@@ -346,8 +347,8 @@ export default function GTApprovalsApp() {
   };
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-300 ${darkMode
-        ? "bg-[#111111] text-gray-100"
+    <div className={`min-h-screen font-sans transition-colors duration-350 ${darkMode
+        ? "bg-[#0d0d0d] text-gray-100"
         : "bg-gradient-to-br from-gt-green-50 via-white to-gt-green-50 text-gt-gray"
       } pt-24 py-6 px-4`}>
       {/* ── Progress bar ────────────────────────────────────────── */}
@@ -378,30 +379,27 @@ export default function GTApprovalsApp() {
             />
           </div>
 
-          {/* Dark‑mode toggle */}
-          <div className="flex items-center space-x-2 select-none">
-            <Sun className="w-4 h-4 text-yellow-500" />
-
-            {/* animated toggle */}
+          {/* Dark mode toggle */}
+          <div className="flex items-center gap-2 select-none">
+            <Sun className={`w-4 h-4 transition-colors duration-250 ${darkMode ? "text-gray-500" : "text-amber-500"}`} />
             <motion.button
               type="button"
               onClick={() => setDarkMode(!darkMode)}
-              className="cursor-pointer relative inline-block w-12 h-6 rounded-full focus:outline-none"
+              className="cursor-pointer relative inline-block w-11 h-6 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/50 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
               initial={false}
               animate={{
-                backgroundColor: darkMode ? "#A2AD1A" : "#d1d5db",
+                backgroundColor: darkMode ? "#A2AD1A" : "#d4d4d8",
               }}
               transition={{ duration: 0.25 }}
             >
               <motion.span
-                className="absolute top-1 left-1 h-4 w-4 bg-white rounded-full shadow-md"
+                className="absolute top-1 left-1 h-4 w-4 bg-white rounded-full shadow-sm"
                 layout
-                style={{ x: darkMode ? 24 : 0 }}
+                style={{ x: darkMode ? 22 : 0 }}
                 transition={{ type: "spring", stiffness: 500, damping: 30 }}
               />
             </motion.button>
-
-            <Moon className="w-4 h-4 text-gray-400 dark:text-yellow-300" />
+            <Moon className={`w-4 h-4 transition-colors duration-250 ${darkMode ? "text-gt-green-light" : "text-gray-400"}`} />
           </div>
         </div>
       </header>
@@ -414,10 +412,10 @@ export default function GTApprovalsApp() {
       >
         {/* ── Page Title ───────────────────────────────────────── */}
         <motion.div variants={itemVariants} className="text-center space-y-2">
-          <h1 className={`text-3xl md:text-4xl font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gt-gray'}`}>
+          <h1 className={`font-display text-3xl md:text-4xl font-semibold tracking-tight ${darkMode ? "text-white" : "text-gt-gray"}`}>
             License Verification
           </h1>
-          <p className={`text-sm md:text-base ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+          <p className={`text-sm md:text-base ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
             Search and verify therapist credentials across all 50 states
           </p>
         </motion.div>
@@ -429,34 +427,34 @@ export default function GTApprovalsApp() {
             onMouseMove={makeTiltHandler(setCardTilt1)}
             onMouseLeave={resetCardTilt(setCardTilt1)}
             style={{ transform: `perspective(800px) rotateX(${cardTilt1.y}deg) rotateY(${cardTilt1.x}deg)` }}
-            className={`glass-card rounded-2xl shadow-xl p-6 space-y-5 transition-transform duration-200 ${darkMode ? 'shadow-gt-green/5' : ''
-              }`}
+            className="glass-card rounded-2xl p-6 space-y-5 transition-transform duration-250"
           >
             {/* Region filter buttons */}
             <div className="flex flex-wrap gap-2 mb-4">
               {[
-                { key: "us", label: "🇺🇸 United States" },
-                { key: "ca", label: "🇨🇦 Canada" },
-                { key: "intl", label: "🌐 International" }
-              ].map(btn => (
+                { key: "us", label: "United States", Icon: MapPin },
+                { key: "ca", label: "Canada", Icon: Mountain },
+                { key: "intl", label: "International", Icon: Globe }
+              ].map(({ key, label, Icon }) => (
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  key={btn.key}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  key={key}
                   type="button"
                   onClick={() =>
-                    setRegionFilter(prev => ({ ...prev, [btn.key]: !prev[btn.key] }))
+                    setRegionFilter(prev => ({ ...prev, [key]: !prev[key] }))
                   }
-                  className={`cursor-pointer px-4 py-1.5 rounded-full text-sm font-semibold border-2 transition-all duration-200
-                    ${regionFilter[btn.key]
+                  className={`inline-flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent
+                    ${regionFilter[key]
                       ? "bg-gt-green text-white border-gt-green shadow-sm"
                       : darkMode
-                        ? "bg-transparent text-gt-green-light border-gt-green/40 hover:bg-gt-green/10"
-                        : "bg-white text-gt-green-darker border-gt-green/30 hover:bg-gt-green-50"
+                        ? "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:border-gt-green/30"
+                        : "bg-white text-gt-gray border-gray-200/80 hover:border-gt-green/40 hover:bg-gt-green-50/50"
                     }
                   `}
                 >
-                  {btn.label}
+                  <Icon className="w-4 h-4 shrink-0" />
+                  {label}
                 </motion.button>
               ))}
             </div>
@@ -502,12 +500,12 @@ export default function GTApprovalsApp() {
             </div>
 
             <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
               onClick={search}
-              className="cursor-pointer w-full bg-gt-green hover:bg-gt-green-dark text-white py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 shadow-md shadow-gt-green/20"
+              className="cursor-pointer w-full bg-gt-green hover:bg-gt-green-dark text-white py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/50 focus-visible:ring-offset-2"
             >
-              <Search className="w-5 h-5" />
+              <Search className="w-5 h-5 shrink-0" />
               Search
             </motion.button>
 
@@ -531,9 +529,9 @@ export default function GTApprovalsApp() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                className={`mt-4 rounded-xl overflow-hidden ${darkMode
-                    ? 'bg-gt-green/10 border border-gt-green/20'
-                    : 'bg-gt-green-50 border border-gt-green/20'
+                className={`mt-4 rounded-xl overflow-hidden border ${darkMode
+                    ? "bg-white/[0.04] border-white/10"
+                    : "bg-gt-green-50 border-gt-green/20"
                   }`}
               >
                 <div className="p-4 space-y-3">
@@ -548,9 +546,9 @@ export default function GTApprovalsApp() {
                         href={result.verificationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-gt-green hover:text-gt-green-dark transition-colors"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-gt-green hover:text-gt-green-dark transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 rounded"
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-4 h-4 shrink-0" />
                         View Verification Site
                       </a>
                     </div>
@@ -562,11 +560,11 @@ export default function GTApprovalsApp() {
 
           {/* ── Divider ────────────────────────────────────────── */}
           <div className="flex items-center gap-4 px-4">
-            <div className={`flex-1 h-px ${darkMode ? 'bg-gray-700' : 'bg-gt-green/15'}`} />
-            <span className={`text-xs font-medium uppercase tracking-widest ${darkMode ? 'text-gray-500' : 'text-gt-green/60'}`}>
+            <div className={`flex-1 h-px transition-colors duration-250 ${darkMode ? "bg-white/10" : "bg-gt-green/15"}`} />
+            <span className={`text-xs font-medium uppercase tracking-widest ${darkMode ? "text-gray-500" : "text-gt-green/60"}`}>
               Tools
             </span>
-            <div className={`flex-1 h-px ${darkMode ? 'bg-gray-700' : 'bg-gt-green/15'}`} />
+            <div className={`flex-1 h-px transition-colors duration-250 ${darkMode ? "bg-white/10" : "bg-gt-green/15"}`} />
           </div>
 
           {/* ── Narrative Editor ───────────────────────────────── */}
@@ -575,30 +573,32 @@ export default function GTApprovalsApp() {
             onMouseMove={makeTiltHandler(setCardTilt2)}
             onMouseLeave={resetCardTilt(setCardTilt2)}
             style={{ transform: `perspective(800px) rotateX(${cardTilt2.y}deg) rotateY(${cardTilt2.x}deg)` }}
-            className={`relative glass-card rounded-2xl shadow-xl p-6 space-y-5 transition-transform duration-200 ${darkMode ? 'shadow-gt-green/5' : ''
-              }`}
+            className="relative glass-card rounded-2xl p-6 space-y-5 transition-transform duration-250"
           >
             {showProgress && (
-              <div className="absolute inset-0 bg-white/60 dark:bg-[#111]/60 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20">
-                <Loader2 className="w-6 h-6 animate-spin text-gt-green" />
+              <div className={`absolute inset-0 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20 ${darkMode ? "bg-[#0d0d0d]/80" : "bg-white/80"}`}>
+                <Loader2 className="w-6 h-6 animate-spin text-gt-green shrink-0" />
                 <span className="ml-2 text-gt-green font-medium">
                   {aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
                 </span>
               </div>
             )}
 
-            <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gt-gray'}`}>
-              ✨ Narrative Editor
-            </h2>
-            <p className={`text-sm -mt-3 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+            <div className="flex items-center gap-2">
+              <FileText className={`w-6 h-6 shrink-0 ${darkMode ? "text-gt-green-light" : "text-gt-green-darker"}`} />
+              <h2 className={`font-display text-2xl font-semibold ${darkMode ? "text-white" : "text-gt-gray"}`}>
+                Narrative Editor
+              </h2>
+            </div>
+            <p className={`text-sm -mt-1 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
               Use one button for grammar and editorial cleanup, or a separate button to add Semrush-informed SEO
             </p>
 
             <textarea
               rows={5}
-              className={`w-full p-4 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-gt-green/40 focus:border-gt-green transition-all duration-200 resize-none text-sm leading-relaxed ${darkMode
-                  ? 'bg-[#1e1e1e] text-gray-100 border-gray-700 placeholder:text-gray-500'
-                  : 'bg-white text-gt-gray border-gray-200 placeholder:text-gray-400'
+              className={`w-full p-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-gt-green/35 focus:border-gt-green transition-all duration-200 resize-none text-sm leading-relaxed placeholder:transition-colors ${darkMode
+                  ? "bg-white/[0.04] text-gray-100 border-white/10 placeholder:text-gray-500"
+                  : "bg-white text-gt-gray border-gray-200/90 placeholder:text-gray-400"
                 }`}
               placeholder="Paste your narrative here..."
               value={narrative}
@@ -619,41 +619,41 @@ export default function GTApprovalsApp() {
               }}
             />
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleNarrative("editorial")}
-                className="cursor-pointer bg-gt-green hover:bg-gt-green-dark text-white px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 shadow-md shadow-gt-green/20"
+                className="cursor-pointer bg-gt-green hover:bg-gt-green-dark text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/50 focus-visible:ring-offset-2"
               >
-                <Wand2 className="w-5 h-5" />
+                <Wand2 className="w-5 h-5 shrink-0" />
                 Clean with AI
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleNarrative("seo")}
-                className={`cursor-pointer px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 border shadow-md ${darkMode
-                    ? 'bg-[#1e1e1e] hover:bg-[#252525] text-gray-100 border-gt-green/30 shadow-gt-green/5'
-                    : 'bg-white hover:bg-gt-green-50 text-gt-gray border-gt-green/30 shadow-gt-green/10'
+                className={`cursor-pointer px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 ${darkMode
+                    ? "bg-white/[0.06] hover:bg-white/[0.1] text-gray-100 border-white/10"
+                    : "bg-white hover:bg-gt-green-50/80 text-gt-gray border-gray-200/90 hover:border-gt-green/30"
                   }`}
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-5 h-5 shrink-0" />
                 Add SEO
               </motion.button>
               {narrative && (
                 <motion.button
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setNarrative("")}
-                  className={`cursor-pointer px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 border-2 ${darkMode
-                      ? 'border-gray-600 text-gray-300 hover:bg-gray-800'
-                      : 'border-gray-300 text-gt-gray hover:bg-gray-50'
+                  className={`cursor-pointer px-4 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 ${darkMode
+                      ? "border-white/10 text-gray-400 hover:bg-white/5 hover:text-gray-200"
+                      : "border-gray-200 text-gt-gray hover:bg-gray-50"
                     }`}
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-4 h-4 shrink-0" />
                   Clear
                 </motion.button>
               )}
@@ -687,16 +687,16 @@ export default function GTApprovalsApp() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className={`relative rounded-xl p-4 pr-24 whitespace-pre-wrap text-sm leading-relaxed ${darkMode
-                    ? 'bg-gt-green/10 border border-gt-green/20 text-gray-100'
-                    : 'bg-gt-green-50 border border-gt-green/20 text-gt-gray'
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className={`relative rounded-xl p-4 pr-24 whitespace-pre-wrap text-sm leading-relaxed border ${darkMode
+                    ? "bg-white/[0.04] border-white/10 text-gray-100"
+                    : "bg-gt-green-50/90 border-gt-green/20 text-gt-gray"
                   }`}
               >
                 <motion.button
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
                   onClick={() => {
                     navigator.clipboard.writeText(editedNarrative).then(() => {
                       setCopied(true);
@@ -704,7 +704,7 @@ export default function GTApprovalsApp() {
                       setTimeout(() => setCopied(false), 2000);
                     });
                   }}
-                  className="cursor-pointer absolute top-3 right-3 bg-gt-green hover:bg-gt-green-dark text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 shadow-md transition-all duration-200"
+                  className="cursor-pointer absolute top-3 right-3 bg-gt-green hover:bg-gt-green-dark text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 shadow-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                 >
                   {copied ? (
                     <>
@@ -726,13 +726,13 @@ export default function GTApprovalsApp() {
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
                 className={`mt-4 rounded-xl p-4 border ${darkMode
-                  ? "bg-gt-green/5 border-gt-green/20 text-gray-300"
+                  ? "bg-white/[0.03] border-white/10 text-gray-300"
                   : "bg-gt-green-50/80 border-gt-green/20 text-gt-gray"
                 }`}
               >
-                <p className={`text-xs font-semibold uppercase tracking-wide mb-2 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
+                <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
                   Edits applied
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-sm">
@@ -752,7 +752,7 @@ export default function GTApprovalsApp() {
       </motion.div>
 
       {/* ── Footer ──────────────────────────────────────────────── */}
-      <footer className={`mt-16 pb-6 text-center text-xs ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}>
+      <footer className={`mt-16 pb-6 text-center text-xs transition-colors duration-250 ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
         © {new Date().getFullYear()} GoodTherapy · Approvals Tool
       </footer>
     </div>

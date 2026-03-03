@@ -5,8 +5,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Outfit', 'DM Sans', 'system-ui', 'sans-serif'],
       },
+      transitionDuration: { 250: '250ms', 350: '350ms' },
       colors: {
         gt: {
           green:     '#A2AD1A',
