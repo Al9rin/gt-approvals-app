@@ -737,7 +737,12 @@ export default function GTApprovalsApp() {
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-sm">
                   {editsSummary.map((item, i) => (
-                    <li key={i}>{item}</li>
+                    <li
+                      key={i}
+                      className={item.startsWith("Keyword phrases used:") ? "font-semibold" : ""}
+                    >
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </motion.div>

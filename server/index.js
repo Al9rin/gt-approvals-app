@@ -394,22 +394,22 @@ Follow these instructions exactly:
    - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
 8. Apply SEO enhancement in a natural, truthful way:
-   - Weave in a few relevant phrases from the allowed list only where they fit the sentence naturally—never stack two or more target phrases in the same sentence or clause (e.g. avoid "anxiety therapy and ocd therapy with an obsessive compulsive therapist").
-   - Spread any keyword phrases across different sentences or paragraphs so each appears in context, not as a list.
+   - Work in 3 to 5 relevant phrases from the allowed list, spread across different sentences so each appears once in a natural place (e.g. "I offer anxiety therapy", "people seeking online therapy"). Never stack two or more target phrases in the same sentence (e.g. avoid "anxiety therapy and ocd therapy" in one clause).
    - Only use phrases from the provided allowed list that are supported by the original narrative or context.
-   - Prefer one clear, natural use of a phrase (e.g. "I offer anxiety therapy" or "people seeking OCD therapy") over repeating or clustering phrases.
-   - When the therapist already describes the work in their own words, you may substitute or add an allowed phrase only if it reads as a natural part of the sentence—not an insertion.
+   - When the therapist already describes the work in their own words, substitute or add an allowed phrase only where it reads as a natural part of the sentence.
    - If location or license context is provided, you may reinforce it once in a natural way; do not force phrases like "near me".
-   - Never add a new sentence or list of services just to fit SEO.
+   - Never add a new sentence or list of services just to fit SEO. The narrative should still read as the therapist's voice in one pass.
 9. Structure and snippet-friendly wording:
    - Use a clear, concise opening sentence that could work as a search snippet (answers "what I offer" or "who I help").
    - Keep logical flow and paragraph structure; avoid unnecessary repetition.
-   - The result should read as if the therapist wrote it in one pass—no obvious "SEO insertions" or repeated service phrases.
 10. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
-- "editsSummary": an array of 3 to 6 short bullet points describing what you changed. Phrase these as natural edits, not keyword lists (e.g. "Tightened opening for snippet clarity", "Reflected specialty and approach in the first paragraph", "Applied GoodTherapy acronym expansion for OCD", "Improved flow and punctuation"). Do not list "Added keyword X, Y, Z". You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
+- "editsSummary": an array of bullet points that together describe all changes made. Put the keyword bullet FIRST. You MUST include:
+  (1) As the first bullet, list every keyword phrase you wove in, in this exact format: "Keyword phrases used: [phrase1], [phrase2], [phrase3]" (e.g. "Keyword phrases used: anxiety therapy, online therapy, trauma therapy"). Use the exact phrasing as it appears in the narrative. If you used no phrases from the allowed list, say "Keyword phrases used: (none—no natural fit from allowed list)".
+  (2) Remaining bullets for other edits: e.g. "Tightened opening for snippet clarity", "Corrected grammar and punctuation (including Oxford comma)", "Applied GoodTherapy acronym expansion for [X]", "Clarified consultation and scheduling", "Improved flow and readability". Cover opening/snippet, grammar and punctuation, structure or clarity, and any other notable changes so the user sees a complete summary.
+  Aim for 4 to 8 bullets total so nothing important is omitted. You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
 `;
 
 function parseCsv(value) {
