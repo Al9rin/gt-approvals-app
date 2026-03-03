@@ -364,6 +364,7 @@ Follow these instructions exactly:
    - Use lowercase for therapy types and mental health issues unless standard capitalization is required.
    - Avoid stigmatizing, cold, or clinical-sounding labels.
    - Use the Oxford comma.
+   - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
 7. Do not add SEO phrasing, keyword themes, service lists, or local SEO language.
 8. Keep the output roughly the same length as the original unless a small increase improves clarity naturally.
@@ -390,21 +391,25 @@ Follow these instructions exactly:
    - Use lowercase for therapy types and mental health issues unless standard capitalization is required.
    - Avoid stigmatizing, cold, or clinical-sounding labels.
    - Use the Oxford comma.
+   - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
 8. Apply SEO enhancement in a natural, truthful way:
-   - Work in 3 to 5 relevant keyword phrases from the allowed list where they fit naturally; do not keyword stuff.
-   - Only use keyword phrases that appear in the provided allowed list and are supported by the original narrative or the provided context.
-   - Prefer simple service-intent phrasing such as anxiety therapy, OCD therapy, trauma therapy, online therapy, family therapy, or family counseling when those phrases are allowed.
-   - If location or license context is provided, you may reinforce it once in a natural way, but do not force awkward local SEO phrases like "near me".
+   - Weave in a few relevant phrases from the allowed list only where they fit the sentence naturally—never stack two or more target phrases in the same sentence or clause (e.g. avoid "anxiety therapy and ocd therapy with an obsessive compulsive therapist").
+   - Spread any keyword phrases across different sentences or paragraphs so each appears in context, not as a list.
+   - Only use phrases from the provided allowed list that are supported by the original narrative or context.
+   - Prefer one clear, natural use of a phrase (e.g. "I offer anxiety therapy" or "people seeking OCD therapy") over repeating or clustering phrases.
+   - When the therapist already describes the work in their own words, you may substitute or add an allowed phrase only if it reads as a natural part of the sentence—not an insertion.
+   - If location or license context is provided, you may reinforce it once in a natural way; do not force phrases like "near me".
    - Never add a new sentence or list of services just to fit SEO.
 9. Structure and snippet-friendly wording:
    - Use a clear, concise opening sentence that could work as a search snippet (answers "what I offer" or "who I help").
    - Keep logical flow and paragraph structure; avoid unnecessary repetition.
+   - The result should read as if the therapist wrote it in one pass—no obvious "SEO insertions" or repeated service phrases.
 10. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
-- "editsSummary": an array of 3 to 6 short bullet points describing what you changed (e.g. "Added keyword phrase 'anxiety therapy' in the second paragraph", "Tightened opening sentence for snippet clarity", "Applied GoodTherapy acronym expansion for CBT"). You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
+- "editsSummary": an array of 3 to 6 short bullet points describing what you changed. Phrase these as natural edits, not keyword lists (e.g. "Tightened opening for snippet clarity", "Reflected specialty and approach in the first paragraph", "Applied GoodTherapy acronym expansion for OCD", "Improved flow and punctuation"). Do not list "Added keyword X, Y, Z". You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
 `;
 
 function parseCsv(value) {
