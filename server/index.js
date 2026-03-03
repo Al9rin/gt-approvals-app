@@ -1058,12 +1058,23 @@ app.post("/api/clean-narrative", async (req, res) => {
       return res.status(502).json({ error: "The AI service could not process this request." });
     }
 
-    const cleaned = extractResponseText(data);
-    if (!cleaned) {
+    const rawText = extractResponseText(data);
+    if (!rawText) {
       return res.status(502).json({ error: "The AI service returned an empty response." });
     }
 
-    return res.json({ cleaned: enforceEditorialTerms(cleaned, trimmedNarrative) });
+    if (transformMode === "seo") {
+      const { narrative: parsedNarrative, editsSummary } = parseSeoStructuredResponse(rawText);
+      const cleaned = parsedNarrative || rawText;
+      const sanitized = enforceEditorialTerms(cleaned, trimmedNarrative);
+      const payload = { cleaned: sanitized };
+      if (editsSummary.length > 0) {
+        payload.editsSummary = editsSummary;
+      }
+      return res.json(payload);
+    }
+
+    return res.json({ cleaned: enforceEditorialTerms(rawText, trimmedNarrative) });
   } catch (err) {
     const errorMessage = err.name === "AbortError"
       ? "OpenAI request timed out."
