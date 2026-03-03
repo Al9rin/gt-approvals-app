@@ -916,6 +916,40 @@ function extractResponseText(data) {
   return "";
 }
 
+const MAX_EDIT_SUMMARY_ITEMS = 10;
+
+function parseSeoStructuredResponse(rawText) {
+  if (!rawText || typeof rawText !== "string") {
+    return { narrative: "", editsSummary: [] };
+  }
+  const trimmed = rawText.trim();
+  let jsonStr = trimmed;
+  const codeBlockMatch = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (codeBlockMatch) {
+    jsonStr = codeBlockMatch[1].trim();
+  }
+  try {
+    const parsed = JSON.parse(jsonStr);
+    if (!parsed || typeof parsed !== "object") {
+      return { narrative: trimmed, editsSummary: [] };
+    }
+    const narrative =
+      typeof parsed.narrative === "string" ? parsed.narrative.trim() : "";
+    const editsSummary = Array.isArray(parsed.editsSummary)
+      ? parsed.editsSummary
+        .filter((item) => typeof item === "string" && item.trim())
+        .map((item) => item.trim())
+        .slice(0, MAX_EDIT_SUMMARY_ITEMS)
+      : [];
+    if (!narrative) {
+      return { narrative: trimmed, editsSummary: [] };
+    }
+    return { narrative, editsSummary };
+  } catch {
+    return { narrative: trimmed, editsSummary: [] };
+  }
+}
+
 function setNoStoreHeaders(res) {
   res.setHeader("Cache-Control", "no-store");
   res.setHeader("Pragma", "no-cache");
