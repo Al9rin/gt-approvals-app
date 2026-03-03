@@ -127,6 +127,7 @@ export default function GTApprovalsApp() {
   const [progress, setProgress] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
   const [aiMode, setAiMode] = useState("editorial");
+  const [editsSummary, setEditsSummary] = useState([]);
   const progressRef = useRef(null);
 
   const [regionFilter, setRegionFilter] = useState({
@@ -299,6 +300,11 @@ export default function GTApprovalsApp() {
 
       const cleaned = data.cleaned || "";
       setEditedNarrative(cleaned.trim());
+      if (mode === "seo") {
+        setEditsSummary(Array.isArray(data.editsSummary) ? data.editsSummary : []);
+      } else {
+        setEditsSummary([]);
+      }
       toast.success(mode === "seo" ? "SEO version created" : "Narrative cleaned with AI");
     } catch (err) {
       console.error("AI Error:", err);
@@ -325,6 +331,7 @@ export default function GTApprovalsApp() {
     }
 
     setAiMode(mode);
+    setEditsSummary([]);
     setEditedNarrative("");
     setLoading(true);
     setProgress(0);
@@ -595,7 +602,10 @@ export default function GTApprovalsApp() {
                 }`}
               placeholder="Paste your narrative here..."
               value={narrative}
-              onChange={(e) => setNarrative(e.target.value)}
+              onChange={(e) => {
+                setNarrative(e.target.value);
+                setEditsSummary([]);
+              }}
               onKeyDown={(e) => {
                 // ⌘/Ctrl + Enter to clean with AI
                 if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
