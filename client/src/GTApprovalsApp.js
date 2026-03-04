@@ -401,37 +401,68 @@ const selectStyles = (dark) => ({
 });
 
 // Detect states/provinces and cities mentioned in narrative text.
-// Returns { detectedState: option|null, detectedCities: option[] }
+// License abbreviation/keyword → canonical option value
+// Maps common textual references → the key used in licenses.json
+const LICENSE_DETECTION_MAP = [
+  { patterns: [/\bLCSW\b/, /\blicensed clinical social worker/i], value: "LCSW" },
+  { patterns: [/\bLMFT\b/, /\blicensed marriage and family therapist/i, /\bmarriage and family therapist/i], value: "LMFT" },
+  { patterns: [/\bLPC\b(?!C)/, /\blicensed professional counselor/i], value: "LPC" },
+  { patterns: [/\bLPCC\b/, /\blicensed professional clinical counselor/i], value: "LPCC" },
+  { patterns: [/\bLMHC\b/, /\blicensed mental health counselor/i], value: "MHC" },
+  { patterns: [/\bLCSW-R\b/, /\blicensed clinical social worker-r/i], value: "LCSW" },
+  { patterns: [/\bLMSW\b/, /\blicensed master social worker/i], value: "LMSW" },
+  { patterns: [/\bLICsw\b|\bLICSW\b/, /\blicensed independent clinical social worker/i], value: "LICSW" },
+  { patterns: [/\bLSCSW\b/], value: "LSCSW" },
+  { patterns: [/\bLSW\b/, /\blicensed social worker/i], value: "LSW" },
+  { patterns: [/\bLAMFT\b/, /\blicensed associate marriage/i], value: "LAMFT" },
+  { patterns: [/\bLCPC\b/, /\blicensed clinical professional counselor/i], value: "LCPC" },
+  { patterns: [/\bCSWA\b/, /\bclinical social work associate/i], value: "CSWA" },
+  { patterns: [/\bLLMSW\b/, /\blimited licensed master/i], value: "LLMSW" },
+  { patterns: [/\bLBSW\b/, /\blicensed bachelor/i], value: "LBSW" },
+  { patterns: [/\bPLMHP\b/, /\bprovisional licensed mental health/i], value: "PLMHP" },
+  { patterns: [/\bCADC\b/, /\bcertified alcohol and drug/i], value: "CADC" },
+  { patterns: [/\bPsychologist\b/i], value: "Psychologist" },
+  { patterns: [/\bPsychiatrist\b/i], value: "Psychiatrist" },
+  { patterns: [/\bPsychotherapist\b/i], value: "Psychotherapist" },
+  { patterns: [/\bNurse Practitioner\b/i, /\bPMHNP\b/, /\bNP\b(?=[\s,])/], value: "NP" },
+  { patterns: [/\bSocial Worker\b/i], value: "SocialWorker" },
+  { patterns: [/\bPsychoanalyst\b/i], value: "Psychoanalyst" },
+  { patterns: [/\bSchool Psychologist\b/i], value: "SchoolPsychologist" },
+  { patterns: [/\bMSW\b/, /\bmaster of social work\b/i, /\bmaster's.*social work\b/i], value: "MSW" },
+  { patterns: [/\bBSW\b/, /\bbachelor.*social work\b/i], value: "BSW" },
+];
+
+// Returns { detectedStates: option[], detectedCities: option[], detectedLicenses: option[] }
 function detectLocationsFromNarrative(text, cityOptions) {
-  const lower = text.toLowerCase();
+  // --- Detect ALL states/provinces ---
+  const detectedStatesMap = {};
 
-  // --- Detect state/province ---
-  let detectedState = null;
-
-  // Try full name first (longest match wins to avoid "New" matching "New York" vs "New Jersey")
+  // Full name matches (longest first to avoid "New" before "New York")
   const sortedNames = Object.keys(STATE_NAME_TO_OPTION).sort((a, b) => b.length - a.length);
   for (const name of sortedNames) {
-    // Word-boundary match
     const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
     if (re.test(text)) {
-      detectedState = STATE_NAME_TO_OPTION[name];
-      break;
+      const opt = STATE_NAME_TO_OPTION[name];
+      detectedStatesMap[opt.value] = opt;
     }
   }
 
-  // If no full name found, try 2-letter abbreviation (e.g. " PA," or " PA " or "(PA)")
-  if (!detectedState) {
-    for (const [abbr, opt] of Object.entries(STATE_ABBR_TO_OPTION)) {
-      const re = new RegExp(`(?:^|[\\s,(])${abbr.toUpperCase()}(?=[\\s,.)\\n]|$)`, 'i');
-      if (re.test(text)) {
-        detectedState = opt;
-        break;
-      }
+  // 2-letter abbreviation fallback for any not yet found
+  for (const [abbr, opt] of Object.entries(STATE_ABBR_TO_OPTION)) {
+    if (detectedStatesMap[opt.value]) continue;
+    const re = new RegExp(`(?:^|[\\s,(])${abbr.toUpperCase()}(?=[\\s,.)\\n]|$)`, 'i');
+    if (re.test(text)) {
+      detectedStatesMap[opt.value] = opt;
     }
   }
+
+  const detectedStates = Object.values(detectedStatesMap);
 
   // --- Detect cities ---
-  // Group by city name; if multiple state suffixes match prefer the one matching detectedState
+  // Prefer city entries that match one of the detected states
+  const detectedStateAbbrs = new Set(
+    detectedStates.map(s => (STATE_ABBR[s.value] || PROVINCE_ABBR[s.value] || '').toUpperCase())
+  );
   const cityNameMatches = {};
   for (const opt of cityOptions) {
     const cityName = opt.value.split(',')[0].trim();
@@ -442,20 +473,27 @@ function detectLocationsFromNarrative(text, cityOptions) {
     }
   }
   const detectedCities = [];
-  const detectedStateAbbr = detectedState
-    ? (STATE_ABBR[detectedState.value] || PROVINCE_ABBR[detectedState.value] || '').toUpperCase()
-    : '';
   for (const candidates of Object.values(cityNameMatches)) {
     if (candidates.length === 1) {
       detectedCities.push(candidates[0]);
     } else {
-      // Prefer city matching detected state, otherwise take first
-      const preferred = candidates.find(c => c.value.endsWith(`, ${detectedStateAbbr}`));
+      const preferred = candidates.find(c => {
+        const abbr = c.value.split(',')[1]?.trim();
+        return abbr && detectedStateAbbrs.has(abbr);
+      });
       detectedCities.push(preferred || candidates[0]);
     }
   }
 
-  return { detectedState, detectedCities };
+  // --- Detect licenses ---
+  const detectedLicenses = [];
+  for (const { patterns, value } of LICENSE_DETECTION_MAP) {
+    if (patterns.some(re => re.test(text))) {
+      detectedLicenses.push({ value, label: value });
+    }
+  }
+
+  return { detectedStates, detectedCities, detectedLicenses };
 }
 
 export default function GTApprovalsApp() {
@@ -476,8 +514,8 @@ export default function GTApprovalsApp() {
   const [editsSummary, setEditsSummary] = useState([]);
   const [city, setCity] = useState([]);
   const [websiteUrl, setWebsiteUrl] = useState("");
-  const [narrativeState, setNarrativeState] = useState(null);
-  const [narrativeLicense, setNarrativeLicense] = useState(null);
+  const [narrativeState, setNarrativeState] = useState([]);
+  const [narrativeLicense, setNarrativeLicense] = useState([]);
   const progressRef = useRef(null);
 
   const [regionFilter, setRegionFilter] = useState({
@@ -628,8 +666,8 @@ export default function GTApprovalsApp() {
         },
         body: JSON.stringify({
           narrative: text,
-          state: narrativeState?.value || "",
-          license: narrativeLicense?.value || "",
+          state: narrativeState.map(s => s.value).join(", "),
+          license: narrativeLicense.map(l => l.value).join(", "),
           mode,
           city: city.map((c) => c.value).join(", "),
           websiteUrl: websiteUrl.trim(),
@@ -974,9 +1012,10 @@ export default function GTApprovalsApp() {
                 <Select
                   options={narrativeStateOptions}
                   value={narrativeState}
-                  onChange={(s) => { setNarrativeState(s); setNarrativeLicense(null); }}
-                  placeholder="Select state..."
+                  onChange={(s) => setNarrativeState(s || [])}
+                  placeholder="Select states..."
                   styles={selectStyles(darkMode)}
+                  isMulti
                   isClearable
                 />
               </div>
@@ -985,13 +1024,18 @@ export default function GTApprovalsApp() {
                   License (optional)
                 </label>
                 <CreatableSelect
-                  options={getLicenseOptions(narrativeState?.value)}
+                  options={Array.from(
+                    new Map(
+                      narrativeState.flatMap(s => getLicenseOptions(s.value)).map(o => [o.value, o])
+                    ).values()
+                  )}
                   value={narrativeLicense}
-                  onChange={setNarrativeLicense}
-                  placeholder="Select or type license..."
+                  onChange={(v) => setNarrativeLicense(v || [])}
+                  placeholder="Select or type licenses..."
                   styles={selectStyles(darkMode)}
                   formatCreateLabel={(input) => `Add "${input.toUpperCase()}"`}
-                  noOptionsMessage={() => "Type a license abbreviation"}
+                  noOptionsMessage={() => "Select a state or type a license abbreviation"}
+                  isMulti
                   isClearable
                 />
               </div>
@@ -1010,11 +1054,12 @@ export default function GTApprovalsApp() {
                 setNarrative(val);
                 setEditsSummary([]);
                 setEditedNarrative("");
-                // Auto-detect locations and fill empty fields
+                // Auto-detect locations and licenses, fill empty fields only
                 if (val.trim()) {
-                  const { detectedState, detectedCities } = detectLocationsFromNarrative(val, CITY_OPTIONS);
-                  if (detectedState && !narrativeState) setNarrativeState(detectedState);
+                  const { detectedStates, detectedCities, detectedLicenses } = detectLocationsFromNarrative(val, CITY_OPTIONS);
+                  if (detectedStates.length > 0 && narrativeState.length === 0) setNarrativeState(detectedStates);
                   if (detectedCities.length > 0 && city.length === 0) setCity(detectedCities);
+                  if (detectedLicenses.length > 0 && narrativeLicense.length === 0) setNarrativeLicense(detectedLicenses);
                 }
               }}
               onKeyDown={(e) => {
