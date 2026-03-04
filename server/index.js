@@ -20,6 +20,7 @@ const RATE_LIMIT_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS || 60_000);
 const RATE_LIMIT_MAX = Number(process.env.RATE_LIMIT_MAX || 20);
 const MAX_NARRATIVE_CHARS = Number(process.env.MAX_NARRATIVE_CHARS || 6000);
 const OPENAI_TIMEOUT_MS = Number(process.env.OPENAI_TIMEOUT_MS || 20_000);
+const OPENAI_SEO_TIMEOUT_MS = Number(process.env.OPENAI_SEO_TIMEOUT_MS || 90_000);
 const SEMRUSH_API_KEY = process.env.SEMRUSH_API_KEY || "";
 const SEMRUSH_DATABASE = process.env.SEMRUSH_DATABASE || "us";
 const SEMRUSH_RESULTS_PER_SEED = Number(process.env.SEMRUSH_RESULTS_PER_SEED || 8);
@@ -1082,6 +1083,64 @@ async function buildSeoHints({ narrative, state, license, city }) {
   return Array.from(new Set([...rankedKeywords, ...fallbackHints])).slice(0, 16);
 }
 
+// Sections we WANT to capture from a therapist profile page
+const WANTED_SECTION_RE = /^#+\s*(about|challenges?\s+treated|specialt|methods?|modalities|client\s+focus|services?|approach|qualif|education|language|experience|training|focus|background)/im;
+// Sections that are noise — skip the entire section
+const SKIP_SECTION_RE = /^#+\s*(choose\s+a\s+time|schedule|availab|book|billing|insurance|carrier|cash\s+rate|faq|review|testimonial|similar|location\s+&|related)/im;
+
+function extractProfileContent(rawText) {
+  // Normalize setext headings ("Foo\n====" → "# Foo", "Bar\n----" → "## Bar")
+  const normalized = rawText
+    .replace(/^(.+)\n={3,}$/gm, (_, title) => `# ${title.trim()}`)
+    .replace(/^(.+)\n-{3,}$/gm, (_, title) => `## ${title.trim()}`);
+
+  const lines = normalized.split("\n");
+  const result = [];
+  let inWantedSection = false;
+  let inSkipSection = false;
+  let preHeaderChars = 0;
+  let charCount = 0;
+  const MAX_CHARS = 3500;
+  const MAX_PREHEADER = 400;
+
+  for (const line of lines) {
+    const isHeading = /^#+\s/.test(line);
+
+    if (isHeading) {
+      if (SKIP_SECTION_RE.test(line)) {
+        inSkipSection = true;
+        inWantedSection = false;
+        continue;
+      } else if (WANTED_SECTION_RE.test(line)) {
+        inWantedSection = true;
+        inSkipSection = false;
+        result.push(line);
+        charCount += line.length + 1;
+      } else {
+        inSkipSection = false;
+        inWantedSection = false;
+      }
+      continue;
+    }
+
+    if (inSkipSection) continue;
+
+    if (inWantedSection) {
+      result.push(line);
+      charCount += line.length + 1;
+    } else if (preHeaderChars < MAX_PREHEADER && line.trim()) {
+      // Capture the short header block at top of profile: name, credential, location
+      result.push(line);
+      preHeaderChars += line.length + 1;
+      charCount += line.length + 1;
+    }
+
+    if (charCount >= MAX_CHARS) break;
+  }
+
+  return result.join("\n").trim();
+}
+
 async function fetchWebsiteContext(url) {
   if (!url || typeof url !== "string") return "";
   let normalizedUrl = url.trim();
@@ -1094,7 +1153,7 @@ async function fetchWebsiteContext(url) {
     return "";
   }
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 8000);
+  const timeout = setTimeout(() => controller.abort(), 12000);
   try {
     const response = await fetch(`https://r.jina.ai/${normalizedUrl}`, {
       signal: controller.signal,
@@ -1102,8 +1161,9 @@ async function fetchWebsiteContext(url) {
     });
     if (!response.ok) return "";
     const text = await response.text();
-    console.log(`Website context fetched for ${url}: ${text.length} chars`);
-    return text.slice(0, 3000);
+    const extracted = extractProfileContent(text);
+    console.log(`Website context fetched for ${url}: ${text.length} raw → ${extracted.length} extracted chars`);
+    return extracted;
   } catch {
     return "";
   } finally {
@@ -1257,8 +1317,9 @@ app.post("/api/clean-narrative", async (req, res) => {
     });
   }
 
+  const isSeoOrGeo = transformMode === "seo" || transformMode === "geo";
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), OPENAI_TIMEOUT_MS);
+  const timeout = setTimeout(() => controller.abort(), isSeoOrGeo ? OPENAI_SEO_TIMEOUT_MS : OPENAI_TIMEOUT_MS);
 
   try {
     const response = await fetch("https://api.openai.com/v1/responses", {
