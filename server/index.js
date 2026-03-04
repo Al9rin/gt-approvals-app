@@ -202,10 +202,10 @@ const acronymExpansionRules = [
   },
   {
     acronym: "ADHD",
-    supportPattern: /\b(attention[- ]deficit hyperactivity|ADHD)\b/i,
+    supportPattern: /\b(attention[- ]deficit\/?[ -]?hyperactivity|ADHD)\b/i,
     expansion: "attention-deficit hyperactivity (ADHD)",
-    expandedPattern: /\battention[- ]deficit hyperactivity(?:\s+(?:disorder|condition|issue|diagnosis|challenge|challenges))?\s*\(ADHD\)/i,
-    disorderPattern: /\battention[- ]deficit hyperactivity disorder\s*\(ADHD\)/gi,
+    expandedPattern: /\battention[- ]deficit\/?[ -]?hyperactivity(?:\s+(?:disorder|condition|issue|diagnosis|challenge|challenges))?\s*\(ADHD\)/i,
+    disorderPattern: /\battention[- ]deficit\/?[ -]?hyperactivity disorder\s*\(ADHD\)/gi,
   },
   {
     acronym: "CBT",
@@ -429,16 +429,16 @@ Follow these instructions exactly:
 Return ONLY the final revised narrative. No explanation, notes, labels, or bullets.
 `;
 
-const seoPrompt = `You are a narrative compliance assistant for GoodTherapy. Your task is to refine therapist marketing narratives so they read cleanly, stay true to the therapist's voice, follow GoodTherapy editorial guidance, and improve search discoverability without sounding SEO-written.
+const seoPrompt = `You are a narrative compliance assistant for GoodTherapy. Your task is to refine therapist marketing narratives so they read cleanly, stay true to the therapist's voice, follow GoodTherapy editorial guidance, improve search discoverability, and support AI citation readiness — all without sounding SEO-written.
 
 Follow these instructions exactly:
 
-1. Correct grammar, punctuation, spelling, and obvious clarity issues. Ensure every sentence is grammatically complete: verbs like "offer" or "provide" must have an object (e.g. "I offer therapy when..." or "I'm a therapist who offers support when...", not "who offers when it's a good fit" without an object). Fix run-on or fragmented clauses so each sentence reads as a complete thought.
-2. Preserve the therapist's original voice, warmth, rhythm, and point of view.
-3. Keep the writing casual, natural, and human. Do not make it sound corporate, generic, stiff, or overly polished.
-4. Do NOT change the meaning, add unsupported claims, invent specialties, or rewrite the structure unless clarity requires it. Do not add phrases or concepts that are not in the original narrative (e.g. do not add "when it's a good fit", "we'll move at a pace", or similar stock phrases unless the original text explicitly says something equivalent).
-5. Never introduce a new modality, specialty, diagnosis, acronym, or treatment approach unless it is explicitly supported by the original narrative or selected context.
-6. Never add an explanatory sentence just to fit SEO. If a keyword would require new claims or a new concept, skip it.
+1. Correct grammar, punctuation, spelling, and obvious clarity issues. Ensure every sentence is grammatically complete.
+2. Do NOT join two independent clauses with "and" when each could stand alone as its own sentence. Use a period or semicolon instead. CORRECT: "My clients typically heal in 6 to 22 sessions. Therapy does not have to be a long-term commitment." WRONG: "...sessions and therapy does not have to be a long-term commitment."
+3. Preserve the therapist's original voice, warmth, rhythm, and point of view. Keep it casual, natural, and human — not corporate or overly polished.
+4. Do NOT change the meaning, add unsupported claims, or invent specialties. Do not add phrases not in the original (e.g. do not add "when it's a good fit", "we'll move at a pace", or similar).
+5. Never introduce a new modality, specialty, diagnosis, or acronym unless explicitly supported by the original narrative or provided context.
+6. Do NOT create a new standalone sentence just to introduce an SEO phrase. Keywords must fit naturally into existing sentence structure only. If a keyword cannot be woven in without writing a brand-new sentence the therapist did not write, skip that keyword.
 7. Apply GoodTherapy editorial rules, including:
    - Expand all acronyms on first use with correct capitalization and terminology.
    - For example: obsessive-compulsive challenges (OCD), posttraumatic stress (PTSD), attention-deficit hyperactivity (ADHD), cognitive behavioral therapy (CBT), exposure and response prevention (ERP), and eye movement desensitization and reprocessing (EMDR).
@@ -451,30 +451,27 @@ Follow these instructions exactly:
    - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
 8. Apply SEO enhancement in a natural, truthful way:
-   - Work in 3 to 5 relevant phrases from the allowed list, spread across different sentences so each appears once in a natural place (e.g. "I offer anxiety therapy", "people seeking online therapy"). Never stack two or more target phrases in the same sentence (e.g. avoid "anxiety therapy and ocd therapy" in one clause).
+   - Work in 3 to 5 relevant phrases from the allowed list, spread across different sentences so each appears once in a natural place. Never stack two or more target phrases in the same sentence.
    - Only use phrases from the provided allowed list that are supported by the original narrative or context.
    - When the therapist already describes the work in their own words, substitute or add an allowed phrase only where it reads as a natural part of the sentence.
    - If location or license context is provided, you may reinforce it once in a natural way; do not force phrases like "near me".
-   - Never add a new sentence or list of services just to fit SEO. The narrative should still read as the therapist's voice in one pass.
 9. Opening sentence quality:
-   - The first sentence MUST name the therapist's credential type (e.g. licensed therapist, LMFT, psychologist), primary specialty or focus area, and service area or delivery method (city name, state, or online).
-   - This sentence must function as a standalone search snippet that answers "who are they and what do they offer."
-   - Avoid vague openers like "I help people..." or "Are you struggling..." that do not convey credentials or geography.
-10. E-E-A-T trust signals:
-   - Preserve all mentions of years of experience, training programs, certifications, and credential language verbatim or in paraphrase — do not soften or remove these.
-   - These are trust signals for both search engines and prospective clients; they must remain visible and specific.
-11. Entity clarity for AI and search:
-   - State key facts explicitly in complete, declarable sentences rather than implying them. Prefer "I am a licensed marriage and family therapist serving clients in Austin, Texas" over "I work with clients locally."
-   - Use the full city and state name when location is provided. If multiple cities are listed, incorporate them naturally (e.g. "serving clients in Austin and Round Rock, Texas").
-   - If service delivery is mentioned (in-person, online, or both), state it explicitly.
-12. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
+   - The first sentence MUST name the therapist's credential type (e.g. licensed therapist, LMFT, psychologist), primary specialty or focus area, and service area or delivery method (city name, state, or online). If in-person and city are both available, combine them in the opening sentence: "...in Austin, Texas, offering in-person sessions."
+   - This sentence must function as a standalone search snippet. Avoid vague openers like "I help people..." that do not convey credentials or geography.
+10. Location — do NOT repeat:
+    - Mention the city/state at most once in a natural context. If the city appears in the opening sentence, do NOT write a separate sentence immediately after that restates the same location as a standalone geographic fact. Combine instead: "I am an LMFT in Denver, Colorado, offering in-person and online therapy" — not two separate sentences saying "in Denver" and then "I see clients in Denver."
+11. E-E-A-T trust signals:
+    - Preserve all mentions of years of experience, training, certifications, and credential language. These are trust signals; do not soften or remove them.
+12. Entity clarity for AI citation:
+    - State key facts explicitly. Use full city and state name. If service delivery is mentioned (in-person, online, or both), state it explicitly in a natural sentence. Write out full modality names at least once.
+13. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
-- "editsSummary": an array of bullet points that together describe all changes made. Put the keyword bullet FIRST. You MUST include:
-  (1) As the first bullet, list every keyword phrase you wove in, in this exact format: "Keyword phrases used: [phrase1], [phrase2], [phrase3]" (e.g. "Keyword phrases used: anxiety therapy, online therapy, trauma therapy"). Use the exact phrasing as it appears in the narrative. If you used no phrases from the allowed list, say "Keyword phrases used: (none—no natural fit from allowed list)".
-  (2) Remaining bullets for other edits: e.g. "Tightened opening for snippet clarity", "Corrected grammar and punctuation (including Oxford comma)", "Applied GoodTherapy acronym expansion for [X]", "Clarified consultation and scheduling", "Improved flow and readability". Cover opening/snippet, grammar and punctuation, structure or clarity, and any other notable changes so the user sees a complete summary.
-  Aim for 4 to 8 bullets total so nothing important is omitted. You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
+- "editsSummary": an array of bullet points describing all changes made. Put the keyword bullet FIRST. You MUST include:
+  (1) As the first bullet: "Keyword phrases used: [phrase1], [phrase2], ..." or "Keyword phrases used: (none—no natural fit from allowed list)".
+  (2) Remaining bullets covering: opening sentence, grammar and punctuation, structure or clarity, any other notable changes.
+  Aim for 4 to 8 bullets total. You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
 `;
 
 const geoPrompt = `You are a narrative compliance assistant for GoodTherapy with expertise in generative engine optimization (GEO). Your task is to rewrite therapist marketing narratives so they are clearly structured for AI citation, entity extraction, and direct-answer engines — while preserving the therapist's authentic voice and following GoodTherapy editorial standards.
@@ -1005,15 +1002,19 @@ async function buildSeoHints({ narrative, state, license, city }) {
 
 async function fetchWebsiteContext(url) {
   if (!url || typeof url !== "string") return "";
+  let normalizedUrl = url.trim();
+  if (!/^https?:\/\//i.test(normalizedUrl)) {
+    normalizedUrl = `https://${normalizedUrl}`;
+  }
   try {
-    new URL(url);
+    new URL(normalizedUrl);
   } catch {
     return "";
   }
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
   try {
-    const response = await fetch(`https://r.jina.ai/${url}`, {
+    const response = await fetch(`https://r.jina.ai/${normalizedUrl}`, {
       signal: controller.signal,
       headers: { Accept: "text/plain" },
     });

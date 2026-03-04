@@ -377,6 +377,8 @@ export default function GTApprovalsApp() {
   const [editsSummary, setEditsSummary] = useState([]);
   const [city, setCity] = useState([]);
   const [websiteUrl, setWebsiteUrl] = useState("");
+  const [narrativeState, setNarrativeState] = useState(null);
+  const [narrativeLicense, setNarrativeLicense] = useState(null);
   const progressRef = useRef(null);
 
   const [regionFilter, setRegionFilter] = useState({
@@ -491,14 +493,16 @@ export default function GTApprovalsApp() {
 
   const resetTilt = () => setTilt({ x: 0, y: 0 });
 
-  const getFilteredLicenseOptions = () => {
-    if (!state) return [];
+  const getLicenseOptions = (stateValue) => {
+    if (!stateValue) return [];
     const filteredKeys = Object.keys(licenses).filter((key) =>
-      key.startsWith(`${state.value}_`)
+      key.startsWith(`${stateValue}_`)
     );
     const licenseSet = new Set(filteredKeys.map((key) => key.split("_")[1]));
     return Array.from(licenseSet).map((l) => ({ value: l, label: l }));
   };
+
+  const getFilteredLicenseOptions = () => getLicenseOptions(state?.value);
 
   const search = () => {
     if (!state || !license) {
@@ -525,8 +529,8 @@ export default function GTApprovalsApp() {
         },
         body: JSON.stringify({
           narrative: text,
-          state: state?.value || "",
-          license: license?.value || "",
+          state: narrativeState?.value || "",
+          license: narrativeLicense?.value || "",
           mode,
           city: city.map((c) => c.value).join(", "),
           websiteUrl: websiteUrl.trim(),
@@ -848,7 +852,7 @@ export default function GTApprovalsApp() {
               <div className={`absolute inset-0 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20 ${darkMode ? "bg-black/80" : "bg-white/80"}`}>
                 <Loader2 className="w-6 h-6 animate-spin text-gt-green shrink-0" />
                 <span className="ml-2 text-gt-green font-medium">
-                  {aiMode === "geo" ? "Making AI-Ready..." : aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
+                  {aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
                 </span>
               </div>
             )}
@@ -860,8 +864,38 @@ export default function GTApprovalsApp() {
               </h2>
             </div>
             <p className={`text-sm -mt-1 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-              Clean with AI for grammar and editorial polish, Add SEO for keyword-aware optimization, or AI Ready for GEO and AI-citation readiness
+              Clean with AI for grammar and editorial polish, or Add SEO for keyword-aware optimization with AI-citation structure
             </p>
+
+            <div className="flex gap-3">
+              <div className="flex-1">
+                <label className={`block mb-1.5 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
+                  Location context (optional)
+                </label>
+                <Select
+                  options={stateOptions}
+                  value={narrativeState}
+                  onChange={(s) => { setNarrativeState(s); setNarrativeLicense(null); }}
+                  placeholder="Select state..."
+                  styles={selectStyles(darkMode)}
+                  isClearable
+                />
+              </div>
+              <div className="flex-1">
+                <label className={`block mb-1.5 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
+                  License (optional)
+                </label>
+                <Select
+                  options={getLicenseOptions(narrativeState?.value)}
+                  value={narrativeLicense}
+                  onChange={setNarrativeLicense}
+                  placeholder="Select license..."
+                  styles={selectStyles(darkMode)}
+                  isDisabled={!narrativeState}
+                  isClearable
+                />
+              </div>
+            </div>
 
             <textarea
               rows={5}
@@ -948,18 +982,6 @@ export default function GTApprovalsApp() {
                 <Search className="w-5 h-5 shrink-0" />
                 Add SEO
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => handleNarrative("geo")}
-                className={`cursor-pointer px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
-                    ? "bg-white/[0.06] hover:bg-gt-orange/10 text-gray-100 border-gt-orange/30 hover:border-gt-orange/50 focus-visible:ring-gt-orange/40"
-                    : "bg-white hover:bg-gt-green-50/80 text-gt-gray border-gray-200/90 hover:border-gt-green/30 focus-visible:ring-gt-green/40"
-                  }`}
-              >
-                <Globe className="w-5 h-5 shrink-0" />
-                AI Ready
-              </motion.button>
               {narrative && (
                 <motion.button
                   initial={{ opacity: 0, scale: 0.96 }}
@@ -979,7 +1001,7 @@ export default function GTApprovalsApp() {
             </div>
 
             <p className={`mt-1 text-xs italic ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-              `Clean with AI` applies grammar and GoodTherapy editorial rules only. `Add SEO` creates a keyword-aware version. `AI Ready` rewrites for GEO — clear entity statements optimized for AI citations.
+              `Clean with AI` applies grammar and GoodTherapy editorial rules only. `Add SEO` weaves in keywords and structures the narrative for AI citation readiness.
             </p>
 
             <p className={`mt-1 text-xs italic ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
