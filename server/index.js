@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5001;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-5.2";
+const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1";
 const RATE_LIMIT_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS || 60_000);
 const RATE_LIMIT_MAX = Number(process.env.RATE_LIMIT_MAX || 20);
 const MAX_NARRATIVE_CHARS = Number(process.env.MAX_NARRATIVE_CHARS || 6000);
@@ -162,6 +162,7 @@ const licenseKeywordMap = {
 };
 
 const blockedKeywordFragments = [
+  "talk therapy",
   "betterhelp",
   "psychology today",
   "headway",
@@ -425,6 +426,8 @@ Follow these instructions exactly:
    - If degrees and licenses are listed together, put degrees first.
 7. Do not add SEO phrasing, keyword themes, service lists, or local SEO language.
 8. Keep the output roughly the same length as the original unless a small increase improves clarity naturally.
+9. Do NOT use the phrase "talk therapy" anywhere in the output.
+10. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement.
 
 Return ONLY the final revised narrative. No explanation, notes, labels, or bullets.
 `;
@@ -466,6 +469,9 @@ Follow these instructions exactly:
 12. Entity clarity for AI citation:
     - State key facts explicitly. Use full city and state name. If service delivery is mentioned (in-person, online, or both), state it explicitly in a natural sentence. Write out full modality names at least once.
 13. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
+14. Do NOT use the phrase "talk therapy" anywhere in the output.
+15. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement in subsequent sentences.
+16. If city names are provided in the context under "Cities served", you MUST naturally include at least one of them somewhere in the narrative. Do not skip them.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
@@ -500,6 +506,9 @@ Follow these instructions exactly:
 10. Do NOT add SEO keyword density, keyword stuffing, or phrases that exist only to match search queries. The goal is factual clarity and AI-citation readiness, not keyword volume.
 11. Do NOT add unsupported claims, invent specialties, or introduce modalities not mentioned in the original narrative or provided context.
 12. Keep the output roughly the same length or slightly longer than the original if additional explicit fact statements are needed for clarity.
+13. Do NOT use the phrase "talk therapy" anywhere in the output.
+14. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement in subsequent sentences.
+15. If city names are provided in the context under "Cities served", you MUST naturally include at least one of them somewhere in the narrative. Do not skip them.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
@@ -617,7 +626,7 @@ function ensureFirstAcronymExpansion(text, rule) {
     return text.replace(rule.expandedPattern, rule.expansion);
   }
 
-  const acronymPattern = new RegExp(`\\b${rule.acronym}\\b`);
+  const acronymPattern = new RegExp(`\\b${rule.acronym}\\b`, "i");
   return text.replace(acronymPattern, rule.expansion);
 }
 
