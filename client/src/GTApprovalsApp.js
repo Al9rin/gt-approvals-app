@@ -447,10 +447,12 @@ function detectLocationsFromNarrative(text, cityOptions) {
     }
   }
 
-  // 2-letter abbreviation fallback for any not yet found
+  // 2-letter abbreviation fallback — NO 'i' flag: must be uppercase in text (e.g. "PA" not "pa")
+  // This prevents matching common words like "in" → Indiana or "or" → Oregon
   for (const [abbr, opt] of Object.entries(STATE_ABBR_TO_OPTION)) {
     if (detectedStatesMap[opt.value]) continue;
-    const re = new RegExp(`(?:^|[\\s,(])${abbr.toUpperCase()}(?=[\\s,.)\\n]|$)`, 'i');
+    const upper = abbr.toUpperCase();
+    const re = new RegExp(`(?:^|[\\s,(])${upper}(?=[\\s,.)\\n]|$)`);
     if (re.test(text)) {
       detectedStatesMap[opt.value] = opt;
     }

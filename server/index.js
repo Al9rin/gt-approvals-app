@@ -14,6 +14,8 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4.1";
+// Reasoning model for SEO/geo modes — reasons through keyword placement more naturally
+const OPENAI_SEO_MODEL = process.env.OPENAI_SEO_MODEL || "o4-mini";
 const RATE_LIMIT_WINDOW_MS = Number(process.env.RATE_LIMIT_WINDOW_MS || 60_000);
 const RATE_LIMIT_MAX = Number(process.env.RATE_LIMIT_MAX || 20);
 const MAX_NARRATIVE_CHARS = Number(process.env.MAX_NARRATIVE_CHARS || 6000);
@@ -1265,25 +1267,28 @@ app.post("/api/clean-narrative", async (req, res) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
-      body: JSON.stringify({
-        model: OPENAI_MODEL,
-        store: false,
-        instructions: transformMode === "geo" ? geoPrompt : transformMode === "seo" ? seoPrompt : editorialPrompt,
-        input: await buildUserPrompt({
+      body: JSON.stringify(await (async () => {
+        const isSeoMode = transformMode === "seo" || transformMode === "geo";
+        const model = isSeoMode ? OPENAI_SEO_MODEL : OPENAI_MODEL;
+        const isReasoningModel = /^o\d/.test(model);
+        const userPrompt = await buildUserPrompt({
           narrative: trimmedNarrative,
           state: typeof state === "string" ? state : "",
           license: typeof license === "string" ? license : "",
           city: typeof city === "string" ? city : "",
           websiteUrl: typeof websiteUrl === "string" ? websiteUrl : "",
           mode: transformMode,
-        }),
-        text: {
-          format: {
-            type: "text",
-          },
-        },
-        temperature: 0.2,
-      }),
+        });
+        const systemPrompt = transformMode === "geo" ? geoPrompt : transformMode === "seo" ? seoPrompt : editorialPrompt;
+        return {
+          model,
+          store: false,
+          instructions: systemPrompt,
+          input: userPrompt,
+          text: { format: { type: "text" } },
+          ...(isReasoningModel ? {} : { temperature: 0.2 }),
+        };
+      })()),
       signal: controller.signal,
     });
 
