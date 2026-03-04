@@ -4,8 +4,16 @@ import CreatableSelect from "react-select/creatable";
 import licenses from "./licenses.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
-import { Search, Wand2, Sun, Moon, X, Loader2, ExternalLink, ClipboardCopy, Check, MapPin, Leaf, Globe, FileText } from "lucide-react";
+import { Sparkles, TrendingUp, ShieldCheck, Sun, Moon, X, ExternalLink, Copy, Check, MapPin, Globe, PenLine, ChevronRight } from "lucide-react";
 import { Analytics } from '@vercel/analytics/react';
+
+// Proper Canadian maple leaf SVG (11-pointed, with stem)
+const MapleLeafIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L13.6 7L18.5 5L16.2 9.5L21 10.5L17.8 13.5L20.5 17L15.8 16L14.5 20L12 18L9.5 20L8.2 16L3.5 17L6.2 13.5L3 10.5L7.8 9.5L5.5 5L10.4 7Z"/>
+    <rect x="11.1" y="18" width="1.8" height="4" rx="0.9"/>
+  </svg>
+);
 
 const DEFAULT_PRODUCTION_API_BASE_URL = "https://gt-approvals-app.onrender.com";
 const API_BASE_URL = (
@@ -15,17 +23,14 @@ const API_BASE_URL = (
 
 // motion variants
 const containerVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { staggerChildren: 0.12, ease: "easeOut" },
-  },
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08, ease: "easeOut" } },
 };
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 380, damping: 28 } },
 };
+const springTap = { type: "spring", stiffness: 500, damping: 30 };
 
 const US_STATES = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
@@ -294,11 +299,11 @@ const selectStyles = (dark) => ({
     ...base,
     cursor: 'pointer',
     borderRadius: '0.75rem',
-    borderColor: s.isFocused ? (dark ? '#E06D00' : '#A2AD1A') : dark ? 'rgba(255,255,255,0.1)' : '#e5e5e5',
-    backgroundColor: dark ? '#26262a' : '#fff',
-    boxShadow: s.isFocused ? (dark ? '0 0 0 2px rgba(224,109,0,0.3)' : '0 0 0 2px rgba(162,173,26,0.25)') : 'none',
+    borderColor: s.isFocused ? '#E06D00' : dark ? 'rgba(255,255,255,0.1)' : '#e5e5e5',
+    backgroundColor: dark ? '#1f1f23' : '#fff',
+    boxShadow: s.isFocused ? '0 0 0 3px rgba(224,109,0,0.15)' : 'none',
     minHeight: 42,
-    '&:hover': { borderColor: dark ? 'rgba(224,109,0,0.5)' : '#A2AD1A' },
+    '&:hover': { borderColor: dark ? 'rgba(224,109,0,0.5)' : '#E06D00' },
     padding: '2px 8px',
     transition: 'border-color 0.2s, box-shadow 0.2s',
   }),
@@ -613,8 +618,12 @@ export default function GTApprovalsApp() {
       {showProgress && (
         <div className="fixed top-0 left-0 w-full z-[60]">
           <div
-            className={`h-1 transition-all duration-200 ease-out ${darkMode ? "bg-gt-orange" : "bg-gt-green"}`}
-            style={{ width: `${progress}%` }}
+            className="h-[3px] transition-all duration-300 ease-out"
+            style={{
+              width: `${progress}%`,
+              background: 'linear-gradient(90deg, #A2AD1A 0%, #E06D00 100%)',
+              boxShadow: '0 0 10px rgba(224,109,0,0.5)',
+            }}
           />
         </div>
       )}
@@ -692,35 +701,33 @@ export default function GTApprovalsApp() {
             onMouseMove={makeTiltHandler(setCardTilt1)}
             onMouseLeave={resetCardTilt(setCardTilt1)}
             style={{ transform: `perspective(800px) rotateX(${cardTilt1.y}deg) rotateY(${cardTilt1.x}deg)` }}
-            className="glass-card rounded-2xl p-6 space-y-5 transition-transform duration-250"
+            className="relative glass-card rounded-2xl p-6 space-y-5 transition-transform duration-250"
           >
+            <div className="card-accent" />
             {/* Region filter buttons */}
             <div className="flex flex-wrap gap-2 mb-4">
               {[
-                { key: "us", label: "United States", Icon: MapPin },
-                { key: "ca", label: "Canada", Icon: Leaf },
-                { key: "intl", label: "International", Icon: Globe }
-              ].map(({ key, label, Icon }) => (
+                { key: "us",   label: "United States", icon: <MapPin className="w-4 h-4 shrink-0" /> },
+                { key: "ca",   label: "Canada",        icon: <MapleLeafIcon className="w-4 h-4 shrink-0" /> },
+                { key: "intl", label: "International", icon: <Globe className="w-4 h-4 shrink-0" /> },
+              ].map(({ key, label, icon }) => (
                 <motion.button
                   whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={{ scale: 0.96 }}
+                  transition={springTap}
                   key={key}
                   type="button"
-                  onClick={() =>
-                    setRegionFilter(prev => ({ ...prev, [key]: !prev[key] }))
-                  }
+                  onClick={() => setRegionFilter(prev => ({ ...prev, [key]: !prev[key] }))}
                   className={`inline-flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent
                     ${regionFilter[key]
-                      ? darkMode
-                        ? "bg-gt-orange text-white border-gt-orange shadow-sm focus-visible:ring-gt-orange/50"
-                        : "bg-gt-green text-white border-gt-green shadow-sm focus-visible:ring-gt-green/40"
+                      ? "bg-gt-orange text-white border-gt-orange shadow-sm focus-visible:ring-gt-orange/50"
                       : darkMode
                         ? "bg-white/5 text-gray-300 border-white/10 hover:bg-white/10 hover:border-gt-orange/40 focus-visible:ring-gt-orange/40"
-                        : "bg-white text-gt-gray border-gray-200/80 hover:border-gt-green/40 hover:bg-gt-green-50/50 focus-visible:ring-gt-green/40"
+                        : "bg-white text-gt-gray border-gray-200/80 hover:border-gt-orange/30 hover:bg-orange-50/40 focus-visible:ring-gt-orange/30"
                     }
                   `}
                 >
-                  <Icon className="w-4 h-4 shrink-0" />
+                  {icon}
                   {label}
                 </motion.button>
               ))}
@@ -770,13 +777,11 @@ export default function GTApprovalsApp() {
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
               onClick={search}
-              className={`cursor-pointer w-full text-white py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
-                ? "bg-gt-orange hover:bg-gt-orange-dark focus-visible:ring-gt-orange/50"
-                : "bg-gt-green hover:bg-gt-green-dark focus-visible:ring-gt-green/50"
-              }`}
+              className="cursor-pointer btn-shine w-full text-white py-3 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-gt-orange hover:bg-gt-orange-dark focus-visible:ring-gt-orange/50"
+            style={{ boxShadow: '0 2px 12px rgba(224,109,0,0.3)' }}
             >
-              <Search className="w-5 h-5 shrink-0" />
-              Search
+              <ShieldCheck className="w-5 h-5 shrink-0" />
+              Verify License
             </motion.button>
 
             <AnimatePresence>
@@ -849,16 +854,16 @@ export default function GTApprovalsApp() {
             className="relative glass-card rounded-2xl p-6 space-y-5 transition-transform duration-250"
           >
             {showProgress && (
-              <div className={`absolute inset-0 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20 ${darkMode ? "bg-black/80" : "bg-white/80"}`}>
-                <Loader2 className="w-6 h-6 animate-spin text-gt-green shrink-0" />
-                <span className="ml-2 text-gt-green font-medium">
-                  {aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
+              <div className={`absolute inset-0 backdrop-blur-sm flex flex-col items-center justify-center gap-3 rounded-2xl z-20 ${darkMode ? "bg-black/75" : "bg-white/80"}`}>
+                <div className="dot-loader"><span /><span /><span /></div>
+                <span className={`text-sm font-medium ${darkMode ? "text-gray-300" : "text-gray-500"}`}>
+                  {aiMode === "seo" ? "Optimizing for SEO…" : aiMode === "geo" ? "Creating AI-Ready version…" : "Cleaning narrative…"}
                 </span>
               </div>
             )}
 
             <div className="flex items-center gap-2">
-              <FileText className={`w-6 h-6 shrink-0 ${darkMode ? "text-gt-green-light" : "text-gt-green-darker"}`} />
+              <PenLine className={`w-5 h-5 shrink-0 ${darkMode ? "text-gt-orange" : "text-gt-orange"}`} />
               <h2 className={`font-display text-2xl font-semibold ${darkMode ? "text-white" : "text-gt-gray"}`}>
                 Narrative Editor
               </h2>
@@ -962,38 +967,39 @@ export default function GTApprovalsApp() {
             <div className="flex flex-wrap items-center gap-3">
               <motion.button
                 whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.96 }}
+                transition={springTap}
                 onClick={() => handleNarrative("editorial")}
-                className={`cursor-pointer text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 shadow-sm hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
-                  ? "bg-gt-orange hover:bg-gt-orange-dark focus-visible:ring-gt-orange/50"
-                  : "bg-gt-green hover:bg-gt-green-dark focus-visible:ring-gt-green/50"
-                }`}
+                className="cursor-pointer btn-shine text-white px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-orange/50 focus-visible:ring-offset-2 bg-gt-orange hover:bg-gt-orange-dark"
+                style={{ boxShadow: '0 2px 10px rgba(224,109,0,0.28)' }}
               >
-                <Wand2 className="w-5 h-5 shrink-0" />
+                <Sparkles className="w-4 h-4 shrink-0" />
                 Clean with AI
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileTap={{ scale: 0.96 }}
+                transition={springTap}
                 onClick={() => handleNarrative("seo")}
-                className={`cursor-pointer px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
-                    ? "bg-white/[0.06] hover:bg-gt-orange/10 text-gray-100 border-gt-orange/30 hover:border-gt-orange/50 focus-visible:ring-gt-orange/40"
-                    : "bg-white hover:bg-gt-green-50/80 text-gt-gray border-gray-200/90 hover:border-gt-green/30 focus-visible:ring-gt-green/40"
+                className={`cursor-pointer px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 border-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+                    ? "border-gt-green text-gt-green-light hover:bg-gt-green hover:text-white focus-visible:ring-gt-green/40"
+                    : "border-gt-green text-gt-green hover:bg-gt-green hover:text-white focus-visible:ring-gt-green/40"
                   }`}
               >
-                <Search className="w-5 h-5 shrink-0" />
+                <TrendingUp className="w-4 h-4 shrink-0" />
                 Add SEO
               </motion.button>
               {narrative && (
                 <motion.button
-                  initial={{ opacity: 0, scale: 0.96 }}
+                  initial={{ opacity: 0, scale: 0.92 }}
                   animate={{ opacity: 1, scale: 1 }}
                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={{ scale: 0.96 }}
+                  transition={springTap}
                   onClick={() => setNarrative("")}
-                  className={`cursor-pointer px-4 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-gt-green/40 focus-visible:ring-offset-2 ${darkMode
-                      ? "border-white/10 text-gray-400 hover:bg-white/5 hover:text-gray-200"
-                      : "border-gray-200 text-gt-gray hover:bg-gray-50"
+                  className={`cursor-pointer px-4 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+                      ? "border-white/10 text-gray-400 hover:bg-white/5 hover:text-gray-200 focus-visible:ring-white/20"
+                      : "border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-gray-600 focus-visible:ring-gray-300/50"
                     }`}
                 >
                   <X className="w-4 h-4 shrink-0" />
@@ -1019,52 +1025,38 @@ export default function GTApprovalsApp() {
                   exit={{ opacity: 0 }}
                   className="mt-4 space-y-2"
                 >
-                  <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
-                  <div className="h-4 w-5/6 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
-                  <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+                  <div className="skeleton h-4 w-full" />
+                  <div className="skeleton h-4 w-5/6" />
+                  <div className="skeleton h-4 w-4/5" />
+                  <div className="skeleton h-4 w-2/3" />
                 </motion.div>
               )}
             </AnimatePresence>
 
             {editedNarrative && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className={`relative rounded-xl p-4 pr-24 whitespace-pre-wrap text-sm leading-relaxed border ${darkMode
-                    ? "bg-[#26262a] border-white/10 text-gray-100"
-                    : "bg-[#f2f3ec] border-gt-green/25 text-gt-gray"
-                  }`}
+                transition={{ type: "spring", stiffness: 350, damping: 28 }}
+                className={`rounded-xl border overflow-hidden ${darkMode ? "bg-[#1a1a1e] border-white/10" : "bg-white border-gray-200/80"}`}
               >
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  onClick={() => {
-                    navigator.clipboard.writeText(editedNarrative).then(() => {
-                      setCopied(true);
-                      toast.success("Copied to clipboard");
-                      setTimeout(() => setCopied(false), 2000);
-                    });
-                  }}
-                  className={`cursor-pointer absolute top-3 right-3 text-white px-3 py-1.5 rounded-lg text-sm font-medium flex items-center gap-1.5 shadow-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 ${darkMode
-                    ? "bg-gt-orange hover:bg-gt-orange-dark"
-                    : "bg-gt-green hover:bg-gt-green-dark"
-                  }`}
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      Copied
-                    </>
-                  ) : (
-                    <>
-                      <ClipboardCopy className="w-4 h-4" />
-                      Copy
-                    </>
-                  )}
-                </motion.button>
-                {editedNarrative}
+                <div className="h-[2.5px]" style={{ background: 'linear-gradient(90deg, #A2AD1A, #E06D00)' }} />
+                <div className={`flex items-center justify-between px-4 pt-3 pb-2.5 border-b ${darkMode ? "border-white/8" : "border-gray-100"}`}>
+                  <span className={`text-[11px] font-semibold uppercase tracking-widest ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
+                    {aiMode === "seo" ? "SEO-Optimized" : aiMode === "geo" ? "AI-Ready" : "Cleaned"} Narrative
+                  </span>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={springTap}
+                    onClick={() => { navigator.clipboard.writeText(editedNarrative).then(() => { setCopied(true); toast.success("Copied to clipboard"); setTimeout(() => setCopied(false), 2000); }); }}
+                    className={`cursor-pointer text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all duration-200 focus:outline-none ${copied ? "bg-emerald-500" : "bg-gt-orange hover:bg-gt-orange-dark"}`}
+                    style={!copied ? { boxShadow: '0 2px 8px rgba(224,109,0,0.25)' } : {}}
+                  >
+                    {copied ? <><Check className="w-3.5 h-3.5" />Copied!</> : <><Copy className="w-3.5 h-3.5" />Copy</>}
+                  </motion.button>
+                </div>
+                <p className={`px-4 py-4 text-sm leading-relaxed whitespace-pre-wrap ${darkMode ? "text-gray-100" : "text-gt-gray"}`}>
+                  {editedNarrative}
+                </p>
               </motion.div>
             )}
 
@@ -1072,21 +1064,16 @@ export default function GTApprovalsApp() {
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25, ease: "easeOut" }}
-                className={`mt-4 rounded-xl p-4 border ${darkMode
-                  ? "bg-white/[0.03] border-white/10 text-gray-300"
-                  : "bg-gt-green-50/80 border-gt-green/20 text-gt-gray"
-                }`}
+                transition={{ type: "spring", stiffness: 350, damping: 28, delay: 0.08 }}
+                className={`rounded-xl border overflow-hidden ${darkMode ? "bg-gt-orange/[0.05] border-gt-orange/20" : "bg-orange-50/50 border-gt-orange/15"}`}
               >
-                <p className={`text-xs font-semibold uppercase tracking-wider mb-2 ${darkMode ? "text-gray-500" : "text-gray-500"}`}>
-                  Edits applied
-                </p>
-                <ul className="list-disc list-inside space-y-1 text-sm">
+                <div className={`px-4 py-2.5 border-b ${darkMode ? "border-gt-orange/15" : "border-gt-orange/10"}`}>
+                  <p className={`text-[11px] font-semibold uppercase tracking-widest ${darkMode ? "text-gt-orange/70" : "text-gt-orange"}`}>Changes applied</p>
+                </div>
+                <ul className="px-4 py-3 space-y-1.5">
                   {editsSummary.map((item, i) => (
-                    <li
-                      key={i}
-                      className={item.startsWith("Keyword phrases used:") ? "font-semibold" : ""}
-                    >
+                    <li key={i} className={`flex items-start gap-2 text-sm ${item.startsWith("Keyword phrases used:") ? darkMode ? "text-gt-orange font-medium" : "text-gt-orange-dark font-medium" : darkMode ? "text-gray-300" : "text-gray-600"}`}>
+                      <ChevronRight className="w-3.5 h-3.5 mt-0.5 shrink-0 opacity-40" />
                       {item}
                     </li>
                   ))}
