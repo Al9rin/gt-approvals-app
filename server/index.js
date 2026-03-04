@@ -102,7 +102,64 @@ const keywordRules = [
     pattern: /\b(life transition|major change|career change)\b/i,
     suggestions: ["life transitions counseling"],
   },
+  {
+    pattern: /\b(somatic|body-based|body awareness|somatic experiencing)\b/i,
+    suggestions: ["somatic therapy", "somatic experiencing"],
+  },
+  {
+    pattern: /\b(ifs|internal family systems)\b/i,
+    suggestions: ["IFS therapy", "internal family systems therapy"],
+  },
+  {
+    pattern: /\b(mindfulness|mbsr|mindfulness-based)\b/i,
+    suggestions: ["mindfulness-based therapy", "mindfulness counseling"],
+  },
+  {
+    pattern: /\b(person-centered|humanistic|client-centered)\b/i,
+    suggestions: ["person-centered therapy", "humanistic therapy"],
+  },
+  {
+    pattern: /\b(perinatal|postpartum|prenatal|postnatal)\b/i,
+    suggestions: ["perinatal mental health", "postpartum therapy"],
+  },
+  {
+    pattern: /\b(lgbtq|queer|gender identity|gender.affirming|nonbinary|transgender)\b/i,
+    suggestions: ["LGBTQ therapy", "gender-affirming therapy"],
+  },
+  {
+    pattern: /\b(cptsd|complex trauma|complex ptsd)\b/i,
+    suggestions: ["complex trauma therapy", "CPTSD therapy", "trauma-informed therapy"],
+  },
+  {
+    pattern: /\b(teletherapy|video sessions|video therapy|telehealth sessions)\b/i,
+    suggestions: ["teletherapy", "online therapy"],
+  },
+  {
+    pattern: /\b(bipoc|multicultural|culturally|cultural humility|poc therapist)\b/i,
+    suggestions: ["multicultural therapy", "culturally responsive therapy"],
+  },
+  {
+    pattern: /\b(older adults|seniors|elderly|aging)\b/i,
+    suggestions: ["therapy for older adults", "senior therapy"],
+  },
 ];
+
+const licenseKeywordMap = {
+  LMFT:  ["marriage and family therapy", "couples therapy", "family therapy"],
+  LCSW:  ["licensed clinical social worker", "social work therapy"],
+  LPC:   ["licensed professional counselor", "individual therapy"],
+  LPCC:  ["licensed professional clinical counselor", "individual therapy"],
+  MFT:   ["marriage and family therapy", "couples counseling"],
+  LMHC:  ["licensed mental health counselor", "mental health counseling"],
+  LCPC:  ["licensed clinical professional counselor", "counseling"],
+  LSW:   ["licensed social worker", "counseling"],
+  PhD:   ["psychologist", "psychology"],
+  PsyD:  ["psychologist", "psychology"],
+  LCAT:  ["creative arts therapist", "expressive arts therapy"],
+  ATR:   ["art therapist", "art therapy"],
+  PMHNP: ["psychiatric mental health nurse practitioner", "mental health"],
+  AMFT:  ["associate marriage and family therapist", "couples therapy"],
+};
 
 const blockedKeywordFragments = [
   "betterhelp",
@@ -399,10 +456,18 @@ Follow these instructions exactly:
    - When the therapist already describes the work in their own words, substitute or add an allowed phrase only where it reads as a natural part of the sentence.
    - If location or license context is provided, you may reinforce it once in a natural way; do not force phrases like "near me".
    - Never add a new sentence or list of services just to fit SEO. The narrative should still read as the therapist's voice in one pass.
-9. Structure and snippet-friendly wording:
-   - Use a clear, concise opening sentence that could work as a search snippet (answers "what I offer" or "who I help").
-   - Keep logical flow and paragraph structure; avoid unnecessary repetition.
-10. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
+9. Opening sentence quality:
+   - The first sentence MUST name the therapist's credential type (e.g. licensed therapist, LMFT, psychologist), primary specialty or focus area, and service area or delivery method (city name, state, or online).
+   - This sentence must function as a standalone search snippet that answers "who are they and what do they offer."
+   - Avoid vague openers like "I help people..." or "Are you struggling..." that do not convey credentials or geography.
+10. E-E-A-T trust signals:
+   - Preserve all mentions of years of experience, training programs, certifications, and credential language verbatim or in paraphrase — do not soften or remove these.
+   - These are trust signals for both search engines and prospective clients; they must remain visible and specific.
+11. Entity clarity for AI and search:
+   - State key facts explicitly in complete, declarable sentences rather than implying them. Prefer "I am a licensed marriage and family therapist serving clients in Austin, Texas" over "I work with clients locally."
+   - Use the full city and state name when location is provided. If multiple cities are listed, incorporate them naturally (e.g. "serving clients in Austin and Round Rock, Texas").
+   - If service delivery is mentioned (in-person, online, or both), state it explicitly.
+12. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
@@ -410,6 +475,40 @@ OUTPUT FORMAT: Return a single JSON object with exactly two keys:
   (1) As the first bullet, list every keyword phrase you wove in, in this exact format: "Keyword phrases used: [phrase1], [phrase2], [phrase3]" (e.g. "Keyword phrases used: anxiety therapy, online therapy, trauma therapy"). Use the exact phrasing as it appears in the narrative. If you used no phrases from the allowed list, say "Keyword phrases used: (none—no natural fit from allowed list)".
   (2) Remaining bullets for other edits: e.g. "Tightened opening for snippet clarity", "Corrected grammar and punctuation (including Oxford comma)", "Applied GoodTherapy acronym expansion for [X]", "Clarified consultation and scheduling", "Improved flow and readability". Cover opening/snippet, grammar and punctuation, structure or clarity, and any other notable changes so the user sees a complete summary.
   Aim for 4 to 8 bullets total so nothing important is omitted. You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
+`;
+
+const geoPrompt = `You are a narrative compliance assistant for GoodTherapy with expertise in generative engine optimization (GEO). Your task is to rewrite therapist marketing narratives so they are clearly structured for AI citation, entity extraction, and direct-answer engines — while preserving the therapist's authentic voice and following GoodTherapy editorial standards.
+
+Follow these instructions exactly:
+
+1. Correct grammar, punctuation, spelling, and obvious clarity issues. Ensure every sentence is grammatically complete. Fix run-on or fragmented clauses.
+2. Preserve the therapist's original voice, warmth, and authenticity. Do not make it sound corporate or generic.
+3. Apply GoodTherapy editorial rules:
+   - Expand all acronyms on first use with correct capitalization and terminology.
+   - For example: obsessive-compulsive challenges (OCD), posttraumatic stress (PTSD), attention-deficit hyperactivity (ADHD), cognitive behavioral therapy (CBT), exposure and response prevention (ERP), and eye movement desensitization and reprocessing (EMDR).
+   - Do not include the word "disorder" as part of expanded mental health terms.
+   - Use people-first language unless identity-first language is preferred by that community.
+   - Use lowercase for therapy types and mental health issues unless standard capitalization is required.
+   - Avoid stigmatizing or clinical-sounding labels.
+   - Use the Oxford comma.
+   - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
+   - If degrees and licenses are listed together, put degrees first.
+4. Entity-rich opening sentence: The first sentence MUST explicitly name the therapist's credential type (e.g. licensed marriage and family therapist, psychologist), primary specialty or population served, and geographic location or service delivery method. Use full credential names and full city and state names. This sentence must work as a self-contained factual statement that an AI can cite.
+5. Explicit fact statements: State all key facts in complete, declarable sentences. Do not imply credentials, location, or specialties — state them directly. For example: "I am a licensed clinical social worker providing anxiety therapy and trauma therapy in Denver, Colorado, with over 10 years of experience."
+6. Full modality names: Write out the complete name of every therapy approach at least once (e.g. "eye movement desensitization and reprocessing (EMDR)" not just "EMDR"). License type should be stated in full at least once.
+7. Geographic anchors: Use the full city and state name whenever location is mentioned. If the therapist serves multiple cities, list them explicitly. If online therapy is offered, state it clearly in a complete sentence (e.g. "I also offer online therapy to clients throughout [state].").
+8. Service delivery statement: Explicitly state whether sessions are in-person, online, or both in at least one sentence.
+9. E-E-A-T trust signals: Preserve and surface all mentions of years of experience, training programs, certifications, clinical supervision, and credentials. These must appear in specific, verifiable statements.
+10. Do NOT add SEO keyword density, keyword stuffing, or phrases that exist only to match search queries. The goal is factual clarity and AI-citation readiness, not keyword volume.
+11. Do NOT add unsupported claims, invent specialties, or introduce modalities not mentioned in the original narrative or provided context.
+12. Keep the output roughly the same length or slightly longer than the original if additional explicit fact statements are needed for clarity.
+
+OUTPUT FORMAT: Return a single JSON object with exactly two keys:
+- "narrative": the full revised narrative as a string.
+- "editsSummary": an array of bullet points describing all changes made. You MUST include:
+  (1) As the first bullet: "Mode: AI-Ready / GEO"
+  (2) Bullets covering: opening sentence rewrite, explicit fact statements added, geographic anchors used, service delivery statement, E-E-A-T signals preserved or surfaced, GoodTherapy editorial corrections, and any other notable changes.
+  Aim for 4 to 8 bullets total. You may wrap the JSON in a markdown code block (\`\`\`json ... \`\`\`) if you prefer.
 `;
 
 function parseCsv(value) {
@@ -496,7 +595,12 @@ function isNarrativeSupportedKeyword(keyword, { narrative, state, license }) {
       return true;
     }
 
-    return /\b(therapy|therapist|counseling|counselling)\b/i.test(keyword);
+    if (license && licenseKeywordMap[license] &&
+        licenseKeywordMap[license].some((kw) => normalizeKeyword(kw) === normalizeKeyword(keyword))) {
+      return true;
+    }
+
+    return /\b(therapy|therapist|counseling|counselling|psychologist|psychology|mental health)\b/i.test(keyword);
   }
 
   return supportPattern.test(narrative);
@@ -629,7 +733,7 @@ function rateLimit(req, res, next) {
   return next();
 }
 
-function buildFallbackSeoHints({ narrative, state, license }) {
+function buildFallbackSeoHints({ narrative, state, license, city }) {
   const keywordSet = new Set(semrushInformedKeywordGroups);
   const customKeywords = parseCsv(process.env.SEO_KEYWORDS);
 
@@ -650,11 +754,26 @@ function buildFallbackSeoHints({ narrative, state, license }) {
 
   if (license) {
     keywordSet.add(license);
+    if (licenseKeywordMap[license]) {
+      licenseKeywordMap[license].forEach((kw) => keywordSet.add(kw));
+    }
+  }
+
+  if (city) {
+    const cities = city.split(",").map((c) => c.trim()).filter(Boolean);
+    for (const c of cities) {
+      keywordSet.add(`therapist in ${c}`);
+      keywordSet.add(`therapy in ${c}`);
+      keywordSet.add(`counseling in ${c}`);
+      if (state) {
+        keywordSet.add(`therapist in ${c}, ${state}`);
+      }
+    }
   }
 
   return Array.from(keywordSet)
     .filter((keyword) => isNarrativeSupportedKeyword(keyword, { narrative, state, license }))
-    .slice(0, 16);
+    .slice(0, 24);
 }
 
 function normalizeKeyword(value) {
@@ -850,8 +969,8 @@ async function fetchSemrushKeywords(seedPhrase) {
   }
 }
 
-async function buildSeoHints({ narrative, state, license }) {
-  const fallbackHints = buildFallbackSeoHints({ narrative, state, license });
+async function buildSeoHints({ narrative, state, license, city }) {
+  const fallbackHints = buildFallbackSeoHints({ narrative, state, license, city });
 
   if (!SEMRUSH_API_KEY && !semrushSnapshot.loaded) {
     return fallbackHints;
@@ -884,14 +1003,45 @@ async function buildSeoHints({ narrative, state, license }) {
   return Array.from(new Set([...rankedKeywords, ...fallbackHints])).slice(0, 16);
 }
 
-async function buildUserPrompt({ narrative, state, license, mode }) {
-  const seoHints = mode === "seo"
-    ? await buildSeoHints({ narrative, state, license })
-    : [];
+async function fetchWebsiteContext(url) {
+  if (!url || typeof url !== "string") return "";
+  try {
+    new URL(url);
+  } catch {
+    return "";
+  }
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(`https://r.jina.ai/${url}`, {
+      signal: controller.signal,
+      headers: { Accept: "text/plain" },
+    });
+    if (!response.ok) return "";
+    const text = await response.text();
+    console.log(`Website context fetched for ${url}: ${text.length} chars`);
+    return text.slice(0, 3000);
+  } catch {
+    return "";
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function buildUserPrompt({ narrative, state, license, city, websiteUrl, mode }) {
+  const [seoHints, websiteContext] = await Promise.all([
+    (mode === "seo" || mode === "geo")
+      ? buildSeoHints({ narrative, state, license, city })
+      : Promise.resolve([]),
+    websiteUrl ? fetchWebsiteContext(websiteUrl) : Promise.resolve(""),
+  ]);
+
   const contextLines = [
     state ? `Selected location context: ${state}` : null,
     license ? `Selected license context: ${license}` : null,
+    city ? `Cities served: ${city}` : null,
     seoHints.length > 0 ? `Allowed SEO phrases: ${seoHints.join(", ")}` : null,
+    websiteContext ? `Therapist website content (for additional context):\n${websiteContext}` : null,
   ].filter(Boolean);
 
   return [
@@ -1002,7 +1152,7 @@ app.use(express.json({ limit: "24kb" }));
 app.use(rateLimit);
 
 app.post("/api/clean-narrative", async (req, res) => {
-  const { narrative, state, license, mode } = req.body ?? {};
+  const { narrative, state, license, mode, city, websiteUrl } = req.body ?? {};
 
   if (!OPENAI_API_KEY) {
     return res.status(500).json({ error: "OpenAI is not configured on the server." });
@@ -1013,7 +1163,7 @@ app.post("/api/clean-narrative", async (req, res) => {
   }
 
   const trimmedNarrative = narrative.trim();
-  const transformMode = mode === "seo" ? "seo" : "editorial";
+  const transformMode = mode === "geo" ? "geo" : mode === "seo" ? "seo" : "editorial";
   if (!trimmedNarrative) {
     return res.status(400).json({ error: "Narrative required" });
   }
@@ -1037,11 +1187,13 @@ app.post("/api/clean-narrative", async (req, res) => {
       body: JSON.stringify({
         model: OPENAI_MODEL,
         store: false,
-        instructions: transformMode === "seo" ? seoPrompt : editorialPrompt,
+        instructions: transformMode === "geo" ? geoPrompt : transformMode === "seo" ? seoPrompt : editorialPrompt,
         input: await buildUserPrompt({
           narrative: trimmedNarrative,
           state: typeof state === "string" ? state : "",
           license: typeof license === "string" ? license : "",
+          city: typeof city === "string" ? city : "",
+          websiteUrl: typeof websiteUrl === "string" ? websiteUrl : "",
           mode: transformMode,
         }),
         text: {
@@ -1068,7 +1220,7 @@ app.post("/api/clean-narrative", async (req, res) => {
       return res.status(502).json({ error: "The AI service returned an empty response." });
     }
 
-    if (transformMode === "seo") {
+    if (transformMode === "seo" || transformMode === "geo") {
       const { narrative: parsedNarrative, editsSummary } = parseSeoStructuredResponse(rawText);
       const cleaned = parsedNarrative || rawText;
       const sanitized = enforceEditorialTerms(cleaned, trimmedNarrative);

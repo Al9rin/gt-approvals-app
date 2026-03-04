@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
 import licenses from "./licenses.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
@@ -62,6 +63,231 @@ const PROVINCE_ABBR = {
   Quebec: 'QC', Saskatchewan: 'SK', Yukon: 'YT'
 };
 
+const CITY_OPTIONS = [
+  // United States
+  { value: "Anchorage, AK", label: "Anchorage, AK" },
+  { value: "Birmingham, AL", label: "Birmingham, AL" },
+  { value: "Huntsville, AL", label: "Huntsville, AL" },
+  { value: "Montgomery, AL", label: "Montgomery, AL" },
+  { value: "Fayetteville, AR", label: "Fayetteville, AR" },
+  { value: "Little Rock, AR", label: "Little Rock, AR" },
+  { value: "Chandler, AZ", label: "Chandler, AZ" },
+  { value: "Mesa, AZ", label: "Mesa, AZ" },
+  { value: "Phoenix, AZ", label: "Phoenix, AZ" },
+  { value: "Scottsdale, AZ", label: "Scottsdale, AZ" },
+  { value: "Tempe, AZ", label: "Tempe, AZ" },
+  { value: "Tucson, AZ", label: "Tucson, AZ" },
+  { value: "Anaheim, CA", label: "Anaheim, CA" },
+  { value: "Berkeley, CA", label: "Berkeley, CA" },
+  { value: "Fresno, CA", label: "Fresno, CA" },
+  { value: "Irvine, CA", label: "Irvine, CA" },
+  { value: "Long Beach, CA", label: "Long Beach, CA" },
+  { value: "Los Angeles, CA", label: "Los Angeles, CA" },
+  { value: "Oakland, CA", label: "Oakland, CA" },
+  { value: "Pasadena, CA", label: "Pasadena, CA" },
+  { value: "Riverside, CA", label: "Riverside, CA" },
+  { value: "Sacramento, CA", label: "Sacramento, CA" },
+  { value: "San Diego, CA", label: "San Diego, CA" },
+  { value: "San Francisco, CA", label: "San Francisco, CA" },
+  { value: "San Jose, CA", label: "San Jose, CA" },
+  { value: "Santa Ana, CA", label: "Santa Ana, CA" },
+  { value: "Santa Barbara, CA", label: "Santa Barbara, CA" },
+  { value: "Aurora, CO", label: "Aurora, CO" },
+  { value: "Boulder, CO", label: "Boulder, CO" },
+  { value: "Colorado Springs, CO", label: "Colorado Springs, CO" },
+  { value: "Denver, CO", label: "Denver, CO" },
+  { value: "Fort Collins, CO", label: "Fort Collins, CO" },
+  { value: "Bridgeport, CT", label: "Bridgeport, CT" },
+  { value: "Hartford, CT", label: "Hartford, CT" },
+  { value: "New Haven, CT", label: "New Haven, CT" },
+  { value: "Stamford, CT", label: "Stamford, CT" },
+  { value: "Washington, DC", label: "Washington, DC" },
+  { value: "Wilmington, DE", label: "Wilmington, DE" },
+  { value: "Boca Raton, FL", label: "Boca Raton, FL" },
+  { value: "Fort Lauderdale, FL", label: "Fort Lauderdale, FL" },
+  { value: "Gainesville, FL", label: "Gainesville, FL" },
+  { value: "Jacksonville, FL", label: "Jacksonville, FL" },
+  { value: "Miami, FL", label: "Miami, FL" },
+  { value: "Naples, FL", label: "Naples, FL" },
+  { value: "Orlando, FL", label: "Orlando, FL" },
+  { value: "St. Petersburg, FL", label: "St. Petersburg, FL" },
+  { value: "Tallahassee, FL", label: "Tallahassee, FL" },
+  { value: "Tampa, FL", label: "Tampa, FL" },
+  { value: "Atlanta, GA", label: "Atlanta, GA" },
+  { value: "Augusta, GA", label: "Augusta, GA" },
+  { value: "Savannah, GA", label: "Savannah, GA" },
+  { value: "Honolulu, HI", label: "Honolulu, HI" },
+  { value: "Boise, ID", label: "Boise, ID" },
+  { value: "Aurora, IL", label: "Aurora, IL" },
+  { value: "Chicago, IL", label: "Chicago, IL" },
+  { value: "Evanston, IL", label: "Evanston, IL" },
+  { value: "Naperville, IL", label: "Naperville, IL" },
+  { value: "Rockford, IL", label: "Rockford, IL" },
+  { value: "Springfield, IL", label: "Springfield, IL" },
+  { value: "Bloomington, IN", label: "Bloomington, IN" },
+  { value: "Fort Wayne, IN", label: "Fort Wayne, IN" },
+  { value: "Indianapolis, IN", label: "Indianapolis, IN" },
+  { value: "South Bend, IN", label: "South Bend, IN" },
+  { value: "Cedar Rapids, IA", label: "Cedar Rapids, IA" },
+  { value: "Des Moines, IA", label: "Des Moines, IA" },
+  { value: "Overland Park, KS", label: "Overland Park, KS" },
+  { value: "Wichita, KS", label: "Wichita, KS" },
+  { value: "Lexington, KY", label: "Lexington, KY" },
+  { value: "Louisville, KY", label: "Louisville, KY" },
+  { value: "Baton Rouge, LA", label: "Baton Rouge, LA" },
+  { value: "New Orleans, LA", label: "New Orleans, LA" },
+  { value: "Shreveport, LA", label: "Shreveport, LA" },
+  { value: "Portland, ME", label: "Portland, ME" },
+  { value: "Annapolis, MD", label: "Annapolis, MD" },
+  { value: "Baltimore, MD", label: "Baltimore, MD" },
+  { value: "Boston, MA", label: "Boston, MA" },
+  { value: "Cambridge, MA", label: "Cambridge, MA" },
+  { value: "Lowell, MA", label: "Lowell, MA" },
+  { value: "Springfield, MA", label: "Springfield, MA" },
+  { value: "Worcester, MA", label: "Worcester, MA" },
+  { value: "Ann Arbor, MI", label: "Ann Arbor, MI" },
+  { value: "Detroit, MI", label: "Detroit, MI" },
+  { value: "Grand Rapids, MI", label: "Grand Rapids, MI" },
+  { value: "Lansing, MI", label: "Lansing, MI" },
+  { value: "Bloomington, MN", label: "Bloomington, MN" },
+  { value: "Duluth, MN", label: "Duluth, MN" },
+  { value: "Minneapolis, MN", label: "Minneapolis, MN" },
+  { value: "Saint Paul, MN", label: "Saint Paul, MN" },
+  { value: "Jackson, MS", label: "Jackson, MS" },
+  { value: "Kansas City, MO", label: "Kansas City, MO" },
+  { value: "St. Louis, MO", label: "St. Louis, MO" },
+  { value: "Springfield, MO", label: "Springfield, MO" },
+  { value: "Billings, MT", label: "Billings, MT" },
+  { value: "Missoula, MT", label: "Missoula, MT" },
+  { value: "Lincoln, NE", label: "Lincoln, NE" },
+  { value: "Omaha, NE", label: "Omaha, NE" },
+  { value: "Henderson, NV", label: "Henderson, NV" },
+  { value: "Las Vegas, NV", label: "Las Vegas, NV" },
+  { value: "Reno, NV", label: "Reno, NV" },
+  { value: "Concord, NH", label: "Concord, NH" },
+  { value: "Manchester, NH", label: "Manchester, NH" },
+  { value: "Hoboken, NJ", label: "Hoboken, NJ" },
+  { value: "Jersey City, NJ", label: "Jersey City, NJ" },
+  { value: "Newark, NJ", label: "Newark, NJ" },
+  { value: "Trenton, NJ", label: "Trenton, NJ" },
+  { value: "Albuquerque, NM", label: "Albuquerque, NM" },
+  { value: "Santa Fe, NM", label: "Santa Fe, NM" },
+  { value: "Albany, NY", label: "Albany, NY" },
+  { value: "Buffalo, NY", label: "Buffalo, NY" },
+  { value: "New York City, NY", label: "New York City, NY" },
+  { value: "Rochester, NY", label: "Rochester, NY" },
+  { value: "Syracuse, NY", label: "Syracuse, NY" },
+  { value: "Asheville, NC", label: "Asheville, NC" },
+  { value: "Charlotte, NC", label: "Charlotte, NC" },
+  { value: "Durham, NC", label: "Durham, NC" },
+  { value: "Greensboro, NC", label: "Greensboro, NC" },
+  { value: "Raleigh, NC", label: "Raleigh, NC" },
+  { value: "Winston-Salem, NC", label: "Winston-Salem, NC" },
+  { value: "Bismarck, ND", label: "Bismarck, ND" },
+  { value: "Fargo, ND", label: "Fargo, ND" },
+  { value: "Akron, OH", label: "Akron, OH" },
+  { value: "Cincinnati, OH", label: "Cincinnati, OH" },
+  { value: "Cleveland, OH", label: "Cleveland, OH" },
+  { value: "Columbus, OH", label: "Columbus, OH" },
+  { value: "Dayton, OH", label: "Dayton, OH" },
+  { value: "Toledo, OH", label: "Toledo, OH" },
+  { value: "Oklahoma City, OK", label: "Oklahoma City, OK" },
+  { value: "Tulsa, OK", label: "Tulsa, OK" },
+  { value: "Bend, OR", label: "Bend, OR" },
+  { value: "Eugene, OR", label: "Eugene, OR" },
+  { value: "Portland, OR", label: "Portland, OR" },
+  { value: "Salem, OR", label: "Salem, OR" },
+  { value: "Allentown, PA", label: "Allentown, PA" },
+  { value: "Erie, PA", label: "Erie, PA" },
+  { value: "Harrisburg, PA", label: "Harrisburg, PA" },
+  { value: "Philadelphia, PA", label: "Philadelphia, PA" },
+  { value: "Pittsburgh, PA", label: "Pittsburgh, PA" },
+  { value: "Providence, RI", label: "Providence, RI" },
+  { value: "Charleston, SC", label: "Charleston, SC" },
+  { value: "Columbia, SC", label: "Columbia, SC" },
+  { value: "Greenville, SC", label: "Greenville, SC" },
+  { value: "Sioux Falls, SD", label: "Sioux Falls, SD" },
+  { value: "Chattanooga, TN", label: "Chattanooga, TN" },
+  { value: "Knoxville, TN", label: "Knoxville, TN" },
+  { value: "Memphis, TN", label: "Memphis, TN" },
+  { value: "Nashville, TN", label: "Nashville, TN" },
+  { value: "Arlington, TX", label: "Arlington, TX" },
+  { value: "Austin, TX", label: "Austin, TX" },
+  { value: "Corpus Christi, TX", label: "Corpus Christi, TX" },
+  { value: "Dallas, TX", label: "Dallas, TX" },
+  { value: "El Paso, TX", label: "El Paso, TX" },
+  { value: "Fort Worth, TX", label: "Fort Worth, TX" },
+  { value: "Houston, TX", label: "Houston, TX" },
+  { value: "Plano, TX", label: "Plano, TX" },
+  { value: "San Antonio, TX", label: "San Antonio, TX" },
+  { value: "Ogden, UT", label: "Ogden, UT" },
+  { value: "Provo, UT", label: "Provo, UT" },
+  { value: "Salt Lake City, UT", label: "Salt Lake City, UT" },
+  { value: "Burlington, VT", label: "Burlington, VT" },
+  { value: "Alexandria, VA", label: "Alexandria, VA" },
+  { value: "Arlington, VA", label: "Arlington, VA" },
+  { value: "Charlottesville, VA", label: "Charlottesville, VA" },
+  { value: "Norfolk, VA", label: "Norfolk, VA" },
+  { value: "Richmond, VA", label: "Richmond, VA" },
+  { value: "Virginia Beach, VA", label: "Virginia Beach, VA" },
+  { value: "Bellevue, WA", label: "Bellevue, WA" },
+  { value: "Kirkland, WA", label: "Kirkland, WA" },
+  { value: "Olympia, WA", label: "Olympia, WA" },
+  { value: "Redmond, WA", label: "Redmond, WA" },
+  { value: "Seattle, WA", label: "Seattle, WA" },
+  { value: "Spokane, WA", label: "Spokane, WA" },
+  { value: "Tacoma, WA", label: "Tacoma, WA" },
+  { value: "Charleston, WV", label: "Charleston, WV" },
+  { value: "Morgantown, WV", label: "Morgantown, WV" },
+  { value: "Green Bay, WI", label: "Green Bay, WI" },
+  { value: "Madison, WI", label: "Madison, WI" },
+  { value: "Milwaukee, WI", label: "Milwaukee, WI" },
+  { value: "Cheyenne, WY", label: "Cheyenne, WY" },
+  // Canada
+  { value: "Calgary, AB", label: "Calgary, AB" },
+  { value: "Edmonton, AB", label: "Edmonton, AB" },
+  { value: "Lethbridge, AB", label: "Lethbridge, AB" },
+  { value: "Red Deer, AB", label: "Red Deer, AB" },
+  { value: "Abbotsford, BC", label: "Abbotsford, BC" },
+  { value: "Burnaby, BC", label: "Burnaby, BC" },
+  { value: "Kamloops, BC", label: "Kamloops, BC" },
+  { value: "Kelowna, BC", label: "Kelowna, BC" },
+  { value: "Richmond, BC", label: "Richmond, BC" },
+  { value: "Surrey, BC", label: "Surrey, BC" },
+  { value: "Vancouver, BC", label: "Vancouver, BC" },
+  { value: "Victoria, BC", label: "Victoria, BC" },
+  { value: "Brandon, MB", label: "Brandon, MB" },
+  { value: "Winnipeg, MB", label: "Winnipeg, MB" },
+  { value: "Fredericton, NB", label: "Fredericton, NB" },
+  { value: "Moncton, NB", label: "Moncton, NB" },
+  { value: "Saint John, NB", label: "Saint John, NB" },
+  { value: "St. John's, NL", label: "St. John's, NL" },
+  { value: "Halifax, NS", label: "Halifax, NS" },
+  { value: "Barrie, ON", label: "Barrie, ON" },
+  { value: "Brampton, ON", label: "Brampton, ON" },
+  { value: "Hamilton, ON", label: "Hamilton, ON" },
+  { value: "Kitchener, ON", label: "Kitchener, ON" },
+  { value: "London, ON", label: "London, ON" },
+  { value: "Markham, ON", label: "Markham, ON" },
+  { value: "Mississauga, ON", label: "Mississauga, ON" },
+  { value: "Ottawa, ON", label: "Ottawa, ON" },
+  { value: "Sudbury, ON", label: "Sudbury, ON" },
+  { value: "Thunder Bay, ON", label: "Thunder Bay, ON" },
+  { value: "Toronto, ON", label: "Toronto, ON" },
+  { value: "Vaughan, ON", label: "Vaughan, ON" },
+  { value: "Waterloo, ON", label: "Waterloo, ON" },
+  { value: "Windsor, ON", label: "Windsor, ON" },
+  { value: "Charlottetown, PE", label: "Charlottetown, PE" },
+  { value: "Gatineau, QC", label: "Gatineau, QC" },
+  { value: "Laval, QC", label: "Laval, QC" },
+  { value: "Montreal, QC", label: "Montreal, QC" },
+  { value: "Quebec City, QC", label: "Quebec City, QC" },
+  { value: "Sherbrooke, QC", label: "Sherbrooke, QC" },
+  { value: "Regina, SK", label: "Regina, SK" },
+  { value: "Saskatoon, SK", label: "Saskatoon, SK" },
+  { value: "Whitehorse, YT", label: "Whitehorse, YT" },
+];
+
 /* ── react-select styles (match card surface in dark) ──────────────────── */
 const selectStyles = (dark) => ({
   control: (base, s) => ({
@@ -111,6 +337,26 @@ const selectStyles = (dark) => ({
     ...base,
     color: dark ? '#e4e4e7' : '#333',
   }),
+  multiValue: (base) => ({
+    ...base,
+    backgroundColor: dark ? 'rgba(224,109,0,0.18)' : 'rgba(162,173,26,0.15)',
+    borderRadius: '0.5rem',
+  }),
+  multiValueLabel: (base) => ({
+    ...base,
+    color: dark ? '#fbbf7c' : '#5a6400',
+    fontWeight: 500,
+    fontSize: '0.8125rem',
+  }),
+  multiValueRemove: (base) => ({
+    ...base,
+    color: dark ? '#fbbf7c' : '#5a6400',
+    borderRadius: '0 0.5rem 0.5rem 0',
+    '&:hover': {
+      backgroundColor: dark ? 'rgba(224,109,0,0.35)' : 'rgba(162,173,26,0.3)',
+      color: dark ? '#fff' : '#3a4200',
+    },
+  }),
 });
 
 export default function GTApprovalsApp() {
@@ -129,6 +375,8 @@ export default function GTApprovalsApp() {
   const [showProgress, setShowProgress] = useState(false);
   const [aiMode, setAiMode] = useState("editorial");
   const [editsSummary, setEditsSummary] = useState([]);
+  const [city, setCity] = useState([]);
+  const [websiteUrl, setWebsiteUrl] = useState("");
   const progressRef = useRef(null);
 
   const [regionFilter, setRegionFilter] = useState({
@@ -280,6 +528,8 @@ export default function GTApprovalsApp() {
           state: state?.value || "",
           license: license?.value || "",
           mode,
+          city: city.map((c) => c.value).join(", "),
+          websiteUrl: websiteUrl.trim(),
         }),
       });
 
@@ -295,21 +545,25 @@ export default function GTApprovalsApp() {
       if (!res.ok) {
         throw new Error(
           data.error
-          || (mode === "seo" ? "Failed to generate SEO version" : "Failed to clean narrative")
+          || (mode === "geo" ? "Failed to generate AI-Ready version" : mode === "seo" ? "Failed to generate SEO version" : "Failed to clean narrative")
         );
       }
 
       const cleaned = data.cleaned || "";
       setEditedNarrative(cleaned.trim());
-      if (mode === "seo") {
+      if (mode === "seo" || mode === "geo") {
         setEditsSummary(Array.isArray(data.editsSummary) ? data.editsSummary : []);
       } else {
         setEditsSummary([]);
       }
-      toast.success(mode === "seo" ? "SEO version created" : "Narrative cleaned with AI");
+      toast.success(
+        mode === "geo" ? "AI-Ready version created"
+        : mode === "seo" ? "SEO version created"
+        : "Narrative cleaned with AI"
+      );
     } catch (err) {
       console.error("AI Error:", err);
-      toast.error(err.message || (mode === "seo" ? "Failed to generate SEO version" : "Failed to clean with AI"));
+      toast.error(err.message || (mode === "geo" ? "Failed to generate AI-Ready version" : mode === "seo" ? "Failed to generate SEO version" : "Failed to clean with AI"));
     } finally {
       if (progressRef.current) {
         clearInterval(progressRef.current);
@@ -322,7 +576,7 @@ export default function GTApprovalsApp() {
   };
 
   const handleNarrative = (mode = "editorial") => {
-    const sourceText = mode === "seo" && editedNarrative.trim()
+    const sourceText = (mode === "seo" || mode === "geo") && editedNarrative.trim()
       ? editedNarrative
       : narrative;
 
@@ -594,7 +848,7 @@ export default function GTApprovalsApp() {
               <div className={`absolute inset-0 backdrop-blur-sm flex items-center justify-center rounded-2xl z-20 ${darkMode ? "bg-black/80" : "bg-white/80"}`}>
                 <Loader2 className="w-6 h-6 animate-spin text-gt-green shrink-0" />
                 <span className="ml-2 text-gt-green font-medium">
-                  {aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
+                  {aiMode === "geo" ? "Making AI-Ready..." : aiMode === "seo" ? "Adding SEO..." : "Cleaning..."}
                 </span>
               </div>
             )}
@@ -606,7 +860,7 @@ export default function GTApprovalsApp() {
               </h2>
             </div>
             <p className={`text-sm -mt-1 ${darkMode ? "text-gray-400" : "text-gray-500"}`}>
-              Use one button for grammar and editorial cleanup, or a separate button to add Semrush-informed SEO
+              Clean with AI for grammar and editorial polish, Add SEO for keyword-aware optimization, or AI Ready for GEO and AI-citation readiness
             </p>
 
             <textarea
@@ -634,6 +888,41 @@ export default function GTApprovalsApp() {
               }}
             />
 
+            <div>
+              <label className={`block mb-1.5 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
+                City (optional)
+              </label>
+              <CreatableSelect
+                isMulti
+                options={CITY_OPTIONS}
+                value={city}
+                onChange={setCity}
+                placeholder="Add cities served..."
+                styles={selectStyles(darkMode)}
+                formatCreateLabel={(input) => `Add "${input}"`}
+                noOptionsMessage={() => "Type a city name"}
+              />
+            </div>
+
+            <div>
+              <label className={`block mb-1.5 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
+                Therapist website (optional)
+              </label>
+              <input
+                type="url"
+                className={`w-full p-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-gt-green/35 focus:border-gt-green transition-all duration-200 text-sm placeholder:transition-colors ${darkMode
+                    ? "bg-white/[0.04] text-gray-100 border-white/10 placeholder:text-gray-500"
+                    : "bg-white text-gt-gray border-gray-200/90 placeholder:text-gray-400"
+                  }`}
+                placeholder="https://therapistwebsite.com"
+                value={websiteUrl}
+                onChange={(e) => setWebsiteUrl(e.target.value)}
+              />
+              <p className={`mt-1 text-xs ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                Page content will be used as additional context for AI editing.
+              </p>
+            </div>
+
             <div className="flex flex-wrap items-center gap-3">
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -659,6 +948,18 @@ export default function GTApprovalsApp() {
                 <Search className="w-5 h-5 shrink-0" />
                 Add SEO
               </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleNarrative("geo")}
+                className={`cursor-pointer px-5 py-2.5 rounded-xl font-medium transition-all duration-200 flex items-center gap-2 border focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${darkMode
+                    ? "bg-white/[0.06] hover:bg-gt-orange/10 text-gray-100 border-gt-orange/30 hover:border-gt-orange/50 focus-visible:ring-gt-orange/40"
+                    : "bg-white hover:bg-gt-green-50/80 text-gt-gray border-gray-200/90 hover:border-gt-green/30 focus-visible:ring-gt-green/40"
+                  }`}
+              >
+                <Globe className="w-5 h-5 shrink-0" />
+                AI Ready
+              </motion.button>
               {narrative && (
                 <motion.button
                   initial={{ opacity: 0, scale: 0.96 }}
@@ -678,7 +979,7 @@ export default function GTApprovalsApp() {
             </div>
 
             <p className={`mt-1 text-xs italic ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-              `Clean with AI` applies grammar and GoodTherapy editorial rules only. `Add SEO` creates a separate keyword-aware version.
+              `Clean with AI` applies grammar and GoodTherapy editorial rules only. `Add SEO` creates a keyword-aware version. `AI Ready` rewrites for GEO — clear entity statements optimized for AI citations.
             </p>
 
             <p className={`mt-1 text-xs italic ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
@@ -743,7 +1044,7 @@ export default function GTApprovalsApp() {
               </motion.div>
             )}
 
-            {editedNarrative && aiMode === "seo" && editsSummary.length > 0 && (
+            {editedNarrative && (aiMode === "seo" || aiMode === "geo") && editsSummary.length > 0 && (
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
