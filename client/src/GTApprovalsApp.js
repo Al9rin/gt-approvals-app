@@ -81,6 +81,15 @@ const narrativeStateOptions = [
   }),
 ].sort((a, b) => a.label.localeCompare(b.label));
 
+// Build reverse-lookup maps for fast detection
+const STATE_NAME_TO_OPTION = {};
+const STATE_ABBR_TO_OPTION = {};
+narrativeStateOptions.forEach(opt => {
+  STATE_NAME_TO_OPTION[opt.value.toLowerCase()] = opt;
+  const abbr = STATE_ABBR[opt.value] || PROVINCE_ABBR[opt.value];
+  if (abbr) STATE_ABBR_TO_OPTION[abbr.toLowerCase()] = opt;
+});
+
 const CITY_OPTIONS = [
   // United States
   { value: "Anchorage, AK", label: "Anchorage, AK" },
@@ -390,6 +399,64 @@ const selectStyles = (dark) => ({
     },
   }),
 });
+
+// Detect states/provinces and cities mentioned in narrative text.
+// Returns { detectedState: option|null, detectedCities: option[] }
+function detectLocationsFromNarrative(text, cityOptions) {
+  const lower = text.toLowerCase();
+
+  // --- Detect state/province ---
+  let detectedState = null;
+
+  // Try full name first (longest match wins to avoid "New" matching "New York" vs "New Jersey")
+  const sortedNames = Object.keys(STATE_NAME_TO_OPTION).sort((a, b) => b.length - a.length);
+  for (const name of sortedNames) {
+    // Word-boundary match
+    const re = new RegExp(`\\b${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    if (re.test(text)) {
+      detectedState = STATE_NAME_TO_OPTION[name];
+      break;
+    }
+  }
+
+  // If no full name found, try 2-letter abbreviation (e.g. " PA," or " PA " or "(PA)")
+  if (!detectedState) {
+    for (const [abbr, opt] of Object.entries(STATE_ABBR_TO_OPTION)) {
+      const re = new RegExp(`(?:^|[\\s,(])${abbr.toUpperCase()}(?=[\\s,.)\\n]|$)`, 'i');
+      if (re.test(text)) {
+        detectedState = opt;
+        break;
+      }
+    }
+  }
+
+  // --- Detect cities ---
+  // Group by city name; if multiple state suffixes match prefer the one matching detectedState
+  const cityNameMatches = {};
+  for (const opt of cityOptions) {
+    const cityName = opt.value.split(',')[0].trim();
+    const re = new RegExp(`\\b${cityName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+    if (re.test(text)) {
+      if (!cityNameMatches[cityName]) cityNameMatches[cityName] = [];
+      cityNameMatches[cityName].push(opt);
+    }
+  }
+  const detectedCities = [];
+  const detectedStateAbbr = detectedState
+    ? (STATE_ABBR[detectedState.value] || PROVINCE_ABBR[detectedState.value] || '').toUpperCase()
+    : '';
+  for (const candidates of Object.values(cityNameMatches)) {
+    if (candidates.length === 1) {
+      detectedCities.push(candidates[0]);
+    } else {
+      // Prefer city matching detected state, otherwise take first
+      const preferred = candidates.find(c => c.value.endsWith(`, ${detectedStateAbbr}`));
+      detectedCities.push(preferred || candidates[0]);
+    }
+  }
+
+  return { detectedState, detectedCities };
+}
 
 export default function GTApprovalsApp() {
   const [state, setState] = useState(null);
@@ -939,9 +1006,16 @@ export default function GTApprovalsApp() {
               placeholder="Paste your narrative here..."
               value={narrative}
               onChange={(e) => {
-                setNarrative(e.target.value);
+                const val = e.target.value;
+                setNarrative(val);
                 setEditsSummary([]);
                 setEditedNarrative("");
+                // Auto-detect locations and fill empty fields
+                if (val.trim()) {
+                  const { detectedState, detectedCities } = detectLocationsFromNarrative(val, CITY_OPTIONS);
+                  if (detectedState && !narrativeState) setNarrativeState(detectedState);
+                  if (detectedCities.length > 0 && city.length === 0) setCity(detectedCities);
+                }
               }}
               onKeyDown={(e) => {
                 // ⌘/Ctrl + Enter to clean with AI
