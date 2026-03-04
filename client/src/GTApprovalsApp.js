@@ -909,6 +909,7 @@ export default function GTApprovalsApp() {
               onChange={(e) => {
                 setNarrative(e.target.value);
                 setEditsSummary([]);
+                setEditedNarrative("");
               }}
               onKeyDown={(e) => {
                 // ⌘/Ctrl + Enter to clean with AI
