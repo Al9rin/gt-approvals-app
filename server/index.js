@@ -234,6 +234,64 @@ const acronymExpansionRules = [
   },
 ];
 
+// License abbreviation → Title Case full form on first use
+const licenseExpansionRules = [
+  {
+    acronym: "LMFT",
+    supportPattern: /\bLMFT\b/i,
+    expansion: "Licensed Marriage and Family Therapist (LMFT)",
+    expandedPattern: /\bLicensed Marriage and Family Therapist\s*\(LMFT\)/i,
+  },
+  {
+    acronym: "LCSW",
+    supportPattern: /\bLCSW\b/i,
+    expansion: "Licensed Clinical Social Worker (LCSW)",
+    expandedPattern: /\bLicensed Clinical Social Worker\s*\(LCSW\)/i,
+  },
+  {
+    acronym: "LMHC",
+    supportPattern: /\bLMHC\b/i,
+    expansion: "Licensed Mental Health Counselor (LMHC)",
+    expandedPattern: /\bLicensed Mental Health Counselor\s*\(LMHC\)/i,
+  },
+  {
+    acronym: "LPC",
+    supportPattern: /\bLPC\b/i,
+    expansion: "Licensed Professional Counselor (LPC)",
+    expandedPattern: /\bLicensed Professional Counselor\s*\(LPC\)/i,
+  },
+  {
+    acronym: "LPCC",
+    supportPattern: /\bLPCC\b/i,
+    expansion: "Licensed Professional Clinical Counselor (LPCC)",
+    expandedPattern: /\bLicensed Professional Clinical Counselor\s*\(LPCC\)/i,
+  },
+  {
+    acronym: "AMFT",
+    supportPattern: /\bAMFT\b/i,
+    expansion: "Associate Marriage and Family Therapist (AMFT)",
+    expandedPattern: /\bAssociate Marriage and Family Therapist\s*\(AMFT\)/i,
+  },
+  {
+    acronym: "ACSW",
+    supportPattern: /\bACSW\b/i,
+    expansion: "Associate Clinical Social Worker (ACSW)",
+    expandedPattern: /\bAssociate Clinical Social Worker\s*\(ACSW\)/i,
+  },
+  {
+    acronym: "PMHNP",
+    supportPattern: /\bPMHNP\b/i,
+    expansion: "Psychiatric Mental Health Nurse Practitioner (PMHNP)",
+    expandedPattern: /\bPsychiatric Mental Health Nurse Practitioner\s*\(PMHNP\)/i,
+  },
+  {
+    acronym: "MFT",
+    supportPattern: /\bMFT\b/i,
+    expansion: "Marriage and Family Therapist (MFT)",
+    expandedPattern: /\bMarriage and Family Therapist\s*\(MFT\)/i,
+  },
+];
+
 const unsupportedModalityRules = [
   {
     supportPattern: /\b(exposure and response prevention|ERP)\b/i,
@@ -424,10 +482,12 @@ Follow these instructions exactly:
    - Use the Oxford comma.
    - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
+   - When mentioning a license abbreviation (LMFT, LCSW, LPC, LMHC, LPCC, AMFT, PMHNP, etc.) for the first time, write the full credential name in Title Case followed by the abbreviation in parentheses. Example: "Licensed Marriage and Family Therapist (LMFT)". After first use, the abbreviation alone is fine.
 7. Do not add SEO phrasing, keyword themes, service lists, or local SEO language.
 8. Keep the output roughly the same length as the original unless a small increase improves clarity naturally.
-9. Do NOT use the phrase "talk therapy" anywhere in the output.
+9. Do not use the phrase "talk therapy" unless it explicitly appears in the original narrative. If it does appear, you may preserve it naturally. Do not add it if it is not there.
 10. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement.
+11. If therapist website content is provided in the context, actively extract relevant facts from it (specialties, services, populations served, locations, credentials, years of experience) and naturally incorporate them into the narrative where they add truthful, useful detail. Synthesize the information into the therapist's voice — do not quote the website verbatim.
 
 Return ONLY the final revised narrative. No explanation, notes, labels, or bullets.
 `;
@@ -453,6 +513,7 @@ Follow these instructions exactly:
    - Use the Oxford comma.
    - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
+   - When mentioning a license abbreviation (LMFT, LCSW, LPC, LMHC, LPCC, AMFT, PMHNP, etc.) for the first time, write the full credential name in Title Case followed by the abbreviation in parentheses. Example: "Licensed Marriage and Family Therapist (LMFT)". After first use, the abbreviation alone is fine.
 8. Apply SEO enhancement in a natural, truthful way:
    - Work in 3 to 5 relevant phrases from the allowed list. Integrate them by SUBSTITUTION — replace the therapist's existing description with the SEO phrase where it fits perfectly — or embed mid-sentence where the phrase completes a thought already in motion.
    - NEVER append a keyword phrase to the tail of a sentence using "through [keyword]", "including [keyword]", "via [keyword]", or similar trailing constructions unless that exact construction was already in the original text. Tacking "through couples therapy" or "through relationship counseling" onto an existing sentence's ending is forbidden.
@@ -469,9 +530,10 @@ Follow these instructions exactly:
 12. Entity clarity for AI citation:
     - State key facts explicitly. Use full city and state name. If service delivery is mentioned (in-person, online, or both), state it explicitly in a natural sentence. Write out full modality names at least once.
 13. Keep the output roughly the same length as the original unless a small increase improves clarity or search intent naturally.
-14. Do NOT use the phrase "talk therapy" anywhere in the output.
+14. Do not use the phrase "talk therapy" unless it explicitly appears in the original narrative. If it does appear, you may preserve it naturally. Do not add it if it is not there.
 15. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement in subsequent sentences.
 16. If city names are provided in the context under "Cities served", you MUST naturally include at least one of them somewhere in the narrative. Do not skip them.
+17. If therapist website content is provided in the context, actively extract relevant facts from it (specialties, services, populations served, locations, credentials, years of experience) and naturally incorporate them into the narrative where they add truthful, useful detail. Synthesize the information into the therapist's voice — do not quote the website verbatim.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
@@ -497,6 +559,7 @@ Follow these instructions exactly:
    - Use the Oxford comma.
    - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
+   - When mentioning a license abbreviation (LMFT, LCSW, LPC, LMHC, LPCC, AMFT, PMHNP, etc.) for the first time, write the full credential name in Title Case followed by the abbreviation in parentheses. Example: "Licensed Marriage and Family Therapist (LMFT)". After first use, the abbreviation alone is fine.
 4. Entity-rich opening sentence: The first sentence MUST explicitly name the therapist's credential type (e.g. licensed marriage and family therapist, psychologist), primary specialty or population served, and geographic location or service delivery method. Use full credential names and full city and state names. This sentence must work as a self-contained factual statement that an AI can cite.
 5. Explicit fact statements: State all key facts in complete, declarable sentences. Do not imply credentials, location, or specialties — state them directly. For example: "I am a licensed clinical social worker providing anxiety therapy and trauma therapy in Denver, Colorado, with over 10 years of experience."
 6. Full modality names: Write out the complete name of every therapy approach at least once (e.g. "eye movement desensitization and reprocessing (EMDR)" not just "EMDR"). License type should be stated in full at least once.
@@ -506,9 +569,10 @@ Follow these instructions exactly:
 10. Do NOT add SEO keyword density, keyword stuffing, or phrases that exist only to match search queries. The goal is factual clarity and AI-citation readiness, not keyword volume.
 11. Do NOT add unsupported claims, invent specialties, or introduce modalities not mentioned in the original narrative or provided context.
 12. Keep the output roughly the same length or slightly longer than the original if additional explicit fact statements are needed for clarity.
-13. Do NOT use the phrase "talk therapy" anywhere in the output.
+13. Do not use the phrase "talk therapy" unless it explicitly appears in the original narrative. If it does appear, you may preserve it naturally. Do not add it if it is not there.
 14. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement in subsequent sentences.
 15. If city names are provided in the context under "Cities served", you MUST naturally include at least one of them somewhere in the narrative. Do not skip them.
+16. If therapist website content is provided in the context, actively extract relevant facts from it (specialties, services, populations served, locations, credentials, years of experience) and naturally incorporate them into the narrative where they add truthful, useful detail. Synthesize the information into the therapist's voice — do not quote the website verbatim.
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
@@ -686,6 +750,12 @@ function enforceEditorialTerms(text, narrative) {
 
   for (const rule of acronymExpansionRules) {
     if (rule.supportPattern.test(narrative) || rule.supportPattern.test(sanitized)) {
+      sanitized = ensureFirstAcronymExpansion(sanitized, rule);
+    }
+  }
+
+  for (const rule of licenseExpansionRules) {
+    if (rule.supportPattern.test(sanitized)) {
       sanitized = ensureFirstAcronymExpansion(sanitized, rule);
     }
   }
