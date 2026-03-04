@@ -451,9 +451,10 @@ Follow these instructions exactly:
    - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
 8. Apply SEO enhancement in a natural, truthful way:
-   - Work in 3 to 5 relevant phrases from the allowed list, spread across different sentences so each appears once in a natural place. Never stack two or more target phrases in the same sentence.
+   - Work in 3 to 5 relevant phrases from the allowed list. Integrate them by SUBSTITUTION — replace the therapist's existing description with the SEO phrase where it fits perfectly — or embed mid-sentence where the phrase completes a thought already in motion.
+   - NEVER append a keyword phrase to the tail of a sentence using "through [keyword]", "including [keyword]", "via [keyword]", or similar trailing constructions unless that exact construction was already in the original text. Tacking "through couples therapy" or "through relationship counseling" onto an existing sentence's ending is forbidden.
+   - When several closely related keyword phrases all describe the same topic (e.g. "couples counseling", "relationship counseling", "couples therapy", "marriage counseling"), do NOT scatter them across multiple sentences. Instead, either: (a) use the single best-fitting one as a natural substitution, OR (b) group two of them naturally in one sentence where the therapist already lists or describes those services (e.g. "Whether you're navigating relationship challenges or looking for couples counseling or marriage therapy, we're here."). Never force more than two of these synonyms into the narrative.
    - Only use phrases from the provided allowed list that are supported by the original narrative or context.
-   - When the therapist already describes the work in their own words, substitute or add an allowed phrase only where it reads as a natural part of the sentence.
    - If location or license context is provided, you may reinforce it once in a natural way; do not force phrases like "near me".
 9. Opening sentence quality:
    - The first sentence MUST name the therapist's credential type (e.g. licensed therapist, LMFT, psychologist), primary specialty or focus area, and service area or delivery method (city name, state, or online). If in-person and city are both available, combine them in the opening sentence: "...in Austin, Texas, offering in-person sessions."
@@ -1042,7 +1043,7 @@ async function buildUserPrompt({ narrative, state, license, city, websiteUrl, mo
     license ? `Selected license context: ${license}` : null,
     city ? `Cities served: ${city}` : null,
     seoHints.length > 0 ? `Allowed SEO phrases: ${seoHints.join(", ")}` : null,
-    websiteContext ? `Therapist website content (for additional context):\n${websiteContext}` : null,
+    websiteContext ? `Therapist website content — extract from this: (1) practice city/state if not already provided above, (2) services and specialties offered, (3) any relevant keywords that reflect the practice focus. Use these to inform SEO phrase selection and location context:\n${websiteContext}` : null,
   ].filter(Boolean);
 
   return [

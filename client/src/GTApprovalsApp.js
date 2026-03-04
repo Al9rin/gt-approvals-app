@@ -885,13 +885,14 @@ export default function GTApprovalsApp() {
                 <label className={`block mb-1.5 text-sm font-semibold ${darkMode ? 'text-gray-300' : 'text-gt-gray'}`}>
                   License (optional)
                 </label>
-                <Select
+                <CreatableSelect
                   options={getLicenseOptions(narrativeState?.value)}
                   value={narrativeLicense}
                   onChange={setNarrativeLicense}
-                  placeholder="Select license..."
+                  placeholder="Select or type license..."
                   styles={selectStyles(darkMode)}
-                  isDisabled={!narrativeState}
+                  formatCreateLabel={(input) => `Add "${input.toUpperCase()}"`}
+                  noOptionsMessage={() => "Type a license abbreviation"}
                   isClearable
                 />
               </div>
