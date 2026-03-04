@@ -68,6 +68,19 @@ const PROVINCE_ABBR = {
   Quebec: 'QC', Saskatchewan: 'SK', Yukon: 'YT'
 };
 
+// Static options for Narrative Editor — always shows all US states + all Canadian provinces
+// independent of the License Verification region filter toggle.
+const narrativeStateOptions = [
+  ...US_STATES.map(s => {
+    const abbr = STATE_ABBR[s];
+    return { value: s, label: abbr ? `${s} (${abbr})` : s };
+  }),
+  ...CANADA_PROVINCES.map(p => {
+    const abbr = PROVINCE_ABBR[p];
+    return { value: p, label: abbr ? `${p} (${abbr})` : p };
+  }),
+].sort((a, b) => a.label.localeCompare(b.label));
+
 const CITY_OPTIONS = [
   // United States
   { value: "Anchorage, AK", label: "Anchorage, AK" },
@@ -282,6 +295,20 @@ const CITY_OPTIONS = [
   { value: "Vaughan, ON", label: "Vaughan, ON" },
   { value: "Waterloo, ON", label: "Waterloo, ON" },
   { value: "Windsor, ON", label: "Windsor, ON" },
+  { value: "Oakville, ON", label: "Oakville, ON" },
+  { value: "Burlington, ON", label: "Burlington, ON" },
+  { value: "Oshawa, ON", label: "Oshawa, ON" },
+  { value: "Pickering, ON", label: "Pickering, ON" },
+  { value: "Ajax, ON", label: "Ajax, ON" },
+  { value: "Whitby, ON", label: "Whitby, ON" },
+  { value: "St. Catharines, ON", label: "St. Catharines, ON" },
+  { value: "Kingston, ON", label: "Kingston, ON" },
+  { value: "Guelph, ON", label: "Guelph, ON" },
+  { value: "Peterborough, ON", label: "Peterborough, ON" },
+  { value: "Brantford, ON", label: "Brantford, ON" },
+  { value: "Richmond Hill, ON", label: "Richmond Hill, ON" },
+  { value: "Cambridge, ON", label: "Cambridge, ON" },
+  { value: "Newmarket, ON", label: "Newmarket, ON" },
   { value: "Charlottetown, PE", label: "Charlottetown, PE" },
   { value: "Gatineau, QC", label: "Gatineau, QC" },
   { value: "Laval, QC", label: "Laval, QC" },
@@ -878,7 +905,7 @@ export default function GTApprovalsApp() {
                   Location context (optional)
                 </label>
                 <Select
-                  options={stateOptions}
+                  options={narrativeStateOptions}
                   value={narrativeState}
                   onChange={(s) => { setNarrativeState(s); setNarrativeLicense(null); }}
                   placeholder="Select state..."
