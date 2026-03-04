@@ -524,8 +524,10 @@ Follow these instructions exactly:
    - Only use phrases from the provided allowed list that are supported by the original narrative or context.
    - If location or license context is provided, you may reinforce it once in a natural way; do not force phrases like "near me".
 9. Opening sentence quality:
-   - The first sentence MUST name the therapist's credential type (e.g. licensed therapist, LMFT, psychologist), primary specialty or focus area, and service area or delivery method (city name, state, or online). If in-person and city are both available, combine them in the opening sentence: "...in Austin, Texas, offering in-person sessions."
-   - This sentence must function as a standalone search snippet. Avoid vague openers like "I help people..." that do not convey credentials or geography.
+   - If the therapist's name appears anywhere in the narrative, the FIRST sentence MUST begin with that name. Connect the name naturally to their credential and location in one flowing sentence. Example: "My name is Sarah Chen, and I am a Licensed Marriage and Family Therapist (LMFT) serving clients in Austin, Texas." or "I'm David Park, a Licensed Clinical Social Worker (LCSW) providing anxiety therapy and trauma therapy in Seattle, Washington." NEVER lead with a credential, title, or job description and then introduce the name as a separate sentence.
+   - If no name is present, lead with the credential and specialty instead.
+   - The opening sentence must include: name (if known), credential type in full, primary specialty or focus, and service area or delivery method. It must function as a standalone search snippet.
+   - Avoid vague openers like "I help people..." that convey no credentials or geography.
 10. Location — do NOT repeat:
     - Mention the city/state at most once in a natural context. If the city appears in the opening sentence, do NOT write a separate sentence immediately after that restates the same location as a standalone geographic fact. Combine instead: "I am an LMFT in Denver, Colorado, offering in-person and online therapy" — not two separate sentences saying "in Denver" and then "I see clients in Denver."
 11. E-E-A-T trust signals:
@@ -536,7 +538,8 @@ Follow these instructions exactly:
 14. Do not use the phrase "talk therapy" unless it explicitly appears in the original narrative. If it does appear, you may preserve it naturally. Do not add it if it is not there.
 15. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement in subsequent sentences.
 16. If city names are provided in the context under "Cities served", you MUST naturally include at least one of them somewhere in the narrative. Do not skip them.
-17. If therapist website content is provided in the context, actively extract relevant facts from it (specialties, services, populations served, locations, credentials, years of experience) and naturally incorporate them into the narrative where they add truthful, useful detail. Synthesize the information into the therapist's voice — do not quote the website verbatim.
+17. If therapist website content is provided in the context, extract relevant facts (specialties, challenges treated, methods, populations served, credentials) and weave them into the narrative naturally — as if the therapist themselves wrote it. Do NOT produce a list or mechanical enumeration of extracted facts. The result must read as a cohesive, first-person narrative paragraph, not a data dump.
+18. Natural sentence structure: every sentence must flow conversationally. Avoid constructions like "[Credential] offering to [population] in [city]. I'm [Name]." — credentials must be attached to the person, not floated as a standalone subject. Bad: "Licensed Clinical Social Worker (LCSW) offering services in Delaware." Good: "I am a Licensed Clinical Social Worker (LCSW) serving clients in Wilmington, Delaware."
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
@@ -563,7 +566,10 @@ Follow these instructions exactly:
    - Avoid em dashes (—); use commas, parentheses, or rephrase instead.
    - If degrees and licenses are listed together, put degrees first.
    - When mentioning a license abbreviation (LMFT, LCSW, LPC, LMHC, LPCC, AMFT, PMHNP, etc.) for the first time, write the full credential name in Title Case followed by the abbreviation in parentheses. Example: "Licensed Marriage and Family Therapist (LMFT)". After first use, the abbreviation alone is fine.
-4. Entity-rich opening sentence: The first sentence MUST explicitly name the therapist's credential type (e.g. licensed marriage and family therapist, psychologist), primary specialty or population served, and geographic location or service delivery method. Use full credential names and full city and state names. This sentence must work as a self-contained factual statement that an AI can cite.
+4. Entity-rich opening sentence:
+   - If the therapist's name appears in the narrative, the FIRST sentence MUST begin with that name and connect naturally to their credential and location. Example: "My name is Sarah Chen, and I am a Licensed Marriage and Family Therapist (LMFT) serving clients in Austin, Texas." NEVER lead with a credential or title as a standalone subject then introduce the name as a separate follow-up sentence.
+   - If no name is present, lead with the credential and specialty.
+   - The sentence must include: name (if known), full credential name, primary specialty or population, and geographic location or delivery method. It must work as a self-contained factual statement that an AI can cite.
 5. Explicit fact statements: State all key facts in complete, declarable sentences. Do not imply credentials, location, or specialties — state them directly. For example: "I am a licensed clinical social worker providing anxiety therapy and trauma therapy in Denver, Colorado, with over 10 years of experience."
 6. Full modality names: Write out the complete name of every therapy approach at least once (e.g. "eye movement desensitization and reprocessing (EMDR)" not just "EMDR"). License type should be stated in full at least once.
 7. Geographic anchors: Use the full city and state name whenever location is mentioned. If the therapist serves multiple cities, list them explicitly. If online therapy is offered, state it clearly in a complete sentence (e.g. "I also offer online therapy to clients throughout [state].").
@@ -575,7 +581,8 @@ Follow these instructions exactly:
 13. Do not use the phrase "talk therapy" unless it explicitly appears in the original narrative. If it does appear, you may preserve it naturally. Do not add it if it is not there.
 14. Do not repeat a key specialty or descriptor from the opening sentence in the body. If the opening already names a specialty, refer to it differently or omit the restatement in subsequent sentences.
 15. If city names are provided in the context under "Cities served", you MUST naturally include at least one of them somewhere in the narrative. Do not skip them.
-16. If therapist website content is provided in the context, actively extract relevant facts from it (specialties, services, populations served, locations, credentials, years of experience) and naturally incorporate them into the narrative where they add truthful, useful detail. Synthesize the information into the therapist's voice — do not quote the website verbatim.
+16. If therapist website content is provided in the context, extract relevant facts (specialties, challenges treated, methods, populations served, credentials) and weave them into the narrative as natural first-person sentences. Do NOT produce a list or mechanical enumeration of extracted facts. The result must read as a cohesive, flowing narrative — not a data dump.
+17. Natural sentence structure: every sentence must flow conversationally. Credentials must always be attached to the person, never floated as a standalone grammatical subject. Bad: "Licensed Clinical Social Worker (LCSW) offering services in Delaware. I'm Azhar Waheed." Good: "My name is Azhar Waheed, and I am a Licensed Clinical Social Worker (LCSW) serving clients in Wilmington, Delaware and Philadelphia, Pennsylvania."
 
 OUTPUT FORMAT: Return a single JSON object with exactly two keys:
 - "narrative": the full revised narrative as a string.
