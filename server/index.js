@@ -741,16 +741,24 @@ function stripUnsupportedServicePhrases(text, narrative) {
 }
 
 function cleanupNarrativeText(text) {
+  // Process each paragraph separately to preserve line breaks
   return text
-    .replace(/\s+,/g, ",")
-    .replace(/,\s*,/g, ", ")
-    .replace(/\s{2,}/g, " ")
-    .replace(/\s+\./g, ".")
-    .replace(/\s+([?!;:])/g, "$1")
-    .replace(/,\s*(?=\.|$)/g, "")
-    .replace(/\b(?:or|and)\s*(?=\.|,|$)/gi, "")
-    .replace(/,\s*(and|or)\s*,/gi, ", ")
-    .replace(/, and\b/g, " and")
+    .split(/(\r?\n\r?\n|\r?\n)/)
+    .map((segment) => {
+      // Only clean non-newline segments (actual text content)
+      if (/^\r?\n/.test(segment)) return segment;
+      return segment
+        .replace(/\s+,/g, ",")
+        .replace(/,\s*,/g, ", ")
+        .replace(/[ \t]{2,}/g, " ")
+        .replace(/\s+\./g, ".")
+        .replace(/\s+([?!;:])/g, "$1")
+        .replace(/,\s*(?=\.|$)/g, "")
+        .replace(/\b(?:or|and)\s*(?=\.|,|$)/gi, "")
+        .replace(/,\s*(and|or)\s*,/gi, ", ")
+        .replace(/, and\b/g, " and");
+    })
+    .join("")
     .trim();
 }
 
